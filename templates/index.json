@@ -8,7 +8,7 @@
           "settings": {
             "image": "shopify://shop_images/callout-1.jpg",
             "heading": "Verso Book Club",
-            "text": "<p>The October selections for the <a href=\"/pages/book-club\" title=\"Book Club\">Verso Book Club</a> are in! Choose between four books, and get access to nearly two dozen new titles as ebooks.</p>",
+            "text": "<p>The ZD TEST October selections for the <a href=\"/pages/book-club\" title=\"Book Club\">Verso Book Club</a> are in! Choose between four books, and get access to nearly two dozen new titles as ebooks.</p>",
             "button_link_url": "/pages/book-club#instructions",
             "button_link_text": "How does the book club work?"
           }
