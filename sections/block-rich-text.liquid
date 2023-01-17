@@ -1,0 +1,127 @@
+<div class="l-container l-container--max">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'heading' -%}
+        <{{ block.settings.heading_tag }} class="{{ block.settings.heading_style }} max-w-wide" {{ block.shopify_attributes }}>
+          {{ block.settings.heading | replace: 'p>', 'span>' }}
+        </{{ block.settings.heading_tag }}>
+      {%- when 'text' -%}
+        <div class="{{ block.settings.text_style }} max-w-wide" {{ block.shopify_attributes }}>
+          {{ block.settings.text }}
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.block-rich-text.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.block-rich-text.blocks.heading.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Verso Books",
+          "label": "t:sections.block-rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_tag.options__1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_tag.options__2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.heading_tag.options__3.label"
+            }
+          ],
+          "default": "h2",
+          "label": "t:sections.all.heading_tag.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_style",
+          "options": [
+            {
+              "value": "t-h1",
+              "label": "t:sections.all.heading_style.options__1.label"
+            },
+            {
+              "value": "t-h2",
+              "label": "t:sections.all.heading_style.options__2.label"
+            },
+            {
+              "value": "t-h3",
+              "label": "t:sections.all.heading_style.options__3.label"
+            },
+            {
+              "value": "sr-only",
+              "label": "t:sections.all.heading_style.options__4.label"
+            }
+          ],
+          "default": "t-h2",
+          "label": "t:sections.all.heading_style.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.block-rich-text.blocks.text.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.</p>",
+          "label": "t:sections.block-rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "t-lead",
+              "label": "t:sections.all.text_style.options__1.label"
+            },
+            {
+              "value": "t-base",
+              "label": "t:sections.all.text_style.options__2.label"
+            },
+            {
+              "value": "t-sm",
+              "label": "t:sections.all.text_style.options__3.label"
+            }
+          ],
+          "default": "t-base",
+          "label": "t:sections.all.text_style.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.block-rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

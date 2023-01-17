@@ -1,0 +1,80 @@
+{%- liquid
+  assign compare_at_price = variant.compare_at_price
+  assign price = variant.price
+  assign page_count = product.metafields.verso_api.page_count.value
+  assign publication_date = product.metafields.verso_api.publication_date.value
+  assign sku = variant.sku
+  assign is_subscription = is_subscription | default: false
+
+  assign is_available = variant.available
+  assign publication_date_timestamp = publication_date | date: '%s'
+  assign now_timestamp = 'now' | date: '%s'
+  if publication_date_timestamp > now_timestamp
+    assign is_available = false
+  endif
+-%}
+
+<article class="c-variant-card c-variant-card--order-{{ index }}{% if is_available == false %} c-variant-card--unavailable{% endif %}">
+  <div class="c-variant-card__inner">
+    <header class="c-variant-card__header">
+      {% unless is_subscription %}
+        <div class="c-variant-card__title-block">
+          <h2 class="c-variant-card__title">{% render 'variant-title', variant: variant, product_type: product_type %}</h2>
+          {%- if physical_variant_subtitle != blank and variant.title == "paperback" or variant.title == "hardback" -%}
+            <p>{{ physical_variant_subtitle }}</p>
+          {%- endif -%}
+        </div>
+      {% endunless %}
+      <p class="c-variant-card__price-block">
+        {%- if compare_at_price and price != compare_at_price -%}
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="c-variant-card__compare-at-price">
+            {%- if settings.currency_code_enabled -%}
+              {{ compare_at_price | money_with_currency }}
+            {%- else -%}
+              {{ compare_at_price | money }}
+            {%- endif -%}
+          </s>
+        {%- endif -%}
+        <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+        <span>
+          {%- if settings.currency_code_enabled -%}
+            {{ price | money_with_currency }}
+          {%- else -%}
+            {{ price | money }}
+          {%- endif -%}
+        </span>
+      </p>
+      {% unless is_subscription %}
+        <p class="c-variant-card__metadata">
+          {%- liquid
+            if ebook_variant_description != blank and variant.title == "ebook_us" or variant.title == "ebook_uk"
+              echo ebook_variant_description
+            else
+              assign separator = ' / '
+              if page_count != blank
+                echo 'products.product.metadata.page_count' | t: count: page_count
+                if publication_date != blank or sku != blank
+                  echo separator
+                endif
+              endif
+              if publication_date != blank
+                echo publication_date | date: '%B %Y'
+                if sku != blank
+                  echo separator
+                endif
+              endif
+              if sku != blank
+                echo sku
+              endif
+            endif
+          -%}
+        </p>
+      {% endunless %}
+    </header>
+    {% render 'add-to-cart', variant: variant, product: product, index: index, is_subscription: is_subscription %}
+  </div>
+  {%- if compare_at_price -%}
+    {% render 'discount-badge', price: price, compare_at_price: compare_at_price, classname: 'c-variant-card__discount' %}
+  {%- endif -%}
+</article>

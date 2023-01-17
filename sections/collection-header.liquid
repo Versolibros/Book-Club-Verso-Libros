@@ -1,0 +1,17 @@
+<div>
+{% render 'details-block' title: collection.title, description: collection.description, image: collection.image, layout: "flex" %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection-header.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.collection-header.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

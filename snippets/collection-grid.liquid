@@ -1,0 +1,34 @@
+{% assign nested = nested | default: false %}
+<ul class="c-collection-grid">
+  {% for collection in collection_array %}
+    <li>
+      <a href="{{ collection.url }}" class="c-collection-thumbnail">
+        {%- liquid
+          assign image = collection.metafields.verso_api.collection_thumbnail | default: collection.image.src
+          assign aspect_ratio = 2
+          assign width = 314
+          assign height = width | divided_by: aspect_ratio | round
+          assign width_2x = width | times: 2
+          assign height_2x = height | times: 2
+        -%}
+        {%- if image != blank -%}
+          <img
+            srcset="{{ image | image_url: width: width_2x, height: height_2x, crop: 'center' }} 2x,
+                {{ image | image_url: width: width, height: height, crop: 'center' }} 1x"
+            src="{{ image | image_url: width: width, height: height, crop: 'center' }}"
+            width="{{ width }}"
+            height="{{ height }}"
+            loading="lazy"
+            alt=""
+            class="c-collection-thumbnail__image a-image-background"
+          >
+        {%- else -%}
+          <div class="c-collection-thumbnail__image a-image-background">
+            <span aria-hidden="true" class="text-baselg">{{ collection.title }}</span>
+          </div>
+        {%- endif -%}
+        <span class="sr-only">{{ collection.title }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

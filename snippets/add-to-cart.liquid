@@ -1,0 +1,57 @@
+{% liquid
+  assign is_subscription = is_subscription | default: false
+  assign is_available = variant.available
+
+  assign is_future_publication = false
+  assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s'
+  assign now_timestamp = 'now' | date: '%s'
+  if publication_date_timestamp > now_timestamp
+    assign is_future_publication = true
+  endif
+
+  if is_future_publication
+    assign is_available = false
+  endif
+-%}
+
+<add-to-cart
+  data-variant-id="{{ variant.id }}"
+  {% if is_subscription %}
+    data-selling-plan-group-id="{{ product.selling_plan_groups[0].id }}"
+    data-selling-plan-id="{{ product.selling_plan_groups[0].selling_plans[0].id }}"
+  {% endif %}
+>
+  {% render 'loading-overlay' %}
+  <a
+    id="{{ variant.id }}-add-button"
+    href="{{ routes.cart_add_url }}/{{ variant.id }}"
+    name="add"
+    data-controls="cart-drawer"
+    {% if is_available == false %}aria-disabled="true"{% endif %}
+    class="c-button {% if index == 1 %}c-button--filled c-button--large{% elsif button_size %}c-button--{{ button_size }}{% else %}c-button--small{% endif %}{% if is_available == false %} c-button--sold-out{% endif %} {{ button_classname }}"
+  >
+    <span>
+      {%- liquid
+        if is_available
+          if title
+            echo 'products.product.add_title_to_cart' | t: title: title
+          else
+            echo 'products.product.add_to_cart' | t
+          endif
+        else
+          if is_future_publication
+            echo 'products.product.coming_soon' | t
+          else
+            echo 'products.product.sold_out' | t
+          endif
+        endif
+      -%}
+    </span>
+    {%- if show_price and variant.available == true -%}
+      <span class="text-neutral-45">{{ variant.price | money }}</span>
+    {%- endif -%}
+  </a>
+  <div role="alert" data-id="add-to-cart-errors" class="text-accent text-sm" hidden>
+    <span data-id="add-to-cart-error-text"></span>
+  </div>
+</add-to-cart>

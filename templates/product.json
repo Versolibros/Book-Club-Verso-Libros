@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "product": {
+      "type": "main-product",
+      "settings": {
+        "physical_variant_subtitle": "+ free ebook",
+        "ebook_variant_description": "Read on any device"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Verso suggests"
+      }
+    }
+  },
+  "order": [
+    "product",
+    "product-recommendations"
+  ]
+}

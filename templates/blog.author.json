@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "author-list": {
+      "type": "main-author-list",
+      "settings": {
+        "author_grid_featured_menu": "author-grid-featured"
+      }
+    }
+  },
+  "order": [
+    "author-list"
+  ]
+}

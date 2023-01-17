@@ -1,0 +1,36 @@
+<div class="l-container l-container--max">
+  <ul class="l-three-col-fluid-grid">
+    {% for article in articles %}
+      <li>
+        <article class="c-article-card">
+          <a href="{{ article.url }}" class="c-article-card__link">
+            {%- if article.image -%}
+              <img
+                srcset="{%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if article.image.src.width >= 612 -%}{{ article.image.src | image_url: width: 612 }} 612w,{%- endif -%}
+                  {%- if article.image.src.width >= 918 -%}{{ article.image.src | image_url: width: 918 }} 918w,{%- endif -%}
+                  {%- if article.image.src.width >= 1224 -%}{{ article.image.src | image_url: width: 1224 }} 1224w,{%- endif -%}
+                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                src="{{ article.image.src | image_url: width: 612 }}"
+                sizes="(max-width: 42.5625rem) 90vw, (max-width: 68.6875rem) 45vw, (max-width: 89.75rem) 30vw, 432px"
+                loading="lazy"
+                width="432"
+                height="{{ 432 | divided_by: article.image.aspect_ratio | round }}"
+                alt="{{ article.image.alt | escape }}"
+                class="c-article-card__image a-image-background"
+              >
+            {%- else -%}
+              <div class="c-article-card__image c-placeholder-image a-image-background">
+                {% render 'icon-verso-logo-mark' %}
+              </div>
+            {%- endif -%}
+            <h2 class="c-article-card__title">{{ article.title }}</h2>
+          </a>
+          {%- if article.excerpt != blank -%}
+            <div class="c-article-card__excerpt t-rte">{{ article.excerpt }}</div>
+          {%- endif -%}
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

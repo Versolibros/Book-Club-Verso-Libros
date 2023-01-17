@@ -1,0 +1,43 @@
+{%- liquid
+  if product.handle contains 'comrade'
+    assign tier = 'comrade'
+  elsif product.handle contains 'partisan'
+    assign tier = 'partisan'
+  else
+    assign tier = 'reader'
+  endif
+-%}
+
+<h2 class="sr-only">{{ 'sections.book-club-products.header' | t }}</h2>
+{%- liquid
+
+  if tier == 'comrade'
+    render 'book-club-collection', tier: 'comrade', show_subscription_card: true
+  endif
+  if tier == 'comrade' or tier == 'partisan'
+    if tier == 'partisan'
+      assign show_subscription_card = true
+    endif
+    render 'book-club-collection', tier: 'partisan', show_subscription_card: show_subscription_card
+  endif
+  if tier == 'reader'
+    assign show_subscription_card = true
+  else
+    assign show_subscription_card = false
+  endif
+  render 'book-club-collection', tier: 'reader', show_subscription_card: show_subscription_card
+-%}
+
+{% schema %}
+{
+  "name": "t:sections.book-club-products.name",
+  "tag": "section",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-products.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

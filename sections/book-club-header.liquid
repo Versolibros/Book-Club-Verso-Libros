@@ -1,0 +1,49 @@
+<div class="c-book-club-header l-container l-container--narrow">
+  <div class="c-book-club-header__title">
+    <h1 class="sr-only">
+      {%- if section.settings.page_title -%}
+        {{ section.settings.page_title }}
+      {%- else -%}
+        {{ 'sections.book-club-header.default_page_title' | t }}</h1>
+      {%- endif -%}
+    </h1>
+    {% render 'icon-verso-logo-mark', classname: 'c-book-club-header__verso-logo' %}
+    {% assign product = settings.book_club_page_header_product %}
+    {%- if product != blank -%}
+      <img
+        srcset="{{ product.featured_media | image_url: width: 400 }} 2x,
+          {{ product.featured_media | image_url: width: 200 }} 1x"
+        src="{{ product.featured_media | image_url: width: 200 }}"
+        alt="{{ product.featured_media.alt | escape }}"
+        loading="lazy"
+        width="100"
+        height="{{ 100 | divided_by: product.featured_media.aspect_ratio | round }}"
+        class="c-book-club-header__image"
+      >
+    {%- endif -%}
+    {% render 'icon-book-club-logo-type', classname: 'c-book-club-header__book-club-logo' %}
+  </div>
+  {%- if settings.book_club_page_header_text != blank -%}
+    <div class="c-book-club-header__intro t-rte">{{ settings.book_club_page_header_text }}</div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.book-club-header.name",
+  "tag": "header",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "t:sections.book-club-header.settings.page_title.label",
+      "info": "t:sections.book-club-header.settings.page_title.info"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-header.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

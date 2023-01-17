@@ -1,0 +1,92 @@
+<section class="a-bg-default">
+  <div class="l-container-with-sidebar l-container-with-sidebar--full-width">
+    <aside>
+      {% render 'customer-navigation', active: routes.account_url %}
+    </aside>
+    <div class="c-customer-order__container">
+      <h1 class="sr-only">{{ 'customer.orders.title' | t }}</h1>
+      {% paginate customer.orders by 20 %}
+        {%- if customer.orders.size > 0 -%}
+          <ol class="flex flex-col gap-10">
+            {%- for order in customer.orders -%}
+              <li>
+                <article class="c-customer-order">
+                  <header class="c-customer-order__header">
+                    <h3 class="c-customer-order__title">{{ order.created_at | time_tag: format: 'date' }}</h3>
+                    <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}" class="c-customer-order__details-link">
+                      View details
+                    </a>
+                  </header>
+                  {%-liquid
+                    comment
+                      Group line items into ebooks and other
+                    endcomment
+                    assign ebook_line_items = null | sort
+                    assign other_line_items = null | sort
+
+                    for line_item in order.line_items
+                      assign line_item_as_array = line_item | sort
+                      if line_item.variant.title contains 'ebook'
+                        assign ebook_line_items = ebook_line_items | concat: line_item_as_array
+                      else
+                        assign other_line_items = other_line_items | concat: line_item_as_array
+                      endif
+                    endfor
+
+                    assign ebook_line_items_length = ebook_line_items | size
+                    assign other_line_items_length = other_line_items | size
+                  -%}
+                  {%- if other_line_items_length > 0 -%}
+                    <ul class="c-product-grid c-product-grid--fluid">
+                      {%- for line_item in other_line_items -%}
+                        <li>
+                          {% render
+                            'product-card',
+                            product: line_item.product,
+                            order: order,
+                            line_item: line_item,
+                            lazy_load: true
+                          %}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                  {%- if ebook_line_items_length > 0 -%}
+                    <ul class="c-product-grid c-product-grid--fluid">
+                      {%- for line_item in ebook_line_items -%}
+                        <li>
+                          {% render
+                            'product-card',
+                            product: line_item.product,
+                            order: order,
+                            line_item: line_item,
+                            lazy_load: true
+                          %}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </article>
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- else -%}
+          <div class="c-customer-order__empty">
+            <p class="c-customer-order__browse t-lead">{{ 'customer.orders.none_html' | t: link: collections["catalog"].url }}</p>
+
+            {% if customer.addresses[0].country == "Canada" or customer.addresses[0].country == "United States" %}
+              <p class="c-customer-order__support">{{ 'customer.orders.support_html' | t: email: settings.order_email_na }}</p>
+            {% else %}
+              <p class="c-customer-order__support">{{ 'customer.orders.support_html' | t: email: settings.order_email_eu }}</p>
+            {% endif %}
+          </div>
+
+        {%- endif -%}
+
+        {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        {%- endif -%}
+      {% endpaginate %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<li>
+  <figure class="c-product-reviews__review-block">
+    <blockquote><p class="c-product-reviews__quote">{{ review['review'] }}</p></blockquote>
+    {%- if review['review_author'].size > 0 or review['review_source'].size > 0 -%}
+    <figcaption class="c-product-reviews__source">
+      <cite>
+        <span class="c-product-reviews__author">{{ review['review_author'] }}</span>{%- if review['review_author'].size > 0 and review['review_source'].size > 0 -%},&#160;{%- endif -%}
+        {% if review['review_source'].size > 0 %}
+        <i>{{ review['review_source'] }}</i>
+        {%- endif -%}
+      </cite>
+    </figcaption>
+    {%- endif -%}
+  </figure>
+</li>
+      

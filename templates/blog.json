@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "title": {
+      "type": "sr-only-page-title",
+      "settings": {
+        "title": "Blog"
+      }
+    },
+    "article-list": {
+      "type": "main-article-list",
+      "settings": {
+        "articles_per_page": 12
+      }
+    }
+  },
+  "order": [
+    "title",
+    "article-list"
+  ]
+}

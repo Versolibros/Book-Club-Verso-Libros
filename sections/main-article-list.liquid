@@ -1,0 +1,27 @@
+{%- liquid
+  paginate blog.articles by section.settings.articles_per_page
+    render 'article-grid', articles: blog.articles
+    if paginate.pages > 1
+      render 'pagination', paginate: paginate
+    endif
+  endpaginate
+-%}
+
+{% schema %}
+{
+  "name": "t:sections.main-article-list.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "min": 6,
+      "max": 18,
+      "step": 3,
+      "default": 9,
+      "label": "t:sections.main-article-list.settings.articles_per_page.label"
+    }
+  ]
+}
+{% endschema %}

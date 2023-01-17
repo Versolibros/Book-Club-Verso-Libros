@@ -1,0 +1,140 @@
+{% layout none %}
+
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+
+    <link rel="stylesheet" href="https://use.typekit.net/dpt6foc.css" />
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html -%}
+
+    <title>{{ 'gift_cards.issued.title' | t: value: formatted_initial_value, shop: shop.name }}</title>
+
+    <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
+
+    {{ 'font-face.static.css' | asset_url | stylesheet_tag }}
+    {{ 'bundle.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="a-bg-default">
+    <header class="c-simple-header">
+      <a
+        href="{{ shop.url }}"
+        target="_blank"
+        rel="noopener"
+        aria-describedby="a11y-new-window-message"
+      >
+        {% render 'icon-verso-logo' %}
+      </a>
+    </header>
+
+    <main class="c-gift-card">
+      <div class="c-gift-card__card-image">
+        {% render 'icon-verso-logo-mark', classname: 'c-gift-card__card-logo' %}
+      </div>
+      <section class="c-gift-card__text-content">
+        <h1>{{ 'gift_cards.issued.subtext' | t }}</h1>
+        <p class="t-h1 text-accent">
+          {% if settings.currency_code_enabled %}
+            {{ gift_card.initial_value | money_with_currency }}
+          {% else %}
+            {{ gift_card.initial_value | money }}
+          {% endif %}
+        </p>
+        {%- if gift_card.enabled == false or gift_card.expired -%}
+          <p class="t-h1 text-accent">{{ 'gift_cards.issued.expired' | t }}</p>
+        {%- endif -%}
+
+        {% if settings.currency_code_enabled %}
+          {%- assign gift_card_balance = gift_card.balance | money_with_currency -%}
+        {% else %}
+          {%- assign gift_card_balance = gift_card.balance | money -%}
+        {% endif %}
+        {%- if gift_card.balance != gift_card.initial_value -%}
+          <p class="t-h2">{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
+        {%- endif -%}
+        <div class="c-gift-card__code-block">
+          <div id="qr-code" data-identifier="{{ gift_card.qr_identifier }}" class="c-gift-card__qr-code"></div>
+          <div>
+            <input
+              id="number"
+              type="text"
+              value="{{ gift_card.code | format_code }}"
+              aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
+              readonly
+              class="c-gift-card__code"
+            >
+            <button id="copy-link" class="c-button c-button--small c-button--secondary">{{ 'gift_cards.issued.copy_code' | t }}</button>
+            <p id="copy-success" role="status" class="text-sm"></p>
+            <template>
+              {{ 'gift_cards.issued.copy_code_success' | t }}
+            </template>
+          </div>
+        </div>
+        <div class="c-gift-card__footer">
+          {%- if gift_card.pass_url -%}
+            <a href="{{ gift_card.pass_url }}">
+              <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="174" height="54" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}" loading="lazy">
+            </a>
+          {%- endif -%}
+          <button onclick="window.print();" class="c-button c-button--filled c-button--medlg min-[5.5rem]">
+            {{ 'gift_cards.issued.print_gift_card' | t }}
+          </button>
+          <a
+            href="{{ shop.url }}"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="a11y-new-window-message"
+            class="a-inline-link-secondary text-sm font-sans"
+          >
+            {{ 'gift_cards.issued.shop_link' | t }}
+          </a>
+        </div>
+      </section>
+    </main>
+    <div hidden>
+      <span id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</span>
+    </div>
+  </body>
+</html>
+
+<script>
+  var string = { qrImageAlt: {{ 'gift_cards.issued.qr_image_alt' | t | json }} };
+  document.addEventListener('DOMContentLoaded', function() {
+   new QRCode( document.querySelector('#qr-code'), {
+    text: document.querySelector('#qr-code').dataset.identifier,
+    width: 106,
+    height: 106,
+    imageAltText: string.qrImageAlt
+    });
+  });
+
+  var template = document.getElementsByTagName("template")[0];
+  var clonedTemplate = template.content.cloneNode(true);
+
+  var isMessageDisplayed = false
+  document
+  .querySelector('#copy-link')
+  .addEventListener('click', () => {
+    navigator.clipboard.writeText(document.querySelector('#number').value).then(function () {
+      if (!isMessageDisplayed) {
+        document.querySelector('#copy-success').appendChild(clonedTemplate);
+        isMessageDisplayed = true
+      }
+    });
+  });
+</script>

@@ -1,0 +1,39 @@
+{
+  "layout": "book-club",
+  "sections": {
+    "header": {
+      "type": "book-club-header",
+      "settings": {
+        "page_title": "{{ page.title }}"
+      }
+    },
+    "featured_subscription": {
+      "type": "book-club-current-selections",
+      "settings": {
+        "cta_text": "Sign up now and immediately get your pick of these books!"
+      }
+    },
+    "subscriptions": {
+      "type": "book-club-subscriptions",
+      "settings": {
+      }
+    },
+    "products": {
+      "type": "book-club-products",
+      "settings": {
+      }
+    },
+    "footer": {
+      "type": "book-club-footer",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "header",
+    "featured_subscription",
+    "subscriptions",
+    "products",
+    "footer"
+  ]
+}

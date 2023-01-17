@@ -1,0 +1,46 @@
+{% comment %}
+  Not for all situations, but useful for when an image could be nested in the Columns block.
+  Calculates images to generate and `sizes` attr value based on how much of its parent container it occupies.
+
+  Accepts:
+  - image: {Object}
+  - block_width: {Number} A value between 0-100 representing the percentage of the parent container the image should occupy.
+  - classname: {String} (Optional)
+{% endcomment %}
+
+{%- liquid
+  assign container_width = 1356
+  assign amount_of_container = block_width | times: 0.01 | default: 1
+
+  assign image_width = container_width | times: amount_of_container | round
+  assign image_width_one_fourth = image_width | times: 0.25 | round
+  assign image_width_one_half = image_width | times: 0.5 | round
+  assign image_width_three_fourths = image_width | times: 0.75 | round
+  assign image_width_five_fourths = image_width | times: 1.25 | round
+  assign image_width_three_halves = image_width | times: 1.5 | round
+  assign image_width_seven_fourths = image_width | times: 1.75 | round
+  assign image_width_double = image_width | times: 2 | round
+
+  assign medium_size = 94.17 | times: amount_of_container | append: 'vw, '
+  assign medium_query = "(max-width: 90rem) " | append: medium_size
+  assign sizes = "(max-width: 47.125rem) 94.17vw, " | append: medium_query | append: image_width | append: "px"
+-%}
+
+<img
+  srcset="{%- if image.src.width >= image_width_one_fourth -%}{{ image.src | image_url: width: image_width_one_fourth }} {{ image_width_one_fourth }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_one_half -%}{{ image.src | image_url: width: image_width_one_half }} {{ image_width_one_half }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_three_fourths -%}{{ image.src | image_url: width: image_width_three_fourths }} {{ image_width_three_fourths }}w,{%- endif -%}
+    {%- if image.src.width >= image_width -%}{{ image.src | image_url: width: image_width }} {{ image_width }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_five_fourths -%}{{ image.src | image_url: width: image_width_five_fourths }} {{ image_width_five_fourths }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_three_halves -%}{{ image.src | image_url: width: image_width_three_halves }} {{ image_width_three_halves }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_seven_fourths -%}{{ image.src | image_url: width: image_width_seven_fourths }} {{ image_width_seven_fourths }}w,{%- endif -%}
+    {%- if image.src.width >= image_width_double -%}{{ image.src | image_url: width: image_width_double }} {{ image_width_double }}w,{%- endif -%}
+    {{ image.src | image_url }} {{ image.src.width }}w"
+  src="{{ image.src | image_url: width: image_width }}"
+  sizes="{{ sizes }}"
+  loading="lazy"
+  width="{{ image_width }}"
+  height="{{ image_width | divided_by: image.aspect_ratio | round }}"
+  alt="{{ image.alt | escape }}"
+  class="{{ classname }}"
+>

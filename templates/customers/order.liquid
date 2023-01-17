@@ -1,0 +1,62 @@
+<section class="a-bg-default">
+  <div class="l-container-with-sidebar l-container-with-sidebar--full-width">
+    <aside>
+      {% render 'customer-navigation', active: routes.account_url %}
+    </aside>
+    <div class="c-order-detail">
+      <a href="{{ routes.account_url }}" class="c-order-detail__back-link">{{ 'customer.account.return' | t }}</a>
+      <div class="c-order-detail__inner">
+        <article class="c-order-detail__main">
+          <header class="c-order-detail__section">
+            <h1 class="c-order-detail__title">{{ 'customer.order.title' | t: name: order.name }}</h1>
+            {%- assign order_date = order.created_at | time_tag: format: "date_at_time" -%}
+            <p class="c-order-detail__text-secondary">{{ 'customer.order.date_html' | t: date: order_date }}</p>
+            {%- if order.cancelled -%}
+              {%- assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" -%}
+              <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
+              <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
+            {%- endif -%}
+          </header>
+          <ul aria-label="{{ 'customer.order.line_item.list_label' | t }}">
+            {%- for line_item in order.line_items -%}
+              <li class="c-order-detail__section">
+                <article>
+                  <dl class="c-order-detail__line-item-details">
+                    {%- liquid
+                      render 'line-item-title', line_item: line_item
+                      render 'line-item-meta', line_item: line_item
+                      render 'line-item-subscription', line_item: line_item
+                      render 'line-item-fulfillment', line_item: line_item
+                      render 'line-item-price', line_item: line_item
+                      render 'line-item-quantity', line_item: line_item
+                      render 'ebook-download-link', order: order, line_item: line_item
+                     -%}
+                  </dl>
+                </article>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <footer class="c-order-detail__section c-order-detail__section--footer">
+            {% render 'order-cost-breakdown', order: order %}
+          </footer>
+        </article>
+        <div class="c-order-detail__aside">
+          <section>
+            <h2 class="c-order-detail__aside-heading">{{ 'customer.order.billing_address' | t }}</h2>
+            {{ order.billing_address | format_address }}
+            <footer class="c-order-detail__aside-footer">
+              <p class="c-order-detail__text-secondary">{{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}</p>
+            </footer>
+            </section>
+          <section>
+            <h2 class="c-order-detail__aside-heading">{{ 'customer.order.shipping_address' | t }}</h2>
+            {{ order.shipping_address | format_address }}
+            <footer class="c-order-detail__aside-footer">
+              <p class="c-order-detail__text-secondary">{{ 'customer.order.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
+            </footer>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

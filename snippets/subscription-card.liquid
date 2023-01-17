@@ -1,0 +1,90 @@
+{%-liquid
+  assign tier = tier | default: "reader"
+
+  assign settings_key = 'book_club_' | append: tier
+  assign title_key = settings_key | append: '_title'
+  assign description_key = settings_key | append: '_description'
+  assign monthly_product_key = settings_key | append: '_monthly_product'
+  assign annual_product_key = settings_key | append: '_annual_product'
+
+  assign title = settings[title_key]
+  assign description = settings[description_key]
+  assign monthly_product = settings[monthly_product_key]
+  assign annual_product = settings[annual_product_key]
+-%}
+
+{%- if title != blank -%}
+  <article class="c-book-club-subscription-card a-bg-default a-accent-color-book-club-tier-{{ tier | default: 1 }} {{ classname }}">
+    <header class="c-book-club-subscription-card__header">
+      <h3 class="c-book-club-subscription-card__title">{{ title }}</h3>
+    </header>
+    <div>
+        {%- if description != blank -%}
+          <div class="c-book-club-subscription-card__description">
+            {{ description }}
+          </div>
+        {%- endif -%}
+      <ul class="c-book-club-subscription-card__actions">
+        {%- if annual_product != blank -%}
+          <li>
+            {% assign annual_variant = annual_product.variants[0] %}
+            {% assign monthly_price = annual_variant.price | divided_by: 12 | money_without_trailing_zeros %}
+            <add-to-cart
+              data-variant-id="{{ annual_variant.id }}"
+              data-selling-plan-group-id="{{ annual_product.selling_plan_groups[0].id }}"
+              data-selling-plan-id="{{ annual_product.selling_plan_groups[0].selling_plans[0].id }}"
+            >
+              {% render 'loading-overlay' %}
+              <a
+                id="{{ annual_variant.id }}-add-button"
+                href="{{ routes.cart_add_url }}/{{ annual_variant.id }}"
+                name="add"
+                data-controls="cart-drawer"
+                class="c-book-club-subscription-card__primary-action"
+              >
+                <span>{{ 'sections.book-club-subscriptions.monthly_price' | t: price: monthly_price }}</span>
+                <span>{{ 'sections.book-club-subscriptions.billed_annually' | t | capitalize }}</span>
+                <span class="c-book-club-subscription-card__cart-add">
+                  <span class="c-book-club-subscription-card__cart-add-text">{{ 'products.product.add_to_cart' | t }}</span>
+                  {% render 'icon-cart', classname: 'c-book-club-subscription-card__cart-add-icon' %}
+                </span>
+              </a>
+              <div role="alert" data-id="add-to-cart-errors" class="text-accent text-sm" hidden>
+                <span data-id="add-to-cart-error-text"></span>
+              </div>
+            </add-to-cart>
+          </li>
+        {%- endif -%}
+        {%- if monthly_product != blank -%}
+          <li>
+            {% assign monthly_variant = monthly_product.variants[0] %}
+            {% assign monthly_price = monthly_variant.price | money_without_trailing_zeros %}
+            <add-to-cart
+              data-variant-id="{{ monthly_variant.id }}"
+              data-selling-plan-group-id="{{ monthly_product.selling_plan_groups[0].id }}"
+              data-selling-plan-id="{{ monthly_product.selling_plan_groups[0].selling_plans[0].id }}"
+            >
+              {% render 'loading-overlay' %}
+              {%- if annual_product != blank -%}
+                <span>{{ 'glossary.or' | t | capitalize }}</span>
+              {%- endif -%}
+              <a
+                id="{{ monthly_variant.id }}-add-button"
+                href="{{ routes.cart_add_url }}/{{ monthly_variant.id }}"
+                name="add"
+                data-controls="cart-drawer"
+                class="a-inline-link"
+              >
+                {{ 'sections.book-club-subscriptions.billed_monthly' | t }}
+              </a>
+              <span>{{ 'sections.book-club-subscriptions.for_monthly_price' | t: price: monthly_price }}</span>
+              <div role="alert" data-id="add-to-cart-errors" class="text-accent text-sm" hidden>
+                <span data-id="add-to-cart-error-text"></span>
+              </div>
+            </add-to-cart>
+          </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </article>
+{%- endif -%}

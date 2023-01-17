@@ -1,0 +1,33 @@
+{%- liquid
+  assign product_type = product_type | default: "book"
+
+  if product_type != "book"
+    echo variant.title
+    break
+  endif
+
+  assign title_array = variant.title | handleize | replace: '-', '_' | split: "_"
+
+  for word in title_array
+    if word == "ebook" or word == "paperback" or word == "hardback"
+      assign key = word
+    else
+      unless word == "us" or word == "uk"
+        assign rest = word
+      endunless
+    endif
+  endfor
+
+  if key
+    assign l10n_key = 'products.product.variant_title.' | append: key
+    assign title = l10n_key | t
+
+    if rest
+      assign title = title | append: " (" | append: rest | append: ")"
+    endif
+  else
+    assign title = title_array | join: " " | capitalize
+  endif
+
+  echo title
+-%}

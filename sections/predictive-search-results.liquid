@@ -1,0 +1,52 @@
+{%- if predictive_search.performed -%}
+  {%- liquid
+    comment
+      Results are returned in groups, so let's successively show results
+      from each group until reaching the limit
+    endcomment
+    assign limit = 5
+    assign product_count = predictive_search.resources.products.size
+    assign collection_count = predictive_search.resources.collections.size
+    assign article_count = predictive_search.resources.articles.size
+    assign page_count = predictive_search.resources.pages.size
+    assign product_and_collection_count = product_count | plus: collection_count
+    assign product_and_collection_and_article_count = product_and_collection_count | plus: article_count
+    assign product_and_collection_and_article__page_count = product_and_collection_and_article_count | plus: page_count
+  -%}
+  <h2 class="sr-only">{{ 'predictive_search.results' | t }}</h2>
+  {%- if product_and_collection_and_article__page_count > 0 -%}
+    <ul id="predictive-search-results-list" class="c-predictive-search__results">
+      {%- liquid
+        for product in predictive_search.resources.products
+          render 'predictive-search-result', result: product, type: "product"
+        endfor
+        if product_count < limit
+          for collection in predictive_search.resources.collections
+            render 'predictive-search-result', result: collection, type: "collection"
+          endfor
+          if product_and_collection_count < limit
+            for article in predictive_search.resources.articles
+              render 'predictive-search-result', result: article, type: "article"
+            endfor
+            if product_and_collection_and_article_count < limit
+              for page in predictive_search.resources.pages
+                render 'predictive-search-result', result: page, type: "page"
+              endfor
+            endif
+          endif
+        endif
+      -%}
+    </ul>
+  {%- else -%}
+    <button class="c-predictive-search__secondary-submit">
+      <span>{{ 'predictive_search.no_results' | t: terms: predictive_search.terms }}</span>
+      {% render 'icon-arrow' %}
+    </button>
+  {%- endif -%}
+
+  {% render 'loading-overlay' %}
+
+  <span class="sr-only" data-predictive-search-live-region-count-value>
+    {{ 'predictive_search.results_with_count_and_terms' | t: count: product_and_collection_and_article__page_count, terms: predictive_search.terms, limit: limit }}
+  </span>
+{%- endif -%}

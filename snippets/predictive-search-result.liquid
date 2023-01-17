@@ -1,0 +1,36 @@
+<li class="c-predictive-search__result">
+  <a href="{{ result.url }}">
+    {%- liquid
+      capture label
+        if type == 'product'
+          echo 'general.search.product' | t
+        elsif type == 'collection'
+          echo 'general.search.collection' | t
+        elsif type == 'article'
+          if result.handle contains "authors/"
+            echo 'general.search.author' | t
+          elsif result.template_suffix contains "-list"
+            echo 'general.search.reading_list' | t
+          else
+            echo 'general.search.blog_post' | t
+          endif
+        elsif type == 'page'
+          echo 'general.search.page' | t
+        endif
+      endcapture
+    -%}
+    <div class="c-predictive-search__label">{{ label }}</div>
+    <h3 class="c-predictive-search__result-title">
+      {%- if type == 'product' -%}
+        <span class="italic">{{ result.title }}</span>
+        {%- if result.metafields.verso_api.authors.value != blank %}
+          {% render 'byline', authors: result.metafields.verso_api.authors.value, classname: 'c-predictive-search__result-byline' %}
+        {%- endif -%}
+      {%- elsif type == 'article' and result.handle contains 'authors/' %}
+        {{ result.metafields.verso_api.display_title.value | default: result.title }}
+      {%- else -%}
+        {{ result.title }}
+      {%- endif -%}
+    </h3>
+  </a>
+</li>

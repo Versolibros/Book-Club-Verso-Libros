@@ -1,0 +1,11 @@
+{% comment %}
+`divided_by` rounds down if divisor is an integer, so we turn
+divisor into a float with `times: 100.0`, then divide, then round.
+See https://shopify.github.io/liquid/filters/divided_by/#controlling-rounding
+{% endcomment %}
+{%- if price and compare_at_price and price != compare_at_price -%}
+  {% assign price_fraction = price | times: 100.0 | divided_by: compare_at_price | round %}
+  {% assign discount = 100 | minus: price_fraction %}
+
+  <span class="c-discount-badge {{ classname }}">{{ 'products.product.price.discount' | t: amount: discount }}</span>
+{%- endif- %}

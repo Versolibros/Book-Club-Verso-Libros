@@ -1,0 +1,10 @@
+<section id="product-strip-{{ index }}" class="c-product-strip a-bg-default">
+  {% assign columns = variants.count | at_most: 3 %}
+  <div class="c-product-strip__inner c-product-strip__inner--columns-{{ columns }}">
+    {%- liquid
+      for variant in variants
+        render 'product-strip-item', variant: variant
+      endfor
+    -%}
+  </div>
+</section>

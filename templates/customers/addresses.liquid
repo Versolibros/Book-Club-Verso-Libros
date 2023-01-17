@@ -1,0 +1,97 @@
+<section class="a-bg-default">
+  <div class="l-container-with-sidebar l-container-with-sidebar--full-width c-addresses">
+    <aside>
+      {% render 'customer-navigation', active: routes.account_addresses_url %}
+    </aside>
+    <div>
+      <script src="{{ 'customer.static.js' | asset_url }}" defer></script>
+      {%- paginate customer.addresses by 5 -%}
+        <div>
+          <h1 class="sr-only">{{ 'customer.addresses.title' | t }}</h1>
+          <div data-customer-addresses class="c-addresses__container">
+            <div class="c-addresses__address-block">
+              <div class="c-addresses__header-block">
+                <h2 id="AddressNewHeading" class="c-addresses__address-block-header">{{ 'customer.addresses.default' | t }}</h2>
+              </div>
+              {%- for address in customer.addresses -%}
+                <div data-address>
+                  {%- if address == customer.default_address -%}
+                    <span class="c-addresses__address">
+                      {{ address | format_address }}
+                    </span>
+                    <div class="c-addresses__edit-delete-block">
+                      <button type="button" id="EditFormButton_{{ address.id }}" aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}" aria-controls="EditAddress_{{ address.id }}" aria-expanded="false" data-address-id="{{ address.id }}">
+                        <span class="text-sm c-addresses__edit-text">{{ 'customer.addresses.edit' | t }}</span>
+                      </button>
+                      <button type="button" aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}" data-target="{{ address.url }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+                        <span class="text-sm text-accent">{{ 'customer.addresses.delete' | t }}</span>
+                      </button>
+                    </div>
+                    <div id="EditAddress_{{ address.id }}" class="c-addresses__form-block hidden hidden">
+                      <h3 class="text-accent font-serif">{{ 'customer.addresses.edit_address' | t }}</h3>
+                      {%- form 'customer_address', address -%}
+                        {%- render 'address-form', form: form, form_id: form.id, address: address -%}
+                      {%- endform -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <ul role="list" class="c-addresses__address-block">
+              <div class="c-addresses__header-block">
+                <h2 class="c-addresses__address-block-header">{{ 'customer.addresses.other' | t }}</h2>
+                <div data-address>
+                  <button id="EditFormButton_new" type="button" aria-expanded="false" aria-controls="AddAddress" class="c-button c-button--small c-button--truncated">
+                    {{ 'customer.addresses.add_new' | t }}
+                  </button>
+                </div>
+              </div>
+              <div data-address class="c-addresses__form-block hidden" id="AddAddress" style="">
+
+                <h3 id="AddressNewHeading" class="text-accent font-serif">{{ 'customer.addresses.add_new' | t }}</h3>
+                {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
+                  {%- render 'address-form', form: form, form_id: "new", customer: customer -%}
+                {%- endform -%}
+
+              </div>
+              {%- for address in customer.addresses -%}
+                <li data-address>
+                  {%- if address != customer.default_address -%}
+                    <span class="c-addresses__address">
+                      {{ address | format_address }}
+                    </span>
+                    <div class="c-addresses__edit-delete-block">
+                      <button type="button" id="EditFormButton_{{ address.id }}" aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}" aria-controls="EditAddress_{{ address.id }}" aria-expanded="false" data-address-id="{{ address.id }}">
+                        <span class="text-sm c-addresses__edit-text">{{ 'customer.addresses.edit' | t }}</span>
+                      </button>
+                      <button type="button" aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}" data-target="{{ address.url }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+                        <span class="text-sm text-accent">{{ 'customer.addresses.delete' | t }}</span>
+                      </button>
+                    </div>
+                    <div id="EditAddress_{{ address.id }}" class="c-addresses__form-block hidden" style="">
+                      <h3 class="text-accent font-serif">{{ 'customer.addresses.edit_address' | t }}</h3>
+                      {%- form 'customer_address', address -%}
+                        {%- render 'address-form', form: form, form_id: form.id, address: address -%}
+                      {%- endform -%}
+                    </div>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+
+          </div>
+          {%- if paginate.pages > 1 -%}
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          {%- endif -%}
+        </div>
+      {%- endpaginate -%}
+
+      <script>
+        window.onload = () => {
+          typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+        }
+      </script>
+    </div>
+  </div>
+</section>

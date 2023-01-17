@@ -1,0 +1,27 @@
+<div class="c-book-club-footer l-container l-container--max">
+  <div class="c-book-club-footer__text-block">
+    {%- if settings.book_club_page_footer_heading != blank -%}
+      <h2 class="c-book-club-footer__heading">{{ settings.book_club_page_footer_heading }}</h2>
+    {%- endif -%}
+    {%- if settings.book_club_page_footer_text != blank -%}
+      <div class="c-book-club-footer__text t-rte">{{ settings.book_club_page_footer_text }}</div>
+    {%- endif -%}
+  </div>
+  <div class="c-book-club-footer__logo-block">
+    {% render 'icon-book-club-logo-mark', classname: 'c-book-club-footer__logo' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.book-club-footer.name",
+  "tag": "footer",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-footer.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

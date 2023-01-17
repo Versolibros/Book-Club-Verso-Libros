@@ -1,0 +1,79 @@
+{%- if product != empty -%}
+  {%- liquid
+    assign title = product.title
+    assign subtitle = product.metafields.verso_api.subtitle.value
+    if subtitle
+      assign title = title | append: ": " | append: subtitle
+    endif
+    assign compare_at_price = product.variants[0].compare_at_price
+    assign price = product.variants[0].price
+    assign is_ebook = false
+    if line_item != blank and line_item.variant.title contains 'ebook'
+      assign is_ebook = true
+    endif
+   -%}
+
+  <article class="c-product-card">
+    <a href="{{ product.url }}" aria-label="{{ product.title }}" class="c-product-card__product-link">
+      <div class="c-product-card__image-wrapper">
+        {%- liquid
+          comment
+            Use 3D image if exists (and not displaying ebook) (always second in array)
+          endcomment
+          assign image = product.images[0]
+          if is_ebook == false and product.images[1]
+            assign image = product.images[1]
+          endif
+        -%}
+        {%- if image -%}
+          <img
+            srcset="{{ image | image_url: width: 344 }} 2x, {{ image | image_url: width: 172 }} 1x"
+            src="{{ image | image_url: width: 172 }}"
+            alt="{{ product.title | escape }}"
+            loading="lazy"
+            width="{{ image.aspect_ratio | times: 280 | round }}"
+            height="280"
+            class="c-product-card__image a-grow-on-ancestor-hover{% if is_ebook %} a-ebook-cover{% endif %}"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'product-image-placeholder.static.svg' | asset_url }}"
+            alt=""
+            loading="lazy"
+            width="163"
+            height="259"
+            class="c-product-card__image a-grow-on-ancestor-hover"
+          >
+        {%- endif -%}
+      </div>
+      <header>
+        {%- if line_item != blank and product.type == 'Books' -%}
+          <p class="font-sans text-xsm text-neutral-45">{% render 'variant-title', variant: line_item.variant %}</p>
+        {%- endif -%}
+        {% assign tag = "h3" %}
+        {%- if is_search -%}
+          {% assign tag = "h2" %}
+        {%- endif -%}
+        <{{ tag }} class="c-product-card__title">{{ title | escape_once }}</{{ tag }}>
+      </header>
+    </a>
+    {% comment %}If should show discount badge or byline{% endcomment %}
+    {%- if product.metafields.verso_api.authors.value != blank or compare_at_price or line_item != blank -%}
+      <footer class="c-product-card__details">
+        {% render 'byline',
+          authors: product.metafields.verso_api.authors.value,
+          linked: true,
+          classname: 'c-product-card__byline'
+        %}
+        {%- if line_item != blank -%}
+          {% render 'ebook-download-link', order: order, line_item: line_item %}
+        {%- endif -%}
+        {%- if compare_at_price and line_item == blank and compare_at_price != price -%}
+          <div>
+            {% render 'discount-badge', price: price, compare_at_price: compare_at_price %}
+          </div>
+        {%- endif -%}
+      </footer>
+    {%- endif -%}
+  </article>
+{%- endif -%}

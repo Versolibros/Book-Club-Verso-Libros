@@ -1,0 +1,39 @@
+{% render 'featured-product-grid', settings: section.settings, nested: false %}
+
+{% schema %}
+{
+  "name": "t:sections.block-featured-products.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-products.settings.header__1.content"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.block-featured-products.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-products.settings.header__2.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.block-featured-products.settings.paragraph__2.content"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:sections.block-featured-products.settings.product_list.label",
+      "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.block-featured-products.presets.name"
+    }
+  ]
+}
+{% endschema %}

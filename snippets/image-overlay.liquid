@@ -1,0 +1,27 @@
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-label="{{ 'image_overlay.label' | t }}"
+  id="{{ id }}"
+  data-ref="dialog"
+  class="c-image-overlay l-overlay a-bg-neutral10-semi-opaque"
+>
+  <div class="c-image-overlay__inner">
+    <button data-ref="close" class="c-image-overlay__close">
+      {% render 'icon-close' %}
+      <span class="sr-only">{{ "image_overlay.close" | t }}</span>
+    </button>
+    <div class="c-image-overlay__image-container">
+      <img
+        srcset="{{ product.featured_media | image_url: width: 878 }} 2x,
+          {{ product.featured_media | image_url: width: 439 }} 1x"
+        src="{{ product.featured_media | image_url: width: 439 }}"
+        alt="{{ product.featured_media.alt | escape }}"
+        loading="lazy"
+        width="439"
+        height="{{ 439 | divided_by: product.featured_media.aspect_ratio | round }}"
+        class="c-image-overlay__image"
+      >
+    </div>
+  </div>
+</div>

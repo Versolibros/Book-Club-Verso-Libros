@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "1659104295b3869a2c": {
+      "type": "block-rich-text",
+      "blocks": {
+        "165910429535f14a5b-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Catalog",
+            "heading_tag": "h1",
+            "heading_style": "sr-only"
+          }
+        },
+        "165910429535f14a5b-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Verso Books is the largest independent, radical publishing house in the English-speaking world, publishing one hundred books a year.</p>",
+            "text_style": "t-lead"
+          }
+        }
+      },
+      "block_order": [
+        "165910429535f14a5b-0",
+        "165910429535f14a5b-1"
+      ],
+      "settings": {
+      }
+    },
+    "1660000793ecd5e49a": {
+      "type": "block-columns",
+      "blocks": {
+        "ce516fb9-7777-4868-a5a5-47b17e4939f2": {
+          "type": "featured_collections",
+          "settings": {
+            "collection_heading": "Featured Book Series",
+            "collection_menu": "featured-collections",
+            "collection_list": [
+
+            ]
+          }
+        },
+        "203dfd8b-e73b-49a4-88cd-408ce316099d": {
+          "type": "featured_articles_list",
+          "settings": {
+            "heading": "Reading Lists",
+            "preheading": "Top",
+            "menu": "top-reading-lists",
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "article_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "ce516fb9-7777-4868-a5a5-47b17e4939f2",
+        "203dfd8b-e73b-49a4-88cd-408ce316099d"
+      ],
+      "settings": {
+        "column_ratio": "60"
+      }
+    },
+    "product-grid": {
+      "type": "collection-product-grid",
+      "settings": {
+        "show_menu": true,
+        "menu": "subject-collections",
+        "region_menu": "regional-menu",
+        "products_per_page": 24
+      }
+    }
+  },
+  "order": [
+    "1659104295b3869a2c",
+    "1660000793ecd5e49a",
+    "product-grid"
+  ]
+}

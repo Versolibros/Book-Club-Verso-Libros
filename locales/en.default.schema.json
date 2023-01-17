@@ -1,0 +1,661 @@
+{
+  "settings_schema": {
+    "social-media": {
+      "name": "Social media",
+      "settings": {
+        "header": {
+          "content": "Social accounts"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_twitter_link": {
+          "label": "Twitter",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        }
+      }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon image",
+          "info": "Will be scaled down to 32x32px"
+        }
+      }
+    },
+    "logo": {
+      "name": "Logo",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        }
+      }
+    },
+    "currency_format": {
+      "name": "Currency format",
+      "settings": {
+        "content": "Currency codes",
+        "paragraph": "Cart and checkout prices always show currency codes. Example: $1.00 USD.",
+        "currency_code_enabled": {
+          "label": "Show currency codes"
+        }
+      }
+    },
+    "book_club_tiers": {
+      "name": "Book Club Tiers",
+      "settings": {
+        "content__1": "Reader",
+        "content__2": "Partisan",
+        "content__3": "Comrade",
+        "title": {
+          "label": "Title"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "annual_product": {
+          "label": "Annual subscription"
+        },
+        "monthly_product": {
+          "label": "Monthly subscription"
+        },
+        "current_collection": {
+          "label": "Current book products"
+        },
+        "next_collection": {
+          "label": "Next book products"
+        }
+      }
+    },
+    "book_club_page": {
+      "name": "Book Club page content",
+      "settings": {
+        "intro_paragraph": "Contents displayed on Book Club page and subscription detail pages.",
+        "content__1": "Header",
+        "header_product": {
+          "label": "Featured product",
+          "info": "An image of the product will appear alongside the page title."
+        },
+        "header_text": {
+          "label": "Intro text"
+        },
+        "content__2": "Instructions",
+        "instruction_1_heading": {
+          "label": "Instruction #1 heading"
+        },
+        "instruction_1_text": {
+          "label": "Instruction #1 body"
+        },
+        "instruction_2_heading": {
+          "label": "Instruction #2 heading"
+        },
+        "instruction_2_text": {
+          "label": "Instruction #2 body"
+        },
+        "instruction_3_heading": {
+          "label": "Instruction #3 heading"
+        },
+        "instruction_3_text": {
+          "label": "Instruction #3 body"
+        },
+        "content__3": "Footer",
+        "footer_heading": {
+          "label": "Heading"
+        },
+        "footer_text": {
+          "label": "Body"
+        },
+        "content__4": "Suggested products",
+        "paragraph__4": "Shown (if populated) in the Recharge customer portal.",
+        "suggested_products_heading": {
+          "label": "Heading"
+        },
+        "suggested_products_description": {
+          "label": "Description"
+        },
+        "suggested_products_collection": {
+          "label": "Suggested products"
+        }
+      }
+    },
+    "support_contact": {
+      "name": "Support contact information",
+      "settings": {
+        "orders": {
+          "label_na": "North America order support email address",
+          "label_eu": "EU (non-US & Canada) order support email address"
+        }
+      }
+    }
+  },
+  "sections": {
+    "all": {
+      "heading_tag": {
+        "label": "Heading tag",
+        "options__1": {
+          "label": "h1"
+        },
+        "options__2": {
+          "label": "h2"
+        },
+        "options__3": {
+          "label": "h3"
+        }
+      },
+      "heading_style": {
+        "label": "Heading style",
+        "options__1": {
+          "label": "h1"
+        },
+        "options__2": {
+          "label": "h2"
+        },
+        "options__3": {
+          "label": "h3"
+        },
+        "options__4": {
+          "label": "Visually hidden",
+          "info": "The heading will only be visible to screen readers."
+        }
+      },
+      "text_style": {
+        "label": "Text style",
+        "options__1": {
+          "label": "lead"
+        },
+        "options__2": {
+          "label": "default"
+        },
+        "options__3": {
+          "label": "small"
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Announcement bar",
+      "settings": {
+        "show_announcement": {
+          "label": "Show announcement"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "color_scheme": {
+          "scheme_1": {
+            "label": "Red"
+          },
+          "scheme_2": {
+            "label": "Yellow"
+          },
+          "label": "Color scheme"
+        }
+      }
+    },
+    "author-article": {
+      "name": "Author details"
+    },
+    "block-columns": {
+      "name": "Columns",
+      "settings": {
+        "column_ratio": {
+          "name": "Column ratio"
+        }
+      },
+      "blocks": {
+        "book_club_callout": {
+          "name": "Book Club Callout",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "heading": {
+              "label": "Heading"
+            },
+            "text": {
+              "label": "Description"
+            },
+            "button_link_url": {
+              "label": "Button link URL"
+            },
+            "button_link_text": {
+              "label": "Button link text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Columns"
+      }
+    },
+    "block-featured-article": {
+      "name": "Featured article",
+      "settings": {
+        "article": {
+          "label": "Article"
+        }
+      },
+      "presets": {
+        "name": "Featured article"
+      }
+    },
+    "block-featured-articles-grid": {
+      "name": "Featured articles grid",
+      "settings": {
+        "header__1": {
+          "content": "Choose a menu…"
+        },
+        "menu": {
+          "label": "Featured articles menu"
+        },
+        "header__2": {
+          "content": "…or select articles individually…"
+        },
+        "paragraph__2": {
+          "content": "Select up to three articles. Menu takes priority; if one is specified, selected articles will not appear."
+        },
+        "article__1": {
+          "label": "Article #1"
+        },
+        "article__2": {
+          "label": "Article #2"
+        },
+        "article__3": {
+          "label": "Article #3"
+        },
+        "header__3": {
+          "content": "…or show the most recent articles."
+        },
+        "paragraph__3": {
+          "content": "If no menu or individual articles are specified above, the three most recent articles will be shown."
+        }
+      },
+      "presets": {
+        "name": "Featured articles"
+      }
+    },
+    "block-featured-articles-list": {
+      "name": "Featured articles list",
+      "settings": {
+        "header__1": {
+          "content": "Header"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "pre_heading": {
+          "label": "Pre-heading"
+        },
+        "header__2": {
+          "content": "Choose a menu…"
+        },
+        "menu": {
+          "label": "Featured articles menu"
+        },
+        "header__3": {
+          "content": "…or select articles individually."
+        },
+        "paragraph__2": {
+          "content": "Select up to five articles. Menu takes priority; if one is specified, selected articles will not appear."
+        },
+        "article__1": {
+          "label": "Article #1"
+        },
+        "article__2": {
+          "label": "Article #2"
+        },
+        "article__3": {
+          "label": "Article #3"
+        },
+        "article__4": {
+          "label": "Article #4"
+        },
+        "article__5": {
+          "label": "Article #5"
+        }
+      },
+      "presets": {
+        "name": "Featured articles"
+      }
+    },
+    "block-featured-authors": {
+      "name": "Featured authors",
+      "settings": {
+        "header__1": {
+          "content": "Choose a menu…"
+        },
+        "menu": {
+          "label": "Featured authors menu"
+        },
+        "header__2": {
+          "content": "…or select authors individually"
+        },
+        "paragraph": {
+          "content": "Select up to four authors. Menu takes priority; if one is specified, selected authors will not appear."
+        },
+        "author__1": {
+          "label": "Author #1"
+        },
+        "author__2": {
+          "label": "Author #2"
+        },
+        "author__3": {
+          "label": "Author #3"
+        },
+        "author__4": {
+          "label": "Author #4"
+        }
+      },
+      "presets": {
+        "name": "Featured authors"
+      }
+    },
+    "block-featured-collections": {
+      "name": "Featured collections",
+      "settings": {
+        "text": {
+          "label": "Heading"
+        },
+        "header__1": {
+          "content": "Choose a menu…"
+        },
+        "menu": {
+          "label": "Featured collections menu"
+        },
+        "header__2": {
+          "content": "…or select collections individually"
+        },
+        "paragraph__2": {
+          "content": "Select up to six collections. Menu takes priority; if one is specified, selected collections will not appear."
+        },
+        "collection_list": {
+          "label": "Featured collections"
+        }
+      },
+      "presets": {
+        "name": "Featured collections"
+      }
+    },
+    "block-featured-products": {
+      "name": "Featured products",
+      "settings": {
+        "header__1": {
+          "content": "Choose a menu…"
+        },
+        "menu": {
+          "label": "Featured products menu"
+        },
+        "header__2": {
+          "content": "…or select products individually."
+        },
+        "paragraph__2": {
+          "content": "Select up to six products. Menu takes priority; if one is specified, selected products will not appear."
+        },
+        "product_list": {
+          "label": "Featured products"
+        }
+      },
+      "presets": {
+        "name": "Featured products"
+      }
+    },
+    "block-image": {
+      "name": "Image",
+      "settings": {
+        "image": {
+          "label": "Image"
+        },
+        "link_url": {
+          "label": "Link URL",
+          "info": "Optionally link the image to a URL."
+        },
+        "link_text": {
+          "label": "Link text",
+          "info": "For accessibility, links are required to have text. The value of this field will not be visible except to screen readers."
+        }
+      },
+      "presets": {
+        "name": "Image"
+      }
+    },
+    "block-rich-text": {
+      "name": "Rich text",
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            }
+          }
+        },
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Description"
+            }
+          }
+        },
+        "buttons": {
+          "name": "Buttons",
+          "settings": {
+            "button_label_1": {
+              "label": "First button label",
+              "info": "Leave the label blank to hide the button."
+            },
+            "button_link_1": {
+              "label": "First button link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Rich text"
+      }
+    },
+    "book-club-current-selections": {
+      "name": "Instructions & current bundle",
+      "settings": {
+        "header__1": {
+          "content": "CTA"
+        },
+        "cta_text": {
+          "label": "CTA text"
+        },
+        "header__2": {
+          "content": "Current bundle"
+        },
+        "show_bundle_options": {
+          "label": "Show current bundle options"
+        },
+        "paragraph__1": {
+          "content": "Other section fields are defined in Theme Settings for use between templates."
+        }
+      }
+    },
+    "book-club-footer": {
+      "name": "Page footer",
+      "settings": {
+        "paragraph__1": {
+          "content": "Footer fields are defined in Theme Settings for use between templates."
+        }
+      }
+    },
+    "book-club-header": {
+      "name": "Page header",
+      "settings": {
+        "page_title": {
+          "label": "Page title",
+          "info": "Visually hidden but used for accessibility."
+        },
+        "paragraph__1": {
+          "content": "Other header fields are defined in Theme Settings for use between templates."
+        }
+      }
+    },
+    "book-club-products": {
+      "name": "Current & upcoming books",
+      "settings": {
+        "paragraph__1": {
+          "content": "Collections for current and upcoming books are defined in Theme Settings for use between templates."
+        }
+      }
+    },
+    "book-club-subscriptions": {
+      "name": "Subscription tiers",
+      "settings": {
+        "paragraph__1": {
+          "content": "Subscription tier data is defined in Theme Settings for use between templates."
+        }
+      }
+    },
+    "collection-header": {
+      "name": "Collection header",
+      "settings": {
+        "paragraph__1": {
+          "content": "Displays the title, description, and featured image for the collection."
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "header__1": {
+          "content": "Social media icons",
+          "info": "To display your social media accounts, link them in your theme settings."
+        },
+        "show_social": {
+          "label": "Show social media icons"
+        },
+        "header__2": {
+          "content": "Email signup placeholder text",
+          "info": "Please enter the placeholder text that will be visible in the newsletter signup form."
+        },
+        "signup_placeholder": {
+          "label": "Enter placeholder text"
+        }
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        },
+        "menu": {
+          "label": "Menu"
+        }
+      }
+    },
+    "main-article": {
+      "name": "Single article",
+      "settings": {
+        "label": {
+          "label": "Article label"
+        }
+      }
+    },
+    "main-article-list": {
+      "name": "Article list",
+      "settings": {
+        "articles_per_page": {
+          "label": "Articles per page"
+        }
+      }
+    },
+    "main-author-list": {
+      "name": "Author list",
+      "settings": {
+        "menu": {
+          "label": "Featured Authors Menu"
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Cart Page"
+    },
+    "main-list-collections": {
+      "name": "Collections grid",
+      "settings": {
+        "collections_per_page": {
+          "label": "Collections per page"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Page"
+    },
+    "main-page-with-sidebar-nav": {
+      "name": "Page (with sidebar menu)",
+      "settings": {
+        "menu": {
+          "label": "Sidebar Menu"
+        }
+      }
+    },
+    "main-password": {
+      "name": "Password Page"
+    },
+    "main-product": {
+      "name": "Product information",
+      "settings": {
+        "physical_variant_subtitle": {
+          "label": "Physical variant subtitle",
+          "info": "Optional text for paperback and hardback variants."
+        },
+        "ebook_variant_description": {
+          "label": "Ebook variant description",
+          "info": "Optional text for ebook variants. If left blank, variant metadata will be shown."
+        }
+      }
+    },
+    "collection-product-grid": {
+      "name": "Product grid",
+      "settings": {
+        "products_per_page": {
+          "label": "Products per page"
+        },
+        "menu": {
+          "label": "Catalog filters"
+        },
+        "region_menu": {
+          "label": "Regional filters"
+        },
+        "show_menu": {
+          "label": "Show collection title and filters"
+        }
+      }
+    },
+    "product-recommendations": {
+      "name": "Product recommendations",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      }
+    },
+    "sr-only-page-title": {
+      "name": "Page Title (for screen readers)",
+      "settings": {
+        "title": {
+          "label": "Title",
+          "info": "A page title is required for accessibility, even if not visible."
+        }
+      }
+    },
+    "main-search": {
+      "name": "Search",
+      "settings": {
+        "image": {
+          "label": "Page result image"
+        }
+      }
+    }
+  }
+}

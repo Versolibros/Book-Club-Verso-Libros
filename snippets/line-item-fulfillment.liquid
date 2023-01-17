@@ -1,0 +1,16 @@
+{% comment %} {%- if line_item.fulfillment -%}
+  <div>
+    {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
+    <span>{{ 'customer.order.fulfilled_at_html' | t: date: created_at }}</span>
+
+      {%- if line_item.fulfillment.tracking_url -%}
+        <a href="{{ line_item.fulfillment.tracking_url }}">
+          {{ 'customer.order.track_shipment' | t }}
+        </a>
+      {%- endif -%}
+      <span>
+        {{ line_item.fulfillment.tracking_company }}
+        {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
+      </span>
+  </div>
+{%- endif -%} {% endcomment %}

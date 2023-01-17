@@ -1,0 +1,17 @@
+<div class="c-cart-icon{% if count > 0 %} text-accent{% endif %} {{ classname }}">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="25"
+    viewBox="0 0 20 25"
+    role="presentation"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M14.6,6.1V4.3c0-2.6-2-4.2-5-4.2s-5,1.7-5,4.2V6.2H0V21.7a2.47572,2.47572,0,0,0,2.5,2.5H16.7a2.47572,2.47572,0,0,0,2.5-2.5V6.1Zm-9-1.8c0-2,1.5-3.2,4-3.2s4,1.2,4,3.2V6.2h-8ZM18.2,21.6a1.538,1.538,0,0,1-1.5,1.5H2.5A1.538,1.538,0,0,1,1,21.6V7.1H4.6V9h1V7.1h8V9h1V7.1h3.6ZM12.6,11.1h1.3l-4,9.4H8.7s-4.1-9.3-4.2-9.3H8.9L11,15.3Z"
+    />
+  </svg>
+  {%- if count > 0 -%}
+    <span aria-hidden="true" class="c-cart-icon__count">{{ count }}</span>
+  {%- endif -%}
+</div>

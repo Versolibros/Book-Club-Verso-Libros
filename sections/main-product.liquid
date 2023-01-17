@@ -1,0 +1,152 @@
+{% assign subtitle = product.metafields.verso_api.subtitle.value %}
+
+<div class="l-container l-container--wide">
+  <div class="c-product-detail">
+    {%- liquid
+        comment
+          Use 3D image if exists (always second in array)
+        endcomment
+        assign image = product.images[0]
+        if product.images[1]
+          assign image = product.images[1]
+        endif
+      -%}
+    {%- if image -%}
+      <div data-behavior="OpenDialog" class="c-product-detail__start">
+        <img
+          srcset="{{ image | image_url: width: 584 }} 2x,
+            {{ image | image_url: width: 287 }} 1x"
+          src="{{ image | image_url: width: 287 }}"
+          alt="{{ image.alt | escape }}"
+          loading="lazy"
+          width="287"
+          height="{{ 287 | divided_by: image.aspect_ratio | round }}"
+          class="c-product-detail__image"
+        >
+        <button
+          data-ref="open"
+          aria-controls="product-image-overlay"
+          aria-expanded="false"
+          class="c-product-detail__disclosure"
+        >
+          <span class="c-product-detail__disclosure-icon">{% render 'icon-plus' %}</span>
+          <span>{{ "image_overlay.view" | t }}</span>
+        </button>
+        {% render 'image-overlay', id: 'product-image-overlay' %}
+      </div>
+      {%- else -%}
+        <div class="c-product-detail__start">
+          <img
+            src="{{ 'product-image-placeholder.static.svg' | asset_url }}"
+            alt=""
+            loading="lazy"
+            width="181"
+            height="287"
+            class="c-product-detail__image"
+          >
+        </div>
+    {%- endif -%}
+    <div class="c-product-detail__end">
+      <header>
+        <h1 class="c-product-detail__title">
+          <span>{{ product.title | escape }}{%- if subtitle -%}:{%- endif -%}</span>
+          {%- if subtitle -%}
+            <span class="c-product-detail__subtitle">{{ product.metafields.verso_api.subtitle.value }}</span>
+          {%- endif -%}
+        </h1>
+        {%
+          render 'byline',
+          authors: product.metafields.verso_api.authors.value,
+          linked: true,
+          classname: "c-product-detail__byline"
+        %}
+      </header>
+      {% render 'variant-picker', product: product, physical_variant_subtitle: section.settings.physical_variant_subtitle, ebook_variant_description: section.settings.ebook_variant_description %}
+      {%- if product.description != blank -%}
+        <div class="t-rte">
+          <p>{{ product.description }}</p>
+        </div>
+      {%- endif -%}
+      {%- if product.metafields.verso_api.reviews.value.size > 0 -%}
+        {% render 'product-reviews' reviews: product.metafields.verso_api.reviews.value %}
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {% assign seo_media = image %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "url": {{ request.origin | append: product.url | json }},
+      {% if seo_media -%}
+        "image": [
+          {{ seo_media | image_url: width: seo_media.preview_image.width | prepend: "https:" | json }}
+        ],
+      {%- endif %}
+      "description": {{ product.description | strip_html | json }},
+      {% if product.selected_or_first_available_variant.sku != blank -%}
+        "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {%- endif %}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | json }}
+      },
+      "offers": [
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign is_available = variant.available
+            assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s'
+            assign now_timestamp = 'now' | date: '%s'
+            if publication_date_timestamp > now_timestamp
+              assign is_available = false
+            endif
+          -%}
+          {
+            "@type" : "Offer",
+            {%- if variant.sku != blank -%}
+              "sku": {{ variant.sku | json }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 12 -%}
+              "gtin12": {{ variant.barcode }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 13 -%}
+              "gtin13": {{ variant.barcode }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 14 -%}
+              "gtin14": {{ variant.barcode }},
+            {%- endif -%}
+            "availability" : "http://schema.org/{% if is_available %}InStock{% else %}OutOfStock{% endif %}",
+            "price" : {{ variant.price | divided_by: 100.00 | json }},
+            "priceCurrency" : {{ cart.currency.iso_code | json }},
+            "url" : {{ request.origin | append: variant.url | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-product.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "text",
+      "id": "physical_variant_subtitle",
+      "label": "t:sections.main-product.settings.physical_variant_subtitle.label",
+      "info": "t:sections.main-product.settings.physical_variant_subtitle.info"
+    },
+    {
+      "type": "text",
+      "id": "ebook_variant_description",
+      "label": "t:sections.main-product.settings.ebook_variant_description.label",
+      "info": "t:sections.main-product.settings.ebook_variant_description.info"
+    }
+  ]
+}
+{% endschema %}

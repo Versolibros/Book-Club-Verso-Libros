@@ -1,0 +1,115 @@
+<header id="site-header" class="c-header" data-behavior="ShrinkHeaderOnScroll">
+  <div class="c-header__inner">
+    <div class="c-header__flex-container">
+      <div class="c-header__start">
+        <a href="{{ routes.root_url }}" class="c-header__logo-link">
+          {% render 'icon-verso-logo', classname: 'c-header__logo c-header__logo--desktop' %}
+          {% render 'icon-verso-logo-mark', classname: 'c-header__logo c-header__logo--mobile' %}
+        </a>
+        {%- if section.settings.menu != blank -%}
+          <nav aria-label="{{ 'sections.header.main_nav' | t }}">
+            <ul class="c-header__main-nav-list">
+              {%- for link in section.settings.menu.links -%}
+                <li>
+                  <nav-link>
+                    <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %} class="c-header__main-nav-link">
+                      <span aria-hidden="true" class="c-header__main-nav-list-separator"></span>
+                      {{ link.title | escape }}
+                    </a>
+                  </nav-link>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        {%- endif -%}
+      </div>
+      <div class="c-header__end">
+        <nav aria-label="{{ 'sections.header.secondary_nav' | t }}">
+          <ul class="c-header__secondary-nav-list">
+            <li class="hidden headerBreak:block">
+              {% render 'user-link', classname: 'c-button c-button--small c-button--truncated' %}
+            </li>
+            <li data-behavior="ToggleDrawer" data-props='{"disableOnPage":"{{ routes.cart_url }}","excludeToggleFromTrap":true}'>
+              <a
+                href="{{ routes.cart_url }}"
+                data-ref="toggle"
+                id="cart-drawer-toggle"
+                data-controls="cart-drawer"
+                class="c-header-icon-button c-header-icon-button--cart"
+              >
+                {% render 'icon-cart', count: cart.item_count %}
+                <span class="sr-only">{{ 'sections.header.cart' | t: count: cart.item_count }}</span>
+              </a>
+              {% render 'cart-drawer', id: 'cart-drawer', label_id: 'cart-drawer-toggle' %}
+              <div data-ref="overlay" class="l-overlay a-bg-neutral40-semi-opaque" aria-hidden="true">
+            </li>
+            <li>
+              {% render 'search-dialog' %}
+            </li>
+          </ul>
+        </nav>
+        {% render 'search-dialog', theme: "drawer" %}
+        <div class="headerBreak:hidden" data-behavior="ToggleDrawer" data-props='{"bindResize":true}'>
+          <button
+            data-ref="toggle"
+            id="header-mobile-menu-toggle"
+            data-controls="header-mobile-menu"
+            class="c-header-icon-button c-header-icon-button--menu-toggle"
+          >
+            {% render 'icon-menu' %}
+            <span class="sr-only">{{ 'sections.header.mobile_dialog' | t }}</span>
+          </button>
+          {% render 'mobile-menu', id: 'header-mobile-menu', label_id: 'header-mobile-menu-toggle' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo != blank %}
+      "logo": {{ settings.logo | image_url: width: 100 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_instagram_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    }
+  ]
+}
+{% endschema %}

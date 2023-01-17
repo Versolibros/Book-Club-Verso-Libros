@@ -1,0 +1,2 @@
+!function(){"use strict";const e=document.querySelector(".recharge.page__customers__request-invite [href='/account/login']");e&&window.routes.account_url&&e.setAttribute("href",window.routes.account_url)}();
+//# sourceMappingURL=recharge.js.map

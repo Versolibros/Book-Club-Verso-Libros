@@ -1,0 +1,32 @@
+<div class="c-book-club-callout">
+  {%- liquid
+    assign icon_classname = 'c-book-club-callout__logo'
+    if image == blank
+      assign icon_classname = icon_classname | append: ' c-book-club-callout__logo--static'
+    endif
+    render 'icon-book-club-logo-mark', classname: icon_classname
+  -%}
+  {%- if image != blank -%}
+    <img
+      srcset="{{ image | image_url: width: 634, height: 634, crop: center }} 2x,
+        {{ image | image_url: width: 317, height: 317, crop: center }} 1x"
+      src="{{ image | image_url: width: 317, height: 317, crop: center }}"
+      alt="{{ image.alt | escape }}"
+      loading="lazy"
+      width="317"
+      height="317"
+      class="c-book-club-callout__image"
+    >
+  {%- endif -%}
+  {%- if heading != blank %}
+    <h2 class="c-book-club-callout__heading">{{ heading }}</h2>
+  {%- endif -%}
+  {%- if text != blank -%}
+    <div class="c-book-club-callout__text t-rte">{{ text }}</div>
+  {%- endif -%}
+  {%- if button_link_text and button_link_url -%}
+    <div>
+      {{ button_link_text | link_to: button_link_url, class: "c-button c-button--small c-button--accent" }}
+    </div>
+  {%- endif -%}
+</div>

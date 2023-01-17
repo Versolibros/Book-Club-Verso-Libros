@@ -1,0 +1,396 @@
+{
+  "general": {
+    "logo_title": "Verso Books",
+    "social": {
+      "links": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "instagram": "Instagram"
+      }
+    },
+    "continue_shopping": "Continue shopping",
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next",
+      "next_screen_reader": "Next page",
+      "previous": "Prev",
+      "previous_screen_reader": "Previous page"
+    },
+    "search": {
+      "search": "Search",
+      "no_results": "Sorry, no search results were found.",
+      "reading_list": "Reading list",
+      "blog_post": "Blog post",
+      "author": "Author",
+      "page": "Page",
+      "product": "Book",
+      "collection": "Collection",
+      "results_count": {
+        "one": "{{ count }} result for {{ term }}",
+        "other": "{{count}} results for {{ term }}"
+      }
+    },
+    "password_page": {
+      "login_form_heading": "Enter store using password:",
+      "login_password_button": "Enter using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_error": "Wrong password!",
+      "login_form_submit": "Enter",
+      "admin_link_pre_text": "Are you the store owner?",
+      "admin_link_text": "Log in here"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "skip_to_product_info": "Skip to product information",
+    "close": "Close",
+    "unit_price_separator": "per",
+    "vendor": "Vendor:",
+    "error": "Error",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "loading": "Loading…"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "add_title_to_cart": "Add {{ title }} to cart",
+      "choose_options": "Choose options",
+      "choose_product_options": "Choose options for {{ product_name }}",
+      "description": "Description",
+      "on_sale": "Sale",
+      "product_variants": "Product variants",
+      "variant_title": {
+        "ebook": "Ebook",
+        "paperback": "Paperback",
+        "hardback": "Hardback"
+      },
+      "media": {
+        "image_available": "Image {{ index }} is now available in gallery view"
+      },
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}",
+        "remove": "Delete",
+        "remove_for_sr": "Delete {{ product }}"
+      },
+      "price": {
+        "from_price_html": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price",
+        "discount": "{{ amount }}% off"
+      },
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "coming_soon": "Coming soon",
+      "include_taxes": "Tax included.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "metadata": {
+        "page_count": "{{ count }} pages"
+      }
+    }
+  },
+  "templates": {
+    "contact": {
+      "form": {
+        "error_heading": "Please adjust the following:"
+      }
+    },
+    "404": {
+      "title": "Sorry, we can’t find that page.",
+      "subtext_html": "Not sure where to start? Try browsing by <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book</a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author</a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search</a> for a specific term."
+    }
+  },
+  "sections": {
+    "announcement-bar": {
+      "dismiss": "Dismiss announcement"
+    },
+    "block-featured-products": {
+      "title": "Books"
+    },
+    "book-club-current-selections": {
+      "header": "Current selections",
+      "cta": "Subscribe",
+      "instructions_header": "Subscription instructions"
+    },
+    "book-club-header": {
+      "default_page_title": "Verso Book Club"
+    },
+    "book-club-products": {
+      "header": "Current & upcoming products",
+      "title_reader_current": "{{ month }} ebooks",
+      "title_partisan_current": "{{ month }} book options",
+      "title_comrade_current": "{{ month }} Comrade! picks",
+      "title_reader_next_html": "<next-month-title>Next</next-month-title> ebooks",
+      "title_partisan_next_html": "<next-month-title>Next</next-month-title> book options",
+      "title_comrade_next_html": "<next-month-title>Next</next-month-title> Comrade! picks"
+    },
+    "book-club-subscriptions": {
+      "header": "Subscriptions",
+      "billed_annually": "billed annually",
+      "billed_monthly": "billed monthly",
+      "monthly_price": "{{ price }}/month",
+      "for_monthly_price": "for {{ price }}/month"
+    },
+    "cart": {
+      "title": "Your cart",
+      "caption": "Cart items",
+      "subtotal": "Subtotal",
+      "new_subtotal": "New subtotal",
+      "checkout": "Check out",
+      "empty": "Your cart is empty",
+      "add_error": "There was an error adding this product your cart.",
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "update": "Update"
+    },
+    "collection-product-grid": {
+      "empty_html": "We can’t find anything that fits this filter. Why not <a href=\"{{ link }}\">browse the full catalog</a> instead?"
+    },
+    "header": {
+      "main_nav": "Site links",
+      "secondary_nav": "User actions",
+      "log_in": "Log in",
+      "cart": {
+        "one": "Cart, {{ count }} item",
+        "other": "Cart, {{ count }} items"
+      },
+      "mobile_dialog": "Site and log-in links",
+      "mobile_nav": "Site and log-in links"
+    },
+    "footer": {
+      "site_nav": "Additional site links",
+      "social_nav": "Social media links",
+      "newsletter": {
+        "label": "Newsletter sign-up",
+        "email_label": "Email address",
+        "submit": "Subscribe"
+      }
+    },
+    "main-article": {
+      "tags_label": "Filed under"
+    },
+    "main-author-article": {
+      "related_books": "Books",
+      "related_articles": "Related blog posts"
+    },
+    "main-list-collections": {
+      "title": "Collections",
+      "empty": "We don’t have any collections yet. Check back soon!"
+    },
+    "main-page-with-sidebar-nav": {
+      "nav": "Secondary links",
+      "nav-select": "Secondary links (will navigate on select)"
+    },
+    "search": {
+      "label": "Search site"
+    },
+    "video": {
+      "load_video": "Load video: {{ description }}"
+    }
+  },
+  "localization": {
+    "country_label": "Country",
+    "location_currency_label": "Location/Currency",
+    "update_country": "Update country",
+    "location_submit_warning": "Will submit upon selection"
+  },
+  "customer": {
+    "account": {
+      "title": "Account",
+      "details": "Account details",
+      "manage_subscriptions": "Manage subscriptions",
+      "view_addresses": "Addresses",
+      "return": "View all orders"
+    },
+    "account_fallback": "Account",
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Activate account",
+      "cancel": "Decline invitation"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default address",
+      "other": "Other addresses",
+      "add_new": "Add new address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "State/province",
+      "zip": "Postal/ZIP code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add address",
+      "update": "Update address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "log_in": "Log in",
+    "log_out": "Log out",
+    "login_page": {
+      "cancel": "Cancel",
+      "create_account_html": "Don’t have an account? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Sign up here</a>.",
+      "email": "Email",
+      "forgot_password": "Forgot your password?",
+      "guest_continue": "Continue",
+      "guest_title": "Continue as a guest",
+      "password": "Password",
+      "title": "Log in",
+      "sign_in": "Sign in",
+      "submit": "Submit"
+    },
+    "navigation_label": "Customer links",
+    "navigation_select_label": "Customer links (will navigate on select)",
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_html": "Order Cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing",
+      "payment_status": "Status",
+      "shipping_address": "Shipping",
+      "fulfillment_status": "Status",
+      "shipping": "Shipping",
+      "discount": "Discount",
+      "tax": "Tax",
+      "total": "Total",
+      "track_shipment": "Track shipment",
+      "tracking_url": "Tracking link",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "subtotal": "Subtotal",
+      "total_duties": "Duties",
+      "line_item": {
+        "list_label": "Line items",
+        "title": "Product title",
+        "variant_name": "Type",
+        "sku": "ISBN",
+        "fulfilled_at_html": "Fulfilled {{ date }}",
+        "price": "Price",
+        "quantity": "Quantity",
+        "download_ebook": "Download ebook"
+      }
+    },
+    "orders": {
+      "title": "Order history",
+      "order_number": "Order",
+      "order_number_link": "Order number {{ number }}",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "total": "Total",
+      "none_html": "It looks like you haven’t ordered anything yet. Why not <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">browse the catalog</a>?",
+      "support_html": "If there’s been an error with an order, please <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">email for support</a>."
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "success": "We’ve sent you an email with a link to update your password."
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email (required)",
+      "password": "Password (required)",
+      "submit": "Register"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here’s your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Your gift card",
+      "gift_card_code": "Gift card code",
+      "shop_link": "Continue shopping",
+      "remaining_html": "{{ balance }} remaining",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "qr_image_alt": "QR code — scan to redeem gift card",
+      "copy_code": "Copy code",
+      "expired": "Expired",
+      "copy_code_success": "Code copied successfully",
+      "print_gift_card": "Print"
+    }
+  },
+  "predictive_search": {
+    "toggle": "Site search",
+    "dialog_label": "Site search",
+    "label": "Search",
+    "placeholder": "e.g. Capital, Marx, “Marx’s Capital”",
+    "submit": "See all results",
+    "results": "Search results",
+    "results_with_count_and_terms": {
+      "one": "{{ count }} result found for “{{ terms }}”.",
+      "other": "{{ count }} results found for “{{ terms }}”. Showing up to {{ limit }}."
+    },
+    "no_results": "Search the site for “{{ terms }}”."
+  },
+  "image_overlay": {
+    "label": "Enlarged product image",
+    "view": "View large",
+    "close": "Close dialog"
+  },
+  "authors": {
+    "list_title": "Authors",
+    "list_title_all": "All authors",
+    "browse_by_letter": "Browse all {{ letter }}",
+    "alphabet_nav": "Browse authors by last name",
+    "related_products": "Books"
+  },
+  "articles": {
+    "list_title": "Blog",
+    "single_title": "Blog post"
+  },
+  "collection_filters": {
+    "all_subjects": "All Subjects",
+    "select_filter": "Subject filters (will navigate on select)",
+    "product_filter": "Product Filter",
+    "skip_to": "Skip to book list"
+  },
+  "reviews": {
+    "reviews_title": "Reviews",
+    "read_all_button": "Read all {{ count }} reviews",
+    "hide_most_button": "Hide most reviews"
+  },
+  "recharge": {
+    "next_shipment_ebook": "New ebooks available",
+    "next_shipment_print": "Next shipment",
+    "manage_subscription_ebook": "See what’s coming",
+    "manage_subscription_print": "Pick my books",
+    "addons_heading_comrade": "Comrade members will also receive the following print books:",
+    "addons_heading_print": "You’ll also receive every ebook we publish during the month:",
+    "addons_heading_ebook": "You’ll receive every ebook we publish during the month:",
+    "addons_empty_message": "Check back soon to see the selections for your next order!"
+  },
+  "glossary": {
+    "or": "or"
+  }
+}

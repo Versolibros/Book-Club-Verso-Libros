@@ -1,0 +1,26 @@
+{% assign limit = 6 %}
+<product-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}">
+  {% assign section_title = section.settings.heading | escape %}
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="l-container l-container--wide">
+      {% render 'section-title', title: section_title %}
+      {% render 'product-grid', products: recommendations.products %}
+    </div>
+  {%- endif -%}
+</product-recommendations>
+
+{% schema %}
+{
+  "name": "t:sections.product-recommendations.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Verso suggests",
+      "label": "t:sections.product-recommendations.settings.heading.label"
+    }
+  ]
+}
+{% endschema %}

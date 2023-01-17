@@ -1,0 +1,51 @@
+<section class="c-product-reviews">
+  {%- assign section_title = "reviews.reviews_title" | t -%}
+  {%- render 'section-title', title: section_title, size: 'large', color: 'accent' -%}
+
+  <div class="c-product-reviews__all-reviews">
+
+    <div class="c-product-reviews__reviews-group">
+      {% for review in reviews limit: 3 %}
+        {% render 'review' review: review %}
+      {% endfor %}
+    </div>
+
+    {%- if reviews.size > 3 -%}
+      {%- assign review_count = reviews | size -%}
+      <noscript>
+        <details class="c-product-reviews__details-block">
+          <summary class="c-product-reviews__summary c-button c-button--medlg c-button--accent">
+            {{ 'reviews.read_all_button' | t: count: review_count }}
+          </summary>
+            <ul class="c-product-reviews__reviews-group">
+              {% for review in reviews offset: 3 %}
+                {% render 'review' review: review %}
+              {% endfor %}
+            </ul>
+        </details>
+      </noscript>
+
+      <show-hide class="no-js-hidden">
+
+        <div data-ref="content" id="{{ product.handle }}-all-reviews" class="c-product-reviews__reviews-group c-product-reviews__toggle-reviews is-hidden">
+          <ul data-ref="inner" class="c-product-reviews__inner">
+              {% for review in reviews offset: 3 %}
+                {% render 'review' review: review %}
+              {% endfor %}
+          </ul>
+        </div>
+        <div data-ref="frame" class="c-product-reviews__button-frame">
+          <button data-ref="toggle" aria-expanded="false" class="c-button c-button--medlg c-button--accent">
+            <span class="c-product-reviews__read-all">{{ 'reviews.read_all_button' | t: count: review_count }}</span>
+            <span class="c-product-reviews__hide-some">{{ 'reviews.hide_most_button' | t }}</span>
+          </button>
+        </div>
+
+      </show-hide>
+    {%- endif -%}
+
+  </div>
+
+</Section>
+
+

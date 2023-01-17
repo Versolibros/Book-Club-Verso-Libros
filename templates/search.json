@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "page_result_image": "shopify://shop_images/Page_result.jpg"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

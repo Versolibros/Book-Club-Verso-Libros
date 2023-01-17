@@ -1,0 +1,60 @@
+{% comment %}
+    Renders a set of links for paginated results. Must be used within paginate tags.
+
+    Usage:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% endpaginate %}
+
+    Accepts:
+    - paginate: {Object}
+    - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+{%- if paginate.parts.size > 0 -%}
+<div class="a-bg-default">
+  <nav aria-label="{{ 'general.pagination.label' | t }}" class="l-container l-container--narrow">
+    <ul class="c-pagination">
+      <li>
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}{{ anchor }}" class="c-button c-button--large">
+        {%- else -%}
+          <span class="c-button c-button--large c-button--disabled">
+        {%- endif -%}
+          <span class="sr-only">{{ 'general.pagination.previous_screen_reader' | t }}</span>
+          <span aria-hidden="true">{{ 'general.pagination.previous' | t }}</span>
+        {%- if paginate.previous -%}
+          </a>
+        {%- else -%}
+          </span>
+        {%- endif -%}
+      </li>
+
+      {%- for part in paginate.parts -%}
+        {%- if part.title == paginate.current_page -%}
+          <li>
+            <span aria-current="page" class="c-button c-button--large c-button--disabled border-transparent">
+              {{ 'general.pagination.page' | t: number: part.title }}
+            </span>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <li>
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}{{ anchor }}" class="c-button c-button--large">
+        {%- else -%}
+          <span class="c-button c-button--large c-button--disabled">
+        {%- endif -%}
+          <span class="sr-only">{{ 'general.pagination.next_screen_reader' | t }}</span>
+          <span aria-hidden="true">{{ 'general.pagination.next' | t }}</span>
+        {%- if paginate.next -%}
+          </a>
+        {%- else -%}
+          </span>
+        {%- endif -%}
+      </li>
+    </ul>
+  </nav>
+</div>
+{%- endif -%}

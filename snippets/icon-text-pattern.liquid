@@ -1,0 +1,22 @@
+{% assign text_length = text | size %}
+{% assign pattern_height = text_length | times: 15.75 | plus: 6.2 %}
+<svg xmlns="http://www.w3.org/2000/svg" class="{{ classname }}">
+  <defs>
+    <pattern
+      id="icon-text-pattern-text"
+      width="10.5"
+      height="{{ pattern_height }}"
+      patternUnits="userSpaceOnUse"
+    >
+      <text x="-10" y="10.25" transform="rotate(90,0,10.25)">
+        <tspan fill="#b7aeae">{{ text }}</tspan>
+        <tspan fill="#281b1b">{{ text }}</tspan>
+      </text>
+    </pattern>
+  </defs>
+  <rect
+    fill="url(#icon-text-pattern-text)"
+    width="100%"
+    height="100%"
+  />
+</svg>

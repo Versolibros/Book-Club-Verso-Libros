@@ -1,0 +1,17 @@
+{%- if article != blank %}
+  <div class="c-featured-article-card l-container l-container--max">
+    <a href="{{ article.url }}" aria-label="{{ article.title }}" class="c-featured-article-card__link">
+      {%- if article.image -%}
+        {% render 'image', image: article.image, block_width: block_width, classname: 'c-featured-article-card__image a-image-background' %}
+      {%- else -%}
+        <div class="c-featured-article-card__image"></div>
+      {%- endif -%}
+      <h2 class="c-featured-article-card__title sr-only">
+        {{ article.title }}
+      </h2>
+    </a>
+    {%- if article.excerpt != blank -%}
+      <div class="c-featured-article-card__excerpt t-rte">{{ article.excerpt }}</div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

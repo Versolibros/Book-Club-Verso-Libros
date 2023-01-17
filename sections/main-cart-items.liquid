@@ -1,0 +1,12 @@
+<div class="c-cart c-cart--page l-container l-container--wide">
+  {% render 'cart-items', classname: 'c-cart__main', context: 'page' %}
+  {% render 'cart-footer', classname: 'c-cart__sidebar', context: 'page' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart.name",
+  "tag": "section",
+  "class": "a-bg-default"
+}
+{% endschema %}

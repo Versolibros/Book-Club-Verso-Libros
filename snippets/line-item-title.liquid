@@ -1,0 +1,15 @@
+<div class="c-order-detail__line-item-title font-serif">
+  <dt class="sr-only">{{ 'customer.order.line_item.title' | t }}</dt>
+  <dd>
+    {%- if line_item.url != blank -%}
+      <a href="{{ line_item.url }}" class="italic">{{ line_item.product.title }}</a>
+    {%- else -%}
+      <p class="italic">{{ line_item.product.title }}</p>
+    {%- endif -%}
+    {% render 'byline',
+      authors: line_item.product.metafields.verso_api.authors.value,
+      linked: 'false',
+      classname: 'mbs-[0.125em]'
+    %}
+  </dd>
+</div>

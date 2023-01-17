@@ -1,0 +1,57 @@
+<footer class="c-cart-footer {% if classname %}{{ classname }}{% endif %} {% if context %}c-cart-footer--in-{{ context }}{% endif %} {% if cart == empty %}is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+
+  <p class="sr-only" id="cart-live-region-text" aria-live="polite" role="status"></p>
+
+  <div class="c-cart-footer__inner">
+    <div class="c-cart-footer__price-block js-footer-contents">
+      <h2 class="c-cart-footer__price-label">{{ 'sections.cart.subtotal' | t }}</h2>
+      <p class="c-cart-footer__price">{{ cart.total_price | money_with_currency }}</p>
+      {%- if cart == empty -%}
+        <p class="c-cart-footer__empty-price">{{ cart.currency.symbol }}—</p>
+      {%- endif -%}
+      <small class="c-cart-footer__small">
+        {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+          {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- elsif cart.taxes_included -%}
+          {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+        {%- elsif shop.shipping_policy.body != blank -%}
+          {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+        {%- else -%}
+          {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+        {%- endif -%}
+      </small>
+    </div>
+
+    {%- if cart.cart_level_discount_applications.size > 0 -%}
+      <div>
+        <ul aria-label="{{ 'customer.order.discount' | t }}">
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <li>
+              {{ discount.title }}
+              (-{{ discount.total_allocated_amount | money }})
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="c-cart-footer__checkout">
+      <noscript>
+        <button type="submit" form="cart" class="c-button c-button--medium">
+          {{ 'sections.cart.update' | t }}
+        </button>
+      </noscript>
+
+      <button
+        type="submit"
+        id="checkout"
+        name="checkout"
+        form="cart"
+        class="c-button c-button--medium c-button--filled"
+      >
+        {{ 'sections.cart.checkout' | t }}
+      </button>
+    </div>
+    <div id="cart-errors"></div>
+  </div>
+</footer>

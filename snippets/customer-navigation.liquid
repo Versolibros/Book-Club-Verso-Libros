@@ -1,0 +1,78 @@
+{% assign assign has_subscription = true %}
+{% comment %}
+  {%- liquid
+    assign has_subscription = false
+    assign loop_length = 5
+    comment
+      `divided_by` rounds to the nearest integer,
+      so invert `loop_length` to use `times` instead
+    endcomment
+    assign inverted_loop_length = 0.2
+    assign loops = customer.orders_count | times: inverted_loop_length | ceil
+
+    comment
+      `customer.orders` is paginated, so we have to loop through
+      each block of paginated orders separately. In each loop,
+      we check line items in order history to see if any are a subscription.
+      After the 1st subscription is found, we break out of all loops
+    endcomment
+    for loop in (1..loops)
+      assign offset = forloop.index0 | times: loop_length
+      for order in customer.orders offset: offset limit: loop_length
+        for line_item in order.line_items
+          if line_item.selling_plan_allocation
+            assign has_subscription = true
+            break
+          endif
+        endfor
+
+        if has_subscription
+          break
+        endif
+      endfor
+
+      if has_subscription
+        break
+      endif
+    endfor
+  -%}
+{% endif %}
+{% endcomment %}
+
+<nav aria-label="{{ 'customer.navigation_label' | t }}" class="c-secondary-nav">
+  <ul class="c-secondary-nav__list">
+    <li class="c-secondary-nav__item">
+      <a href="{{ routes.account_url }}"{% if active == routes.account_url %} aria-current="page"{% endif %} class="c-secondary-nav__link">
+        {{ 'customer.orders.title' | t }}
+      </a>
+    </li>
+    {% if has_subscription %}
+      <li class="c-secondary-nav__item">
+        <a href="/tools/recurring/login/" class="c-secondary-nav__link">
+          {{ 'customer.account.manage_subscriptions' | t }}
+        </a>
+      </li>
+    {% endif %}
+    <li class="c-secondary-nav__item">
+      <a href="{{ routes.account_addresses_url }}"{% if active == routes.account_addresses_url %} aria-current="page"{% endif %} class="c-secondary-nav__link">
+        {{ 'customer.account.view_addresses' | t }}
+      </a>
+    </li>
+    <li class="c-secondary-nav__item">
+      <a href="{{ routes.account_logout_url }}" class="c-secondary-nav__link">
+        {{ 'customer.log_out' | t }}
+      </a>
+    </li>
+  </ul>
+
+  <page-select class="c-page-select">
+    {% render 'icon-select' classname: 'c-page-select__select-icon' %}
+    <label class="sr-only" for="customer-nav-select">{{ 'customer.navigation_select_label' | t }}</label>
+    <select class="c-page-select__select" id="customer-nav-select">
+      <option value="{{ routes.account_url }}"{% if active == routes.account_url %} selected{% endif %}>{{ 'customer.orders.title' | t }}</option>
+      <option value="/tools/recurring/login/">{{ 'customer.account.manage_subscriptions' | t }}</option>
+      <option value="{{ routes.account_addresses_url }}"{% if active == routes.account_addresses_url %} selected{% endif %}>{{ 'customer.account.view_addresses' | t }}</option>
+      <option value="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</option>
+    </select>
+  </page-select>
+</nav>

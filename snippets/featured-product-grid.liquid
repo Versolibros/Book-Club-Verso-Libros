@@ -1,0 +1,25 @@
+<div class="l-container l-container--max">
+  {%- liquid
+    assign menu = settings.menu
+    assign product_list = settings.product_list
+    assign product_array = null | sort
+
+    if menu != blank
+      for link in menu.links
+        if link.type == 'product_link'
+          assign product = link.object | sort
+          assign product_array = product_array | concat: product
+        endif
+      endfor
+    elsif product_list != blank
+      assign product_array = product_list
+    endif
+
+    assign product_array_length = product_array | size
+    if product_array_length > 0 or product_list.count > 0
+      assign title = 'sections.block-featured-products.title' | t
+      render 'section-title', title: title, color: 'accent'
+      render 'product-grid', products: product_array, nested: nested
+    endif
+  -%}
+</div>

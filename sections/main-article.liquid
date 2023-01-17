@@ -1,0 +1,136 @@
+<header class="a-bg-default">
+  <div class="c-article-detail__header l-container l-container--narrow l-container--padding-block-end-large">
+    {%- if section.settings.label != blank -%}
+      <p class="c-article-detail__meta text-accent">{{ section.settings.label }}</p>
+    {%- endif -%}
+    <h1 class="t-rte">{{ article.title }}</h1>
+    {%- if article.excerpt != blank -%}
+      <p class="c-article-detail__lede">{{ article.excerpt }}</p>
+    {%- endif -%}
+    <p class="c-article-detail__meta">
+      {%- liquid
+        comment
+          - Check if author has a tag to apply
+          - If so, remove it from rendered tags
+        endcomment
+        assign author_tag = article.metafields.verso_api.article_author_tag.value
+        assign author_display_name = article.metafields.verso_api.article_author_display_name.value
+        assign tag_is_applied = false
+        assign non_author_tags = null | sort
+        for tag in article.tags
+          if tag == author_tag
+            assign tag_is_applied = true
+          else
+            assign tag_as_array = tag | sort
+            assign non_author_tags = non_author_tags | concat: tag_as_array
+          endif
+        endfor
+       -%}
+      {%- if author_display_name != blank -%}
+        {%- if author_tag != blank and tag_is_applied -%}
+          {{ author_display_name | link_to_tag: author_tag }}
+        {%- else -%}
+          <span>{{ author_display_name }}</span>
+        {%- endif -%}
+      {%- endif -%}
+      <span class="c-article-detail__date">{{ article.published_at | time_tag: '%e %B %Y' }}</span>
+    </p>
+  </div>
+</header>
+{%- if article.image -%}
+  <section class="a-bg-default">
+    <div class="l-container l-container--wide l-container--mobile-full-bleed">
+      <img
+        srcset="{% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+          {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
+          {% if article.image.width >= 1128 %}{{ article.image | image_url: width: 1128 }} 1128w,{% endif %}
+          {% if article.image.width >= 1600 %}{{ article.image | image_url: width: 1600 }} 1600w,{% endif %}
+          {% if article.image.width >= 2256 %}{{ article.image | image_url: width: 2256 }} 2256w,{% endif %}
+          {{ article.image | image_url }} {{ article.image.width }}w"
+        sizes="(min-width: 75.5rem) 70.5rem, 93.38vw"
+        src="{{ article.image | image_url: width: 1128 }}"
+        loading="lazy"
+        width="1128"
+        height="{{ 1128 | divided_by: article.image.aspect_ratio | round }}"
+        alt="{{ article.image.alt | escape }}">
+    </div>
+  </section>
+{%- endif -%}
+<section class="a-bg-default">
+  <article-content class="l-container l-container--narrow">
+    {{ article.content }}
+    <div id="product-strip-variants">
+      {%-liquid
+        for i in (1..90)
+          assign metafield = 'product_strip_variants_' | append: i
+          if article.metafields.verso_api[metafield].value != blank
+            render 'product-strip', variants: article.metafields.verso_api[metafield].value, index: forloop.index
+          endif
+        endfor
+      -%}
+    </div>
+    {%- if non_author_tags.size > 0 -%}
+      <p class="c-article-detail__tags">
+        <span>{{ 'sections.main-article.tags_label' | t }}: </span>
+          {%- for tag in non_author_tags -%}
+            {{ tag | link_to_tag: tag }}{%- unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        </ul>
+      </p>
+    {%- endif -%}
+  </article-content>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ request.origin | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      "image": [
+        {{ article | image_url: width: 1128 | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+        "logo": {
+          "@type": "ImageObject",
+          "height": {{ settings.share_image.height | json }},
+          "url": {{ settings.share_image | image_url: width: settings.share_image.width | prepend: "https:" | json }},
+          "width": {{ settings.share_image.width | json }}
+        },
+      {% endif %}
+      "name": {{ shop.name | json }}
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-article.name",
+  "tag": "article",
+  "class": "a-bg-default c-article-detail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:sections.main-article.settings.label.label"
+    }
+  ]
+}
+{% endschema %}

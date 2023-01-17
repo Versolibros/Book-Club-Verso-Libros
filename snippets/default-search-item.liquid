@@ -1,0 +1,59 @@
+{%-liquid
+  if item.handle contains "authors/"
+    assign aspect_ratio = 1
+    assign image_width = item.image.width | default: 202
+    assign display_name = item.metafields.verso_api.display_title
+  else
+    assign aspect_ratio = 1.5
+    assign image_width = item.image.width | default: 318
+    assign display_name = item.title
+  endif
+
+  assign image_height = image_width | divided_by: aspect_ratio | round
+  assign image_width_2x = image_width | times: 2
+  assign image_height_2x = image_height | times: 2
+
+  assign aspect_ratio_class_modifier = 'aspect-1'
+  if aspect_ratio == 1.5
+    assign aspect_ratio_class_modifier = 'aspect-3-2'
+  endif
+%}
+
+<article class="c-search__result-item-inner">
+  {%- if item.image -%}
+    <img
+      srcset="{{ item.image | image_url: width: image_width_2x, height: image_height_2x, crop: 'center' }} 2x, {{ item.image | image_url: width: image_width, height: image_height, crop: 'center' }}"
+      src="{{ item.image | image_url: width: image_width }}"
+      alt="{{ display_name | escape }}"
+      loading="lazy"
+      width="{{ image_width }}"
+      height="{{ image_height }}"
+      class="c-search__img c-search__img--{{ aspect_ratio_class_modifier }} c-placeholder-image a-grow-on-ancestor-hover a-image-background"
+    >
+  {%- else -%}
+    <div class="c-search__img c-search__img--{{ aspect_ratio_class_modifier }} c-placeholder-image a-grow-on-ancestor-hover a-image-background">
+      {% render 'icon-verso-logo-mark' classname: 'c-search__placeholder-logo' %}
+    </div>
+  {%- endif -%}
+
+  {%- if item.handle contains "news/" -%}
+    <div class="c-search__result-text">
+      <p class="c-search__result-type text-accent">
+        {% if item.template_suffix contains "-list" %}
+          {{ 'general.search.reading_list' | t }}
+        {% else %}
+          {{ 'general.search.blog_post' | t }}
+        {% endif %}
+      </p>
+      <h2 class="c-search__title">
+        {{ item.title }}
+      </h2>
+    </div>
+  {%- else -%}
+    <div class="c-search__result-text">
+      <h2 class="c-search__title">
+        {{ display_name }}
+      </h2>
+    </div>
+  {%- endif -%}
+</article>

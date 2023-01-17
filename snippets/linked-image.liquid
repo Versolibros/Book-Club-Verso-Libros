@@ -1,0 +1,11 @@
+{%- if image -%}
+  <div class="l-container l-container--max">
+    {%- if link_text and link_url %}
+      <a href="{{ link_url }}" aria-label="{{ link_text }}">
+    {%- endif -%}
+    {% render 'image', image: image, block_width: block_width, classname: 'is-full' %}
+    {%- if link_text and link_url %}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif %}

@@ -1,0 +1,44 @@
+<div class="l-container-with-sidebar">
+  <aside>
+    {%- if section.settings.menu != blank -%}
+      <nav aria-label="{{ 'sections.main-page-with-sidebar-nav.nav' | t }}" class="c-secondary-nav">
+        <ul class="c-secondary-nav__list">
+          {%- for link in section.settings.menu.links -%}
+            <li class="c-secondary-nav__item">
+              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %} class="c-secondary-nav__link">
+                {{ link.title | escape }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <page-select class="c-page-select">
+          {% render 'icon-select' classname: 'c-page-select__select-icon' %}
+          <label class="sr-only" for="sidebar-nav-select">{{ 'sections.main-page-with-sidebar-nav.nav-select' | t }}</label>
+          <select class="c-page-select__select" id="sidebar-nav-select">
+            {%- for link in section.settings.menu.links -%}
+              <option value="{{ link.url }}"{% if link.current %} selected{% endif %}>{{ link.title | escape }}</option>
+            {%- endfor -%}
+          </select>
+        </page-select>
+      </nav>
+    {%- endif -%}
+  </aside>
+
+  <div>
+    {% render 'page-content', nested: true %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page-with-sidebar-nav.name",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.main-page-with-sidebar-nav.settings.menu.label"
+    }
+  ]
+}
+{% endschema %}

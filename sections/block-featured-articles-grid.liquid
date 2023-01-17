@@ -1,0 +1,95 @@
+<div class="l-container l-container--max">
+  {%- liquid
+    assign menu = section.settings.menu
+    assign article_1 = section.settings.article_1
+    assign article_2 = section.settings.article_2
+    assign article_3 = section.settings.article_3
+    assign article_array = null | sort
+
+    if menu != blank
+      for link in menu.links
+        if link.type == 'article_link'
+          assign article = link.object | sort
+          assign article_array = article_array | concat: article
+        endif
+      endfor
+    elsif article_1 != blank or article_2 != blank or article_3 != blank
+      if article_1 != blank
+        assign article = article_1 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_2 != blank
+        assign article = article_2 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_3 != blank
+        assign article = article_3 | sort
+        assign article_array = article_array | concat: article
+      endif
+    else
+      assign blog = blogs['news']
+      assign article_array = blog.articles | slice: 0, 3
+    endif
+
+    assign article_array_length = article_array | size
+    if article_array_length > 0
+      assign title = 'articles.list_title' | t
+      render 'featured-article-grid', title: title, title_color: 'accent', articles: article_array, type: 'news', aspect_ratio: 1.5, columns: 3
+    endif
+  -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.block-featured-articles-grid.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-articles-grid.settings.header__1.content"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.block-featured-articles-grid.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-articles-grid.settings.header__2.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.block-featured-articles-grid.settings.paragraph__2.content"
+    },
+    {
+      "type": "article",
+      "id": "article_1",
+      "label": "t:sections.block-featured-articles-grid.settings.article__1.label"
+    },
+    {
+      "type": "article",
+      "id": "article_2",
+      "label": "t:sections.block-featured-articles-grid.settings.article__2.label"
+    },
+    {
+      "type": "article",
+      "id": "article_3",
+      "label": "t:sections.block-featured-articles-grid.settings.article__3.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-articles-grid.settings.header__3.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.block-featured-articles-grid.settings.paragraph__3.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.block-featured-articles-grid.presets.name"
+    }
+  ]
+}
+{% endschema %}

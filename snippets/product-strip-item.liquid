@@ -1,0 +1,54 @@
+{% assign product = variant.product %}
+
+<div class="c-product-strip-item">
+  <div class="c-product-strip-item__image-block">
+    {%- if product.featured_media -%}
+      <img
+        srcset="{{ product.featured_media | image_url: width: 404 }} 2x,
+          {{ product.featured_media | image_url: width: 202 }} 1x"
+        src="{{ product.featured_media | image_url: width: 202 }}"
+        alt="{{ product.featured_media.alt | escape }}"
+        loading="lazy"
+        width="287"
+        height="{{ 287 | divided_by: product.featured_media.aspect_ratio | round }}"
+        class="c-product-strip-item__image"
+      >
+    {%- else -%}
+      <img
+        src="{{ 'product-image-placeholder.static.svg' | asset_url }}"
+        alt=""
+        loading="lazy"
+        width="181"
+        height="287"
+        class="c-product-strip-item__image"
+      >
+    {%- endif -%}
+  </div>
+  <div class="c-product-strip-item__title-block">
+    <h2 class="c-product-strip-item__title">{{ product.title | link_to: product.url }}</h2>
+    {%
+      render 'byline',
+      authors: product.metafields.verso_api.authors.value,
+      linked: true,
+      classname: "c-product-strip-item__byline"
+    %}
+  </div>
+  <div class="c-product-strip-item__meta-block">
+    {%- if product.description != blank -%}
+      <div class="c-product-strip-item__description t-rte">{{ product.description | strip_html | truncate: 200 }}</div>
+    {%- endif -%}
+    <footer class="c-product-strip-item__footer">
+      {% render 'variant-title', variant: variant %}
+      <div>
+        {% render 'add-to-cart', variant: variant, show_price: true, button_size: 'medium' %}
+      </div>
+      {%- if variant.compare_at_price and variant.price != variant.compare_at_price -%}
+        <div>
+          {% render 'discount-badge', price: variant.price, compare_at_price: variant.compare_at_price %}
+          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+          <s class="text-neutral-45">{{ variant.compare_at_price | money }}</s>
+        </div>
+      {%- endif -%}
+    </footer>
+  </div>
+</div>

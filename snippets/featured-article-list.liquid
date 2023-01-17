@@ -1,0 +1,72 @@
+<div class="c-featured-article-list{% if settings.heading != blank %} c-featured-article-list--has-label{% endif %}">
+  {%- liquid
+    assign heading = settings.heading
+    assign preheading = settings.preheading
+    assign menu = settings.menu
+    assign article_1 = settings.article_1
+    assign article_2 = settings.article_2
+    assign article_3 = settings.article_3
+    assign article_4 = settings.article_4
+    assign article_5 = settings.article_5
+    assign article_array = null | sort
+
+    if menu != blank
+      for link in menu.links
+        assign full_handle = "news/" | append: link.handle
+        assign article = articles[full_handle]
+        if article
+          assign article = article | sort
+          assign article_array = article_array | concat: article
+        endif
+      endfor
+    elsif article_1 != blank or article_2 != blank or article_3 != blank or article_4 != blank or article_5 != blank
+      if article_1 != blank
+        assign article = article_1 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_2 != blank
+        assign article = article_2 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_3 != blank
+        assign article = article_3 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_4 != blank
+        assign article = article_4 | sort
+        assign article_array = article_array | concat: article
+      endif
+      if article_5 != blank
+        assign article = article_5 | sort
+        assign article_array = article_array | concat: article
+      endif
+    else
+      assign blog = blogs['news']
+      assign article_array = blog.articles | slice: 0, 3
+    endif
+
+    assign article_array_length = article_array | size
+  -%}
+
+  {%- if article_array_length > 0 -%}
+    {%- if heading != blank -%}
+      <h2 class="t-h1">{% if preheading != blank %}{{ preheading }}{% endif %} <span class="underline">{{ heading }}</span></h2>
+    {%- endif -%}
+    <ol class="c-featured-article-list__list">
+      {%- for article in article_array %}
+        <li>
+          <article class="c-featured-article-list__article">
+            <h3 class="t-h2 leading-tight">{{ article.metafields.verso_api.display_title.value | default: article.title | link_to: article.url, class: 'a-inline-link' }}</h3>
+            {%- if article.excerpt != blank -%}
+              <div class="text-sm">{{ article.excerpt }}</div>
+            {%- endif -%}
+          </article>
+        </li>
+      {%- endfor -%}
+    </ol>
+  {%- endif -%}
+  {%- if heading != blank -%}
+    {% render 'icon-text-pattern', text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--start' %}
+    {% render 'icon-text-pattern', text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--end' %}
+  {%- endif -%}
+</div>

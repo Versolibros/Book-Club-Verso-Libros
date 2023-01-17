@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "article": {
+      "type": "main-article",
+      "settings": {
+        "label": "Reading list"
+      }
+    }
+  },
+  "order": [
+    "article"
+  ]
+}

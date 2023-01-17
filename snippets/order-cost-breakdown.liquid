@@ -1,0 +1,39 @@
+<dl class="c-order-detail__footer-items">
+  <div class="c-order-detail__footer-item">
+    <dt class="c-order-detail__text-secondary">{{ 'customer.order.subtotal' | t }}</dt>
+    <dd>{{ order.line_items_subtotal_price | money }}</dd>
+  </div>
+  {%- for discount_application in order.cart_level_discount_applications -%}
+    <div class="c-order-detail__footer-item">
+      <dt class="c-order-detail__text-secondary">{{ 'customer.order.discount' | t }} {{- discount_application.title -}}</dt>
+      <dd>
+        <span>-{{ discount_application.total_allocated_amount | money }}</span>
+        <span>
+          {{- discount_application.title -}}
+        </span>
+      </dd>
+    </div>
+  {%- endfor -%}
+  {%- for shipping_method in order.shipping_methods -%}
+    <div class="c-order-detail__footer-item">
+      <dt class="c-order-detail__text-secondary">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</dt>
+      <dd>{{ shipping_method.price | money }}</dd>
+    </div>
+  {%- endfor -%}
+  {%- for tax_line in order.tax_lines -%}
+    <div class="c-order-detail__footer-item">
+      <dt class="c-order-detail__text-secondary">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</dt>
+      <dd>{{ tax_line.price | money }}</dd>
+    </div>
+  {%- endfor -%}
+  {%- if order.total_duties -%}
+    <div class="c-order-detail__footer-item">
+      <dt class="c-order-detail__text-secondary">{{ 'customer.order.total_duties' | t }}</dt>
+      <dd>{{ 'customer.order.total_duties' | t }}">{{ order.total_duties | money }}</dd>
+    </div>
+  {%- endif -%}
+  <div class="c-order-detail__footer-item c-order-detail__footer-item--total">
+    <dt>{{ 'customer.order.total' | t }}</dt>
+    <dd>{{ order.total_price | money_with_currency }}</dd>
+  </div>
+</dl>

@@ -1,0 +1,39 @@
+{% comment %}
+  Receives an array of handles and uses them to build
+  a list of author names linked to their articles.
+{% endcomment %}
+{% assign authors_size = authors | size %}
+{%- if authors_size > 0 -%}
+  {%- liquid
+    assign linked = linked | default: false
+    assign author_array = null | sort
+    for author in authors
+      assign full_handle = 'authors/' | append: author.handle
+      assign name = author.name
+      assign author = articles[full_handle]
+      if author
+        assign author = author | sort
+        assign author_array = author_array | concat: author
+      endif
+    endfor
+  -%}
+
+  <p class="{{ classname }}">
+    by
+
+    {% for author in authors %}
+      {%- liquid
+        assign full_handle = 'authors/' | append: author.handle
+        assign name = author.name
+        assign article = articles[full_handle]
+        assign second_to_last = forloop.length | minus: 1
+      -%}
+      {% if article != blank and linked == true -%}
+        {{- name | link_to: article.url, class: 'underline' -}}
+      {%- else -%}
+        {{- name -}}
+      {%- endif -%}
+      {%- if forloop.last == true %}{% elsif forloop.index == second_to_last %} and {% else %}, {% endif %}
+    {% endfor %}
+  </p>
+{%- endif -%}

@@ -1,0 +1,50 @@
+{%- if section.settings.show_announcement and section.settings.text != blank -%}
+  <announcement-bar
+    id="announcement-bar"
+    class="c-announcement-bar c-announcement-bar--{{ section.settings.color_scheme }}"
+    hidden
+  >
+    <div class="c-announcement-bar__inner">
+      <div data-ref="text" class="c-announcement-bar__text t-rte">{{ section.settings.text }}</div>
+      <button class="c-announcement-bar__dismiss no-js-hidden">
+        {% render 'icon-close-small' %}
+        <span class="sr-only">{{ 'sections.announcement-bar.dismiss' | t }}</span>
+      </button>
+    </div>
+  </announcement-bar>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "t:sections.announcement-bar.settings.show_announcement.label"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Announcing the latest books!</p>",
+      "label": "t:sections.announcement-bar.settings.text.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.announcement-bar.settings.color_scheme.scheme_1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.announcement-bar.settings.color_scheme.scheme_2.label"
+        }
+      ],
+      "default": "secondary",
+      "label": "t:sections.announcement-bar.settings.color_scheme.label"
+    }
+  ]
+}
+{% endschema %}

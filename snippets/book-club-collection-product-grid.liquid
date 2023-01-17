@@ -1,0 +1,24 @@
+{%- if collection != blank %}
+  {%- if tier == "reader" -%}
+    <ul class="c-four-up-product-grid">
+      {% for product in collection.products %}
+        <li>
+          <a href="{{ product.url }}" aria-label="{{ product.title }}">
+            <img
+              srcset="{{ product.featured_media | image_url: width: 360 }} 2x,
+                {{ product.featured_media | image_url: width: 180 }} 1x"
+              src="{{ product.featured_media | image_url: width: 180 }}"
+              alt="{{ product.featured_media.alt | escape }}"
+              loading="lazy"
+              width="180"
+              height="{{ 180 | divided_by: product.featured_media.aspect_ratio | round }}"
+              class="c-four-up-product-grid__cover a-grow-on-ancestor-hover a-ebook-cover"
+            >
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {%- else -%}
+    {% render 'two-up-product-grid', collection: collection %}
+  {%- endif -%}
+{%- endif -%}

@@ -1,0 +1,85 @@
+<div class="c-search l-container l-container--max">
+
+  <h1 class="sr-only">{{ 'sections.search.label' | t }}</h1>
+
+  <form action="{{ routes.search_url }}" method="get" role="search" class="c-search__form">
+    <div class="c-search__search-icon">
+      <button type="submit" class="c-search__button" aria-label="{{ 'general.search.search' | t }}">
+        {% render 'icon-search' %}
+      </button>
+    </div>
+
+    <div class="c-search__field-block">
+      <input class="c-search__input" id="Search-In-Template" type="search" name="q" value="{{ search.terms | escape }}"
+        placeholder="{{ 'general.search.search' | t }}">
+      <label class="c-search__label sr-only" for="Search-In-Template">{{ 'general.search.search' | t }}
+      </label>
+      <input name="options[prefix]" type="hidden" value="last">
+    </div>
+  </form>
+
+  <div id="pagination-target">
+    {%- if search.performed -%}
+      {%- if search.results_count == 0 and search.filters == empty -%}
+        <div class="c-search__empty">
+          <p role="status">{{ 'general.search.no_results' | t }}
+          </p>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if search.performed -%}
+      {% paginate search.results by 24 %}
+        <span class="sr-only">{{ 'general.search.results_count' | t: count: search.results_count, term: search.terms }}</span>
+        <ul class="c-search__result-grid" role="list">
+          {%- for item in search.results -%}
+            <li class="c-search__result-item">
+              {%- if item.object_type != 'product' -%}
+                <a href="{{ item.url }}" aria-label="{{ item.title }}" class="c-search__result-link">
+              {%- endif -%}
+              {%- case item.object_type -%}
+                {%- when 'product' -%}
+                  {% render 'product-card', product: item, is_search: true, lazy_load: true %}
+                {%- when 'page' -%}
+                  <article class="c-search__result-item-inner">
+                    <div class="c-search__img c-search__img--aspect-3-2 c-placeholder-image a-grow-on-ancestor-hover a-image-background">
+                      {% render 'icon-verso-logo-mark' classname: 'c-search__placeholder-logo' %}
+                    </div>
+                    <div class="c-search__result-text">
+                      <p class="c-search__result-type text-accent">
+                        {{ 'general.search.page' | t }}
+                      </p>
+                      <h2 class="c-search__title">{{ item.title }}</h2>
+                    </div>
+                  </article>
+                {%- else -%}
+                  {% render 'default-search-item', item: item %}
+              {%- endcase -%}
+              {% if item.object_type != 'product' %}
+                </a>
+              {% endif %}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if paginate.pages > 1 -%}
+          {% render 'pagination', paginate: paginate, anchor: '#pagination-target' %}
+        {%- endif -%}
+      {% endpaginate %}
+    {%- endif -%}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-search.name",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "page_result_image",
+      "label": "t:sections.main-search.settings.image.label"
+    }
+  ]
+}
+{% endschema %}

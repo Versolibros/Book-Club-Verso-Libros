@@ -1,0 +1,44 @@
+{%- paginate collections by section.settings.collections_per_page -%}
+  <div id="pagination-target" class="l-container l-container--max">
+    {% assign section_title = 'sections.main-list-collections.title' | t %}
+    {% render 'section-title', title: section_title, size: 'large', color: 'accent' %}
+    {%- if collections.size == 0 -%}
+      <div class="c-empty-collection">
+        <p>{{ 'sections.main-list-collections.empty' | t }}</p>
+      </div>
+    {%- else -%}
+      <ul class="c-search__result-grid">
+        {% for collection in collections %}
+          <li>
+            <a href="{{ collection.url }}" aria-label="{{ collection.title }}" class="c-search__result-link">
+              {% render 'default-search-item', item: collection %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {%- endif -%}
+  </div>
+  {%- if paginate.pages > 1 -%}
+    {% render 'pagination', paginate: paginate, anchor: '#pagination-target' %}
+  {%- endif -%}
+{%- endpaginate -%}
+
+
+{% schema %}
+{
+  "name": "t:sections.main-list-collections.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "range",
+      "id": "collections_per_page",
+      "min": 6,
+      "max": 36,
+      "step": 6,
+      "default": 24,
+      "label": "t:sections.main-list-collections.settings.collections_per_page.label"
+    }
+  ]
+}
+{% endschema %}

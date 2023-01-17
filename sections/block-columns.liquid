@@ -1,0 +1,255 @@
+<div class="c-block-columns c-block-columns--{{ section.settings.column_ratio }}">
+  {%- liquid
+    for block in section.blocks
+      assign block_width = section.settings.column_ratio
+      if forloop.length > 1 and forloop.last
+        assign block_width = 100 | minus: section.settings.column_ratio
+      endif
+
+      case block.type
+        when 'book_club_callout'
+          render 'book-club-callout', image: block.settings.image, heading: block.settings.heading, text: block.settings.text, button_link_url: block.settings.button_link_url, button_link_text: block.settings.button_link_text
+        when 'featured_article'
+          render 'featured-article', article: block.settings.article, block_width: block_width
+        when 'featured_articles_list'
+          render 'featured-article-list', settings: block.settings, nested: true
+        when 'featured_collections'
+          render 'featured-collection-grid', settings: block.settings, nested: true
+        when 'featured_products'
+          render 'featured-product-grid', settings: block.settings, nested: true
+        when 'linked_image'
+          render 'linked-image', image: block.settings.image, link_url: block.settings.link_url, link_text: block.settings.link_text, block_width: block_width
+      endcase
+    endfor
+  -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.block-columns.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "column_ratio",
+      "label": "t:sections.block-columns.settings.column_ratio.name",
+      "options": [
+        {
+          "value": "40",
+          "label": "40/60"
+        },
+        {
+          "value": "50",
+          "label": "50/50"
+        },
+        {
+          "value": "60",
+          "label": "60/40"
+        }
+      ],
+      "default": "50"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "book_club_callout",
+      "name": "t:sections.block-columns.blocks.book_club_callout.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.block-columns.blocks.book_club_callout.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Verso Book Club",
+          "label": "t:sections.block-columns.blocks.book_club_callout.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.</p>",
+          "label": "t:sections.block-columns.blocks.book_club_callout.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link_url",
+          "label": "t:sections.block-columns.blocks.book_club_callout.settings.button_link_url.label"
+        },
+        {
+          "type": "text",
+          "id": "button_link_text",
+          "label": "t:sections.block-columns.blocks.book_club_callout.settings.button_link_text.label"
+        }
+      ]
+    },
+    {
+      "type": "featured_article",
+      "name": "t:sections.block-featured-article.name",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "t:sections.block-featured-article.settings.article.label"
+        }
+      ]
+    },
+    {
+      "type": "featured_articles_list",
+      "name": "t:sections.block-featured-articles-list.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-articles-list.settings.header__1.content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.block-featured-articles-list.settings.heading.label"
+        },
+        {
+          "type": "text",
+          "id": "preheading",
+          "label": "t:sections.block-featured-articles-list.settings.pre_heading.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-articles-list.settings.header__2.content"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.block-featured-articles-list.settings.menu.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-articles-list.settings.header__3.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.block-featured-articles-list.settings.paragraph__2.content"
+        },
+        {
+          "type": "article",
+          "id": "article_1",
+          "label": "t:sections.block-featured-articles-list.settings.article__1.label"
+        },
+        {
+          "type": "article",
+          "id": "article_2",
+          "label": "t:sections.block-featured-articles-list.settings.article__2.label"
+        },
+        {
+          "type": "article",
+          "id": "article_3",
+          "label": "t:sections.block-featured-articles-list.settings.article__3.label"
+        },
+        {
+          "type": "article",
+          "id": "article_4",
+          "label": "t:sections.block-featured-articles-list.settings.article__4.label"
+        },
+        {
+          "type": "article",
+          "id": "article_5",
+          "label": "t:sections.block-featured-articles-list.settings.article__5.label"
+        }
+      ]
+    },
+    {
+      "type": "featured_products",
+      "name": "t:sections.block-featured-products.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-products.settings.header__1.content"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.block-featured-products.settings.menu.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-products.settings.header__2.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.block-featured-products.settings.paragraph__2.content"
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "t:sections.block-featured-products.settings.product_list.label",
+          "limit": 6
+        }
+      ]
+    },
+    {
+      "type": "featured_collections",
+      "name": "t:sections.block-featured-collections.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_heading",
+          "label": "t:sections.block-featured-collections.settings.text.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-collections.settings.header__1.content"
+        },
+        {
+          "type": "link_list",
+          "id": "collection_menu",
+          "label": "t:sections.block-featured-collections.settings.menu.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.block-featured-collections.settings.header__2.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.block-featured-collections.settings.paragraph__2.content"
+        },
+        {
+          "type": "collection_list",
+          "id": "collection_list",
+          "label": "t:sections.block-featured-collections.settings.collection_list.label",
+          "limit": 6
+        }
+      ]
+    },
+    {
+      "type": "linked_image",
+      "name": "t:sections.block-image.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.block-image.settings.image.label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "t:sections.block-image.settings.link_url.label",
+          "info": "t:sections.block-image.settings.link_url.info"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "t:sections.block-image.settings.link_text.label",
+          "info": "t:sections.block-image.settings.link_text.info"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "t:sections.block-columns.presets.name"
+    }
+  ]
+}
+{% endschema %}

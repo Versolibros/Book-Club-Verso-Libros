@@ -1,0 +1,14 @@
+{% assign nested = nested | default: false %}
+<ul
+  class="c-product-grid c-product-grid--{% if nested == true %}nested{% else %}block{% endif %}"
+  {%- if is_scroll_target -%}
+    id="product-list"
+    tabindex="-1"
+  {%- endif -%}
+>
+  {%- for product in products -%}
+  <li>
+    {% render 'product-card', product: product, lazy_load: true, style: style %}
+  </li>
+  {%- endfor -%}
+</ul>

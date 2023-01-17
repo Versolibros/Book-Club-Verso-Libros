@@ -1,0 +1,53 @@
+{% assign hide_dialog = hide_dialog | default: customer %}
+
+{%- if hide_dialog -%}
+<div>
+{%- else -%}
+<div
+  data-behavior="OpenDialog"
+  data-props='{"disableOnPage":"{{ routes.account_login_url }}","clickOutsideDeactivates":true}'
+>
+{%- endif %}
+
+  <a
+    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+    data-ref="open"
+    class="{{ classname }}"
+  >
+    {%- liquid
+      if customer
+        if customer.name != blank
+          echo customer.name
+        else
+          echo customer.email
+        endif
+      else
+        echo 'sections.header.log_in' | t
+      endif
+    -%}
+  </a>
+
+{%- if hide_dialog -%}
+</div>
+{%- else -%}
+  <div
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ 'customer.login_page.title' | t }}"
+    id="log-in-modal"
+    data-ref="dialog"
+    class="c-login-overlay l-overlay a-bg-accent-dark-semi-opaque"
+  >
+    <div data-ref="trapContainer" class="c-login-overlay__inner a-bg-default">
+      {% render 'log-in' %}
+      <button
+        data-ref="close"
+        class="c-login-overlay__close-button c-header-icon-button c-header-icon-button--close"
+      >
+        {% render 'icon-menu' %}
+        <span class="sr-only">{{ "image_overlay.close" | t }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+{%- endif %}

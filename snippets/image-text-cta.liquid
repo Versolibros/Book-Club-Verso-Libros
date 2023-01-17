@@ -1,0 +1,21 @@
+<div class="c-image-text-cta{% if color == 'accent' %} c-image-text-cta--accent{% endif %}">
+  {%- if image_filename -%}
+    {% assign static_image = image_filename | append: ".static.png" | asset_img_url: "original" %}
+    <img
+      src="{{ static_image }}"
+      alt=""
+      loading="lazy"
+      width="100"
+      height="100"
+      class="c-image-text-cta__image"
+    >
+  {%- endif -%}
+  <div class="c-image-text-cta__text-block">
+    {%- if heading != blank -%}
+      <h3 class="c-image-text-cta__heading">{{ heading }}</h3>
+    {%- endif -%}
+    {%- if text != blank -%}
+      <p>{{ text }}</p>
+    {%- endif -%}
+  </div>
+</div>

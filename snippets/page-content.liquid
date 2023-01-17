@@ -1,0 +1,20 @@
+{% assign nested = nested | default: false %}
+
+{%- if page.metafields.verso_api.show_page_header.value == true -%}
+  <section class="a-bg-default">
+    <div class="l-container l-container--{% if nested %}nested{% else %}narrow{% endif %}">
+      <h1>{{ page.title }}</h1>
+      {%- if page.metafields.verso_api.show_page_description.value == true -%}
+      <p class="text-leadsm mbs-4">{{ page_description }}</p>
+      {%- endif -%}
+    </div>
+  </section>
+{%- else -%}
+  <h1 class="sr-only">{{ page.title }}</h1>
+{%- endif -%}
+
+<section class="a-bg-default">
+  <div class="l-container l-container--{% if nested %}nested{% else %}narrow{% endif %}">
+    <div class="t-rte">{{ page.content }}</div>
+  </div>
+</section>

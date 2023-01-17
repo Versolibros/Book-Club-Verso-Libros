@@ -1,0 +1,20 @@
+{% comment %}Renders a page title that's visually hidden but still present for ATs{% endcomment %}
+{%- if section.settings.title != blank -%}
+  <h1>{{ section.settings.title }}</h1>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.sr-only-page-title.name",
+  "tag": "header",
+  "class": "sr-only",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.sr-only-page-title.settings.title.label",
+      "info": "t:sections.sr-only-page-title.settings.title.info"
+    }
+  ]
+}
+{% endschema %}

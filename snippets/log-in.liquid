@@ -1,0 +1,117 @@
+{%- style -%}
+  #recover,
+  #recover + div {
+    display: none;
+  }
+
+  #recover:target {
+    display: block;
+  }
+
+  #recover:target + div {
+    display: block;
+  }
+
+  #recover:target ~ #login,
+  #recover:target ~ #login + div {
+    display: none;
+  }
+{%- endstyle -%}
+
+<h1 id="recover" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.recover_password.title' | t }}</h1>
+<div class="mbs-small">
+  {%- form 'recover_customer_password', class: 'c-form' -%}
+    {% assign recover_success = form.posted_successfully? %}
+    <div class="c-form__section c-form__section--inputs">
+      <div class="a-input-wrapper">
+        <label for="RecoverEmail">
+          {{ 'customer.login_page.email' | t }}
+        </label>
+        <input type="email"
+          value=""
+          name="email"
+          id="RecoverEmail"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="RecoverEmail-email-error"
+            autofocus
+          {% endif %}
+        >
+        {%- if form.errors -%}
+          <div id="RecoverEmail-email-error" class="c-form__field-error">
+            {{ form.errors.messages['form'] }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="c-form__section">
+      <button class="c-button c-button--medium c-button--filled">
+        {{ 'customer.login_page.submit' | t }}
+      </button>
+      <a href="#login" class="a-inline-link-secondary text-sm">
+        {{ 'customer.login_page.cancel' | t }}
+      </a>
+    </div>
+  {%- endform -%}
+</div>
+
+<h1 id="login" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.login_page.title' | t }}</h1>
+<div class="mbs-small">
+  {%- if recover_success == true -%}
+    <p tabindex="-1" autofocus class="mbe-6 text-neutral-45 text-sm font-sans a-no-outline">
+      {{ 'customer.recover_password.success' | t }}
+    </p>
+  {%- endif -%}
+  {%- form 'customer_login', novalidate: 'novalidate', class: 'c-form' -%}
+    {% render 'form-errors', form: form, input_id_prefix: 'Customer' %}
+    <div class="c-form__section c-form__section--inputs">
+      <div class="a-input-wrapper">
+        <label for="CustomerEmail">
+          {{ 'customer.login_page.email' | t }}
+        </label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          autocomplete="email"
+          autocorrect="off"
+          autocapitalize="off"
+          {% if form.errors contains 'form' %}
+            aria-invalid="true"
+          {% endif %}
+        >
+      </div>
+      <div class="a-input-wrapper">
+        <label for="CustomerPassword">
+          {{ 'customer.login_page.password' | t }}
+        </label>
+        <input
+          type="password"
+          value=""
+          name="customer[password]"
+          id="CustomerPassword"
+          autocomplete="current-password"
+          {% if form.errors contains 'form' %}
+            aria-invalid="true"
+          {% endif %}
+        >
+      </div>
+    </div>
+    <div class="c-form__section">
+      <button class="c-button c-button--medium c-button--filled">
+        {{ 'customer.login_page.sign_in' | t }}
+      </button>
+      <a href="#recover" class="a-inline-link-secondary text-sm">
+        {{ 'customer.login_page.forgot_password' | t }}
+      </a>
+    </div>
+    <div class="c-form__section">
+      <p class="text-neutral-45 text-sm">
+        {{ 'customer.login_page.create_account_html' | t: link: routes.account_register_url }}
+      </p>
+    </div>
+  {%- endform -%}
+</div>

@@ -1,0 +1,34 @@
+<div class="l-container l-container--max">
+  <h2 class="sr-only">{{ 'sections.book-club-subscriptions.header' | t }}</h2>
+  <ul class="c-book-club-subscription-list">
+    {%- if settings.book_club_reader_title != blank -%}
+      <li>
+        {% render 'subscription-card', tier: 'reader' %}
+      </li>
+    {%- endif -%}
+    {%- if settings.book_club_partisan_title != blank -%}
+      <li>
+        {% render 'subscription-card', tier: 'partisan' %}
+      </li>
+    {%- endif -%}
+    {%- if settings.book_club_comrade_title != blank -%}
+      <li>
+        {% render 'subscription-card', tier: 'comrade' %}
+      </li>
+    {%- endif -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.book-club-subscriptions.name",
+  "tag": "section",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-subscriptions.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

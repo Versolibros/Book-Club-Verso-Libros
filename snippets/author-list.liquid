@@ -1,0 +1,31 @@
+{%- liquid
+  assign section_title = 'authors.list_title_all' | t
+-%}
+
+{% render 'section-title', title: section_title, size: 'small', color: 'accent' %}
+
+<ul class="c-author-list">
+  {% for tag in tags %}
+    {%- liquid
+      assign letter = tag | remove: 'letter-' | capitalize
+      assign featured_links = featured_author_menu.links | where: 'title', letter
+    -%}
+    <li class="c-author-list__item">
+      <h3 class="c-author-list__item-header">{{ letter }}</h3>
+      <ul class="c-author-list__sublist">
+        {%- if featured_links[0] -%}
+          {% for link in featured_links[0].links %}
+            <li class="c-author-list__subitem">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+        <li class="c-author-list__subitem">
+          <a href="{{ blog.url }}/tagged/{{ tag }}" class="c-author-list__letter-link">
+            {{ 'authors.browse_by_letter' | t: letter: letter }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  {% endfor %}
+</ul>

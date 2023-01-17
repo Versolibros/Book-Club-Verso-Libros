@@ -1,0 +1,19 @@
+<div
+  data-ref="dialog"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="{{ label_id }}"
+  id="{{ id }}"
+  class="c-cart c-cart--drawer{% if cart == empty %}is-empty{% endif %} a-bg-default l-drawer"
+>
+  <button
+    data-ref="toggle"
+    data-controls="{{ id }}"
+    class="c-cart__close-button c-header-icon-button c-header-icon-button--close"
+  >
+    {% render 'icon-menu' %}
+    <span class="sr-only">{{ 'sections.header.mobile_dialog' | t }}</span>
+  </button>
+  {% render 'cart-items', context: 'drawer' %}
+  {% render 'cart-footer', context: 'drawer' %}
+</div>

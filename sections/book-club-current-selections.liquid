@@ -1,0 +1,80 @@
+{%- liquid
+  assign collection = collections[shop.metafields.verso_api.book-club-current-partisan-collection-handle.value]
+  assign show_current_bundle = section.settings.show_bundle_options
+
+  assign instruction_1_heading = settings.book_club_page_instruction_1_heading
+  assign instruction_1_text = settings.book_club_page_instruction_1_text
+  assign instruction_2_heading = settings.book_club_page_instruction_2_heading
+  assign instruction_2_text = settings.book_club_page_instruction_2_text
+  assign instruction_3_heading = settings.book_club_page_instruction_3_heading
+  assign instruction_3_text = settings.book_club_page_instruction_3_text
+-%}
+
+<div class="l-container l-container--max">
+  <div class="c-book-club-current-selections{% if collection != blank %} c-book-club-current-selections--has-selections{% endif %}">
+    <section class="c-book-club-current-selections__instructions-block">
+      <h2 class="sr-only">{{ 'sections.book-club-current-selections.instructions_header' | t }}</h2>
+      <ul class="c-book-club-current-selections__instructions">
+        {%- if instruction_1_heading != blank or instruction_1_text != blank -%}
+          <li>
+            {% render 'image-text-cta', image_filename: 'book-club-icon-1', heading: instruction_1_heading, text: instruction_1_text, color: 'accent' %}
+          </li>
+        {%- endif -%}
+        {%- if instruction_2_heading != blank or instruction_2_text != blank -%}
+          <li>
+            {% render 'image-text-cta', image_filename: 'book-club-icon-2', heading: instruction_2_heading, text: instruction_2_text, color: 'accent' %}
+          </li>
+        {%- endif -%}
+        {%- if instruction_3_heading != blank or instruction_3_text != blank -%}
+          <li>
+            {% render 'image-text-cta', image_filename: 'book-club-icon-3', heading: instruction_3_heading, text: instruction_3_text, color: 'accent' %}
+          </li>
+        {%- endif -%}
+        {%- if section.settings.cta_text != blank -%}
+          <li>
+            {% render 'image-text-cta', image_filename: 'book-club-icon-4', heading: section.settings.cta_text %}
+          </li>
+        {%- endif -%}
+      </ul>
+    </section>
+    {%- if show_current_bundle and collection != blank -%}
+      <section class="c-book-club-current-selections__selections-block a-bg-book-club-tier-partisan">
+        <h2 class="sr-only">{{ 'sections.book-club-current-selections.header' | t }}</h2>
+        {% render 'two-up-product-grid', collection: collection, show_meta: true %}
+      </section>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.book-club-current-selections.name",
+  "tag": "section",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.book-club-current-selections.settings.header__1.content"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "t:sections.book-club-current-selections.settings.cta_text.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.book-club-current-selections.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bundle_options",
+      "label": "t:sections.book-club-current-selections.settings.show_bundle_options.label",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-current-selections.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

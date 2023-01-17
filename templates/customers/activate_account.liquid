@@ -1,0 +1,63 @@
+<section class="a-bg-default">
+  <div class="l-container l-container--x-narrow">
+    <h1 class="text-h2 text-accent">{{ 'customer.activate_account.title' | t }}</h1>
+    <p class="mbe-6 text-neutral-45 text-sm font-sans">
+      {{ 'customer.activate_account.subtext' | t }}
+    </p>
+    <div class="mbs-small">
+      {%- form 'activate_customer_password', class: 'c-form' -%}
+        {% render 'form-errors', form: form, input_id_prefix: '' %}
+        <div class="c-form__section c-form__section--inputs">
+          <div class="a-input-wrapper">
+            <input
+              type="password"
+              name="customer[password]"
+              id="password"
+              autocomplete="new-password"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="password-error"
+              {% endif %}
+            >
+            <label for="password">
+              {{ 'customer.activate_account.password' | t }}
+            </label>
+            {%- if form.errors contains 'password' -%}
+              <div id="password-error" class="c-form__field-error">
+                {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="a-input-wrapper">
+            <input
+              type="password"
+              name="customer[password_confirmation]"
+              id="password_confirmation"
+              autocomplete="new-password"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="password_confirmation-error"
+              {% endif %}
+            >
+            <label for="password_confirmation">
+              {{ 'customer.activate_account.password_confirm' | t }}
+            </label>
+            {%- if form.errors contains 'password_confirmation' -%}
+              <div id="password_confirmation-error" class="c-form__field-error">
+                {{ form.errors.translated_fields['password_confirmation'] | capitalize }} {{ form.errors.messages['password_confirmation'] }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="c-form__section">
+          <button class="c-button c-button--medium c-button--filled">
+            {{ 'customer.activate_account.submit' | t }}
+          </button>
+          <button name="decline" class="a-inline-link-secondary text-sm">
+            {{ 'customer.activate_account.cancel' | t }}
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

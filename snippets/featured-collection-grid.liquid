@@ -1,0 +1,31 @@
+{% assign nested = nested | default: false %}
+
+<div class="l-container l-container--max">
+  <div {% if nested %}class="max-is-[41.625rem]"{% endif %}>
+    {%- liquid
+      assign menu = settings.collection_menu
+      assign collection_list = settings.collection_list
+      assign collection_array = null | sort
+
+      if menu != blank
+        for link in menu.links
+          if link.type == 'collection_link'
+            assign collection = link.object | sort
+            assign collection_array = collection_array | concat: collection
+          endif
+        endfor
+      elsif collection_list != blank
+        assign collection_array = collection_list
+      endif
+
+      assign collection_array_length = collection_array | size
+      if collection_array_length > 0 or collection_list.count > 0
+        assign title = settings.collection_heading
+        if title != blank
+          render 'section-title', title: title, size: 'large', color: 'accent'
+        endif
+        render 'collection-grid', collection_array: collection_array, nested: nested
+      endif
+    -%}
+  </div>
+</div>

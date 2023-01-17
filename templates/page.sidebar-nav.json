@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-with-sidebar-nav",
+      "settings": {
+        "menu": "secondary-navigation"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,59 @@
+{% render 'details-block' title: article.metafields.verso_api.display_title.value, description: article.content, image: article.image, layout: "grid" %}
+
+{%- if article.metafields.verso_api.related_books.value != blank -%}
+    <section class="a-bg-default">
+        <div class="l-container l-container--max">
+            {%- liquid
+                assign section_title = 'sections.main-author-article.related_books' | t
+                render 'section-title', title: section_title
+                render 'product-grid', products: article.metafields.verso_api.related_books.value
+            -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{%- liquid
+    comment
+    Build array of up to three items from all news articles that reference this author article
+    using the prescribed tag format (e.g. if author handle == 'debray-regis', then
+    look for tag 'author-debray-regis').
+    endcomment
+    assign author_handle = article.handle | replace: 'authors/', ''
+    assign author_tag = author_handle | prepend: 'author-'
+    assign related_articles = null | sort
+    paginate blogs['news'].articles by 500
+        for article in blogs['news'].articles
+            comment
+            End loop once we have three related articles
+            endcomment
+            if related_articles.size == 3
+                break
+            endif
+            for tag in article.tags
+                if tag == author_tag
+                    assign article_as_array = article | sort
+                    assign related_articles = related_articles | concat: article_as_array
+                    break
+                endif
+            endfor
+        endfor
+    endpaginate
+-%}
+
+{%- if related_articles.size > 0 -%}
+    <section class="a-bg-default">
+        <div class="l-container l-container--max">
+            {%- liquid
+                assign section_title = 'sections.main-author-article.related_articles' | t
+                render 'featured-article-grid', title: section_title, articles: related_articles, type: 'news', aspect_ratio: 1.5, columns: 3
+            -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.author-article.name",
+  "class": "a-bg-default"
+}
+{% endschema %}

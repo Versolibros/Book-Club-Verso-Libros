@@ -1,0 +1,40 @@
+{%- capture layout_class -%}
+{%- if layout == "grid" and image -%}
+    c-details-block--is-grid-with-image
+    {%- elsif layout == "grid" and image == nil -%}
+    c-details-block--is-grid-without-image
+    {%- else -%}
+    c-details-block--is-flexbox
+{%- endif -%}
+{%- endcapture -%}
+
+<section class="a-bg-default">
+    <div class="l-container {% if layout == "flex" %}l-container--wide{% else %}l-container--max{% endif %} {{ layout_class }}">
+        {%- if image -%}
+            <div class="c-details-block__image-block">
+                <img
+                    srcset="{{ image.src | image_url: width: 920 }} 2x,
+                        {{ image.src | image_url: width: 460 }} 1x"
+                    src="{{ image.src | image_url: width: 460 }}"
+                    width="432"
+                    height="432"
+                    loading="lazy"
+                    alt="{{ image.alt | escape }}"
+                    class="c-details-block__image"
+                />
+            </div>
+        {%- endif -%}
+        {% if layout == "flex" %}
+            <div class="c-details-block__text-content">
+        {%- endif -%}
+            <div class="c-details-block__header {% if layout == "grid" %}c-details-block__center-align{% endif %}">
+                <h1>{{ title | escape }}</h1>
+            </div>
+            <div class="c-details-block__description t-rte">
+                {{ description }}
+            </div>
+        {% if layout == "flex" %}
+        </div>
+        {%- endif -%}
+    </div>
+</section>

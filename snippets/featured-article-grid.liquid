@@ -1,0 +1,51 @@
+{%-liquid
+  assign columns = columns | default: 4
+  assign title_color = title_color | default: 'default'
+  render 'section-title', title: title, color: title_color
+-%}
+
+<ul class="l-grid l-grid--{{ columns }}">
+  {%- for article in articles -%}
+    {%-liquid
+      assign type = type | default: 'authors'
+      assign aspect_ratio = aspect_ratio | default: 1
+      assign image_width = 230
+      if columns == 3
+        assign image_width = 433
+      endif
+      assign image_height = image_width | divided_by: aspect_ratio | round
+      assign image_width_2x = image_width | times: 2
+      assign image_height_2x = image_height | times: 2
+      assign aspect_ratio_class_modifier = 'aspect-1'
+      if aspect_ratio == 1.5
+        assign aspect_ratio_class_modifier = 'aspect-3-2'
+      endif
+    %}
+
+    <li class="c-article-thumbnail">
+      <a href="{{ article.url }}" class="c-article-thumbnail__link c-article-thumbnail__link--title-{% if type == 'news' %}hidden{% else %}visible{% endif %}">
+        {%- if article.image -%}
+          <img
+            srcset="{{ article.image.src | image_url: width: image_width_2x, height: image_height_2x, crop: 'center' }} 2x,
+              {{ article.image.src | image_url: width: image_width, height: image_height, crop: 'center' }}
+            "
+            src="{{ article.image.src | image_url: width: image_width, height: image_height, crop: 'center' }}"
+            loading="lazy"
+            width="{{ image_width }}"
+            height="{{ image_height }}"
+            alt="{{ article.image.alt | escape }}"
+            class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} a-image-background"
+          >
+        {%- else -%}
+          <div class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} a-image-background"></div>
+        {%- endif -%}
+        <h3 class="c-article-thumbnail__title{% if type == 'news' %} sr-only{% endif %}">
+          {{ article.metafields.verso_api.display_title.value | default: article.title }}
+        </h3>
+      </a>
+      {%- if type == 'news' and article.excerpt != blank -%}
+        <div class="t-rte leading-normal">{{ article.excerpt }}</div>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+</ul>

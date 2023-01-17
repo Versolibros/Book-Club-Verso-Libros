@@ -1,0 +1,89 @@
+{
+  "sections": {
+    "1656512658cc675a40": {
+      "type": "block-columns",
+      "blocks": {
+        "251551f9-1306-46bc-9c4a-1bca947ccd56": {
+          "type": "book_club_callout",
+          "settings": {
+            "image": "shopify://shop_images/callout-1.jpg",
+            "heading": "Verso Book Club",
+            "text": "<p>The October selections for the <a href=\"/pages/book-club\" title=\"Book Club\">Verso Book Club</a> are in! Choose between four books, and get access to nearly two dozen new titles as ebooks.</p>",
+            "button_link_url": "/pages/book-club#instructions",
+            "button_link_text": "How does the book club work?"
+          }
+        },
+        "8cdf5e93-8331-4087-be97-897f38230758": {
+          "type": "linked_image",
+          "settings": {
+            "image": "shopify://shop_images/image-1.jpg",
+            "link_url": "shopify://collections/catalog",
+            "link_text": "View Catalog"
+          }
+        }
+      },
+      "block_order": [
+        "251551f9-1306-46bc-9c4a-1bca947ccd56",
+        "8cdf5e93-8331-4087-be97-897f38230758"
+      ],
+      "settings": {
+        "column_ratio": "40"
+      }
+    },
+    "1660679729210ba70e": {
+      "type": "block-columns",
+      "blocks": {
+        "ec2b372d-3f2d-4ad1-aefd-494847da5ae2": {
+          "type": "featured_article",
+          "settings": {
+            "article": "news/was-steve-jobs-the-ultimate-post-modernist"
+          }
+        },
+        "6a1f55a9-d79c-4030-b145-73277c2890f2": {
+          "type": "featured_articles_list",
+          "settings": {
+            "heading": "Reading Lists",
+            "preheading": "Top",
+            "menu": "top-reading-lists",
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "article_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "ec2b372d-3f2d-4ad1-aefd-494847da5ae2",
+        "6a1f55a9-d79c-4030-b145-73277c2890f2"
+      ],
+      "settings": {
+        "column_ratio": "60"
+      }
+    },
+    "1656624957cd663247": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "featured-products",
+        "product_list": [
+
+        ]
+      }
+    },
+    "1656620614b5dbd23d": {
+      "type": "block-featured-articles-grid",
+      "settings": {
+        "menu": "featured-articles",
+        "article_1": "",
+        "article_2": "",
+        "article_3": ""
+      }
+    }
+  },
+  "order": [
+    "1656512658cc675a40",
+    "1660679729210ba70e",
+    "1656624957cd663247",
+    "1656620614b5dbd23d"
+  ]
+}

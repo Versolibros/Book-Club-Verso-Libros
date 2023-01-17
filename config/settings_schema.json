@@ -1,0 +1,255 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Verso",
+    "theme_version": "1.0.0",
+    "theme_author": "Cast Iron Coding",
+    "theme_documentation_url": "https://github.com/castiron/verso-shopify-theme/blob/main/README.md",
+    "theme_support_email": "office@castironcoding.com"
+  },
+  {
+    "name": "t:settings_schema.social-media.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header.content"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
+        "info": "t:settings_schema.social-media.settings.social_facebook_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
+        "info": "t:settings_schema.social-media.settings.social_twitter_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings_schema.social-media.settings.social_instagram_link.label",
+        "info": "t:settings_schema.social-media.settings.social_instagram_link.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.logo.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings_schema.logo.settings.logo.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.currency_format.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.currency_format.settings.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.currency_format.settings.paragraph"
+      },
+      {
+        "type": "checkbox",
+        "id": "currency_code_enabled",
+        "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.book_club_tiers.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_tiers.settings.content__1"
+      },
+      {
+        "type": "text",
+        "id": "book_club_reader_title",
+        "label": "t:settings_schema.book_club_tiers.settings.title.label"
+      },
+      {
+        "type": "richtext",
+        "id": "book_club_reader_description",
+        "label": "t:settings_schema.book_club_tiers.settings.description.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_reader_monthly_product",
+        "label": "t:settings_schema.book_club_tiers.settings.monthly_product.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_reader_annual_product",
+        "label": "t:settings_schema.book_club_tiers.settings.annual_product.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_tiers.settings.content__2"
+      },
+      {
+        "type": "text",
+        "id": "book_club_partisan_title",
+        "label": "t:settings_schema.book_club_tiers.settings.title.label"
+      },
+      {
+        "type": "richtext",
+        "id": "book_club_partisan_description",
+        "label": "t:settings_schema.book_club_tiers.settings.description.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_partisan_monthly_product",
+        "label": "t:settings_schema.book_club_tiers.settings.monthly_product.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_partisan_annual_product",
+        "label": "t:settings_schema.book_club_tiers.settings.annual_product.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_tiers.settings.content__3"
+      },
+      {
+        "type": "text",
+        "id": "book_club_comrade_title",
+        "label": "t:settings_schema.book_club_tiers.settings.title.label"
+      },
+      {
+        "type": "richtext",
+        "id": "book_club_comrade_description",
+        "label": "t:settings_schema.book_club_tiers.settings.description.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_comrade_monthly_product",
+        "label": "t:settings_schema.book_club_tiers.settings.monthly_product.label"
+      },
+      {
+        "type": "product",
+        "id": "book_club_comrade_annual_product",
+        "label": "t:settings_schema.book_club_tiers.settings.annual_product.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.book_club_page.name",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.book_club_page.settings.intro_paragraph"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_page.settings.content__1"
+      },
+      {
+        "type": "product",
+        "id": "book_club_page_header_product",
+        "label": "t:settings_schema.book_club_page.settings.header_product.label",
+        "info": "t:settings_schema.book_club_page.settings.header_product.info"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_header_text",
+        "label": "t:settings_schema.book_club_page.settings.header_text.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_page.settings.content__2"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_1_heading",
+        "label": "t:settings_schema.book_club_page.settings.instruction_1_heading.label"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_1_text",
+        "label": "t:settings_schema.book_club_page.settings.instruction_1_text.label"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_2_heading",
+        "label": "t:settings_schema.book_club_page.settings.instruction_2_heading.label"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_2_text",
+        "label": "t:settings_schema.book_club_page.settings.instruction_2_text.label"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_3_heading",
+        "label": "t:settings_schema.book_club_page.settings.instruction_3_heading.label"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_instruction_3_text",
+        "label": "t:settings_schema.book_club_page.settings.instruction_3_text.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_page.settings.content__3"
+      },
+      {
+        "type": "text",
+        "id": "book_club_page_footer_heading",
+        "label": "t:settings_schema.book_club_page.settings.footer_heading.label"
+      },
+      {
+        "type": "richtext",
+        "id": "book_club_page_footer_text",
+        "label": "t:settings_schema.book_club_page.settings.footer_text.label"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.book_club_page.settings.content__4"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.book_club_page.settings.paragraph__4"
+      },
+      {
+        "type": "text",
+        "id": "book_club_suggested_products_heading",
+        "label": "t:settings_schema.book_club_page.settings.suggested_products_heading.label"
+      },
+      {
+        "type": "textarea",
+        "id": "book_club_suggested_products_description",
+        "label": "t:settings_schema.book_club_page.settings.suggested_products_description.label"
+      },
+      {
+        "type": "collection",
+        "id": "book_club_suggested_products_collection",
+        "label": "t:settings_schema.book_club_page.settings.suggested_products_collection.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.support_contact.name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "order_email_na",
+        "label": "t:settings_schema.support_contact.settings.orders.label_na",
+        "default": "orders@versobooks.com"
+      },
+      {
+        "type": "text",
+        "id": "order_email_eu",
+        "label": "t:settings_schema.support_contact.settings.orders.label_eu",
+        "default": "orders@verso.co.uk"
+      }
+    ]
+  }
+]

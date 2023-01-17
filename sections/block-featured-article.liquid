@@ -1,0 +1,21 @@
+{% render 'featured-article', article: section.settings.article, block_width: 100 %}
+
+{% schema %}
+{
+  "name": "t:sections.block-featured-article.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "article",
+      "id": "article",
+      "label": "t:sections.block-featured-article.settings.article.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.block-featured-article.presets.name"
+    }
+  ]
+}
+{% endschema %}

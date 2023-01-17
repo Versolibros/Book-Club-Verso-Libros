@@ -1,0 +1,71 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+  <div id="pagination-target" class="a-bg-default">
+    <div class="l-container l-container--max">
+      {%- liquid
+        assign show_menu = section.settings.show_menu
+        assign menu = section.settings.menu
+        assign region_menu = section.settings.region_menu
+        if menu == blank and region_menu == blank
+          assign show_menu = false
+        endif
+
+        if show_menu == true
+          render 'section-title', title: collection.title, size: 'large', color: 'accent'
+          render 'catalogue-filter', region_menu: region_menu.links, menu: menu.links, anchor: '#pagination-target'
+        endif
+      -%}
+      {%- if show_menu != true -%}
+        <div class="a-section-border-top">
+      {%- endif -%}
+      {%- if collection.products.size == 0 -%}
+        <div class="c-empty-collection">
+          <p>{{ 'sections.collection-product-grid.empty_html' | t: link: collections["catalog"].url }}</p>
+        </div>
+      {%- else -%}
+        {% render 'product-grid', products: collection.products, is_scroll_target: true %}
+      {%- endif -%}
+      {%- if show_menu != true -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if paginate.pages > 1 -%}
+    {% render 'pagination', paginate: paginate, anchor: '#pagination-target' %}
+  {%- endif -%}
+{%- endpaginate -%}
+
+
+{% schema %}
+{
+  "name": "t:sections.collection-product-grid.name",
+  "tag": "section",
+  "class": "a-bg-default",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_menu",
+      "label": "t:sections.collection-product-grid.settings.show_menu.label",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.collection-product-grid.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "region_menu",
+      "label": "t:sections.collection-product-grid.settings.region_menu.label"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 6,
+      "max": 36,
+      "step": 6,
+      "default": 24,
+      "label": "t:sections.collection-product-grid.settings.products_per_page.label"
+    }
+  ]
+}
+{% endschema %}

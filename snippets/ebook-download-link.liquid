@@ -1,0 +1,20 @@
+{%- liquid
+  assign url = null
+  assign service_base_url = shop.metafields.verso_api.verso_api_url
+  assign service_secret_key = shop.metafields.verso_api.ebook_hmac_salt
+
+  if service_base_url and service_secret_key
+    if line_item != blank and line_item.product.type == 'Books' and line_item.variant.title contains 'ebook'
+      assign sku = line_item.variant.sku
+      assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
+      assign hmac = order.id | append: sku | append: service_secret_key | sha256
+      assign url = base_url | append: '/' | append: hmac
+    endif
+  endif
+-%}
+
+{%- if url -%}
+  <a href="{{ url }}" target="_blank" rel="noreferrer" class="font-sans text-xsm a-inline-link">
+    {{ 'customer.order.line_item.download_ebook' | t }}
+  </a>
+{%- endif -%}

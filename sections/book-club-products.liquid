@@ -1,0 +1,20 @@
+<h2 class="sr-only">{{ 'sections.book-club-products.header' | t }}</h2>
+{%- liquid
+  render 'book-club-collection', tier: "comrade", show_subscription_card: true
+  render 'book-club-collection', tier: "partisan", show_subscription_card: true
+  render 'book-club-collection', tier: "reader", show_subscription_card: true
+-%}
+
+{% schema %}
+{
+  "name": "t:sections.book-club-products.name",
+  "tag": "section",
+  "class": "a-bg-accent-secondary-light",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.book-club-products.settings.paragraph__1.content"
+    }
+  ]
+}
+{% endschema %}

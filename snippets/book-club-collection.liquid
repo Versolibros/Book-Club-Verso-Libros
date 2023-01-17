@@ -1,0 +1,46 @@
+{%-liquid
+  assign tier = tier | default: "reader"
+
+  assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
+  assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
+
+  assign current_collection = collections[shop.metafields.verso_api[current_key].value]
+  assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+
+  assign title_locale_key = 'sections.book-club-products.title_' | append: tier
+  assign current_title_locale_key = title_locale_key | append: '_current'
+  assign next_title_locale_key = title_locale_key | append: '_next_html'
+  assign current_month = 'today' | date: '%B'
+
+  assign show_subscription_card = show_subscription_card | default: false
+-%}
+
+{%- if current_collection != blank -%}
+  <section class="a-bg-book-club-tier-{{ tier }}">
+    <div class="c-book-club-collection l-container l-container--max">
+      <header class="c-book-club-collection__header">
+        <h3 class="c-book-club-collection__title">{{ current_title_locale_key | t: month: current_month }}</h3>
+        {%- if current_collection.description != blank -%}
+          <p>{{ current_collection.description }}</p>
+        {%- endif -%}
+        {%- if show_subscription_card -%}
+          {% render 'subscription-card', tier: tier, classname: 'c-book-club-collection__subscription-card' %}
+        {%- endif -%}
+      </header>
+      <div class="c-book-club-collection__body">
+        {% render 'book-club-collection-product-grid', collection: current_collection, tier: tier %}
+        {%- if next_collection != blank -%}
+          <details class="c-book-club-collection__disclosure">
+            <summary class="c-book-club-collection__disclosure-toggle">
+              <h3>{{ next_title_locale_key | t }}</h3>
+              {% render 'icon-caret', classname: 'c-book-club-collection__disclosure-toggle-icon' %}
+            </summary>
+            <div class="c-book-club-collection__disclosure-body">
+              {% render 'book-club-collection-product-grid', collection: next_collection, tier: tier %}
+            </div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
