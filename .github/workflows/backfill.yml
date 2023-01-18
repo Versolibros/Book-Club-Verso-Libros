@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - release-prod
+      - zd/release
+  workflow_dispatch:
 
 jobs:
   backfill:
@@ -13,68 +15,80 @@ jobs:
       - name: "checkout code"
         uses: actions/checkout@v3
         with:
-          ref: release
+          ref: release-prod
+          path: release
+
+      - name: "checkout code"
+        uses: actions/checkout@v3
+        with:
+          ref: backfill
+          path: backfill
+
 
       - name: "capture_commit_hash"
         run: |
+          cd ${GITHUB_WORKSPACE}/release
           COMMIT=`git rev-parse HEAD`
           echo "commit=${COMMIT}" >> $GITHUB_ENV
 
       - name: "apply_changes"
         run: |
-          mkdir /tmp/verso-theme
-          find . -maxdepth 1 -mindepth 1 -not -name .git -exec mv '{}' /tmp/verso-theme \;
-          git checkout -b backfill
+          cd ${GITHUB_WORKSPACE}/backfill
           git fetch
           git reset --hard origin/main
-          yes | cp -r /tmp/verso-theme/* shopify/
+          rm -rf shopify/*
+          cp -r ${GITHUB_WORKSPACE}/release/* shopify/
 
-      - name: "install_node"
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-
-      - name: "install_yarn"
-        run: |
-          sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-          echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-          sudo apt-get update
-          sudo apt-get install -y yarn
-
-      - name: "restore_node_deps"
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-node-module-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-module-cache-
-
-      - name: "install_node_deps"
-        env:
-          NODE_ENV: development
-        run: |
-          yarn
-
-      - name: "install_ruby"
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0
-
-      - name: "fix_theme_and_assets"
-        run: |
-          yarn global add @shopify/cli @shopify/theme
-          yarn fix
+#      - name: "install_node"
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: "16"
+#
+#      - name: "install_yarn"
+#        run: |
+#          sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+#          echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+#          sudo apt-get update
+#          sudo apt-get install -y yarn
+#
+#      - name: "restore_node_deps"
+#        uses: actions/cache@v3
+#        with:
+#          path: node_modules
+#          key: ${{ runner.OS }}-node-module-cache-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            ${{ runner.OS }}-node-module-cache-
+#
+#      - name: "install_node_deps"
+#        env:
+#          NODE_ENV: development
+#        run: |
+#          yarn
+#
+#      - name: "install_ruby"
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 3.0
+#
+#      - name: "fix_theme_and_assets"
+#        run: |
+#          yarn global add @shopify/cli @shopify/theme
+#          yarn fix
 
       - name: "commit_changes"
         run: |
+          cd ${GITHUB_WORKSPACE}/backfill
+          git status
           git add --all
           git config --global user.email "office@castironcoding.com"
           git config --global user.name "Backfill Action"
           git diff --staged --quiet || git commit -m "Backfill - based on ${{ env.commit }}"
+
       - name: "push_changes"
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          cd ${GITHUB_WORKSPACE}/backfill
           git push --force origin backfill
           gh pr view
 
@@ -82,8 +96,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          prs=$(gh pr list --json baseRefName,headRefName --jq 'map(select(.baseRefName == "main" and .headRefName == "backfill")) | length')
-          echo $prs
-          if ((prs = 0)); then
+          cd ${GITHUB_WORKSPACE}/backfill
+          PRS=$(gh pr list --json baseRefName,headRefName --jq 'map(select(.baseRefName == "main" and .headRefName == "backfill")) | length')
+          if [ "$PRS" = "0" ]; then
             gh pr create -B main -H backfill --title '[C] Backfill theme editor changes' --body 'Created by Backfill action'
           fi
