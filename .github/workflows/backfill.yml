@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - release-prod
-      - zd/release
   workflow_dispatch:
 
 jobs:
@@ -39,41 +38,43 @@ jobs:
           rm -rf shopify/*
           cp -r ${GITHUB_WORKSPACE}/release/* shopify/
 
-#      - name: "install_node"
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: "16"
-#
-#      - name: "install_yarn"
-#        run: |
-#          sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-#          echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-#          sudo apt-get update
-#          sudo apt-get install -y yarn
-#
-#      - name: "restore_node_deps"
-#        uses: actions/cache@v3
-#        with:
-#          path: node_modules
-#          key: ${{ runner.OS }}-node-module-cache-${{ hashFiles('**/yarn.lock') }}
-#          restore-keys: |
-#            ${{ runner.OS }}-node-module-cache-
-#
-#      - name: "install_node_deps"
-#        env:
-#          NODE_ENV: development
-#        run: |
-#          yarn
-#
-#      - name: "install_ruby"
-#        uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: 3.0
-#
-#      - name: "fix_theme_and_assets"
-#        run: |
-#          yarn global add @shopify/cli @shopify/theme
-#          yarn fix
+      - name: "install_node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: "install_yarn"
+        run: |
+          sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+          echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+          sudo apt-get update
+          sudo apt-get install -y yarn
+
+      - name: "restore_node_deps"
+        uses: actions/cache@v3
+        with:
+          path: backfil/node_modules
+          key: ${{ runner.OS }}-node-module-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-module-cache-
+
+      - name: "install_node_deps"
+        env:
+          NODE_ENV: development
+        run: |
+          cd ${GITHUB_WORKSPACE}/backfill
+          yarn
+
+      - name: "install_ruby"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+
+      - name: "fix_theme_and_assets"
+        run: |
+          cd ${GITHUB_WORKSPACE}/backfill
+          yarn global add @shopify/cli @shopify/theme
+          yarn fix
 
       - name: "commit_changes"
         run: |
