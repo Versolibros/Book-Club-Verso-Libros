@@ -1,21 +1,21 @@
-name: Deploy/Dev
+name: Deploy/Prod
 
 on:
   workflow_dispatch:
 
 jobs:
   deploy:
-    name: dev_deploy
+    name: prod_deploy
     runs-on: ubuntu-latest
     steps:
       - name: "checkout release"
         uses: actions/checkout@v3
         with:
-          ref: release-dev
+          ref: release-prod
       - name: "reset to release"
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           git fetch
           git reset --hard origin/release
-          git push --force origin release-dev
+          git push --force origin release-prod
