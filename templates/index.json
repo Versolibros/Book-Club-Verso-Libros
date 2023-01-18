@@ -6,18 +6,18 @@
         "251551f9-1306-46bc-9c4a-1bca947ccd56": {
           "type": "book_club_callout",
           "settings": {
-            "image": "shopify:\/\/shop_images\/callout-1.jpg",
+            "image": "shopify://shop_images/callout-1.jpg",
             "heading": "Verso Book Club",
-            "text": "<p>The FOO BAR October selections for the <a href=\"\/pages\/book-club\" title=\"Book Club\">Verso Book Club<\/a> are in! Choose between four books, and get access to nearly two dozen new titles as ebooks.<\/p>",
-            "button_link_url": "\/pages\/book-club#instructions",
+            "text": "<p>The GLORP October selections for the <a href=\"/pages/book-club\" title=\"Book Club\">Verso Book Club</a> are in! Choose between four books, and get access to nearly two dozen new titles as ebooks.</p>",
+            "button_link_url": "/pages/book-club#instructions",
             "button_link_text": "How does the book club work?"
           }
         },
         "8cdf5e93-8331-4087-be97-897f38230758": {
           "type": "linked_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/image-1.jpg",
-            "link_url": "shopify:\/\/collections\/catalog",
+            "image": "shopify://shop_images/image-1.jpg",
+            "link_url": "shopify://collections/catalog",
             "link_text": "View Catalog"
           }
         }
@@ -36,7 +36,7 @@
         "ec2b372d-3f2d-4ad1-aefd-494847da5ae2": {
           "type": "featured_article",
           "settings": {
-            "article": "news\/was-steve-jobs-the-ultimate-post-modernist"
+            "article": "news/was-steve-jobs-the-ultimate-post-modernist"
           }
         },
         "6a1f55a9-d79c-4030-b145-73277c2890f2": {
