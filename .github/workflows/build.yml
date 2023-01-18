@@ -1,0 +1,87 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "checkout main"
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: main
+
+      - name: "checkout release"
+        uses: actions/checkout@v3
+        with:
+          ref: release
+          path: release
+
+      - name: "capture_commit_hash"
+        run: |
+          cd ${GITHUB_WORKSPACE}/main
+          COMMIT=`git rev-parse HEAD`
+          echo "commit=${COMMIT}" >> $GITHUB_ENV
+
+      - name: "install_node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: "install_yarn"
+        run: |
+          sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+          echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+          sudo apt-get update
+          sudo apt-get install -y yarn
+
+      - name: "restore_node_deps"
+        uses: actions/cache@v3
+        with:
+          path: main/node_modules
+          key: ${{ runner.OS }}-node-module-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-module-cache-
+
+      - name: "install_node_deps"
+        env:
+          NODE_ENV: development
+        run: |
+          cd ${GITHUB_WORKSPACE}/main
+          yarn
+
+      - name: "build_assets"
+        run: |
+          cd ${GITHUB_WORKSPACE}/main
+          yarn webpack:build
+
+      - name: "restructure_repo"
+        run: |
+          cd ${GITHUB_WORKSPACE}/release
+          find . -maxdepth 1 -mindepth 1 -not -name .git -exec rm -rf {} +
+          cd ${GITHUB_WORKSPACE}
+          yes | cp -r ${GITHUB_WORKSPACE}/main/shopify/* ${GITHUB_WORKSPACE}/release/
+          yes | cp -r ${GITHUB_WORKSPACE}/main/.github ${GITHUB_WORKSPACE}/release/
+          cd ${GITHUB_WORKSPACE}/release
+          ls -lah
+          ls -lah assets/
+
+      - name: "maybe_commit_changes"
+        run: |
+          cd ${GITHUB_WORKSPACE}/release
+          git add --all
+          git config --global user.email "office@castironcoding.com"
+          git config --global user.name "Build Action"
+          git diff --staged --quiet || git commit -m "[C] build assets - based on ${{ env.commit }}"
+
+      - name: "push_changes"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd ${GITHUB_WORKSPACE}/release
+          git push --force origin release

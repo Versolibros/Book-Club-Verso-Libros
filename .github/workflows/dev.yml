@@ -1,0 +1,15 @@
+name: Development
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: "checkout release"
+        uses: actions/checkout@v3
+        with:
+          ref: release
+          path: release

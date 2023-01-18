@@ -2,8 +2,8 @@ name: Backfill
 on:
   push:
     branches:
-      - release
-      - zd/ci
+      - release-prod
+
 jobs:
   backfill:
     name: Backfill
@@ -70,8 +70,7 @@ jobs:
           git add --all
           git config --global user.email "office@castironcoding.com"
           git config --global user.name "Backfill Action"
-          git commit -m "Backfill - based on ${{ env.commit }}"
-
+          git diff --staged --quiet || git commit -m "Backfill - based on ${{ env.commit }}"
       - name: "push_changes"
         env:
           GH_TOKEN: ${{ github.token }}
