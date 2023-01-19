@@ -18,7 +18,8 @@ jobs:
         run: |
           git fetch
           git checkout origin/release -- .
-          git push --force origin release-dev
           git config --global user.email "office@castironcoding.com"
           git config --global user.name "Dev Deploy Action"
-          git diff --staged --quiet || git commit -m "[C] Deploy release branch - based on $(git rev-parse release)"
+          git add .
+          git diff --staged --quiet || git commit -m "[C] Deploy release branch - based on $(git rev-parse origin/release)"
+          git push --force origin release-dev

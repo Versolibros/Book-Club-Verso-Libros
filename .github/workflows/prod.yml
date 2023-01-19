@@ -17,5 +17,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           git fetch
-          git reset --hard origin/release
+          git checkout origin/release -- .
+          git config --global user.email "office@castironcoding.com"
+          git config --global user.name "Prod Deploy Action"
+          git add .
+          git diff --staged --quiet || git commit -m "[C] Deploy release branch - based on $(git rev-parse origin/release)"
           git push --force origin release-prod
