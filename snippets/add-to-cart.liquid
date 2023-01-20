@@ -3,8 +3,8 @@
   assign is_available = variant.available
 
   assign is_future_publication = false
-  assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s'
-  assign now_timestamp = 'now' | date: '%s'
+  assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s' | times: 1
+  assign now_timestamp = 'now' | date: '%s' | times: 1
   if publication_date_timestamp > now_timestamp
     assign is_future_publication = true
   endif
