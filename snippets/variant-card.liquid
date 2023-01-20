@@ -7,8 +7,8 @@
   assign is_subscription = is_subscription | default: false
 
   assign is_available = variant.available
-  assign publication_date_timestamp = publication_date | date: '%s'
-  assign now_timestamp = 'now' | date: '%s'
+  assign publication_date_timestamp = publication_date | date: '%s' | times: 1
+  assign now_timestamp = 'now' | date: '%s' | times: 1
   if publication_date_timestamp > now_timestamp
     assign is_available = false
   endif
