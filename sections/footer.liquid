@@ -3,45 +3,50 @@
   <section class="c-footer__inner">
     <div class="c-footer__start">
       {%- if section.settings.menu != blank -%}
-      <nav aria-label="{{ 'sections.footer.site_nav' | t }}">
-        <ul class="c-footer__nav-list">
-          {%- for link in section.settings.menu.links -%}
-          <li>
-            <a class="c-footer__nav-link" href="{{ link.url }}" {% if link.current %} aria-current="page" {% endif %}>
-              {{ link.title | escape }}
-            </a>
-          </li>
-          {%- endfor -%}
-        </ul>
-      </nav>
+        <nav aria-label="{{ 'sections.footer.site_nav' | t }}">
+          <ul class="c-footer__nav-list">
+            {%- for link in section.settings.menu.links -%}
+              <li>
+                <a
+                  class="c-footer__nav-link"
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                  aria-current="page"
+                  {% endif %}>
+                  {{ link.title | escape }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
       {%- endif -%}
 
       {%- if section.settings.show_social -%}
         <nav aria-label="{{ 'sections.footer.social_nav' | t }}">
           <ul class="c-footer__social-list">
             {%- if settings.social_facebook_link != blank -%}
-            <li>
-              <a href="{{ settings.social_facebook_link }}" class="c-footer__social-link">
-                {% render 'icon-facebook' %}
-                <span class="sr-only">{{ 'general.social.links.facebook' | t }}</span>
-              </a>
-            </li>
+              <li>
+                <a href="{{ settings.social_facebook_link }}" class="c-footer__social-link">
+                  {% render 'icon-facebook' %}
+                  <span class="sr-only">{{ 'general.social.links.facebook' | t }}</span>
+                </a>
+              </li>
             {%- endif -%}
             {%- if settings.social_twitter_link != blank -%}
-            <li>
-              <a href="{{ settings.social_twitter_link }}" class="c-footer__social-link">
-                {% render 'icon-twitter' %}
-                <span class="sr-only">{{ 'general.social.links.twitter' | t }}</span>
-              </a>
-            </li>
+              <li>
+                <a href="{{ settings.social_twitter_link }}" class="c-footer__social-link">
+                  {% render 'icon-twitter' %}
+                  <span class="sr-only">{{ 'general.social.links.twitter' | t }}</span>
+                </a>
+              </li>
             {%- endif -%}
             {%- if settings.social_instagram_link != blank -%}
-            <li>
-              <a href="{{ settings.social_instagram_link }}" class="c-footer__social-link">
-                {% render 'icon-instagram' %}
-                <span class="sr-only">{{ 'general.social.links.instagram' | t }}</span>
-              </a>
-            </li>
+              <li>
+                <a href="{{ settings.social_instagram_link }}" class="c-footer__social-link">
+                  {% render 'icon-instagram' %}
+                  <span class="sr-only">{{ 'general.social.links.instagram' | t }}</span>
+                </a>
+              </li>
             {%- endif -%}
           </ul>
         </nav>
@@ -54,20 +59,23 @@
         method="get"
         target="_blank"
         aria-label="{{ 'sections.footer.newsletter.label' | t }}"
-        class="c-footer__newsletter-form"
-      >
-        <input name="utf8" type="hidden" value="✓" />
+        class="c-footer__newsletter-form">
+        <input
+          name="utf8"
+          type="hidden"
+          value="✓" />
         <input
           name="u"
           type="hidden"
-          value="378ec92c86f70e1518699ea15"
-        />
-        <input name="id" type="hidden" value="1f96ba5fab" />
+          value="378ec92c86f70e1518699ea15" />
+        <input
+          name="id"
+          type="hidden"
+          value="1f96ba5fab" />
         <input
           name="MMERGE4"
           type="hidden"
-          value="United States"
-        />
+          value="United States" />
         {% render 'icon-envelope', classname: 'c-footer__newsletter-icon' %}
         <div class="c-footer__newsletter-input">
           <label class="sr-only" for="emailAddress">{{ 'sections.footer.newsletter.email_label' | t }}</label>
@@ -77,53 +85,50 @@
             id="emailAddress"
             name="EMAIL"
             placeholder="{{ section.settings.signup_placeholder }}"
-            aria-required
-            class="c-footer__newsletter-field"
-          >
+            aria-required="true"
+            class="c-footer__newsletter-field">
         </div>
         <input
           type="submit"
           name="commit"
           value="{{ 'sections.footer.newsletter.submit' | t }}"
-          class="c-button c-button--small c-button--filled c-footer__newsletter-submit"
-        />
+          class="c-button c-button--small c-button--filled c-footer__newsletter-submit" />
       </form>
     </div>
   </section>
 </footer>
 
 {% schema %}
-{
-  "name": "t:sections.footer.name",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "default": "footer",
-      "label": "t:sections.header.settings.menu.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": false,
-      "label": "t:sections.footer.settings.show_social.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__2.content",
-      "info": "t:sections.footer.settings.header__2.info"
-    },
-    {
-      "type": "text",
-      "id": "signup_placeholder",
-      "default": "Get 40% off your next purchase!",
-      "label": "t:sections.footer.settings.signup_placeholder.label"
-    }
-  ]
-}
+  {
+    "name": "t:sections.footer.name",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "footer",
+        "label": "t:sections.header.settings.menu.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.footer.settings.header__1.content",
+        "info": "t:sections.footer.settings.header__1.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social",
+        "default": false,
+        "label": "t:sections.footer.settings.show_social.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.footer.settings.header__2.content",
+        "info": "t:sections.footer.settings.header__2.info"
+      }, {
+        "type": "text",
+        "id": "signup_placeholder",
+        "default": "Get 40% off your next purchase!",
+        "label": "t:sections.footer.settings.signup_placeholder.label"
+      }
+    ]
+  }
 {% endschema %}

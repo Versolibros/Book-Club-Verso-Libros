@@ -1,6 +1,6 @@
 {%- form 'localization', id: 'FooterLocalizationForm', class: 'c-localization-form' -%}
   <div class="c-localization-form__wrapper">
-    {% render 'icon-select' classname: 'c-localization-form__select-icon' %}
+    {% render 'icon-select' aria-hidden: true, classname: 'c-localization-form__select-icon' %}
     <label class="c-localization-form__label" id="localization-form-header">{{ 'localization.location_currency_label' | t }}</label>
     <select
       name="country_code"
