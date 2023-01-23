@@ -45,7 +45,7 @@
         "settings": {
           "menu": "footer",
           "show_social": true,
-          "signup_placeholder": "Join our mailing list!"
+          "signup_placeholder": "Email Address"
         }
       },
       "announcement-bar": {
