@@ -1,13 +1,23 @@
 {%- form 'localization', id: 'FooterLocalizationForm', class: 'c-localization-form' -%}
   <div class="c-localization-form__wrapper">
     {% render 'icon-select' classname: 'c-localization-form__select-icon' %}
-    <label class="c-localization-form__label" id="localization-form-header">{{ 'localization.location_currency_label' | t }}<span class="sr-only">{{ 'localization.location_submit_warning' | t }}</span></label>
-    <select name="country_code" aria-labelledby="localization-form-header" class="text-xsm" onchange="this.form.submit()">
+    <label class="c-localization-form__label" id="localization-form-header">{{ 'localization.location_currency_label' | t }}</label>
+    <select
+      name="country_code"
+      aria-labelledby="localization-form-header"
+      class="text-xsm"
+      onchange="this.form.submit()"
+      aria-describedby="will-submit-warning">
       {%- for country in localization.available_countries -%}
-        <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+        <option
+          value="{{ country.iso_code }}"
+          {%- if country.iso_code == localization.country.iso_code %}
+          selected
+          {% endif %}>
           {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
         </option>
       {%- endfor -%}
     </select>
+    <span id="will-submit-warning" class="sr-only">{{ 'localization.location_submit_warning' | t }}</span>
   </div>
 {%- endform -%}
