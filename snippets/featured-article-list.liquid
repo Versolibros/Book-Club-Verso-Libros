@@ -48,7 +48,11 @@
 
   {%- if article_array_length > 0 -%}
     {%- if heading != blank -%}
-      <h2 class="t-h1">{% if preheading != blank %}{{ preheading }}{% endif %} <span class="underline">{{ heading }}</span></h2>
+      <h2 class="t-h1">
+        {% if preheading != blank %}
+          {{ preheading }}{% endif %}
+        <span class="underline">{{ heading }}</span>
+      </h2>
     {%- endif -%}
     <ol class="c-featured-article-list__list">
       {%- for article in article_array %}
@@ -64,7 +68,7 @@
     </ol>
   {%- endif -%}
   {%- if heading != blank -%}
-    {% render 'icon-text-pattern', text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--start' %}
-    {% render 'icon-text-pattern', text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--end' %}
+    {% render 'icon-text-pattern', idSuffix: "start", text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--start' %}
+    {% render 'icon-text-pattern', idSuffix: "end", text: heading | upcase, classname: 'c-featured-article-list__label c-featured-article-list__label--end' %}
   {%- endif -%}
 </div>
