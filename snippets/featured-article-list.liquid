@@ -12,10 +12,8 @@
 
     if menu != blank
       for link in menu.links
-        assign full_handle = "news/" | append: link.handle
-        assign article = articles[full_handle]
-        if article
-          assign article = article | sort
+        if link.type == 'article_link'
+          assign article = link.object | sort
           assign article_array = article_array | concat: article
         endif
       endfor
