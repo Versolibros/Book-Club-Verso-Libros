@@ -99,36 +99,37 @@
 </footer>
 
 {% schema %}
-  {
-    "name": "t:sections.footer.name",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "menu",
-        "default": "footer",
-        "label": "t:sections.header.settings.menu.label"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.footer.settings.header__1.content",
-        "info": "t:sections.footer.settings.header__1.info"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_social",
-        "default": false,
-        "label": "t:sections.footer.settings.show_social.label"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.footer.settings.header__2.content",
-        "info": "t:sections.footer.settings.header__2.info"
-      }, {
-        "type": "text",
-        "id": "signup_placeholder",
-        "default": "Get 40% off your next purchase!",
-        "label": "t:sections.footer.settings.signup_placeholder.label"
-      }
-    ]
-  }
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "footer",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "text",
+      "id": "signup_placeholder",
+      "default": "Get 40% off your next purchase!",
+      "label": "t:sections.footer.settings.signup_placeholder.label"
+    }
+  ]
+}
 {% endschema %}

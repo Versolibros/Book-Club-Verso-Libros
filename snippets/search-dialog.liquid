@@ -16,7 +16,7 @@
     role="dialog"
     aria-modal="false"
     aria-label="{{ 'predictive_search.dialog_label' | t }}"
-    class="c-search-dialog__dialog a-bg-default {% if theme == 'drawer' %}l-drawer{% else %}c-search-dialog__dialog--disclosure{{ idSuffix }} {% endif %}">
+    class="c-search-dialog__dialog a-bg-default {% if theme == 'drawer' %}l-drawer{% else %}c-search-dialog__dialog--disclosure{% endif %}">
     {%- liquid
       assign input_id = 'predictive-search-input'
       if theme == 'drawer'
