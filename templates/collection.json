@@ -1,7 +1,9 @@
 {
   "sections": {
     "collection-header": {
-      "type": "collection-header"
+      "type": "collection-header",
+      "settings": {
+      }
     },
     "product-grid": {
       "type": "collection-product-grid",
