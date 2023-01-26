@@ -1,11 +1,13 @@
 <div
   data-behavior="OpenDialog"
   data-props='{"clickOutsideDeactivates":true,"trapFocus":{% if theme == 'drawer' %}true{% else %}false{% endif %},"initialFocusRef":"input"}'
-  class="c-search-dialog {% if theme == 'drawer' %}headerBreak:hidden{% else %}hidden headerBreak:block{% endif %}">
+  class="c-search-dialog {% if theme == 'drawer' %}headerBreak:hidden{% else %}hidden headerBreak:block{% endif %}"
+>
   <a
     href="{{ routes.search_url }}"
     data-ref="open"
-    class="c-header-icon-button c-header-icon-button--search c-search-dialog__toggle">
+    class="c-header-icon-button c-header-icon-button--search c-search-dialog__toggle"
+  >
     {% render 'icon-search', classname: 'c-search-dialog__toggle-icon c-search-dialog__toggle-icon--search' %}
     {% render 'icon-close', classname: 'c-search-dialog__toggle-icon c-search-dialog__toggle-icon--close' %}
     <span class="sr-only">{{ 'predictive_search.toggle' | t }}</span>
@@ -16,7 +18,8 @@
     role="dialog"
     aria-modal="false"
     aria-label="{{ 'predictive_search.dialog_label' | t }}"
-    class="c-search-dialog__dialog a-bg-default {% if theme == 'drawer' %}l-drawer{% else %}c-search-dialog__dialog--disclosure{% endif %}">
+    class="c-search-dialog__dialog a-bg-default {% if theme == 'drawer' %}l-drawer{% else %}c-search-dialog__dialog--disclosure{% endif %}"
+  >
     {%- liquid
       assign input_id = 'predictive-search-input'
       if theme == 'drawer'
