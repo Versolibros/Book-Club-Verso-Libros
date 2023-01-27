@@ -229,9 +229,11 @@
         "label": "t:settings_schema.book_club_page.settings.suggested_products_description.label"
       },
       {
-        "type": "collection",
-        "id": "book_club_suggested_products_collection",
-        "label": "t:settings_schema.book_club_page.settings.suggested_products_collection.label"
+        "type": "product_list",
+        "id": "book_club_suggested_products_list",
+        "label": "t:settings_schema.book_club_page.settings.suggested_products_list.label",
+        "info": "t:settings_schema.book_club_page.settings.suggested_products_list.info",
+        "limit": 6
       }
     ]
   },

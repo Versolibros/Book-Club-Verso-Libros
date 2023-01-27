@@ -28,7 +28,14 @@
     "book_club_page_footer_text": "<p>Confused or have any questions? You can email us at <a href=\"mailto:bookclub@versobooks.com\">bookclub@versobooks.com</a> — we would love to get your feedback! Have general questions about shipping and ebooks? We hope <a href=\"/pages/frequently-asked-questions\" title=\"Frequently Asked Questions\">our full FAQs</a> will help.</p>",
     "book_club_suggested_products_heading": "All Book Club subscribers get 50% off every purchase!",
     "book_club_suggested_products_description": "If you’re interested in this month’s theme, here are a few suggestions:",
-    "book_club_suggested_products_collection": "suggested-products-for-book-club",
+    "book_club_suggested_products_list": [
+      "2315-24-7",
+      "2330-a-colossal-wreck",
+      "2332-a-companion-to-marx-s-capital-volume-2",
+      "747-a-massacre-in-mexico",
+      "971-a-kick-in-the-belly",
+      "1651-a-plague-on-your-houses"
+    ],
     "checkout_logo_image": "shopify://shop_images/logo-square_e9500a1e-c18d-4476-ac18-aff9db1d6512.png",
     "checkout_accent_color": "#e22120",
     "checkout_button_color": "#e22120",

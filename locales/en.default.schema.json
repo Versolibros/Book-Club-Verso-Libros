@@ -119,8 +119,9 @@
         "suggested_products_description": {
           "label": "Description"
         },
-        "suggested_products_collection": {
-          "label": "Suggested products"
+        "suggested_products_list": {
+          "label": "Suggested products",
+          "info": "Select up to 6 products."
         }
       }
     },

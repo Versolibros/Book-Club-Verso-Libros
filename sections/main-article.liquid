@@ -1,3 +1,22 @@
+{%- liquid
+  comment
+    - Check if author has a tag to apply
+    - If so, remove it from rendered tags
+  endcomment
+  assign author_tag = article.metafields.verso_api.article_author_tag.value
+  assign author_display_name = article.metafields.verso_api.article_author_display_name.value
+  assign tag_is_applied = false
+  assign non_author_tags = null | sort
+  for tag in article.tags
+    if tag == author_tag
+      assign tag_is_applied = true
+    else
+      assign tag_as_array = tag | sort
+      assign non_author_tags = non_author_tags | concat: tag_as_array
+    endif
+  endfor
+  -%}
+
 <header class="a-bg-default">
   <div class="c-article-detail__header l-container l-container--narrow l-container--padding-block-end-large">
     {%- if section.settings.label != blank -%}
@@ -8,24 +27,6 @@
       <p class="c-article-detail__lede">{{ article.excerpt }}</p>
     {%- endif -%}
     <p class="c-article-detail__meta">
-      {%- liquid
-        comment
-          - Check if author has a tag to apply
-          - If so, remove it from rendered tags
-        endcomment
-        assign author_tag = article.metafields.verso_api.article_author_tag.value
-        assign author_display_name = article.metafields.verso_api.article_author_display_name.value
-        assign tag_is_applied = false
-        assign non_author_tags = null | sort
-        for tag in article.tags
-          if tag == author_tag
-            assign tag_is_applied = true
-          else
-            assign tag_as_array = tag | sort
-            assign non_author_tags = non_author_tags | concat: tag_as_array
-          endif
-        endfor
-       -%}
       {%- if author_display_name != blank -%}
         {%- if author_tag != blank and tag_is_applied -%}
           {{ author_display_name | link_to_tag: author_tag }}
@@ -81,44 +82,7 @@
   </article-content>
 </section>
 
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "articleBody": {{ article.content | strip_html | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
-    },
-    "headline": {{ article.title | json }},
-    {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
-    {% endif %}
-    {% if article.image %}
-      "image": [
-        {{ article | image_url: width: 1128 | prepend: "https:" | json }}
-      ],
-    {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "author": {
-      "@type": "Person",
-      "name": {{ article.author | json }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      {% if settings.share_image %}
-        "logo": {
-          "@type": "ImageObject",
-          "height": {{ settings.share_image.height | json }},
-          "url": {{ settings.share_image | image_url: width: settings.share_image.width | prepend: "https:" | json }},
-          "width": {{ settings.share_image.width | json }}
-        },
-      {% endif %}
-      "name": {{ shop.name | json }}
-    }
-  }
-</script>
+{% render 'schema-article', article: article %}
 
 {% schema %}
 {

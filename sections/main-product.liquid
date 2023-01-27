@@ -1,4 +1,5 @@
 {% assign subtitle = product.metafields.verso_api.subtitle.value %}
+{% assign reviews = product.metafields.verso_api.reviews.value %}
 
 <div class="l-container l-container--wide">
   <div class="c-product-detail">
@@ -51,7 +52,7 @@
         <h1 class="c-product-detail__title">
           <span>{{ product.title | escape }}{%- if subtitle -%}:{%- endif -%}</span>
           {%- if subtitle -%}
-            <span class="c-product-detail__subtitle">{{ product.metafields.verso_api.subtitle.value }}</span>
+            <span class="c-product-detail__subtitle">{{ subtitle }}</span>
           {%- endif -%}
         </h1>
         {%
@@ -67,66 +68,18 @@
           <p>{{ product.description }}</p>
         </div>
       {%- endif -%}
-      {%- if product.metafields.verso_api.reviews.value.size > 0 -%}
-        {% render 'product-reviews' reviews: product.metafields.verso_api.reviews.value %}
+      {%- if reviews.size > 0 -%}
+        {% render 'product-reviews' reviews: reviews %}
       {%- endif -%}
 
     </div>
   </div>
 
-  {% assign seo_media = image %}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org/",
-      "@type": "Product",
-      "name": {{ product.title | json }},
-      "url": {{ request.origin | append: product.url | json }},
-      {% if seo_media -%}
-        "image": [
-          {{ seo_media | image_url: width: seo_media.preview_image.width | prepend: "https:" | json }}
-        ],
-      {%- endif %}
-      "description": {{ product.description | strip_html | json }},
-      {% if product.selected_or_first_available_variant.sku != blank -%}
-        "sku": {{ product.selected_or_first_available_variant.sku | json }},
-      {%- endif %}
-      "brand": {
-        "@type": "Brand",
-        "name": {{ product.vendor | json }}
-      },
-      "offers": [
-        {%- for variant in product.variants -%}
-          {%- liquid
-            assign is_available = variant.available
-            assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s' | times: 1
-            assign now_timestamp = 'now' | date: '%s' | times: 1
-            if publication_date_timestamp > now_timestamp
-              assign is_available = false
-            endif
-          -%}
-          {
-            "@type" : "Offer",
-            {%- if variant.sku != blank -%}
-              "sku": {{ variant.sku | json }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 12 -%}
-              "gtin12": {{ variant.barcode }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 13 -%}
-              "gtin13": {{ variant.barcode }},
-            {%- endif -%}
-            {%- if variant.barcode.size == 14 -%}
-              "gtin14": {{ variant.barcode }},
-            {%- endif -%}
-            "availability" : "http://schema.org/{% if is_available %}InStock{% else %}OutOfStock{% endif %}",
-            "price" : {{ variant.price | divided_by: 100.00 | json }},
-            "priceCurrency" : {{ cart.currency.iso_code | json }},
-            "url" : {{ request.origin | append: variant.url | json }}
-          }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]
-    }
-  </script>
+  {%- if product.type == "Books" -%}
+    {% render 'schema-book', product: product %}
+  {%- else -%}
+    {% render 'schema-product', product: product %}
+  {%- endif -%}
 </div>
 
 {% schema %}
