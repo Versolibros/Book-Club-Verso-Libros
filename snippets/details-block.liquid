@@ -1,15 +1,21 @@
-{%- capture layout_class -%}
-{%- if layout == "grid" and image -%}
-    c-details-block--is-grid-with-image
-    {%- elsif layout == "grid" and image == nil -%}
-    c-details-block--is-grid-without-image
+{%- capture layout_classes -%}
+    {%- if layout == "grid" -%}
+        {%- if image -%}
+            l-container--wide c-details-block--is-grid-with-image
+        {%- else -%}
+            l-container--wide c-details-block--is-grid-without-image
+        {%- endif -%}
     {%- else -%}
-    c-details-block--is-flexbox
-{%- endif -%}
+        {%- if image -%}
+            l-container--wide c-details-block--is-flexbox
+        {%- else -%}
+            l-container--max c-details-block--is-flexbox
+        {%- endif -%}
+    {%- endif -%}
 {%- endcapture -%}
 
 <section class="a-bg-default">
-    <div class="l-container {% if layout == "flex" %}l-container--wide{% else %}l-container--max{% endif %} {{ layout_class }}">
+    <div class="l-container {{ layout_classes }}">
         {%- if image -%}
             <div class="c-details-block__image-block">
                 <img
