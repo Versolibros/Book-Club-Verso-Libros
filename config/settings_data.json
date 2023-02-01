@@ -44,7 +44,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "menu": ""
+          "menu": "primary-navigation"
         }
       },
       "footer": {
