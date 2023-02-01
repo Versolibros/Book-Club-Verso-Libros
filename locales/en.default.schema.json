@@ -328,12 +328,18 @@
       "name": "Featured authors",
       "settings": {
         "header__1": {
+          "content": "Header"
+        },
+        "heading": {
+          "label": "Optional header"
+        },
+        "header__2": {
           "content": "Choose a menu…"
         },
         "menu": {
           "label": "Featured authors menu"
         },
-        "header__2": {
+        "header__3": {
           "content": "…or select authors individually"
         },
         "paragraph": {

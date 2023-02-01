@@ -35,7 +35,7 @@
 
     assign author_array_length = author_array | size
     if author_array_length > 0
-      assign title = 'authors.list_title' | t
+      assign title = section.settings.heading
       render 'featured-article-grid', title: title, title_color: 'accent', articles: author_array, aspect_ratio: 1, columns: 4
     endif
   -%}
@@ -52,13 +52,23 @@
       "content": "t:sections.block-featured-authors.settings.header__1.content"
     },
     {
+      "type": "text",
+      "id": "heading",
+      "default": "Featured Authors",
+      "label": "t:sections.block-featured-authors.settings.heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.block-featured-authors.settings.header__2.content"
+    },
+    {
       "type": "link_list",
       "id": "menu",
       "label": "t:sections.block-featured-authors.settings.menu.label"
     },
     {
       "type": "header",
-      "content": "t:sections.block-featured-authors.settings.header__2.content"
+      "content": "t:sections.block-featured-authors.settings.header__3.content"
     },
     {
       "type": "paragraph",

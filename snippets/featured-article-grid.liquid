@@ -1,8 +1,13 @@
 {%-liquid
   assign columns = columns | default: 4
   assign title_color = title_color | default: 'default'
+
+  if title != blank
   render 'section-title', title: title, color: title_color
--%}
+  else
+  echo '<h2 class="sr-only"> {{sections.block-featured-article-grid.default-title| t}} </h2>'
+  endif
+  -%}
 
 <ul class="l-grid l-grid--{{ columns }}">
   {%- for article in articles -%}

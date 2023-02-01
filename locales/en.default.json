@@ -116,6 +116,9 @@
     "block-featured-products": {
       "title": "Books"
     },
+    "block-featured-article-grid": {
+      "default-title": "Featured authors"
+    },
     "book-club-current-selections": {
       "header": "Current selections",
       "cta": "Subscribe",
@@ -359,7 +362,6 @@
     "close": "Close dialog"
   },
   "authors": {
-    "list_title": "Authors",
     "list_title_all": "All authors",
     "browse_by_letter": "Browse all {{ letter }}",
     "alphabet_nav": "Browse authors by last name",
