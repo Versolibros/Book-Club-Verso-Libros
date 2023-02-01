@@ -3,19 +3,20 @@
 {% endcomment %}
 
 {% for contribution_types in contributions %}
-  {% assign contributors = contribution_types['contributors'] %}
-  {% assign contributors_size = contributors | size %}
-  {% assign onix_code = contribution_types['onix_code'] %}
-  {% assign label = onix_code | prepend: "contributions.onix." | t %}
+  {%- liquid
+    assign contributors = contribution_types['contributors']
+    assign contributors_size = contributors | size
+    assign onix_code = contribution_types['onix_code']
+    assign label = onix_code | prepend: "contributions.onix." | t
 
+    if hide_secondary_contributions and onix_code != "A01" and onix_code != "A02" and onix_code != "B01"
+      continue
+    endif
 
-  {%  if hide_secondary_contributions and onix_code != "A01" and onix_code != "A02" and onix_code != "B01" %}
-    {% continue %}
-  {%- endif -%}
-
-  {%- if contributors_size == 0 -%}
-    {% continue %}
-  {%- endif -%}
+    if contributors_size == 0
+      continue
+    endif
+  -%}
 
   <p class="{{ classname }}">
     {{ label }}
