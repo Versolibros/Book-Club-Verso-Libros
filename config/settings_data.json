@@ -1,8 +1,8 @@
 {
   "current": {
-    "social_facebook_link": "https://www.facebook.com/VersoBks/",
-    "social_twitter_link": "https://twitter.com/versobooks",
-    "social_instagram_link": "https://www.instagram.com/versobooks/",
+    "social_facebook_link": "https:\/\/www.facebook.com\/VersoBks\/",
+    "social_twitter_link": "https:\/\/twitter.com\/versobooks",
+    "social_instagram_link": "https:\/\/www.instagram.com\/versobooks\/",
     "currency_code_enabled": true,
     "book_club_reader_title": "Reader",
     "book_club_reader_description": "<ul><li><strong>Every new ebook we publish</strong></li><li><strong>50% off everything on the Verso website</strong></li></ul>",
@@ -17,7 +17,7 @@
     "book_club_comrade_monthly_product": "book-club-comrade-monthly",
     "book_club_comrade_annual_product": "book-club-comrade-annual",
     "book_club_page_header_product": "282-against-everything",
-    "book_club_page_header_text": "<p>Our monthly curated subscription service. Receive best-selling titles in the mail, every new ebook we release, and get 50% off all website purchases.</p>",
+    "book_club_page_header_text": "<p>Our monthly curated subscription service. Receive best-selling titles in the mail, every new ebook we release, and get 50% off all website purchases.<\/p>",
     "book_club_page_instruction_1_heading": "Make your selection",
     "book_club_page_instruction_1_text": "Choose your Book Club selection by the end of the month",
     "book_club_page_instruction_2_heading": "Download your ebooks",
@@ -25,7 +25,7 @@
     "book_club_page_instruction_3_heading": "Receive your books",
     "book_club_page_instruction_3_text": "Your selections are shipped throughout the month",
     "book_club_page_footer_heading": "FAQs",
-    "book_club_page_footer_text": "<p>Confused or have any questions? You can email us at <a href=\"mailto:bookclub@versobooks.com\">bookclub@versobooks.com</a> — we would love to get your feedback! Have general questions about shipping and ebooks? We hope <a href=\"/pages/frequently-asked-questions\" title=\"Frequently Asked Questions\">our full FAQs</a> will help.</p>",
+    "book_club_page_footer_text": "<p>Confused or have any questions? You can email us at <a href=\"mailto:bookclub@versobooks.com\">bookclub@versobooks.com<\/a> — we would love to get your feedback! Have general questions about shipping and ebooks? We hope <a href=\"\/pages\/frequently-asked-questions\" title=\"Frequently Asked Questions\">our full FAQs<\/a> will help.<\/p>",
     "book_club_suggested_products_heading": "All Book Club subscribers get 50% off every purchase!",
     "book_club_suggested_products_description": "If you’re interested in this month’s theme, here are a few suggestions:",
     "book_club_suggested_products_list": [
@@ -36,7 +36,7 @@
       "971-a-kick-in-the-belly",
       "1651-a-plague-on-your-houses"
     ],
-    "checkout_logo_image": "shopify://shop_images/logo-square_e9500a1e-c18d-4476-ac18-aff9db1d6512.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo-square_e9500a1e-c18d-4476-ac18-aff9db1d6512.png",
     "checkout_accent_color": "#e22120",
     "checkout_button_color": "#e22120",
     "checkout_error_color": "#930303",
