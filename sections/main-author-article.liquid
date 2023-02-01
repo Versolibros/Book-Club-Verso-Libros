@@ -1,16 +1,41 @@
 {% render 'details-block' title: article.metafields.verso_api.display_title.value, description: article.content, image: article.image, layout: "grid" %}
 
-{%- if article.metafields.verso_api.related_books.value != blank -%}
+{%- if article.metafields.verso_api.authored_books.value != blank -%}
     <section class="a-bg-default">
         <div class="l-container l-container--max">
             {%- liquid
-                assign section_title = 'sections.main-author-article.related_books' | t
+                assign section_title = 'sections.main-author-article.authored_books' | t
                 render 'section-title', title: section_title
-                render 'product-grid', products: article.metafields.verso_api.related_books.value
+                render 'product-grid', products: article.metafields.verso_api.authored_books.value
             -%}
         </div>
     </section>
 {%- endif -%}
+
+{%- if article.metafields.verso_api.translated_books.value != blank -%}
+    <section class="a-bg-default">
+        <div class="l-container l-container--max">
+            {%- liquid
+                assign section_title = 'sections.main-author-article.translated_books' | t
+                render 'section-title', title: section_title
+                render 'product-grid', products: article.metafields.verso_api.translated_books.value
+            -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{%- if article.metafields.verso_api.edited_books.value != blank -%}
+    <section class="a-bg-default">
+        <div class="l-container l-container--max">
+            {%- liquid
+                assign section_title = 'sections.main-author-article.edited_books' | t
+                render 'section-title', title: section_title
+                render 'product-grid', products: article.metafields.verso_api.edited_books.value
+            -%}
+        </div>
+    </section>
+{%- endif -%}
+
 
 {%- liquid
     comment

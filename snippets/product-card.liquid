@@ -61,9 +61,10 @@
     {%- if product.metafields.verso_api.authors.value != blank or compare_at_price or line_item != blank -%}
       <footer class="c-product-card__details">
         {% render 'byline',
-          authors: product.metafields.verso_api.authors.value,
+          contributions: product.metafields.verso_api.contributions.value,
           linked: true,
-          classname: 'c-product-card__byline'
+          classname: 'c-product-card__byline',
+          hide_secondary_contributions: 'true'
         %}
         {%- if line_item != blank -%}
           {% render 'ebook-download-link', order: order, line_item: line_item %}

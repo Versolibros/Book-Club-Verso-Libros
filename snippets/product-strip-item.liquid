@@ -28,7 +28,7 @@
     <h2 class="c-product-strip-item__title">{{ product.title | link_to: product.url }}</h2>
     {%
       render 'byline',
-      authors: product.metafields.verso_api.authors.value,
+      contributions: product.metafields.verso_api.contributions.value,
       linked: true,
       classname: "c-product-strip-item__byline"
     %}

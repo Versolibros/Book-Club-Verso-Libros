@@ -19,7 +19,7 @@
             {%- if show_meta -%}
               <div>
                 <p class="font-bold">{{ product.title }}</p>
-                {% render 'byline', authors: product.metafields.verso_api.authors.value, linked: false %}
+                {% render 'byline', contributions: product.metafields.verso_api.contributions.value, linked: false %}
               </div>
             {%- endif -%}
           </a>

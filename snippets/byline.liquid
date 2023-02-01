@@ -1,30 +1,28 @@
 {% comment %}
-  Receives an array of handles and uses them to build
-  a list of author names linked to their articles.
+  Receives an array of contributions and uses them to build a list of contributors
 {% endcomment %}
-{% assign authors_size = authors | size %}
-{%- if authors_size > 0 -%}
-  {%- liquid
-    assign linked = linked | default: false
-    assign author_array = null | sort
-    for author in authors
-      assign full_handle = 'authors/' | append: author.handle
-      assign name = author.name
-      assign author = articles[full_handle]
-      if author
-        assign author = author | sort
-        assign author_array = author_array | concat: author
-      endif
-    endfor
-  -%}
+
+{% for contribution_types in contributions %}
+  {% assign contributors = contribution_types['contributors'] %}
+  {% assign contributors_size = contributors | size %}
+  {% assign onix_code = contribution_types['onix_code'] %}
+  {% assign label = onix_code | prepend: "contributions.onix." | t %}
+
+
+  {%  if hide_secondary_contributions and onix_code != "A01" and onix_code != "A02" and onix_code != "B01" %}
+    {% continue %}
+  {%- endif -%}
+
+  {%- if contributors_size == 0 -%}
+    {% continue %}
+  {%- endif -%}
 
   <p class="{{ classname }}">
-    by
-
-    {% for author in authors %}
+    {{ label }}
+    {% for contributor in contributors %}
       {%- liquid
-        assign full_handle = 'authors/' | append: author.handle
-        assign name = author.name
+        assign full_handle = 'authors/' | append: contributor.handle
+        assign name = contributor.name
         assign article = articles[full_handle]
         assign second_to_last = forloop.length | minus: 1
       -%}
@@ -36,4 +34,4 @@
       {%- if forloop.last == true %}{% elsif forloop.index == second_to_last %} and {% else %}, {% endif %}
     {% endfor %}
   </p>
-{%- endif -%}
+{% endfor %}

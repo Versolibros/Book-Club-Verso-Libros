@@ -30,7 +30,7 @@
                       <h3>
                         <a href="{{ item.product.url }}" class="c-cart-item__title">{{ item.product.title | escape }}</a>
                       </h3>
-                      {% render 'byline', authors: item.product.metafields.verso_api.authors.value, linked: false %}
+                      {% render 'byline', contributions: item.product.metafields.verso_api.contributions.value, linked: false %}
                     </header>
                     <div class="c-cart-item__details-block">
                       {%- unless item.product.has_only_default_variant -%}

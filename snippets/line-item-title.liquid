@@ -7,9 +7,10 @@
       <p class="italic">{{ line_item.product.title }}</p>
     {%- endif -%}
     {% render 'byline',
-      authors: line_item.product.metafields.verso_api.authors.value,
+      contributions: line_item.product.metafields.verso_api.contributions.value,
       linked: 'false',
-      classname: 'mbs-[0.125em]'
+      classname: 'mbs-[0.125em]',
+      hide_secondary_contributions: 'true'
     %}
   </dd>
 </div>

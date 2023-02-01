@@ -24,7 +24,11 @@
       {%- if type == 'product' -%}
         <span class="italic">{{ result.title }}</span>
         {%- if result.metafields.verso_api.authors.value != blank %}
-          {% render 'byline', authors: result.metafields.verso_api.authors.value, classname: 'c-predictive-search__result-byline' %}
+          {% render 'byline',
+              contributions: result.metafields.verso_api.contributions.value,
+              classname: 'c-predictive-search__result-byline',
+              hide_secondary_contributions: 'true'
+          %}
         {%- endif -%}
       {%- elsif type == 'article' and result.handle contains 'authors/' %}
         {{ result.metafields.verso_api.display_title.value | default: result.title }}
