@@ -211,8 +211,8 @@
     "account": {
       "title": "Account",
       "details": "Account details",
-      "manage_subscriptions": "Manage subscriptions",
-      "view_addresses": "Addresses",
+      "manage_subscriptions": "Verso Book Club",
+      "view_addresses": "Saved addresses",
       "return": "View all orders"
     },
     "account_fallback": "Account",
