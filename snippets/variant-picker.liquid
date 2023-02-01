@@ -15,33 +15,10 @@
       break
     endif
   endfor
-  comment
-    Test currency of customer's market against the available markets for the variant
-  endcomment
-  assign available_variants = null | sort
-  for variant in product.variants
-    assign markets = null | sort
-    if variant.metafields.verso_api.for_sale_usd.value
-      assign iso_code = "USD" | sort
-      assign markets = markets | concat: iso_code
-    endif
-    if variant.metafields.verso_api.for_sale_cad.value
-      assign iso_code = "CAD" | sort
-      assign markets = markets | concat: iso_code
-    endif
-    if variant.metafields.verso_api.for_sale_gbp.value
-      assign iso_code = "GBP" | sort
-      assign markets = markets | concat: iso_code
-    endif
-    if markets contains customer_iso_code or product_type != "book"
-      assign variant_as_array = variant | sort
-      assign available_variants = available_variants | concat: variant_as_array
-    endif
-  endfor
 -%}
-{%- if available_variants.size > 0 -%}
+{%- if product.variants.size > 0 -%}
   <ul class="c-variant-picker">
-    {%- for variant in available_variants -%}
+    {%- for variant in product.variants -%}
       {%- if has_ebook_in_market == false -%}
         {% assign physical_variant_subtitle = null %}
       {%- endif -%}
