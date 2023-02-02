@@ -72,7 +72,7 @@
         {%- if compare_at_price and line_item == blank and compare_at_price != price -%}
           <div>
             {% render 'discount-badge', price: price, compare_at_price: compare_at_price %}
-          {% render 'preorder-now-collection-item', product: product %}</div>
+          </div>
         {%- endif -%}
       </footer>
     {%- endif -%}
