@@ -9,8 +9,7 @@
     "ff655e28-112c-418d-82f5-b5f0df9d228f": {
       "type": "block-featured-authors",
       "settings": {
-        "heading": "",
-        "menu": "featured-authors",
+        "menu": "",
         "author_1": "",
         "author_2": "",
         "author_3": "",
@@ -20,7 +19,7 @@
     "author-list": {
       "type": "main-author-list",
       "settings": {
-        "author_grid_featured_menu": "author-grid-featured"
+        "author_grid_featured_menu": "author-index"
       }
     }
   },
