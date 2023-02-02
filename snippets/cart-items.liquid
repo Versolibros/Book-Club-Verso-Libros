@@ -67,7 +67,7 @@
                         {%- if item.original_line_price != item.final_line_price -%}
                           <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
                           <s class="c-variant-card__compare-at-price">
-                            {{ item.original_line_price | money }}
+                            <div class="pn-total-line-item" data-id="{{ item.key }}">{{ item.original_line_price | money }}</div>
                           </s>
                         {%- endif -%}
                         <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
