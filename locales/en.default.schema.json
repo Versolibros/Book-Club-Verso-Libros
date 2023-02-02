@@ -470,12 +470,6 @@
       "name": "Instructions & current bundle",
       "settings": {
         "header__1": {
-          "content": "CTA"
-        },
-        "cta_text": {
-          "label": "CTA text"
-        },
-        "header__2": {
           "content": "Current bundle"
         },
         "show_bundle_options": {
@@ -503,6 +497,9 @@
         },
         "paragraph__1": {
           "content": "Other header fields are defined in Theme Settings for use between templates."
+        },
+        "cta_text": {
+          "label": "CTA text"
         }
       }
     },

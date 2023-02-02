@@ -125,7 +125,8 @@
       "instructions_header": "Subscription instructions"
     },
     "book-club-header": {
-      "default_page_title": "Verso Book Club"
+      "default_page_title": "Verso Book Club",
+      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.</a>"
     },
     "book-club-products": {
       "header": "Current & upcoming products",
@@ -141,7 +142,7 @@
       "billed_annually": "billed annually",
       "billed_monthly": "billed monthly",
       "monthly_price": "{{ price }}/month",
-      "for_monthly_price": "for {{ price }}/month"
+      "for_annual_price": "for {{ price }}/year"
     },
     "cart": {
       "title": "Your cart",

@@ -1,5 +1,5 @@
 {%- liquid
-  assign collection = collections[shop.metafields.verso_api.book-club-current-partisan-collection-handle.value]
+  assign collection = collections[shop.metafields.verso_api['book-club-current-partisan-collection-handle'].value]
   assign show_current_bundle = section.settings.show_bundle_options
 
   assign instruction_1_heading = settings.book_club_page_instruction_1_heading
@@ -17,22 +17,32 @@
       <ul class="c-book-club-current-selections__instructions">
         {%- if instruction_1_heading != blank or instruction_1_text != blank -%}
           <li>
-            {% render 'image-text-cta', image_filename: 'book-club-icon-1', heading: instruction_1_heading, text: instruction_1_text, color: 'accent' %}
+            {% render 'image-text-cta',
+              image_filename: 'book-club-icon-1',
+              heading: instruction_1_heading,
+              text: instruction_1_text,
+              color: 'accent'
+            %}
           </li>
         {%- endif -%}
         {%- if instruction_2_heading != blank or instruction_2_text != blank -%}
           <li>
-            {% render 'image-text-cta', image_filename: 'book-club-icon-2', heading: instruction_2_heading, text: instruction_2_text, color: 'accent' %}
+            {% render 'image-text-cta',
+              image_filename: 'book-club-icon-2',
+              heading: instruction_2_heading,
+              text: instruction_2_text,
+              color: 'accent'
+            %}
           </li>
         {%- endif -%}
         {%- if instruction_3_heading != blank or instruction_3_text != blank -%}
           <li>
-            {% render 'image-text-cta', image_filename: 'book-club-icon-3', heading: instruction_3_heading, text: instruction_3_text, color: 'accent' %}
-          </li>
-        {%- endif -%}
-        {%- if section.settings.cta_text != blank -%}
-          <li>
-            {% render 'image-text-cta', image_filename: 'book-club-icon-4', heading: section.settings.cta_text %}
+            {% render 'image-text-cta',
+              image_filename: 'book-club-icon-3',
+              heading: instruction_3_heading,
+              text: instruction_3_text,
+              color: 'accent'
+            %}
           </li>
         {%- endif -%}
       </ul>
@@ -55,15 +65,6 @@
     {
       "type": "header",
       "content": "t:sections.book-club-current-selections.settings.header__1.content"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "t:sections.book-club-current-selections.settings.cta_text.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.book-club-current-selections.settings.header__2.content"
     },
     {
       "type": "checkbox",

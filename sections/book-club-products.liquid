@@ -1,8 +1,8 @@
 <h2 class="sr-only">{{ 'sections.book-club-products.header' | t }}</h2>
 {%- liquid
-  render 'book-club-collection', tier: "comrade", show_subscription_card: true
-  render 'book-club-collection', tier: "partisan", show_subscription_card: true
   render 'book-club-collection', tier: "reader", show_subscription_card: true
+  render 'book-club-collection', tier: "partisan", show_subscription_card: true
+  render 'book-club-collection', tier: "comrade", show_subscription_card: true
 -%}
 
 {% schema %}

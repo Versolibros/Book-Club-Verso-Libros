@@ -4,13 +4,14 @@
     "header": {
       "type": "book-club-header",
       "settings": {
-        "page_title": "{{ page.title }}"
+        "page_title": "{{ page.title }}",
+        "cta_text": "Sign up now and immediately get your pick of these books!"
       }
     },
     "featured_subscription": {
       "type": "book-club-current-selections",
       "settings": {
-        "cta_text": "Sign up now and immediately get your pick of these books!"
+        "show_bundle_options": true
       }
     },
     "subscriptions": {
