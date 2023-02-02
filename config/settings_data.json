@@ -50,7 +50,7 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "menu": "footer",
+          "menu": "main-menu",
           "show_social": true,
           "show_signup_cta": true,
           "signup_cta_text": "Sign up for our newsletter"

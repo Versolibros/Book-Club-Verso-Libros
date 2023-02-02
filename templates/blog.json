@@ -6,15 +6,25 @@
         "title": "Blog"
       }
     },
+    "021a5c29-1c7a-44b6-b581-220cc3d655fd": {
+      "type": "block-featured-articles-grid",
+      "settings": {
+        "menu": "",
+        "article_1": "",
+        "article_2": "",
+        "article_3": ""
+      }
+    },
     "article-list": {
       "type": "main-article-list",
       "settings": {
-        "articles_per_page": 12
+        "articles_per_page": 18
       }
     }
   },
   "order": [
     "title",
+    "021a5c29-1c7a-44b6-b581-220cc3d655fd",
     "article-list"
   ]
 }
