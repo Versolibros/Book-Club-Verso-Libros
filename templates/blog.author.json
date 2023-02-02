@@ -10,8 +10,8 @@
       "type": "block-featured-authors",
       "settings": {
         "menu": "",
-        "author_1": "",
-        "author_2": "",
+        "author_1": "autores\/karl-marx",
+        "author_2": "autores\/tissot-sylvie",
         "author_3": "",
         "author_4": ""
       }
