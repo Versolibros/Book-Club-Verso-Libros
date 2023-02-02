@@ -32,12 +32,12 @@
       {% render 'icon-book-club-logo-type', classname: 'c-book-club-header__book-club-logo' %}
     </div>
   </div>
-  {%- if settings.book_club_page_header_text != blank or section.settings.cta != blank -%}
+  {%- if settings.book_club_page_header_text != blank or section.settings.cta_text != blank -%}
     <div class="c-book-club-header__body-block">
       {%- if settings.book_club_page_header_text != blank -%}
         <div class="c-book-club-header__intro t-rte">{{ settings.book_club_page_header_text }}</div>
       {%- endif -%}
-      {%- if section.settings.cta != blank -%}
+      {%- if section.settings.cta_text != blank -%}
         <div class="c-book-club-header__cta">
           {% render 'image-text-cta', image_filename: 'book-club-icon-4', heading: section.settings.cta_text %}
         </div>
