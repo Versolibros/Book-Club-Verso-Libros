@@ -1,0 +1,518 @@
+{
+  "general": {
+    "logo_title": "Verso Libros",
+    "social": {
+      "links": {
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "instagram": "Instagram"
+      }
+    },
+    "continue_shopping": "Seguir comprando",
+    "pagination": {
+      "label": "Numeración de páginas",
+      "page": "Página {{ number }}",
+      "next": "Siguiente",
+      "next_screen_reader": "Siguiente página",
+      "previous": "Pre-via",
+      "previous_screen_reader": "Pagína previa"
+    },
+    "search": {
+      "search": "Buscar",
+      "no_results": "Lo sentimos, no se han encontrado resultados para su búsqueda.",
+      "reading_list": "Lista de lectura",
+      "blog_post": "Entrada al blog",
+      "author": "Autor",
+      "page": "Página",
+      "product": "Libro",
+      "collection": "Colección",
+      "results_count": {
+        "uno": "{{ count }} resultados para {{ term }}",
+        "otro": "{{count}} resultados para {{ term }}"
+      }
+    },
+    "password_page": {
+      "login_form_heading": "Entrar en la tienda usando contraseña:",
+      "login_password_button": "Iniciar sesión con contraseña",
+      "login_form_password_label": "Contraseña",
+      "login_form_password_placeholder": "Tu contraseña",
+      "login_form_error": "¡Contraseña incorrecta!",
+      "login_form_submit": "Acceder",
+      "admin_link_pre_text": "¿Es usted el propietario de la tienda?",
+      "admin_link_text": "Inicie sesión aquí"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Ir al contenido",
+    "skip_to_product_info": "Ir a la información sobre el producto",
+    "close": "Cerrar",
+    "unit_price_separator": "por",
+    "vendor": "Vendedor:",
+    "error": "Error",
+    "refresh_page": "Al seleccionar una opción, se actualiza toda la página.",
+    "link_messages": {
+      "new_window": "Abrir en una nueva ventana.",
+      "external": "Abrir un sitio web externo."
+    },
+    "loading": "Cargando¦"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Añadir a la cesta",
+      "add_title_to_cart": "Añadir {{ title }} a la cesta",
+      "choose_options": "Elegir opciones",
+      "choose_product_options": "Eligir opciones para {{ product_name }}",
+      "description": "Descripción",
+      "on_sale": "Venta",
+      "product_variants": "Variantes del producto",
+      "variant_title": {
+        "ebook": "Ebook",
+        "paperback": "Rústica",
+        "hardback": "Tapa dura"
+      },
+      "media": {
+        "image_available": "La imagen {{ index }} ya está disponible en la galería"
+      },
+      "quantity": {
+        "label": "Cantidad",
+        "input_label": "Cantidad para {{ product }}",
+        "increase": "Aumentar la cantidad del {{ product }}",
+        "decrease": "Reducir la cantidad del {{ product }}",
+        "remove": "Eliminar",
+        "remove_for_sr": "Eliminar {{ product }}"
+      },
+      "price": {
+        "from_price_html": "Desde {{ price }}",
+        "regular_price": "Precio ordinario",
+        "sale_price": "Precio de venta",
+        "unit_price": "Precio por unidad",
+        "discount": "{{ amount }}% de"
+      },
+      "sold_out": "Agotado",
+      "unavailable": "No disponibe",
+      "coming_soon": "Próximamente",
+      "include_taxes": "Impuestos incluidos.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculado al finalizar la compra.",
+      "metadata": {
+        "page_count": "{{ count }} páginas"
+      }
+    }
+  },
+  "templates": {
+    "contact": {
+      "form": {
+        "error_heading": "Por favor, ajuste lo siguiente:"
+      }
+    },
+    "404": {
+      "title": "Lo sentimos, no podemos encontrar esa página.",
+      "subtext_html": "¿No sabes por dónde empezar? Intenta buscar por <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book</a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author</a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search</a> for a specific term."
+    }
+  },
+  "sections": {
+    "announcement-bar": {
+      "dismiss": "Desestimar el anuncio"
+    },
+    "block-featured-products": {
+      "title": "Libros"
+    },
+    "block-featured-article-grid": {
+      "default-title": "Featured authors"
+    },
+    "book-club-current-selections": {
+      "header": "Selecciones actuales",
+      "cta": "Subscribirse",
+      "instructions_header": "Instrucciones de suscripción"
+    },
+    "book-club-header": {
+      "default_page_title": "Club del libro de Verso",
+      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.</a>"
+    },
+    "book-club-products": {
+      "header": "Productos actuales y futuros",
+      "title_reader_current": "{{ month }} ebooks",
+      "title_partisan_current": "{{ month }} opciones de libro",
+      "title_comrade_current": "{{ month }} ¡Camarada! selección",
+      "title_reader_next_html": "<next-month-title>Next</next-month-title> ebooks",
+      "title_partisan_next_html": "<next-month-title>Next</next-month-title> opciones de libros",
+      "title_comrade_next_html": "<next-month-title>Next</next-month-title> ¡Camarada! selección"
+    },
+    "book-club-subscriptions": {
+      "header": "Suscripciones",
+      "billed_annually": "facturado de manera anual",
+      "billed_monthly": "facturado de manera mensual",
+      "monthly_price": "{{ price }}/ mes",
+      "for_monthly_price": "para {{ price }}/mes"
+    },
+    "cart": {
+      "title": "Tu cesta",
+      "caption": "Artículos de la cesta",
+      "subtotal": "Subtotal",
+      "new_subtotal": "Nuevo subtotal",
+      "checkout": "Echa un vistazo",
+      "empty": "Su cesta está vacía",
+      "add_error": "Se ha producido un error al añadir este producto a su cesta.",
+      "cart_error": "Se ha producido un error al actualizar su cesta. Por favor, inténtelo de nuevo.",
+      "cart_quantity_error_html": "Sólo puede añadir {{ quantity }} de este artículo a su cesta.",
+      "taxes_and_shipping_policy_at_checkout_html": "Impuestos y <a href=\"{{ link }}\">shipping</a> calculado al pagar",
+      "taxes_included_but_shipping_at_checkout": "Impuestos incluidos y gastos de envío calculados en el momento de la compra",
+      "taxes_included_and_shipping_policy_html": "Impuestos incluidos. <a href=\"{{ link }}\">Shipping</a> calculado al pagar.",
+      "taxes_and_shipping_at_checkout": "Los impuestos y gastos de envío se calcularán al pagar",
+      "update": "Actualización"
+    },
+    "collection-product-grid": {
+      "empty_html": "No podemos encontrar nada que se ajuste a este filtro. Por qué <a href=\"{{ link }}\">ojea el catálogo completo</a> en su lugar?"
+    },
+    "header": {
+      "main_nav": "Enlaces",
+      "secondary_nav": "Acciones del usuario",
+      "log_in": "Iniciar sesión",
+      "cart": {
+        "one": "Cesta, {{ count }} artículo",
+        "other": "Cesta, {{ count }} artículos"
+      },
+      "mobile_dialog": "Sitio y enlaces de inicio de sesión",
+      "mobile_nav": "Sitio y enlaces de inicio de sesión"
+    },
+    "footer": {
+      "site_nav": "Enlaces de sitios adicionales",
+      "social_nav": "Enlaces para redes sociales",
+      "newsletter": {
+        "label": "Suscríbase al boletín",
+        "email_label": "Dirección de correo electrónico",
+        "submit": "Suscribirse"
+      }
+    },
+    "main-article": {
+      "tags_label": "Achivado bajo"
+    },
+    "main-author-article": {
+      "related_books": "Libros",
+      "related_articles": "Entradas de blog relacionadas",
+      "authored_books": "Books",
+      "translated_books": "Translated",
+      "edited_books": "Edited"
+    },
+    "main-list-collections": {
+      "title": "Colecciones",
+      "empty": "Aún no tenemos colecciones. ¡Vuelva a consultar pronto!"
+    },
+    "main-page-with-sidebar-nav": {
+      "nav": "Enlaces secundarios",
+      "nav-select": "Enlaces secundarios (navega al seleccionar)"
+    },
+    "search": {
+      "label": "Sitio de búsqueda"
+    },
+    "video": {
+      "load_video": "Cargar video: {{ description }}"
+    }
+  },
+  "localization": {
+    "country_label": "País",
+    "location_currency_label": "Localización/Moneda",
+    "update_country": "Actualizar país",
+    "location_submit_warning": "Se enviará tras la selección"
+  },
+  "customer": {
+    "account": {
+      "title": "Cuenta",
+      "details": "Detalles de la cuenta",
+      "manage_subscriptions": "Gestionar las suscripciones",
+      "view_addresses": "Direcciones",
+      "return": "Ver todos los pedidos"
+    },
+    "account_fallback": "Cuenta",
+    "activate_account": {
+      "title": "Activar cuenta",
+      "subtext": "Crea tu contraseña para activar tu cuenta.",
+      "password": "Contraseña",
+      "password_confirm": "Confirmar contraseña",
+      "submit": "Activar cuenta",
+      "cancel": "Renunciar a la invitación"
+    },
+    "addresses": {
+      "title": "Direcciones",
+      "default": "Dirección predeterminada",
+      "other": "Otras direcciones",
+      "add_new": "Añadir nuevas direcciones",
+      "edit_address": "Editar direcciones",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "company": "Compañía",
+      "address1": "Dirección 1",
+      "address2": "Dirección 2",
+      "city": "Ciudad",
+      "country": "País/región",
+      "province": "Estado/provincia",
+      "zip": "Dirección/Código postal",
+      "phone": "Teléfono",
+      "set_default": "Establecer como dirección predeterminada",
+      "add": "Añadir dirección",
+      "update": "Actualizar dirección",
+      "cancel": "Cancelar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "delete_confirm": "¿Está seguro de que desea eliminar esta dirección?"
+    },
+    "log_in": "Iniciar sesión",
+    "log_out": "Cerrar sesión",
+    "login_page": {
+      "cancel": "Cancelar",
+      "create_account_html": "¿No tienes una cuenta? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Regístrate aquí</a>.",
+      "email": "Email",
+      "forgot_password": "¿Olvidaste tu contraseña?",
+      "guest_continue": "Continuar",
+      "guest_title": "Continar como invitado",
+      "password": "Contraseña",
+      "title": "Iniciar sesión",
+      "sign_in": "Registrarse",
+      "submit": "Entregar"
+    },
+    "navigation_label": "Enlaces de clientes",
+    "navigation_select_label": "Enlaces de clientes (navegará al seleccionar)",
+    "order": {
+      "title": "Orden {{ name }}",
+      "date_html": "Ordenado en {{ date }}",
+      "cancelled_html": "Pedido cancelado el {{ date }}",
+      "cancelled_reason": "Razón: {{ reason }}",
+      "billing_address": "Datos de facturación",
+      "payment_status": "Estado",
+      "shipping_address": "Envío",
+      "fulfillment_status": "Estado",
+      "shipping": "Envío",
+      "discount": "Descuento",
+      "tax": "Impuesto",
+      "total": "Total",
+      "track_shipment": "Seguimiento de envío",
+      "tracking_url": "Enlace de seguimiento",
+      "tracking_company": "Transportista",
+      "tracking_number": "Número de rastreo",
+      "subtotal": "Subtotal",
+      "total_duties": "Impuestos",
+      "line_item": {
+        "list_label": "Artículos de línea",
+        "title": "Nombre del producto",
+        "variant_name": "Tipo",
+        "sku": "ISBN",
+        "fulfilled_at_html": "Cumplido en {{ date }}",
+        "price": "Precio",
+        "quantity": "Cantidad",
+        "download_ebook": "Descargar ebook"
+      }
+    },
+    "orders": {
+      "title": "Historial de pedidos",
+      "order_number": "Pedido",
+      "order_number_link": "Número de pedido {{ number }}",
+      "date": "Fecha",
+      "payment_status": "Estado de pago",
+      "fulfillment_status": "Estado de cumplimiento",
+      "total": "Total",
+      "none_html": "Parece que aún no has pedido nada. Por qué no <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">ojeas el catálogo</a>?",
+      "support_html": "Si ha habido un error con un pedido, por favor <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">correo electrónico de soporte</a>."
+    },
+    "recover_password": {
+      "title": "Restablecer contraseña",
+      "success": "Le hemos enviado un correo electrónico con un enlace para actualizar su contraseña."
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "email": "Email (obligatorio)",
+      "password": "Password (obligatorio)",
+      "submit": "Registrarse"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Contraseña",
+      "password_confirm": "Confirmar contraseña",
+      "submit": "Restablecer contraseña"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Aquí está tu{{ value }} tarjeta de regalo para {{ shop }}!",
+      "subtext": "Tu tarjeta de regalo",
+      "gift_card_code": "Código de la tarjeta de regalo",
+      "shop_link": "Continuar comprando",
+      "remaining_html": "{{ balance }} restante",
+      "add_to_apple_wallet": "Agregar a la billetera de Apple",
+      "qr_image_alt": "Código QR: escanear para canjear la tarjeta de regalo",
+      "copy_code": "Copiar código",
+      "expired": "Caducado",
+      "copy_code_success": "Código copiado con éxito",
+      "print_gift_card": "Imprimir"
+    }
+  },
+  "predictive_search": {
+    "toggle": "Buscar sitio",
+    "dialog_label": "Buscar sitio",
+    "label": "Buscar",
+    "placeholder": "e.g. El capital, Marx, El Capital de Marx",
+    "submit": "Ver todos los resultados",
+    "results": "Resultados de búsqueda",
+    "results_with_count_and_terms": {
+      "one": "{{ count }} result found for “{{ terms }}”.",
+      "other": "{{ count }} resultados encontrados para “{{ terms }}”. Mostrando resultados para {{ limit }}."
+    },
+    "no_results": "Buscar en el sitio “{{ terms }}”."
+  },
+  "image_overlay": {
+    "label": "Ampliar la imagen del producto",
+    "view": "Ver en grande",
+    "close": "Cerrar diálogo"
+  },
+  "authors": {
+    "list_title_all": "Todos los autores",
+    "browse_by_letter": "Ver todos {{ letter }}",
+    "alphabet_nav": "Búsqueda de autores por apellido",
+    "related_products": "Libros"
+  },
+  "articles": {
+    "list_title": "Blog",
+    "single_title": "Entrada en el blog"
+  },
+  "collection_filters": {
+    "all_subjects": "Todos los temas",
+    "select_filter": "Filtros de temas (navegará al seleccionar))",
+    "product_filter": "Filtro de productos",
+    "skip_to": "Ir a la lista de libros"
+  },
+  "reviews": {
+    "reviews_title": "Reseñas",
+    "read_all_button": "Leer todas las {{ count }} reseñas",
+    "hide_most_button": "Ocultar la mayoría de las reseñas"
+  },
+  "recharge": {
+    "next_shipment_ebook": "Nuevos ebooks disponibles",
+    "next_shipment_print": "Próximo envío",
+    "manage_subscription_ebook": "Vea las novedades",
+    "manage_subscription_print": "Eligir mis libros",
+    "addons_heading_comrade": "Los suscritos como 'camaradas' también recibirán los siguientes libros impresos:",
+    "addons_heading_print": "También recibirás todos los ebooks que publiquemos durante el mes:",
+    "addons_heading_ebook": "Recibirás todos los ebooks que publiquemos durante el mes:",
+    "addons_empty_message": "¡Vuelva pronto para ver las selecciones para su próximo pedido!"
+  },
+  "contributions": {
+    "onix": {
+      "A01": "by",
+      "A02": "with",
+      "A03": "Screenplay by",
+      "A04": "Libretto by",
+      "A05": "Lyrics by",
+      "A06": "composer",
+      "A07": "artist",
+      "A08": "photographer",
+      "A09": "Created by",
+      "A10": "From an idea by",
+      "A11": "Designed by",
+      "A12": "Illustrated by",
+      "A13": "Photographs by",
+      "A14": "Text by",
+      "A15": "Preface by",
+      "A16": "Prologue by",
+      "A17": "Summary by",
+      "A18": "Supplement by",
+      "A19": "Afterword by",
+      "A20": "Notes by",
+      "A21": "Commentaries by",
+      "A22": "Epilogue by",
+      "A23": "Foreword by",
+      "A24": "Introduction by",
+      "A25": "Footnotes by",
+      "A26": "Memoir by",
+      "A27": "Experiments by",
+      "A29": "Introduction and notes by",
+      "A30": "Software written by",
+      "A31": "Book and lyrics by",
+      "A32": "Contributions by",
+      "A33": "Appendix by",
+      "A34": "Index by",
+      "A35": "Drawings by",
+      "A36": "Cover design or artwork by",
+      "A37": "Preliminary work by",
+      "A38": "Original author",
+      "A39": "Maps by",
+      "A40": "Inked or colored by",
+      "A41": "Paper engineering by",
+      "A42": "Continued by",
+      "A43": "Interviewer",
+      "A44": "Interviewee",
+      "A45": "Comic script by",
+      "A46": "Inker",
+      "A47": "Colorist",
+      "A48": "Letterer",
+      "A51": "Research by",
+      "A99": "Other primary creator",
+      "B01": "Edited by",
+      "B02": "Revised by",
+      "B03": "Retold by",
+      "B04": "Abridged by",
+      "B05": "Adapted by",
+      "B06": "Translated by",
+      "B07": "As told by",
+      "B08": "Translated with commentary by",
+      "B09": "Series edited by",
+      "B10": "Edited and translated by",
+      "B11": "Editor-in-chief",
+      "B12": "Guest editor",
+      "B13": "Volume editor",
+      "B14": "Editorial board member",
+      "B15": "Editorial coordination by",
+      "B16": "Managing editor",
+      "B17": "Founded by",
+      "B18": "Prepared for publication by",
+      "B19": "Associate editor",
+      "B20": "Consultant editor",
+      "B21": "General editor",
+      "B22": "Dramatized by",
+      "B23": "General rapporteur",
+      "B24": "Literary editor",
+      "B25": "Arranged by music",
+      "B26": "Technical editor",
+      "B27": "Thesis advisor or supervisor",
+      "B28": "Thesis examiner",
+      "B29": "Scientific editor",
+      "B30": "Historical advisor",
+      "B31": "Original editor",
+      "B32": "Translation revised by",
+      "B99": "Other adaptation by",
+      "C01": "Compiled by",
+      "C02": "Selected by",
+      "C03": "Non-text material selected by",
+      "C04": "Curated by",
+      "C99": "Other compilation by",
+      "D01": "Producer",
+      "D02": "Director",
+      "D03": "Conductor",
+      "D04": "Choreographer",
+      "D99": "Other direction by",
+      "E01": "Actor",
+      "E02": "Dancer",
+      "E03": "Narrator",
+      "E04": "Commentator",
+      "E05": "Vocal soloist",
+      "E06": "Instrumental soloist",
+      "E07": "Read by",
+      "E08": "Performed by orchestra, band, ensemble",
+      "E09": "Speaker",
+      "E10": "Presenter",
+      "E99": "Performed by",
+      "F01": "Filmed/photographed by",
+      "F02": "Editor film or video",
+      "F99": "Other recording by",
+      "Z01": "Assisted by",
+      "Z02": "Honored/dedicated to",
+      "Z03": "Enacting jurisdiction",
+      "Z04": "Peer reviewed",
+      "Z98": "Various roles",
+      "Z99": "Other"
+    }
+  },
+  "glossary": {
+    "or": "or"
+  }
+}
