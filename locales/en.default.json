@@ -368,7 +368,7 @@
   "authors": {
     "list_title_all": "All authors",
     "browse_by_letter": "Browse all {{ letter }}",
-    "alphabet_nav": "Browse authors by last name",
+    "alphabet_nav": "Authors, alphabetical by last name",
     "related_products": "Books"
   },
   "articles": {
