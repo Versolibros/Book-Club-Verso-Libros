@@ -125,17 +125,17 @@
       "instructions_header": "Instrucciones de suscripción"
     },
     "book-club-header": {
-      "default_page_title": "Club del libro de Verso",
-      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.<\/a>"
+      "default_page_title": "Comunidad de Verso",
+      "existing_customer_prompt_html": "¿Ya eres subscriptor? <a href=\"{{ link_url }}\">Haz tu selección aquí.<\/a>"
     },
     "book-club-products": {
       "header": "Productos actuales y futuros",
       "title_reader_current": "{{ month }} ebooks",
       "title_partisan_current": "{{ month }} opciones de libro",
       "title_comrade_current": "{{ month }} ¡Camarada! selección",
-      "title_reader_next_html": "<next-month-title>Next<\/next-month-title> ebooks",
-      "title_partisan_next_html": "<next-month-title>Next<\/next-month-title> opciones de libros",
-      "title_comrade_next_html": "<next-month-title>Next<\/next-month-title> ¡Camarada! selección"
+      "title_reader_next_html": "<next-month-title>Siguiente<\/next-month-title> ebooks",
+      "title_partisan_next_html": "<next-month-title>Siguiente<\/next-month-title> opciones de libros",
+      "title_comrade_next_html": "<next-month-title>Siguiente<\/next-month-title> ¡Camarada! selección"
     },
     "book-club-subscriptions": {
       "header": "Suscripciones",
