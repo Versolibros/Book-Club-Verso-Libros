@@ -5,7 +5,7 @@
       "type": "book-club-header",
       "settings": {
         "page_title": "{{ page.title }}",
-        "cta_text": "Sign up now and immediately get your pick of these books!"
+        "cta_text": ""
       }
     },
     "featured_subscription": {
