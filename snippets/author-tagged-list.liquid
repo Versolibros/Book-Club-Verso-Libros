@@ -3,7 +3,13 @@
     <ol class="c-alphabet-list">
       {%- for tag in blog.all_tags -%}
         <li class="c-alphabet-list__item">
-          <a href="{{ blog.url }}/tagged/{{ tag }}"{% if tag == current_tags[0] %} aria-current="page"{% endif %} class="c-alphabet-list__link">
+          <a
+            href="{{ blog.url }}/tagged/{{ tag }}"
+            {% if tag == current_tags[0] %}
+              aria-current="page"
+            {% endif %}
+            class="c-alphabet-list__link"
+          >
             {{ tag | remove: 'letter-' | capitalize }}
           </a>
         </li>
@@ -11,9 +17,12 @@
     </ol>
   </nav>
   {% assign sorted_articles = blog.articles | sort: 'title' %}
-    <ol class="c-author-tagged-list">
+  <ol class="c-author-tagged-list">
     {% for article in sorted_articles %}
-        <li class="c-author-tagged-list__item">{{ article.metafields.verso_api.display_title.value | link_to: article.url, class: 'c-author-tagged-list__link' }}</li>
+      {% assign title = article.metafields.verso_api.display_title.value | default: article.title %}
+      <li class="c-author-tagged-list__item">
+        {{ title | link_to: article.url, class: 'c-author-tagged-list__link' }}
+      </li>
     {% endfor %}
   </ol>
 {% endpaginate %}
