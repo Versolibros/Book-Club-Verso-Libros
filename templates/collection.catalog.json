@@ -14,7 +14,7 @@
         "165910429535f14a5b-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Verso Books is the largest independent, radical publishing house in the English-speaking world, publishing one hundred books a year.</p>",
+            "text": "<p>Verso Books is the largest independent, radical publishing house in the English-speaking world, publishing one hundred books a year.<\/p>",
             "text_style": "t-lead"
           }
         }
@@ -33,7 +33,7 @@
           "type": "featured_collections",
           "settings": {
             "collection_heading": "Featured Book Series",
-            "collection_menu": "featured-collections",
+            "collection_menu": "",
             "collection_list": [
 
             ]
@@ -41,10 +41,11 @@
         },
         "203dfd8b-e73b-49a4-88cd-408ce316099d": {
           "type": "featured_articles_list",
+          "disabled": true,
           "settings": {
             "heading": "Reading Lists",
             "preheading": "Top",
-            "menu": "top-reading-lists",
+            "menu": "",
             "article_1": "",
             "article_2": "",
             "article_3": "",
@@ -66,7 +67,7 @@
       "settings": {
         "show_menu": true,
         "menu": "subject-collections",
-        "region_menu": "regional-menu",
+        "region_menu": "",
         "products_per_page": 24
       }
     }
