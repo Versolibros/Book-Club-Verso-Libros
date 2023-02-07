@@ -22,6 +22,12 @@ jobs:
           ref: release
           path: release
 
+      - name: "checkout release-prod"
+        uses: actions/checkout@v3
+        with:
+          ref: release-prod
+          path: release-prod
+
       - name: "capture_commit_hash"
         run: |
           cd ${GITHUB_WORKSPACE}/main
@@ -60,7 +66,7 @@ jobs:
           cd ${GITHUB_WORKSPACE}/main
           yarn webpack:build
 
-      - name: "restructure_repo"
+      - name: "restructure_release_repo"
         run: |
           cd ${GITHUB_WORKSPACE}/release
           find . -maxdepth 1 -mindepth 1 -not -name .git -exec rm -rf {} +
@@ -71,9 +77,28 @@ jobs:
           ls -lah
           ls -lah assets/
 
-      - name: "maybe_commit_changes"
+      - name: "restructure_release_prod_repo"
+        run: |
+          cd ${GITHUB_WORKSPACE}/release-prod
+          find . -maxdepth 1 -mindepth 1 -not -name .git -exec rm -rf {} +
+          cd ${GITHUB_WORKSPACE}
+          yes | cp -r ${GITHUB_WORKSPACE}/main/shopify/* ${GITHUB_WORKSPACE}/release-prod/
+          yes | cp -r ${GITHUB_WORKSPACE}/main/.github ${GITHUB_WORKSPACE}/release-prod/
+          cd ${GITHUB_WORKSPACE}/release-prod
+          ls -lah
+          ls -lah assets/
+
+      - name: "maybe_commit_changes_to_release"
         run: |
           cd ${GITHUB_WORKSPACE}/release
+          git add --all
+          git config --global user.email "office@castironcoding.com"
+          git config --global user.name "Build Action"
+          git diff --staged --quiet || git commit -m "[C] build assets - based on ${{ env.commit }}"
+
+      - name: "maybe_commit_changes_to_release_prod"
+        run: |
+          cd ${GITHUB_WORKSPACE}/release-prod
           git add --all
           git config --global user.email "office@castironcoding.com"
           git config --global user.name "Build Action"
@@ -85,3 +110,5 @@ jobs:
         run: |
           cd ${GITHUB_WORKSPACE}/release
           git push --force origin release
+          cd ${GITHUB_WORKSPACE}/release-prod
+          git push --force origin release-prod
