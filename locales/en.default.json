@@ -142,7 +142,7 @@
       "billed_annually": "billed annually",
       "billed_monthly": "billed monthly",
       "monthly_price": "{{ price }}/month",
-      "for_annual_price": "for {{ price }}/year"
+      "for_annual_price": "for {{ price }}/month"
     },
     "cart": {
       "title": "Your cart",
