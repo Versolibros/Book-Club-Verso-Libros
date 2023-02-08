@@ -15,7 +15,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Verso Libros es una editorial independiente de libro radical para el mundo hispanohablante.<br\/><\/p>",
-            "text_style": "t-lead"
+            "text_style": "t-base"
           }
         }
       },
