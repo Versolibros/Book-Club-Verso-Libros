@@ -1,5 +1,5 @@
-{%-liquid
-  if item.handle contains "authors/"
+{%- liquid
+  if item.handle contains 'authors/'
     assign aspect_ratio = 1
     assign image_width = item.image.width | default: 202
     assign display_name = item.metafields.verso_api.display_title
@@ -24,7 +24,7 @@
     <img
       srcset="{{ item.image | image_url: width: image_width_2x, height: image_height_2x, crop: 'center' }} 2x, {{ item.image | image_url: width: image_width, height: image_height, crop: 'center' }}"
       src="{{ item.image | image_url: width: image_width }}"
-      alt="{{ display_name | escape }}"
+      alt=""
       loading="lazy"
       width="{{ image_width }}"
       height="{{ image_height }}"
@@ -32,14 +32,14 @@
     >
   {%- else -%}
     <div class="c-search__img c-search__img--{{ aspect_ratio_class_modifier }} c-placeholder-image a-grow-on-ancestor-hover a-image-background">
-      {% render 'icon-verso-logo-mark' classname: 'c-search__placeholder-logo' %}
+      {% render 'icon-verso-logo-mark', classname: 'c-search__placeholder-logo' %}
     </div>
   {%- endif -%}
 
-  {%- if item.handle contains "news/" -%}
+  {%- if item.handle contains 'news/' -%}
     <div class="c-search__result-text">
       <p class="c-search__result-type text-accent">
-        {% if item.template_suffix contains "-list" %}
+        {% if item.template_suffix contains '-list' %}
           {{ 'general.search.reading_list' | t }}
         {% else %}
           {{ 'general.search.blog_post' | t }}
