@@ -3,7 +3,7 @@
     assign title = product.title
     assign subtitle = product.metafields.verso_api.subtitle.value
     if subtitle
-      assign title = title | append: ": " | append: subtitle
+      assign title = title | append: ': ' | append: subtitle
     endif
     assign compare_at_price = product.variants[0].compare_at_price
     assign price = product.variants[0].price
@@ -11,10 +11,10 @@
     if line_item != blank and line_item.variant.title contains 'ebook'
       assign is_ebook = true
     endif
-   -%}
+  -%}
 
   <article class="c-product-card">
-    <a href="{{ product.url }}" aria-label="{{ product.title }}" class="c-product-card__product-link">
+    <a href="{{ product.url }}" class="c-product-card__product-link">
       <div class="c-product-card__image-wrapper">
         {%- liquid
           comment
@@ -29,7 +29,7 @@
           <img
             srcset="{{ image | image_url: width: 344 }} 2x, {{ image | image_url: width: 172 }} 1x"
             src="{{ image | image_url: width: 172 }}"
-            alt="{{ product.title | escape }}"
+            alt=""
             loading="lazy"
             width="{{ image.aspect_ratio | times: 280 | round }}"
             height="280"
@@ -50,9 +50,9 @@
         {%- if line_item != blank and product.type == 'Books' -%}
           <p class="font-sans text-xsm text-neutral-45">{% render 'variant-title', variant: line_item.variant %}</p>
         {%- endif -%}
-        {% assign tag = "h3" %}
+        {% assign tag = 'h3' %}
         {%- if is_search -%}
-          {% assign tag = "h2" %}
+          {% assign tag = 'h2' %}
         {%- endif -%}
         <{{ tag }} class="c-product-card__title">{{ title | escape_once }}</{{ tag }}>
       </header>
