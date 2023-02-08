@@ -27,6 +27,7 @@
           width="100"
           height="{{ 100 | divided_by: product.featured_media.aspect_ratio | round }}"
           class="c-book-club-header__image"
+          aria-hidden="true"
         >
       {%- endif -%}
       {% render 'icon-book-club-logo-type', classname: 'c-book-club-header__book-club-logo' %}
