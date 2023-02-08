@@ -26,44 +26,9 @@
       "settings": {
       }
     },
-    "1660000793ecd5e49a": {
-      "type": "block-columns",
-      "blocks": {
-        "ce516fb9-7777-4868-a5a5-47b17e4939f2": {
-          "type": "featured_collections",
-          "settings": {
-            "collection_heading": "Featured Book Series",
-            "collection_menu": "",
-            "collection_list": [
-
-            ]
-          }
-        },
-        "203dfd8b-e73b-49a4-88cd-408ce316099d": {
-          "type": "featured_articles_list",
-          "disabled": true,
-          "settings": {
-            "heading": "Reading Lists",
-            "preheading": "Top",
-            "menu": "",
-            "article_1": "",
-            "article_2": "",
-            "article_3": "",
-            "article_4": "",
-            "article_5": ""
-          }
-        }
-      },
-      "block_order": [
-        "ce516fb9-7777-4868-a5a5-47b17e4939f2",
-        "203dfd8b-e73b-49a4-88cd-408ce316099d"
-      ],
-      "settings": {
-        "column_ratio": "60"
-      }
-    },
     "product-grid": {
       "type": "collection-product-grid",
+      "disabled": true,
       "settings": {
         "show_menu": true,
         "menu": "subject-collections",
@@ -74,7 +39,6 @@
   },
   "order": [
     "1659104295b3869a2c",
-    "1660000793ecd5e49a",
     "product-grid"
   ]
 }
