@@ -9,7 +9,8 @@
     "ff655e28-112c-418d-82f5-b5f0df9d228f": {
       "type": "block-featured-authors",
       "settings": {
-        "menu": "",
+        "heading": "Autores destacados",
+        "menu": "autores-destacados",
         "author_1": "autores\/karl-marx",
         "author_2": "autores\/tissot-sylvie",
         "author_3": "",
