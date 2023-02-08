@@ -34,7 +34,7 @@
           {%- for item in search.results -%}
             <li class="c-search__result-item">
               {%- if item.object_type != 'product' -%}
-                <a href="{{ item.url }}" aria-label="{{ item.title }}" class="c-search__result-link">
+                <a href="{{ item.url }}" aria-label="{%- if item.handle contains 'authors/' -%}{{ item.metafields.verso_api.display_title }}{%- else -%}{{ item.title }}{%- endif -%}" class="c-search__result-link">
               {%- endif -%}
               {%- case item.object_type -%}
                 {%- when 'product' -%}
