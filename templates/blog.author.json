@@ -1,5 +1,11 @@
 {
   "sections": {
+      "title": {
+      "type": "sr-only-page-title",
+      "settings": {
+        "title": "Authors"
+      }
+    },
     "ff655e28-112c-418d-82f5-b5f0df9d228f": {
       "type": "block-featured-authors",
       "settings": {
@@ -19,6 +25,7 @@
     }
   },
   "order": [
+    "title",
     "ff655e28-112c-418d-82f5-b5f0df9d228f",
     "author-list"
   ]

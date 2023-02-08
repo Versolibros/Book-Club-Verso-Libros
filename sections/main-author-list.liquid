@@ -1,13 +1,8 @@
-<h1 class="sr-only">{{ blog.title }}</h1>
-
 <div class="l-container l-container--max">
   {%- if current_tags -%}
     {% render 'author-tagged-list', blog: blog %}
   {%- else -%}
-    {% render 'author-list',
-      tags: blog.all_tags,
-      featured_author_menu: section.settings.author_grid_featured_menu
-    %}
+    {% render 'author-list', tags: blog.all_tags, featured_author_menu: section.settings.author_grid_featured_menu %}
   {%- endif -%}
 </div>
 
