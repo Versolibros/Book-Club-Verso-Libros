@@ -1,6 +1,6 @@
 {% assign text_length = text | size %}
 {% assign pattern_height = text_length | times: 15.75 | plus: 6.2 %}
-<svg xmlns="http://www.w3.org/2000/svg" class="{{ classname }}">
+<svg xmlns="http://www.w3.org/2000/svg" class="{{ classname }}" aria-hidden="true">
   <defs>
     <pattern
       id="icon-text-pattern-text-{{ idSuffix }}"
