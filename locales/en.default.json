@@ -212,7 +212,12 @@
     "country_label": "Country",
     "location_currency_label": "Location/Currency",
     "update_country": "Update country",
-    "location_submit_warning": "Will submit upon selection"
+    "location_submit_warning": "Will submit upon selection",
+    "country": {
+      "ca": "Canada",
+      "row": "Rest of World",
+      "us": "United States"
+    }
   },
   "customer": {
     "account": {

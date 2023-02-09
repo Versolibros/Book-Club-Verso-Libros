@@ -1,22 +1,40 @@
 {%- form 'localization', id: 'FooterLocalizationForm', class: 'c-localization-form' -%}
   <div class="c-localization-form__wrapper">
-    {% render 'icon-select' aria-hidden: true, classname: 'c-localization-form__select-icon' %}
-    <label class="c-localization-form__label" id="localization-form-header">{{ 'localization.location_currency_label' | t }}</label>
+    {% render 'icon-select', aria-hidden: true, classname: 'c-localization-form__select-icon' %}
+    <label class="c-localization-form__label" id="localization-form-header">
+      {{- 'localization.location_currency_label' | t -}}
+    </label>
     <select
       name="country_code"
       aria-labelledby="localization-form-header"
       class="text-xsm"
       onchange="this.form.submit()"
-      aria-describedby="will-submit-warning">
-      {%- for country in localization.available_countries -%}
-        <option
-          value="{{ country.iso_code }}"
-          {%- if country.iso_code == localization.country.iso_code %}
+      aria-describedby="will-submit-warning"
+    >
+      <option
+        value="CA"
+        {%- if localization.country.iso_code == 'CA' %}
           selected
-          {% endif %}>
-          {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
-        </option>
-      {%- endfor -%}
+        {% endif %}
+      >
+        {{ 'localization.country.ca' | t }} (CAD $)
+      </option>
+      <option
+        value="GB"
+        {%- if localization.country.iso_code != 'CA' and localization.country.iso_code != 'US' %}
+          selected
+        {% endif %}
+      >
+        {{ 'localization.country.row' | t }} (GBP £)
+      </option>
+      <option
+        value="US"
+        {%- if localization.country.iso_code == 'US' %}
+          selected
+        {% endif %}
+      >
+        {{ 'localization.country.us' | t }} (USD $)
+      </option>
     </select>
     <span id="will-submit-warning" class="sr-only">{{ 'localization.location_submit_warning' | t }}</span>
   </div>
