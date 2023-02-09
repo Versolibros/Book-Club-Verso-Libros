@@ -5,9 +5,35 @@ on:
       - main
 
 jobs:
+  has_backfill_pr:
+    name: Check for Backfill PR
+    runs-on: ubuntu-latest
+    outputs:
+      has_pr: ${{ steps.pr_check.outputs.has_pr }}
+    steps:
+
+      - name: "checkout backfill"
+        uses: actions/checkout@v3
+        with:
+          ref: backfill
+          path: backfill
+      - name: check_for_backfill_pr
+        id: pr_check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd ${GITHUB_WORKSPACE}/backfill
+          PRS=$(gh pr list --json baseRefName,headRefName --jq 'map(select(.baseRefName == "main" and .headRefName == "backfill")) | length')
+          if [ "$PRS" = "0" ]
+          then
+            echo "has_pr=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_pr=true" >> $GITHUB_OUTPUT
+          fi
   build:
     name: Build
     runs-on: ubuntu-latest
+    needs: has_backfill_pr
     steps:
 
       - name: "checkout main"
@@ -15,18 +41,6 @@ jobs:
         with:
           ref: main
           path: main
-
-      - name: "checkout release"
-        uses: actions/checkout@v3
-        with:
-          ref: release
-          path: release
-
-      - name: "checkout release-prod"
-        uses: actions/checkout@v3
-        with:
-          ref: release-prod
-          path: release-prod
 
       - name: "capture_commit_hash"
         run: |
@@ -66,6 +80,12 @@ jobs:
           cd ${GITHUB_WORKSPACE}/main
           yarn webpack:build
 
+      - name: "checkout release"
+        uses: actions/checkout@v3
+        with:
+          ref: release
+          path: release
+
       - name: "restructure_release_repo"
         run: |
           cd ${GITHUB_WORKSPACE}/release
@@ -77,7 +97,30 @@ jobs:
           ls -lah
           ls -lah assets/
 
+      - name: "maybe_commit_changes_to_release"
+        run: |
+          cd ${GITHUB_WORKSPACE}/release
+          git add --all
+          git config --global user.email "office@castironcoding.com"
+          git config --global user.name "Build Action"
+          git diff --staged --quiet || git commit -m "[C] build assets - based on ${{ env.commit }}"
+
+      - name: "push_changes_to_release"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd ${GITHUB_WORKSPACE}/release
+          git push --force origin release
+
+      - name: "checkout release-prod"
+        if: needs.has_backfill_pr.outputs.has_pr == 'false'
+        uses: actions/checkout@v3
+        with:
+          ref: release-prod
+          path: release-prod
+
       - name: "restructure_release_prod_repo"
+        if: needs.has_backfill_pr.outputs.has_pr == 'false'
         run: |
           cd ${GITHUB_WORKSPACE}/release-prod
           find . -maxdepth 1 -mindepth 1 -not -name .git -exec rm -rf {} +
@@ -88,15 +131,8 @@ jobs:
           ls -lah
           ls -lah assets/
 
-      - name: "maybe_commit_changes_to_release"
-        run: |
-          cd ${GITHUB_WORKSPACE}/release
-          git add --all
-          git config --global user.email "office@castironcoding.com"
-          git config --global user.name "Build Action"
-          git diff --staged --quiet || git commit -m "[C] build assets - based on ${{ env.commit }}"
-
       - name: "maybe_commit_changes_to_release_prod"
+        if: needs.has_backfill_pr.outputs.has_pr == 'false'
         run: |
           cd ${GITHUB_WORKSPACE}/release-prod
           git add --all
@@ -104,11 +140,10 @@ jobs:
           git config --global user.name "Build Action"
           git diff --staged --quiet || git commit -m "[C] build assets - based on ${{ env.commit }}"
 
-      - name: "push_changes"
+      - name: "push_changes_to_release_prod"
+        if: needs.has_backfill_pr.outputs.has_pr == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cd ${GITHUB_WORKSPACE}/release
-          git push --force origin release
           cd ${GITHUB_WORKSPACE}/release-prod
           git push --force origin release-prod
