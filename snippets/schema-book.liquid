@@ -78,23 +78,6 @@
             "url" : {{ request.origin | append: variant.url | json }}
           }{% unless forloop.last %},{% endunless %}
         {%- endfor -%}
-      ],
-      "review": [
-        {% if reviews.size > 0 %}
-          {% for review in reviews %}
-            {%-liquid
-              assign author = review['review_author']
-              if review['review_source'].size > 0
-                assign author = author | append: ", " | append: review['review_source']
-              endif
-            -%}
-            {
-              "@type": "Review",
-              {% if author %}"author": {{ author | strip_html | json }},{% endif %}
-              "reviewBody": {{ review['review'] | strip_html | json }},
-            }{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        {% endif %}
       ]
     }
   </script>
