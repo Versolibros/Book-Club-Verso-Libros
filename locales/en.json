@@ -92,7 +92,7 @@
       "unavailable": "Unavailable",
       "forthcoming": "Forthcoming",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "metadata": {
         "page_count": "{{ count }} pages"
       },
@@ -107,7 +107,7 @@
     },
     "404": {
       "title": "Sorry, we can’t find that page.",
-      "subtext_html": "Not sure where to start? Try browsing by <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book</a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author</a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search</a> for a specific term."
+      "subtext_html": "Not sure where to start? Try browsing by <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book<\/a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author<\/a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search<\/a> for a specific term."
     }
   },
   "sections": {
@@ -127,23 +127,23 @@
     },
     "book-club-header": {
       "default_page_title": "Verso Book Club",
-      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.</a>"
+      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.<\/a>"
     },
     "book-club-products": {
       "header": "Current & upcoming products",
       "title_reader_current": "{{ month }} ebooks",
       "title_partisan_current": "{{ month }} book options",
       "title_comrade_current": "{{ month }} Comrade! picks",
-      "title_reader_next_html": "<next-month-title>Next</next-month-title> ebooks",
-      "title_partisan_next_html": "<next-month-title>Next</next-month-title> book options",
-      "title_comrade_next_html": "<next-month-title>Next</next-month-title> Comrade! picks"
+      "title_reader_next_html": "<next-month-title>Next<\/next-month-title> ebooks",
+      "title_partisan_next_html": "<next-month-title>Next<\/next-month-title> book options",
+      "title_comrade_next_html": "<next-month-title>Next<\/next-month-title> Comrade! picks"
     },
     "book-club-subscriptions": {
       "header": "Subscriptions",
       "billed_annually": "billed annually",
       "billed_monthly": "billed monthly",
-      "monthly_price": "{{ price }}/month",
-      "for_annual_price": "for {{ price }}/month"
+      "monthly_price": "{{ price }}\/month",
+      "for_annual_price": "for {{ price }}\/month"
     },
     "cart": {
       "title": "Your cart",
@@ -155,14 +155,14 @@
       "add_error": "There was an error adding this product your cart.",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
-      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
-      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "update": "Update"
     },
     "collection-product-grid": {
-      "empty_html": "We can’t find anything that fits this filter. Why not <a href=\"{{ link }}\">browse the full catalog</a> instead?"
+      "empty_html": "We can’t find anything that fits this filter. Why not <a href=\"{{ link }}\">browse the full catalog<\/a> instead?"
     },
     "header": {
       "main_nav": "Site links",
@@ -206,7 +206,7 @@
   },
   "localization": {
     "country_label": "Country",
-    "location_currency_label": "Location/Currency",
+    "location_currency_label": "Location\/Currency",
     "update_country": "Update country",
     "location_submit_warning": "Will submit upon selection",
     "country": {
@@ -245,9 +245,9 @@
       "address1": "Address 1",
       "address2": "Address 2",
       "city": "City",
-      "country": "Country/region",
-      "province": "State/province",
-      "zip": "Postal/ZIP code",
+      "country": "Country\/region",
+      "province": "State\/province",
+      "zip": "Postal\/ZIP code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add address",
@@ -261,7 +261,7 @@
     "log_out": "Log out",
     "login_page": {
       "cancel": "Cancel",
-      "create_account_html": "Don’t have an account? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Sign up here</a>.",
+      "create_account_html": "Don’t have an account? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Sign up here<\/a>.",
       "email": "Email",
       "forgot_password": "Forgot your password?",
       "guest_continue": "Continue",
@@ -314,8 +314,8 @@
       "payment_status": "Payment status",
       "fulfillment_status": "Fulfillment status",
       "total": "Total",
-      "none_html": "It looks like you haven’t ordered anything yet. Why not <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">browse the catalog</a>?",
-      "support_html": "If there’s been an error with an order, please <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">email for support</a>."
+      "none_html": "It looks like you haven’t ordered anything yet. Why not <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">browse the catalog<\/a>?",
+      "support_html": "If there’s been an error with an order, please <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">email for support<\/a>."
     },
     "recover_password": {
       "title": "Reset your password",
@@ -510,11 +510,11 @@
       "E09": "Speaker",
       "E10": "Presenter",
       "E99": "Performed by",
-      "F01": "Filmed/photographed by",
+      "F01": "Filmed\/photographed by",
       "F02": "Editor film or video",
       "F99": "Other recording by",
       "Z01": "Assisted by",
-      "Z02": "Honored/dedicated to",
+      "Z02": "Honored\/dedicated to",
       "Z03": "Enacting jurisdiction",
       "Z04": "Peer reviewed",
       "Z98": "Various roles",
