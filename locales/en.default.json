@@ -518,6 +518,7 @@
     }
   },
   "glossary": {
-    "or": "or"
+    "or": "or",
+    "and": "and"
   }
 }

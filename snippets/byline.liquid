@@ -4,12 +4,12 @@
 
 {% for contribution_types in contributions %}
   {%- liquid
-    assign contributors = contribution_types['contributors']
+    assign contributors = contribution_types.contributors
     assign contributors_size = contributors | size
-    assign onix_code = contribution_types['onix_code']
-    assign label = onix_code | prepend: "contributions.onix." | t
+    assign onix_code = contribution_types.onix_code
+    assign label = onix_code | prepend: 'contributions.onix.' | t
 
-    if hide_secondary_contributions and onix_code != "A01" and onix_code != "A02" and onix_code != "B01"
+    if hide_secondary_contributions and onix_code != 'A01' and onix_code != 'A02' and onix_code != 'B01'
       continue
     endif
 
@@ -27,12 +27,17 @@
         assign article = articles[full_handle]
         assign second_to_last = forloop.length | minus: 1
       -%}
-      {% if article != blank and linked == true -%}
+      {%- if article != blank and linked == true -%}
         {{- name | link_to: article.url, class: 'underline' -}}
       {%- else -%}
         {{- name -}}
       {%- endif -%}
-      {%- if forloop.last == true %}{% elsif forloop.index == second_to_last %} and {% else %}, {% endif %}
+      {%- if forloop.last == true -%}
+      {%- elsif forloop.index == second_to_last -%}
+        {{ 'glossary.and' | t | prepend: ' ' }}
+      {%- else -%}
+        ,
+      {%- endif -%}
     {% endfor %}
   </p>
 {% endfor %}
