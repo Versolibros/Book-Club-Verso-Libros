@@ -52,7 +52,8 @@
         "settings": {
           "menu": "footer",
           "show_social": true,
-          "signup_placeholder": "Email Address"
+          "show_signup_cta": true,
+          "signup_cta_text": "Sign up for our newsletter"
         }
       },
       "announcement-bar": {

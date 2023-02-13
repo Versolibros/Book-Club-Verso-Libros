@@ -13,27 +13,38 @@
     >
       <option
         value="CA"
-        {%- if localization.country.iso_code == 'CA' %}
+        {%- if localization.country.iso_code == 'CA' -%}
           selected
-        {% endif %}
+        {%- endif -%}
       >
         {{ 'localization.country.ca' | t }} (CAD $)
       </option>
       <option
         value="GB"
-        {%- if localization.country.iso_code != 'CA' and localization.country.iso_code != 'US' %}
+        {%- if localization.country.iso_code == 'GB' -%}
           selected
-        {% endif %}
+        {%- endif -%}
       >
-        {{ 'localization.country.row' | t }} (GBP £)
+        {{ 'localization.country.gb' | t }} (GBP £)
       </option>
       <option
         value="US"
-        {%- if localization.country.iso_code == 'US' %}
+        {%- if localization.country.iso_code == 'US' -%}
           selected
-        {% endif %}
+        {%- endif -%}
       >
         {{ 'localization.country.us' | t }} (USD $)
+      </option>
+      <option
+        value="BM"
+        {%- if localization.country.iso_code != 'CA'
+          and localization.country.iso_code != 'GB'
+          and localization.country.iso_code != 'US'
+        -%}
+          selected
+        {%- endif -%}
+      >
+        {{ 'localization.country.row' | t }} (GBP £)
       </option>
     </select>
     <span id="will-submit-warning" class="sr-only">{{ 'localization.location_submit_warning' | t }}</span>

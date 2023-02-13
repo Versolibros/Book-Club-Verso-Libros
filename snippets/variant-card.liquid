@@ -19,8 +19,20 @@
     <header class="c-variant-card__header">
       {% unless is_subscription %}
         <div class="c-variant-card__title-block">
-          <h2 class="c-variant-card__title">{% render 'variant-title', variant: variant, product_type: product_type %}</h2>
-          {%- if physical_variant_subtitle != blank and variant.title == "paperback" or variant.title == "hardback" -%}
+          <h2 class="c-variant-card__title">
+            {% render 'variant-title', variant: variant, product_type: product_type %}
+          </h2>
+          {%- liquid
+            assign subtitle = null
+            assign title_array = variant.title | handleize | replace: '-', '_' | split: '_'
+            for word in title_array
+              if word == 'paperback' or word == 'hardback'
+                assign subtitle = physical_variant_subtitle
+                break
+              endif
+            endfor
+          -%}
+          {%- if subtitle != blank -%}
             <p>{{ physical_variant_subtitle }}</p>
           {%- endif -%}
         </div>
@@ -48,7 +60,7 @@
       {% unless is_subscription %}
         <p class="c-variant-card__metadata">
           {%- liquid
-            if ebook_variant_description != blank and variant.title == "ebook_us" or variant.title == "ebook_uk"
+            if ebook_variant_description != blank and variant.title == 'ebook_us' or variant.title == 'ebook_uk'
               echo ebook_variant_description
             else
               assign separator = ' / '
@@ -71,10 +83,17 @@
           -%}
         </p>
       {% endunless %}
+      {%- if variant.metafields.verso_api.prh_pod.value -%}
+        <p class="c-variant-card__metadata italic">{{ 'products.product.pod_notice' | t }}</p>
+      {%- endif -%}
     </header>
     {% render 'add-to-cart', variant: variant, product: product, index: index, is_subscription: is_subscription %}
   </div>
   {%- if compare_at_price -%}
-    {% render 'discount-badge', price: price, compare_at_price: compare_at_price, classname: 'c-variant-card__discount' %}
+    {% render 'discount-badge',
+      price: price,
+      compare_at_price: compare_at_price,
+      classname: 'c-variant-card__discount'
+    %}
   {%- endif -%}
 </article>

@@ -538,11 +538,13 @@
           "label": "Show social media icons"
         },
         "header__2": {
-          "content": "Email signup placeholder text",
-          "info": "Please enter the placeholder text that will be visible in the newsletter signup form."
+          "content": "Newsletter call-to-action"
         },
-        "signup_placeholder": {
-          "label": "Enter placeholder text"
+        "show_signup_cta": {
+          "label": "Show call-to-action"
+        },
+        "signup_cta_text": {
+          "label": "Call-to-action text"
         }
       }
     },

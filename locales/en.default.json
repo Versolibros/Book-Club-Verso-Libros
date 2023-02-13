@@ -95,7 +95,8 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "metadata": {
         "page_count": "{{ count }} pages"
-      }
+      },
+      "pod_notice": "Please allow an additional 10–12 days for this order to ship."
     }
   },
   "templates": {
@@ -176,12 +177,7 @@
     },
     "footer": {
       "site_nav": "Additional site links",
-      "social_nav": "Social media links",
-      "newsletter": {
-        "label": "Newsletter sign-up",
-        "email_label": "Email address",
-        "submit": "Subscribe"
-      }
+      "social_nav": "Social media links"
     },
     "main-article": {
       "tags_label": "Filed under"
@@ -215,6 +211,7 @@
     "location_submit_warning": "Will submit upon selection",
     "country": {
       "ca": "Canada",
+      "gb": "United Kingdom",
       "row": "Rest of World",
       "us": "United States"
     }
@@ -385,6 +382,9 @@
     "select_filter": "Subject filters (will navigate on select)",
     "product_filter": "Product Filter",
     "skip_to": "Skip to book list"
+  },
+  "newsletter_signup": {
+    "dialog_label": "Newsletter signup form"
   },
   "reviews": {
     "reviews_title": "Reviews",

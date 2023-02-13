@@ -11,8 +11,9 @@
                   class="c-footer__nav-link"
                   href="{{ link.url }}"
                   {% if link.current %}
-                  aria-current="page"
-                  {% endif %}>
+                    aria-current="page"
+                  {% endif %}
+                >
                   {{ link.title | escape }}
                 </a>
               </li>
@@ -52,49 +53,37 @@
         </nav>
       {%- endif -%}
     </div>
-    <div class="c-footer__end">
-      <form
-        accept-charset="UTF-8"
-        action="https://versobooks.us1.list-manage.com/subscribe"
-        method="get"
-        target="_blank"
-        aria-label="{{ 'sections.footer.newsletter.label' | t }}"
-        class="c-footer__newsletter-form">
-        <input
-          name="utf8"
-          type="hidden"
-          value="✓" />
-        <input
-          name="u"
-          type="hidden"
-          value="378ec92c86f70e1518699ea15" />
-        <input
-          name="id"
-          type="hidden"
-          value="1f96ba5fab" />
-        <input
-          name="MMERGE4"
-          type="hidden"
-          value="United States" />
-        {% render 'icon-envelope', classname: 'c-footer__newsletter-icon' %}
-        <div class="c-footer__newsletter-input">
-          <label class="sr-only" for="emailAddress">{{ 'sections.footer.newsletter.email_label' | t }}</label>
-          <input
-            type="email"
-            autocomplete="email"
-            id="emailAddress"
-            name="EMAIL"
-            placeholder="{{ section.settings.signup_placeholder }}"
-            aria-required="true"
-            class="c-footer__newsletter-field">
+    {%- if section.settings.show_signup_cta -%}
+      <div
+        data-behavior="OpenDialog"
+        data-props='{"clickOutsideDeactivates":true}'
+        class="c-footer__end"
+      >
+        <button data-ref="open" class="c-button c-button--filled c-button--medium gap-2">
+          {% render 'icon-envelope', classname: 'c-footer__newsletter-icon' %}
+          <span>{{ section.settings.signup_cta_text }}</span>
+        </button>
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="{{ 'newsletter_signup.dialog_label' | t }}"
+          id="newsletter-signup-modal"
+          data-ref="dialog"
+          class="c-login-overlay l-overlay a-bg-accent-dark-semi-opaque"
+        >
+          <div data-ref="trapContainer" class="c-login-overlay__inner c-login-overlay__inner--wider a-bg-default">
+            <div class="klaviyo-form-SaE75B"></div>
+            <button
+              data-ref="close"
+              class="c-login-overlay__close-button c-header-icon-button c-header-icon-button--close"
+            >
+              {% render 'icon-menu' %}
+              <span class="sr-only">{{ 'image_overlay.close' | t }}</span>
+            </button>
+          </div>
         </div>
-        <input
-          type="submit"
-          name="commit"
-          value="{{ 'sections.footer.newsletter.submit' | t }}"
-          class="c-button c-button--small c-button--filled c-footer__newsletter-submit" />
-      </form>
-    </div>
+      </div>
+    {%- endif -%}
   </section>
 </footer>
 
@@ -121,14 +110,19 @@
     },
     {
       "type": "header",
-      "content": "t:sections.footer.settings.header__2.content",
-      "info": "t:sections.footer.settings.header__2.info"
+      "content": "t:sections.footer.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_signup_cta",
+      "default": true,
+      "label": "t:sections.footer.settings.show_signup_cta.label"
     },
     {
       "type": "text",
-      "id": "signup_placeholder",
-      "default": "Get 40% off your next purchase!",
-      "label": "t:sections.footer.settings.signup_placeholder.label"
+      "id": "signup_cta_text",
+      "default": "Sign up for our newsletter",
+      "label": "t:sections.footer.settings.signup_cta_text.label"
     }
   ]
 }
