@@ -210,9 +210,14 @@
   },
   "localization": {
     "country_label": "País",
-    "location_currency_label": "Localización\/Moneda",
+    "location_currency_label": "Localización/Moneda",
     "update_country": "Actualizar país",
-    "location_submit_warning": "Se enviará tras la selección"
+    "location_submit_warning": "Se enviará tras la selección",
+    "country": {
+      "ca": "Canada",
+      "row": "Rest of World",
+      "us": "United States"
+    }
   },
   "customer": {
     "account": {
