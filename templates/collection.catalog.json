@@ -28,7 +28,6 @@
     },
     "product-grid": {
       "type": "collection-product-grid",
-      "disabled": true,
       "settings": {
         "show_menu": true,
         "menu": "subject-collections",

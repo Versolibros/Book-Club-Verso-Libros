@@ -5,9 +5,19 @@
       "settings": {
         "label": "Artículo"
       }
+    },
+    "c0dbb8da-1d42-4279-a808-34033fb39b8f": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "por-un-feminismo-materialista"
+        ]
+      }
     }
   },
   "order": [
-    "article"
+    "article",
+    "c0dbb8da-1d42-4279-a808-34033fb39b8f"
   ]
 }
