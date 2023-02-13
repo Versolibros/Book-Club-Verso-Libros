@@ -8,6 +8,7 @@
     },
     "021a5c29-1c7a-44b6-b581-220cc3d655fd": {
       "type": "block-featured-articles-grid",
+      "disabled": true,
       "settings": {
         "menu": "",
         "article_1": "",
