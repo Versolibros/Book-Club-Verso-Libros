@@ -30,7 +30,7 @@
       "type": "collection-product-grid",
       "settings": {
         "show_menu": true,
-        "menu": "subject-collections",
+        "menu": "author-index",
         "region_menu": "",
         "products_per_page": 24
       }
