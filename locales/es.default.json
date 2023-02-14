@@ -92,7 +92,7 @@
       "unavailable": "No disponibe",
       "coming_soon": "Próximamente",
       "include_taxes": "Impuestos incluidos.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculado al finalizar la compra.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculado al finalizar la compra.",
       "metadata": {
         "page_count": "{{ count }} páginas"
       }
@@ -106,7 +106,7 @@
     },
     "404": {
       "title": "Lo sentimos, no podemos encontrar esa página.",
-      "subtext_html": "¿No sabes por dónde empezar? Intenta buscar por <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book<\/a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author<\/a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search<\/a> for a specific term."
+      "subtext_html": "¿No sabes por dónde empezar? Intenta buscar por <a class=\"a-inline-link\" href=\"{{ book_link }}\">Book</a> or <a class=\"a-inline-link\" href=\"{{ author_link }}\">Author</a>, or <a class=\"a-inline-link\" href=\"{{ search_link }}\">search</a> for a specific term."
     }
   },
   "sections": {
@@ -126,23 +126,23 @@
     },
     "book-club-header": {
       "default_page_title": "Club del libro de Verso",
-      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.<\/a>"
+      "existing_customer_prompt_html": "Already a subscriber? <a href=\"{{ link_url }}\">Make your selections here.</a>"
     },
     "book-club-products": {
       "header": "Productos actuales y futuros",
       "title_reader_current": "{{ month }} ebooks",
       "title_partisan_current": "{{ month }} opciones de libro",
       "title_comrade_current": "{{ month }} ¡Camarada! selección",
-      "title_reader_next_html": "<next-month-title>Next<\/next-month-title> ebooks",
-      "title_partisan_next_html": "<next-month-title>Next<\/next-month-title> opciones de libros",
-      "title_comrade_next_html": "<next-month-title>Next<\/next-month-title> ¡Camarada! selección"
+      "title_reader_next_html": "<next-month-title>Next</next-month-title> ebooks",
+      "title_partisan_next_html": "<next-month-title>Next</next-month-title> opciones de libros",
+      "title_comrade_next_html": "<next-month-title>Next</next-month-title> ¡Camarada! selección"
     },
     "book-club-subscriptions": {
       "header": "Suscripciones",
       "billed_annually": "facturado de manera anual",
       "billed_monthly": "facturado de manera mensual",
-      "monthly_price": "{{ price }}\/ mes",
-      "for_monthly_price": "para {{ price }}\/mes"
+      "monthly_price": "{{ price }}/ mes",
+      "for_monthly_price": "para {{ price }}/mes"
     },
     "cart": {
       "title": "Tu cesta",
@@ -154,14 +154,14 @@
       "add_error": "Se ha producido un error al añadir este producto a su cesta.",
       "cart_error": "Se ha producido un error al actualizar su cesta. Por favor, inténtelo de nuevo.",
       "cart_quantity_error_html": "Sólo puede añadir {{ quantity }} de este artículo a su cesta.",
-      "taxes_and_shipping_policy_at_checkout_html": "Impuestos y <a href=\"{{ link }}\">shipping<\/a> calculado al pagar",
+      "taxes_and_shipping_policy_at_checkout_html": "Impuestos y <a href=\"{{ link }}\">shipping</a> calculado al pagar",
       "taxes_included_but_shipping_at_checkout": "Impuestos incluidos y gastos de envío calculados en el momento de la compra",
-      "taxes_included_and_shipping_policy_html": "Impuestos incluidos. <a href=\"{{ link }}\">Shipping<\/a> calculado al pagar.",
+      "taxes_included_and_shipping_policy_html": "Impuestos incluidos. <a href=\"{{ link }}\">Shipping</a> calculado al pagar.",
       "taxes_and_shipping_at_checkout": "Los impuestos y gastos de envío se calcularán al pagar",
       "update": "Actualización"
     },
     "collection-product-grid": {
-      "empty_html": "No podemos encontrar nada que se ajuste a este filtro. Por qué <a href=\"{{ link }}\">ojea el catálogo completo<\/a> en su lugar?"
+      "empty_html": "No podemos encontrar nada que se ajuste a este filtro. Por qué <a href=\"{{ link }}\">ojea el catálogo completo</a> en su lugar?"
     },
     "header": {
       "main_nav": "Enlaces",
@@ -248,9 +248,9 @@
       "address1": "Dirección 1",
       "address2": "Dirección 2",
       "city": "Ciudad",
-      "country": "País\/región",
-      "province": "Estado\/provincia",
-      "zip": "Dirección\/Código postal",
+      "country": "País/región",
+      "province": "Estado/provincia",
+      "zip": "Dirección/Código postal",
       "phone": "Teléfono",
       "set_default": "Establecer como dirección predeterminada",
       "add": "Añadir dirección",
@@ -264,7 +264,7 @@
     "log_out": "Cerrar sesión",
     "login_page": {
       "cancel": "Cancelar",
-      "create_account_html": "¿No tienes una cuenta? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Regístrate aquí<\/a>.",
+      "create_account_html": "¿No tienes una cuenta? <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">Regístrate aquí</a>.",
       "email": "Email",
       "forgot_password": "¿Olvidaste tu contraseña?",
       "guest_continue": "Continuar",
@@ -314,8 +314,8 @@
       "payment_status": "Estado de pago",
       "fulfillment_status": "Estado de cumplimiento",
       "total": "Total",
-      "none_html": "Parece que aún no has pedido nada. Por qué no <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">ojeas el catálogo<\/a>?",
-      "support_html": "Si ha habido un error con un pedido, por favor <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">correo electrónico de soporte<\/a>."
+      "none_html": "Parece que aún no has pedido nada. Por qué no <a href=\"{{ link }}\" class=\"a-inline-link-secondary\">ojeas el catálogo</a>?",
+      "support_html": "Si ha habido un error con un pedido, por favor <a href=\"mailto:{{ email }}\" class=\"a-inline-link-secondary\">correo electrónico de soporte</a>."
     },
     "recover_password": {
       "title": "Restablecer contraseña",
@@ -506,8 +506,8 @@
       "E09": "Ponente",
       "E10": "Presenta",
       "E99": "Realizado por",
-      "F01": "Filmado\/fotografiado por",
-      "F02": "Filmado\/fotografiado por",
+      "F01": "Filmado/fotografiado por",
+      "F02": "Filmado/fotografiado por",
       "F99": "Otra grabación por",
       "Z01": "Asistido por",
       "Z02": "Dedicado a",
@@ -520,5 +520,9 @@
   "glossary": {
     "or": "o",
     "and": "y"
+  },
+  "date_formats": {
+    "month_year": "%B %Y",
+    "day_month_year": "%e %B %Y"
   }
 }
