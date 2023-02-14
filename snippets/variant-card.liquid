@@ -71,7 +71,7 @@
                 endif
               endif
               if publication_date != blank
-                echo publication_date | date: '%B %Y'
+                echo publication_date | date: format: 'month_year'
                 if sku != blank
                   echo separator
                 endif

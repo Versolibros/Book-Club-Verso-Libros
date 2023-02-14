@@ -520,5 +520,8 @@
   "glossary": {
     "or": "or",
     "and": "and"
+  },
+  "date_formats": {
+    "month_year":"%B %Y"
   }
 }
