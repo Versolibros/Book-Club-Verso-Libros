@@ -52,7 +52,7 @@
         "settings": {
           "menu": "main-menu",
           "show_social": true,
-          "show_signup_cta": true,
+          "show_signup_cta": false,
           "signup_cta_text": "Sign up for our newsletter"
         }
       },
