@@ -522,7 +522,7 @@
     "and": "and"
   },
   "date_formats": {
-    "month_year":"%B %Y",
-    "day_month_year":"%e %B %Y"
+    "month_year": "%B %Y",
+    "day_month_year": "%e %B %Y"
   }
 }

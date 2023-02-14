@@ -1,5 +1,5 @@
-<li class="c-predictive-search__result">
-  <a href="{{ result.url }}">
+<li id="predictive-search-result-{{ result.id }}" role="option" aria-selected="false" class="c-predictive-search__result">
+  <a href="{{ result.url }}" tabindex="-1">
     {%- liquid
       capture label
         if type == 'product'
@@ -7,9 +7,9 @@
         elsif type == 'collection'
           echo 'general.search.collection' | t
         elsif type == 'article'
-          if result.handle contains "authors/"
+          if result.handle contains 'authors/'
             echo 'general.search.author' | t
-          elsif result.template_suffix contains "-list"
+          elsif result.template_suffix contains '-list'
             echo 'general.search.reading_list' | t
           else
             echo 'general.search.blog_post' | t
@@ -25,9 +25,9 @@
         <span class="italic">{{ result.title }}</span>
         {%- if result.metafields.verso_api.authors.value != blank %}
           {% render 'byline',
-              contributions: result.metafields.verso_api.contributions.value,
-              classname: 'c-predictive-search__result-byline',
-              hide_secondary_contributions: 'true'
+            contributions: result.metafields.verso_api.contributions.value,
+            classname: 'c-predictive-search__result-byline',
+            hide_secondary_contributions: 'true'
           %}
         {%- endif -%}
       {%- elsif type == 'article' and result.handle contains 'authors/' %}

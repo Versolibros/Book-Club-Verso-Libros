@@ -1,4 +1,7 @@
-<cart-items id="cart-snippet" class="{% if classname %}{{ classname }}{% endif %} {% if cart == empty %}is-empty{% endif %}">
+<cart-items
+  id="cart-snippet"
+  class="{% if classname %}{{ classname }}{% endif %} {% if cart == empty %}is-empty{% endif %}"
+>
   <h1 class="sr-only">{{ 'sections.cart.title' | t }}</h1>
 
   <div class="c-cart__empty-content">
@@ -15,8 +18,10 @@
                 <article id="CartItem-{{ item.index | plus: 1 }}" class="c-cart-item">
                   {%- if item.image -%}
                     <img
-                      srcset="{{ item.image | image_url: width: 160 }} 2x,
-                        {{ item.image | image_url: width: 80 }} 1x"
+                      srcset="
+                        {{ item.image | image_url: width: 160 }} 2x,
+                        {{ item.image | image_url: width: 80 }} 1x
+                      "
                       src="{{ item.image | image_url: width: 80 }}"
                       alt="{{ item.image.alt | escape }}"
                       width="80"
@@ -28,9 +33,14 @@
                   <div class="c-cart-item__end{% if context %} c-cart-item__end--in-{{ context }}{% endif %}">
                     <header class="c-cart-item__header-block">
                       <h3>
-                        <a href="{{ item.product.url }}" class="c-cart-item__title">{{ item.product.title | escape }}</a>
+                        <a href="{{ item.product.url }}" class="c-cart-item__title">
+                          {{- item.product.title | escape -}}
+                        </a>
                       </h3>
-                      {% render 'byline', contributions: item.product.metafields.verso_api.contributions.value, linked: false %}
+                      {% render 'byline',
+                        contributions: item.product.metafields.verso_api.contributions.value,
+                        linked: false
+                      %}
                     </header>
                     <div class="c-cart-item__details-block">
                       {%- unless item.product.has_only_default_variant -%}
@@ -38,9 +48,19 @@
                           {% render 'variant-title', variant: item.variant %}
                         </div>
                       {%- endunless -%}
+                      <noscript>
+                        <label for="Quantity-{{ item.index | plus: 1 }}" class="sr-only">
+                          {{- 'products.product.quantity.label' | t -}}
+                        </label>
+                      </noscript>
+                      <span class="sr-only no-js-hidden">
+                        {{ 'products.product.quantity.label' | t }}: {{ item.quantity }}
+                      </span>
                       <quantity-input class="c-cart-item__quantity">
                         <button class="text-accent no-js-hidden" name="minus" type="button">
-                          <span class="sr-only">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                          <span class="sr-only">
+                            {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                          </span>
                           <span aria-hidden="true" class="pointer-events-none">–</span>
                         </button>
                         <input
@@ -56,7 +76,9 @@
                         >
                         <span aria-hidden="true" class="visible-quantity no-js-hidden">{{ item.quantity }}</span>
                         <button class="text-accent no-js-hidden" name="plus" type="button">
-                          <span class="sr-only">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                          <span class="sr-only">
+                            {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                          </span>
                           <span aria-hidden="true" class="pointer-events-none">+</span>
                         </button>
                       </quantity-input>
@@ -78,7 +100,9 @@
                     </div>
                     <remove-item class="c-cart-item__remove-block no-js-hidden">
                       <button type="button" data-index="{{ item.index | plus: 1 }}" class="c-cart-item__remove-button">
-                        <span class="sr-only">{{ 'products.product.quantity.remove_for_sr' | t: product: item.product.title | escape }}</span>
+                        <span class="sr-only">
+                          {{- 'products.product.quantity.remove_for_sr' | t: product: item.product.title | escape -}}
+                        </span>
                         <span aria-hidden="true">{{ 'products.product.quantity.remove' | t }}</span>
                       </button>
                     </remove-item>

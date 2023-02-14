@@ -10,8 +10,8 @@
         placeholder="{{ 'predictive_search.placeholder' | t }}"
         role="combobox"
         aria-expanded="false"
-        aria-owns="predictive-search-results-list"
-        aria-controls="predictive-search-results-list"
+        aria-owns="predictive-search-results"
+        aria-controls="predictive-search-results"
         aria-haspopup="listbox"
         aria-autocomplete="list"
         autocorrect="off"
@@ -22,8 +22,10 @@
       <button type="submit" class="c-button c-button--filled c-button--medium" aria-disabled="true">{{ 'predictive_search.submit' | t }}</button>
     </div>
     <div tabindex="-1" class="c-predictive-search__output">
-      <div data-predictive-search-results class="c-predictive-search__results-wrapper">
-        {% render 'loading-overlay' %}
+      <div id="predictive-search-results" role="listbox">
+        <div data-predictive-search-results class="c-predictive-search__results-wrapper">
+          {% render 'loading-overlay' %}
+        </div>
       </div>
       <span class="c-predictive-search-status sr-only" role="status" aria-hidden="true"></span>
     </div>
