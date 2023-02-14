@@ -96,7 +96,7 @@
       "metadata": {
         "page_count": "{{ count }} pages"
       },
-      "pod_notice": "Please allow an additional 10–12 days for this order to ship."
+      "pod_notice": "Please allow an additional 10–12 days for this book to ship."
     }
   },
   "templates": {
@@ -522,6 +522,6 @@
     "and": "and"
   },
   "date_formats": {
-    "month_year":"%B %Y"
+    "month_year": "%B %Y"
   }
 }
