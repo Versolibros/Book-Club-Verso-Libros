@@ -34,7 +34,7 @@
           <span>{{ author_display_name }}</span>
         {%- endif -%}
       {%- endif -%}
-      <span class="c-article-detail__date">{{ article.published_at | date: format: 'date_month_year' }}</span>
+      <span class="c-article-detail__date">{{ article.published_at | date: format: 'day_month_year' }}</span>
     </p>
   </div>
 </header>
