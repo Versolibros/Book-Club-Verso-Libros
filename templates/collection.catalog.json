@@ -32,7 +32,7 @@
         "show_menu": true,
         "menu": "subject-collections",
         "region_menu": "",
-        "products_per_page": 24
+        "products_per_page": 6
       }
     }
   },
