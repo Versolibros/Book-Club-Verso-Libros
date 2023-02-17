@@ -21,7 +21,7 @@
           <span>{{ product.title | escape }}</span>
         </h1>
       </header>
-      {% render 'variant-picker', product: product, product_type: "gift-card" %}
+      {% render 'variant-picker', product: product, product_type: "basic" %}
       {%- if product.description != blank -%}
         <div class="t-rte">
           <p>{{ product.description }}</p>
