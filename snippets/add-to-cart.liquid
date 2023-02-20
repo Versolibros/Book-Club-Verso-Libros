@@ -3,7 +3,7 @@
   assign is_available = variant.available
 
   assign is_future_publication = false
-  assign publication_date_timestamp = product.metafields.verso_api.publication_date.value | date: '%s' | times: 1
+  assign publication_date_timestamp = variant.metafields.verso_api.publication_date.value | date: '%s' | times: 1
   assign now_timestamp = 'now' | date: '%s' | times: 1
   if publication_date_timestamp > now_timestamp
     assign is_future_publication = true
@@ -40,7 +40,7 @@
           endif
         else
           if is_future_publication
-            echo 'products.product.coming_soon' | t
+            echo 'products.product.forthcoming' | t
           else
             echo 'products.product.sold_out' | t
           endif
