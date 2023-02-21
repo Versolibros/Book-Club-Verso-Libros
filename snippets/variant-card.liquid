@@ -60,7 +60,6 @@
       </p>
       {% unless is_subscription %}
         <p class="c-variant-card__metadata">
-          {{ publication_date }}
           {%- liquid
             if ebook_variant_description != blank and variant.title == 'ebook_us' or variant.title == 'ebook_uk'
               echo ebook_variant_description
