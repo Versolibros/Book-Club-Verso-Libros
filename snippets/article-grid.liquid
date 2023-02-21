@@ -1,3 +1,8 @@
+{% if current_tags %}
+  <div class="l-container l-container--max">
+    <h1>Posts tagged: {{ current_tags }}</h1>
+  </div>
+{% endif %}
 <div class="l-container l-container--max">
   <ul class="l-three-col-fluid-grid">
     {% for article in articles %}
@@ -6,11 +11,13 @@
           <a href="{{ article.url }}" class="c-article-card__link">
             {%- if article.image -%}
               <img
-                srcset="{%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                srcset="
+                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
                   {%- if article.image.src.width >= 612 -%}{{ article.image.src | image_url: width: 612 }} 612w,{%- endif -%}
                   {%- if article.image.src.width >= 918 -%}{{ article.image.src | image_url: width: 918 }} 918w,{%- endif -%}
                   {%- if article.image.src.width >= 1224 -%}{{ article.image.src | image_url: width: 1224 }} 1224w,{%- endif -%}
-                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                  {{ article.image.src | image_url }} {{ article.image.src.width }}w
+                "
                 src="{{ article.image.src | image_url: width: 612 }}"
                 sizes="(max-width: 42.5625rem) 90vw, (max-width: 68.6875rem) 45vw, (max-width: 89.75rem) 30vw, 432px"
                 loading="lazy"
