@@ -1,10 +1,296 @@
 {
   "sections": {
     "main": {
-      "type": "main-page"
+      "type": "main-page",
+      "custom_css": [
+
+      ],
+      "settings": {
+      }
+    },
+    "bcf78efd-39df-41a3-a522-7b27f3fdf0a7": {
+      "type": "block-rich-text",
+      "blocks": {
+        "template--15157116960829__bcf78efd-39df-41a3-a522-7b27f3fdf0a7-167709033072199b84-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Content Notes",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "8f96bee4-6a1f-4930-b6f0-e8fed5abc774": {
+          "type": "heading",
+          "settings": {
+            "heading": "2-Column Sections",
+            "heading_tag": "h3",
+            "heading_style": "t-h3"
+          }
+        },
+        "template--15157116960829__bcf78efd-39df-41a3-a522-7b27f3fdf0a7-167709033072199b84-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>These sections can have customized column ratios, which affect the layout of the content within each column. A good example of this is how the links are distributed on the Featured Collections block between 40% and 60% layouts.</p>",
+            "text_style": "t-sm"
+          }
+        },
+        "8297beed-206b-4807-8beb-f71b275747e0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Featured content customization",
+            "heading_tag": "h3",
+            "heading_style": "t-h3"
+          }
+        },
+        "2ee5a361-b233-439d-b952-5f56daebd6df": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When adding content blocks that contain menu links (such as Featured Products or Featured Authors), you have two options: choose a pre-determined menu created in the navigation settings, or customize the content block with individual links. Featured articles list and Featured articles grid both will default to most recently published articles.</p>",
+            "text_style": "t-sm"
+          }
+        }
+      },
+      "block_order": [
+        "template--15157116960829__bcf78efd-39df-41a3-a522-7b27f3fdf0a7-167709033072199b84-0",
+        "8f96bee4-6a1f-4930-b6f0-e8fed5abc774",
+        "template--15157116960829__bcf78efd-39df-41a3-a522-7b27f3fdf0a7-167709033072199b84-1",
+        "8297beed-206b-4807-8beb-f71b275747e0",
+        "2ee5a361-b233-439d-b952-5f56daebd6df"
+      ],
+      "settings": {
+      }
+    },
+    "a7807fa3-c425-4a39-99d9-39c22524dff1": {
+      "type": "block-rich-text",
+      "blocks": {
+        "template--15157116960829__a7807fa3-c425-4a39-99d9-39c22524dff1-167708890733ccbacb-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "This is an h1.",
+            "heading_tag": "h1",
+            "heading_style": "t-h1"
+          }
+        },
+        "b8d85d5f-1a67-4df0-b038-12081db7af8c": {
+          "type": "heading",
+          "settings": {
+            "heading": "This is an h2.",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "4ac46dce-2a9c-40e8-96d2-4f08a559df68": {
+          "type": "heading",
+          "settings": {
+            "heading": "This is an h3.",
+            "heading_tag": "h3",
+            "heading_style": "t-h3"
+          }
+        },
+        "ab4e968d-8735-435b-9723-1c22b32138f0": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This is a default paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.</p>",
+            "text_style": "t-base"
+          }
+        },
+        "template--15157116960829__a7807fa3-c425-4a39-99d9-39c22524dff1-167708890733ccbacb-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This is a small paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.</p>",
+            "text_style": "t-sm"
+          }
+        }
+      },
+      "block_order": [
+        "template--15157116960829__a7807fa3-c425-4a39-99d9-39c22524dff1-167708890733ccbacb-0",
+        "b8d85d5f-1a67-4df0-b038-12081db7af8c",
+        "4ac46dce-2a9c-40e8-96d2-4f08a559df68",
+        "ab4e968d-8735-435b-9723-1c22b32138f0",
+        "template--15157116960829__a7807fa3-c425-4a39-99d9-39c22524dff1-167708890733ccbacb-1"
+      ],
+      "settings": {
+      }
+    },
+    "b14c1793-0009-416d-8227-da9966493a9a": {
+      "type": "block-columns",
+      "blocks": {
+        "203740e0-cd83-4832-9b79-3385c6068a98": {
+          "type": "book_club_callout",
+          "settings": {
+            "image": "shopify://shop_images/callout-1.jpg",
+            "heading": "Verso Book Club",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus.</p>",
+            "button_link_url": "",
+            "button_link_text": ""
+          }
+        },
+        "7ab3f32a-9f39-459f-b74f-12e214f58292": {
+          "type": "featured_article",
+          "settings": {
+            "article": "news/introducing-7-days-a-revolutionary-weekly-newspaper-in-the-anthony-barnett-archive"
+          }
+        }
+      },
+      "block_order": [
+        "203740e0-cd83-4832-9b79-3385c6068a98",
+        "7ab3f32a-9f39-459f-b74f-12e214f58292"
+      ],
+      "settings": {
+        "column_ratio": "50"
+      }
+    },
+    "0eb20870-b1e1-4854-8b63-7aee0a7ecfd7": {
+      "type": "block-columns",
+      "blocks": {
+        "854c2f0f-5622-478b-8d36-269757df0ec7": {
+          "type": "featured_articles_list",
+          "settings": {
+            "heading": "Articles",
+            "preheading": "Featured",
+            "menu": "featured-articles",
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "article_5": ""
+          }
+        },
+        "e4f2d622-d871-4d68-aebc-f5d4e310091e": {
+          "type": "featured_products",
+          "settings": {
+            "menu": "featured-products",
+            "product_list": [
+
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "854c2f0f-5622-478b-8d36-269757df0ec7",
+        "e4f2d622-d871-4d68-aebc-f5d4e310091e"
+      ],
+      "settings": {
+        "column_ratio": "60"
+      }
+    },
+    "41c8a117-3d24-4732-9830-269e2853e945": {
+      "type": "block-columns",
+      "blocks": {
+        "32e17bae-4ff4-40bf-9114-f6817a97169e": {
+          "type": "featured_collections",
+          "settings": {
+            "collection_heading": "Top Reading Lists",
+            "collection_menu": "featured-collections",
+            "collection_list": [
+
+            ]
+          }
+        },
+        "a13223e0-3392-4014-b29a-a67634ada3b2": {
+          "type": "linked_image",
+          "settings": {
+            "image": "shopify://shop_images/image-1.jpg",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "32e17bae-4ff4-40bf-9114-f6817a97169e",
+        "a13223e0-3392-4014-b29a-a67634ada3b2"
+      ],
+      "settings": {
+        "column_ratio": "40"
+      }
+    },
+    "094eb6f6-febd-4314-b028-1b669cbcbcc5": {
+      "type": "block-columns",
+      "blocks": {
+        "59b1d36a-34bc-4e46-abfc-8db0c71a34d5": {
+          "type": "featured_article",
+          "settings": {
+            "article": "news/introducing-7-days-a-revolutionary-weekly-newspaper-in-the-anthony-barnett-archive"
+          }
+        },
+        "5f130710-bd64-4916-8dce-96ce4a9ee2f1": {
+          "type": "featured_collections",
+          "settings": {
+            "collection_heading": "",
+            "collection_menu": "",
+            "collection_list": [
+              "feminist-classics",
+              "salvage-editions",
+              "verso-futures",
+              "radical-thinkers"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "59b1d36a-34bc-4e46-abfc-8db0c71a34d5",
+        "5f130710-bd64-4916-8dce-96ce4a9ee2f1"
+      ],
+      "settings": {
+        "column_ratio": "40"
+      }
+    },
+    "85ccfb98-7321-48cc-906d-216aaaf2f08b": {
+      "type": "block-featured-articles-grid",
+      "settings": {
+        "menu": "",
+        "article_1": "news/was-steve-jobs-the-ultimate-post-modernist",
+        "article_2": "news/the-past-is-erupting-from-the-surface-verso-summer-reading-list",
+        "article_3": "news/people-of-the-soil"
+      }
+    },
+    "bb551d21-b522-44a1-ae46-694393fc0bf4": {
+      "type": "block-featured-article",
+      "settings": {
+        "article": "news/a-frederic-jameson-blog-post"
+      }
+    },
+    "7bd60097-13c7-457a-b118-b9a2739a2f84": {
+      "type": "block-featured-authors",
+      "settings": {
+        "heading": "Featured Authors",
+        "menu": "featured-authors",
+        "author_1": "",
+        "author_2": "",
+        "author_3": "",
+        "author_4": ""
+      }
+    },
+    "0603117e-beb8-4418-bdf3-ae6032decc35": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "featured-products",
+        "product_list": [
+
+        ]
+      }
+    },
+    "d11b7375-b720-4a82-b50c-13886acf7f71": {
+      "type": "block-image",
+      "settings": {
+        "image": "shopify://shop_images/image-1.jpg",
+        "link_url": "",
+        "link_text": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "bcf78efd-39df-41a3-a522-7b27f3fdf0a7",
+    "a7807fa3-c425-4a39-99d9-39c22524dff1",
+    "b14c1793-0009-416d-8227-da9966493a9a",
+    "0eb20870-b1e1-4854-8b63-7aee0a7ecfd7",
+    "41c8a117-3d24-4732-9830-269e2853e945",
+    "094eb6f6-febd-4314-b028-1b669cbcbcc5",
+    "85ccfb98-7321-48cc-906d-216aaaf2f08b",
+    "bb551d21-b522-44a1-ae46-694393fc0bf4",
+    "7bd60097-13c7-457a-b118-b9a2739a2f84",
+    "0603117e-beb8-4418-bdf3-ae6032decc35",
+    "d11b7375-b720-4a82-b50c-13886acf7f71"
   ]
 }
