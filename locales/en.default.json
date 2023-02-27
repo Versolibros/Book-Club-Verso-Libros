@@ -320,7 +320,8 @@
       "success": "We’ve sent you an email with a link to update your password."
     },
     "register": {
-      "title": "Create account",
+      "title": "Register account",
+      "description": "Please re-enter your details using the same email address to ensure access to your previous orders.",
       "first_name": "First name",
       "last_name": "Last name",
       "email": "Email (required)",

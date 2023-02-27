@@ -3,6 +3,7 @@
 <section class="a-bg-default">
   <div class="l-container l-container--x-narrow">
     <h1 class="text-h2 text-accent">{{ 'customer.register.title' | t }}</h1>
+    <p class="mbs-4 text-sm">{{ 'customer.register.description' | t }}</p>
     <div class="mbs-small">
       {%- form 'create_customer', novalidate: 'novalidate', class: 'c-form' -%}
         {% render 'form-errors', form: form, input_id_prefix: input_id_prefix %}
