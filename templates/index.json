@@ -1,85 +1,105 @@
 {
   "sections": {
+    "1660679729210ba70e": {
+      "type": "block-columns",
+      "disabled": true,
+      "settings": {
+        "column_ratio": "60"
+      }
+    },
     "1656512658cc675a40": {
       "type": "block-columns",
       "blocks": {
-        "251551f9-1306-46bc-9c4a-1bca947ccd56": {
-          "type": "book_club_callout",
+        "60b2f1ce-c6f6-43b6-897f-a1883e9f550f": {
+          "type": "featured_products",
           "settings": {
-            "image": "shopify://shop_images/VBC_graphic.png",
-            "heading": "Verso Book Club",
-            "text": "<p>The March selections for the <a href=\"/pages/book-club\" title=\"Book Club\">Verso Book Club</a> are in! Choose between two books, and get access to nearly two dozen new titles as ebooks.</p>",
-            "button_link_url": "/pages/book-club#instructions",
-            "button_link_text": "How does the book club work?"
+            "menu": "",
+            "product_list": [
+              "utopias-digitales",
+              "ellos-lo-llaman-amor",
+              "ni-arriba-ni-abajo"
+            ]
           }
         },
-        "25960acf-e490-4227-af0a-5c7159fac4c2": {
-          "type": "featured_articles_list",
+        "bc0b6214-bd81-4c92-8ae7-f92ee51b3114": {
+          "type": "featured_article",
           "settings": {
-            "heading": "Reading Lists",
-            "preheading": "Featured",
-            "menu": "top-reading-lists",
-            "article_1": "news/5520-must-read-verso-blogs",
-            "article_2": "",
-            "article_3": "",
-            "article_4": "",
-            "article_5": ""
+            "article": "news/capitalismo-patriarcado-y-la-lucha-de-las-mujeres-una-entrevista-con-christine-delphy"
           }
         }
       },
       "block_order": [
-        "251551f9-1306-46bc-9c4a-1bca947ccd56",
-        "25960acf-e490-4227-af0a-5c7159fac4c2"
+        "60b2f1ce-c6f6-43b6-897f-a1883e9f550f",
+        "bc0b6214-bd81-4c92-8ae7-f92ee51b3114"
       ],
       "settings": {
-        "column_ratio": "40"
+        "column_ratio": "60"
       }
     },
-    "1660679729210ba70e": {
-      "type": "block-columns",
-      "blocks": {
-        "ec2b372d-3f2d-4ad1-aefd-494847da5ae2": {
-          "type": "featured_article",
-          "settings": {
-            "article": "news/david-harvey-takes-on-the-grundrisse"
-          }
-        },
-        "d555ac30-cfbb-4d0d-ad2e-9e61e28ac41d": {
-          "type": "featured_article",
-          "settings": {
-            "article": "news/reading-list-test-5678"
-          }
-        }
-      },
-      "block_order": [
-        "ec2b372d-3f2d-4ad1-aefd-494847da5ae2",
-        "d555ac30-cfbb-4d0d-ad2e-9e61e28ac41d"
-      ],
-      "settings": {
-        "column_ratio": "50"
-      }
-    },
-    "3372bfba-2281-4eac-9ae6-f9efde51da27": {
+    "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
       "type": "block-featured-products",
       "settings": {
-        "menu": "featured-products",
+        "menu": "",
         "product_list": [
-
+          "por-un-feminismo-materialista",
+          "utopias-digitales",
+          "ellos-lo-llaman-amor",
+          "ni-arriba-ni-abajo",
+          "trabajo-sexual-contra-el-trabajo",
+          "amor-rojo"
         ]
       }
     },
-    "c5ca9092-8b23-4560-8301-0f8cdbbe3812": {
-      "type": "block-featured-authors",
+    "399dcfbe-3555-4acc-8efd-9a2fa1f10a30": {
+      "type": "block-featured-article",
+      "disabled": true,
       "settings": {
-        "heading": "Authors",
-        "menu": "featured-authors",
-        "author_1": "",
-        "author_2": "",
-        "author_3": "",
-        "author_4": ""
+        "article": ""
+      }
+    },
+    "1656624957cd663247": {
+      "type": "block-featured-products",
+      "disabled": true,
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "manifiestocomunista",
+          "por-un-feminismo-materialista",
+          "agenda-radical-2023"
+        ]
       }
     },
     "1656620614b5dbd23d": {
+      "type": "block-featured-articles-grid",
+      "disabled": true,
+      "settings": {
+        "menu": "",
+        "article_1": "",
+        "article_2": "",
+        "article_3": ""
+      }
+    },
+    "9150dbaa-6d29-4702-ab92-084de1f493b9": {
+      "type": "block-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/hard-cover-books.jpg",
+        "link_url": "",
+        "link_text": ""
+      }
+    },
+    "eaea1f05-4023-4274-9721-d04429e4aec2": {
+      "type": "block-featured-authors",
+      "settings": {
+        "heading": "Autores destacados",
+        "menu": "",
+        "author_1": "authors/alva-gotby",
+        "author_2": "authors/christine-delphy",
+        "author_3": "authors/ekaitz-cancela",
+        "author_4": "authors/barbara-ehrenreich"
+      }
+    },
+    "0029cfa9-8285-4491-8422-828c39475a94": {
       "type": "block-featured-articles-grid",
       "settings": {
         "menu": "",
@@ -90,10 +110,14 @@
     }
   },
   "order": [
-    "1656512658cc675a40",
     "1660679729210ba70e",
-    "3372bfba-2281-4eac-9ae6-f9efde51da27",
-    "c5ca9092-8b23-4560-8301-0f8cdbbe3812",
-    "1656620614b5dbd23d"
+    "1656512658cc675a40",
+    "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
+    "399dcfbe-3555-4acc-8efd-9a2fa1f10a30",
+    "1656624957cd663247",
+    "1656620614b5dbd23d",
+    "9150dbaa-6d29-4702-ab92-084de1f493b9",
+    "eaea1f05-4023-4274-9721-d04429e4aec2",
+    "0029cfa9-8285-4491-8422-828c39475a94"
   ]
 }
