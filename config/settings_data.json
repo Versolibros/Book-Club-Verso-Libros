@@ -60,7 +60,7 @@
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
-          "text": "<p>Get 40% off select titles during the Verso Red Day Sale!</p>",
+          "text": "<p>Get 40% off select titles during the <a href=\"https://versobooks.myshopify.com/blogs/news/verso-books-red-day-sale-2023\" title=\"https://versobooks.myshopify.com/blogs/news/verso-books-red-day-sale-2023\">Verso Red Day Sale</a> until March 1!</p>",
           "color_scheme": "secondary"
         }
       }
