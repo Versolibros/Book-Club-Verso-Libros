@@ -282,6 +282,7 @@
       "payment_status": "Status",
       "shipping_address": "Shipping",
       "fulfillment_status": "Status",
+      "fulfilled": "Fulfilled",
       "shipping": "Shipping",
       "discount": "Discount",
       "tax": "Tax",

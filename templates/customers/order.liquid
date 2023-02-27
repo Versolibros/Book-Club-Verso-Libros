@@ -9,10 +9,10 @@
         <article class="c-order-detail__main">
           <header class="c-order-detail__section">
             <h1 class="c-order-detail__title">{{ 'customer.order.title' | t: name: order.name }}</h1>
-            {%- assign order_date = order.created_at | time_tag: format: "date_at_time" -%}
+            {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
             <p class="c-order-detail__text-secondary">{{ 'customer.order.date_html' | t: date: order_date }}</p>
             {%- if order.cancelled -%}
-              {%- assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" -%}
+              {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
               <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
               <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
             {%- endif -%}
@@ -24,13 +24,15 @@
                   <dl class="c-order-detail__line-item-details">
                     {%- liquid
                       render 'line-item-title', line_item: line_item
-                      render 'line-item-meta', line_item: line_item
+                      unless line_item.product.handle contains 'book-club-'
+                        render 'line-item-meta', line_item: line_item
+                      endunless
                       render 'line-item-subscription', line_item: line_item
                       render 'line-item-fulfillment', line_item: line_item
                       render 'line-item-price', line_item: line_item
                       render 'line-item-quantity', line_item: line_item
                       render 'ebook-download-link', order: order, line_item: line_item
-                     -%}
+                    -%}
                   </dl>
                 </article>
               </li>
@@ -45,14 +47,24 @@
             <h2 class="c-order-detail__aside-heading">{{ 'customer.order.billing_address' | t }}</h2>
             {{ order.billing_address | format_address }}
             <footer class="c-order-detail__aside-footer">
-              <p class="c-order-detail__text-secondary">{{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}</p>
+              <p class="c-order-detail__text-secondary">
+                {{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}
+              </p>
             </footer>
-            </section>
+          </section>
           <section>
             <h2 class="c-order-detail__aside-heading">{{ 'customer.order.shipping_address' | t }}</h2>
             {{ order.shipping_address | format_address }}
             <footer class="c-order-detail__aside-footer">
-              <p class="c-order-detail__text-secondary">{{ 'customer.order.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
+              <p class="c-order-detail__text-secondary">
+                {%- liquid
+                  assign fulfillment_status = order.fulfillment_status_label
+                  if order.tags contains 'folio-import'
+                    assign fulfillment_status = 'customer.order.fulfilled' | t
+                  endif
+                -%}
+                {{ 'customer.order.fulfillment_status' | t }}: {{ fulfillment_status }}
+              </p>
             </footer>
           </section>
         </div>
