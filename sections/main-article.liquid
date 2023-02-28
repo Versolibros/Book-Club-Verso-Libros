@@ -15,7 +15,7 @@
       assign non_author_tags = non_author_tags | concat: tag_as_array
     endif
   endfor
-  -%}
+-%}
 
 <header class="a-bg-default">
   <div class="c-article-detail__header l-container l-container--narrow l-container--padding-block-end-large">
@@ -42,18 +42,21 @@
   <section class="a-bg-default">
     <div class="l-container l-container--wide l-container--mobile-full-bleed">
       <img
-        srcset="{% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+        srcset="
+          {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
           {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
           {% if article.image.width >= 1128 %}{{ article.image | image_url: width: 1128 }} 1128w,{% endif %}
           {% if article.image.width >= 1600 %}{{ article.image | image_url: width: 1600 }} 1600w,{% endif %}
           {% if article.image.width >= 2256 %}{{ article.image | image_url: width: 2256 }} 2256w,{% endif %}
-          {{ article.image | image_url }} {{ article.image.width }}w"
+          {{ article.image | image_url }} {{ article.image.width }}w
+        "
         sizes="(min-width: 75.5rem) 70.5rem, 93.38vw"
         src="{{ article.image | image_url: width: 1128 }}"
         loading="lazy"
         width="1128"
         height="{{ 1128 | divided_by: article.image.aspect_ratio | round }}"
-        alt="{{ article.image.alt | escape }}">
+        alt="{{ article.image.alt | escape }}"
+      >
     </div>
   </section>
 {%- endif -%}
@@ -61,10 +64,10 @@
   <article-content class="l-container l-container--narrow">
     {{ article.content }}
     <div id="product-strip-variants">
-      {%-liquid
+      {%- liquid
         for i in (1..90)
           assign metafield = 'product_strip_variants_' | append: i
-          if article.metafields.verso_api[metafield].value != blank
+          if article.metafields.verso_api[metafield].value != nil
             render 'product-strip', variants: article.metafields.verso_api[metafield].value, index: forloop.index
           endif
         endfor
@@ -73,8 +76,10 @@
     {%- if non_author_tags.size > 0 -%}
       <p class="c-article-detail__tags">
         <span>{{ 'sections.main-article.tags_label' | t }}: </span>
+        <ul>
           {%- for tag in non_author_tags -%}
-            {{ tag | link_to_tag: tag }}{%- unless forloop.last %},{% endunless %}
+            {{ tag | link_to_tag: tag }}
+            {%- unless forloop.last %},{% endunless %}
           {%- endfor -%}
         </ul>
       </p>
