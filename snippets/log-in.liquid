@@ -13,21 +13,23 @@
   }
 
   #recover:target ~ #login,
-  #recover:target ~ #login + div {
+  #recover:target ~ #login ~ * {
     display: none;
   }
 {%- endstyle -%}
 
 <h1 id="recover" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.recover_password.title' | t }}</h1>
-<div class="mbs-small">
-  {%- form 'recover_customer_password', class: 'c-form' -%}
+<div>
+  <p class="mbs-4 text-sm">{{ 'customer.login_page.description_html' | t: link: routes.account_register_url }}</p>
+  {%- form 'recover_customer_password', class: 'c-form mbs-small' -%}
     {% assign recover_success = form.posted_successfully? %}
     <div class="c-form__section c-form__section--inputs">
       <div class="a-input-wrapper">
         <label for="RecoverEmail">
           {{ 'customer.login_page.email' | t }}
         </label>
-        <input type="email"
+        <input
+          type="email"
           value=""
           name="email"
           id="RecoverEmail"
@@ -42,7 +44,7 @@
         >
         {%- if form.errors -%}
           <div id="RecoverEmail-email-error" class="c-form__field-error">
-            {{ form.errors.messages['form'] }}
+            {{ form.errors.messages.form }}
           </div>
         {%- endif -%}
       </div>
@@ -59,6 +61,7 @@
 </div>
 
 <h1 id="login" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.login_page.title' | t }}</h1>
+<p class="mbs-4 text-sm">{{ 'customer.login_page.description_html' | t: link: routes.account_register_url }}</p>
 <div class="mbs-small">
   {%- if recover_success == true -%}
     <p tabindex="-1" autofocus class="mbe-6 text-neutral-45 text-sm font-sans a-no-outline">
