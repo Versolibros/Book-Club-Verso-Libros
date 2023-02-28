@@ -67,7 +67,18 @@
           hide_secondary_contributions: 'true'
         %}
         {%- if line_item != blank -%}
-          {% render 'ebook-download-link', order: order, line_item: line_item %}
+          {%- liquid
+            assign refunded_quantity = line_item.refunded_quantity
+            assign purchased_quantity = line_item.quantity | minus: refunded_quantity
+          -%}
+          {%- if purchased_quantity > 0 %}
+            {% render 'ebook-download-link', order: order, line_item: line_item %}
+          {%- endif -%}
+          {%- if refunded_quantity > 0 %}
+            <p class="font-sans text-xsm">
+              <em>{{ 'customer.order.line_item.refunded' | t }}</em>
+            </p>
+          {%- endif -%}
         {%- endif -%}
         {%- if compare_at_price and line_item == blank and compare_at_price != price -%}
           <div>

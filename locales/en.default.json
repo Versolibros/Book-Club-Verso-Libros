@@ -301,6 +301,7 @@
         "fulfilled_at_html": "Fulfilled {{ date }}",
         "price": "Price",
         "quantity": "Quantity",
+        "refunded": "Refunded",
         "download_ebook": "Download ebook"
       }
     },

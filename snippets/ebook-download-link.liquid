@@ -1,27 +1,38 @@
 {%- liquid
   assign url = null
+
   assign service_base_url = shop.metafields.verso_api.verso_api_url
   assign service_secret_key = shop.metafields.verso_api.ebook_hmac_salt
 
-  if service_base_url and service_secret_key and order.financial_status == "paid" and line_item != blank and line_item.product.type == 'Books'
-    if line_item.variant.title contains 'ebook'
-      assign sku = line_item.variant.sku
-      assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
-      assign hmac = order.id | append: sku | append: service_secret_key | sha256
-      assign url = base_url | append: '/' | append: hmac
-    elsif order.shipping_address.country_code == "US" or order.shipping_address.country_code == "CA"
-      if line_item.variant.metafields.verso_api.us_ebook_isbn != blank
-        assign sku = line_item.variant.metafields.verso_api.us_ebook_isbn
+  assign valid_order_status = false
+  if order.financial_status == 'paid' or order.financial_status == 'partially_refunded'
+    assign valid_order_status = true
+  endif
+
+  if service_base_url and service_secret_key and line_item != blank and line_item.product.type == 'Books' and valid_order_status
+    assign refunded_quantity = line_item.refunded_quantity
+    assign purchased_quantity = line_item.quantity | minus: refunded_quantity
+
+    if purchased_quantity > 0
+      if line_item.variant.title contains 'ebook'
+        assign sku = line_item.variant.sku
         assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
         assign hmac = order.id | append: sku | append: service_secret_key | sha256
         assign url = base_url | append: '/' | append: hmac
-      endif
-    elsif order.shipping_address.country_code != "US" and order.shipping_address.country_code != "CA"
-      if  line_item.variant.metafields.verso_api.uk_ebook_isbn != blank
-        assign sku = line_item.variant.metafields.verso_api.uk_ebook_isbn
-        assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
-        assign hmac = order.id | append: sku | append: service_secret_key | sha256
-        assign url = base_url | append: '/' | append: hmac
+      elsif order.shipping_address.country_code == 'US' or order.shipping_address.country_code == 'CA'
+        if line_item.variant.metafields.verso_api.us_ebook_isbn != blank
+          assign sku = line_item.variant.metafields.verso_api.us_ebook_isbn
+          assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
+          assign hmac = order.id | append: sku | append: service_secret_key | sha256
+          assign url = base_url | append: '/' | append: hmac
+        endif
+      elsif order.shipping_address.country_code != 'US' and order.shipping_address.country_code != 'CA'
+        if line_item.variant.metafields.verso_api.uk_ebook_isbn != blank
+          assign sku = line_item.variant.metafields.verso_api.uk_ebook_isbn
+          assign base_url = service_base_url | append: '/ebooks/' | append: order.id | append: '/' | append: sku
+          assign hmac = order.id | append: sku | append: service_secret_key | sha256
+          assign url = base_url | append: '/' | append: hmac
+        endif
       endif
     endif
   endif

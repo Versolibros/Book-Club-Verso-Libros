@@ -1,4 +1,9 @@
 <div class="c-order-detail__text-secondary c-order-detail__line-item-quantity">
   <dt class="inline">{{ 'customer.order.line_item.quantity' | t }}:</dt>
   <dd class="inline">{{ line_item.quantity }}</dd>
+  {%- if line_item.refunded_quantity > 0 -%}
+    <br>
+    <dt class="inline">{{ 'customer.order.line_item.refunded' | t }}:</dt>
+    <dd class="inline">{{ line_item.refunded_quantity }}</dd>
+  {%- endif -%}
 </div>
