@@ -3,6 +3,7 @@
     "social_facebook_link": "https:\/\/www.facebook.com\/VersoLibros\/",
     "social_twitter_link": "https:\/\/twitter.com\/versolibros",
     "social_instagram_link": "https:\/\/www.instagram.com\/versolibros\/",
+    "logo": "{{ shop.brand.logo }}",
     "currency_code_enabled": true,
     "book_club_reader_title": "Lectora",
     "book_club_reader_description": "<ul><li><strong>Every new ebook we publish<\/strong><\/li><li><strong>50% off everything on the Verso website<\/strong><\/li><\/ul>",
