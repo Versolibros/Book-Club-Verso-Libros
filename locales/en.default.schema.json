@@ -552,7 +552,8 @@
       "name": "Header",
       "settings": {
         "logo": {
-          "label": "Logo image"
+          "label": "Logo image",
+          "paragraph": "Uploading a new logo image will override the default logo and remove animations."
         },
         "menu": {
           "label": "Menu"

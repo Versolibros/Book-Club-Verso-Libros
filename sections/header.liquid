@@ -1,14 +1,20 @@
 <header
   id="site-header"
   class="c-header"
-  data-behavior="ShrinkHeaderOnScroll"
->
+  data-behavior="ShrinkHeaderOnScroll">
   <div class="c-header__inner">
     <div class="c-header__flex-container">
       <div class="c-header__start">
-        <a href="{{ routes.root_url }}" class="c-header__logo-link">
-          {% render 'icon-verso-logo', classname: 'c-header__logo c-header__logo--desktop' %}
-          {% render 'icon-verso-logo-mark', classname: 'c-header__logo c-header__logo--mobile' %}
+        <a
+          href="{{ routes.root_url }}"
+          class={%- if section.settings.header-logo -%}"c-header__custom-logo-link"{%- else -%}"c-header__logo-link"{%- endif -%}>
+          {% if section.settings.header-logo %}
+            {% render 'image', image: section.settings.header-logo, block_width: 100, classname: 'c-header__custom-logo' %}
+          {% else %}
+            {% render 'icon-verso-logo', classname: 'c-header__logo c-header__logo--desktop' %}
+            {% render 'icon-verso-logo-mark', classname: 'c-header__logo c-header__logo--mobile' %}
+          {% endif %}
+
         </a>
         {%- if section.settings.menu != blank -%}
           <nav aria-label="{{ 'sections.header.main_nav' | t }}">
@@ -19,10 +25,9 @@
                     <a
                       href="{{ link.url }}"
                       {% if link.current %}
-                        aria-current="page"
+                      aria-current="page"
                       {% endif %}
-                      class="c-header__main-nav-link"
-                    >
+                      class="c-header__main-nav-link">
                       <span aria-hidden="true" class="c-header__main-nav-list-separator"></span>
                       {{ link.title | escape }}
                     </a>
@@ -39,17 +44,13 @@
             <li class="hidden headerBreak:block">
               {% render 'user-link', classname: 'c-button c-button--small c-button--truncated' %}
             </li>
-            <li
-              data-behavior="ToggleDrawer"
-              data-props='{"disableOnPage":"{{ routes.cart_url }}","excludeToggleFromTrap":true}'
-            >
+            <li data-behavior="ToggleDrawer" data-props='{"disableOnPage":"{{ routes.cart_url }}","excludeToggleFromTrap":true}'>
               <a
                 href="{{ routes.cart_url }}"
                 data-ref="toggle"
                 id="cart-drawer-toggle"
                 data-controls="cart-drawer"
-                class="c-header-icon-button c-header-icon-button--cart"
-              >
+                class="c-header-icon-button c-header-icon-button--cart">
                 {% render 'icon-cart', count: cart.item_count %}
                 <span class="sr-only">{{ 'sections.header.cart' | t: count: cart.item_count }}</span>
               </a>
@@ -57,8 +58,7 @@
               <div
                 data-ref="overlay"
                 class="l-overlay a-bg-neutral40-semi-opaque"
-                aria-hidden="true"
-              ></div>
+                aria-hidden="true"></div>
             </li>
             <li>
               {% render 'search-dialog', idSuffix: 'desktop' %}
@@ -69,14 +69,12 @@
         <div
           class="headerBreak:hidden"
           data-behavior="ToggleDrawer"
-          data-props='{"bindResize":true}'
-        >
+          data-props='{"bindResize":true}'>
           <button
             data-ref="toggle"
             id="header-mobile-menu-toggle"
             data-controls="header-mobile-menu"
-            class="c-header-icon-button c-header-icon-button--menu-toggle"
-          >
+            class="c-header-icon-button c-header-icon-button--menu-toggle">
             {% render 'icon-menu' %}
             <span class="sr-only">{{ 'sections.header.mobile_dialog' | t }}</span>
           </button>
@@ -101,6 +99,12 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "header-logo",
+      "label": "t:sections.header.settings.logo.label",
+      "info": "t:sections.header.settings.logo.paragraph"
     }
   ]
 }
