@@ -550,7 +550,8 @@
       "name": "Encabezado",
       "settings": {
         "logo": {
-          "label": "Imagen del logo"
+          "label": "Imagen del logo",
+          "paragraph": "Uploading a new logo image will override the default logo and remove animations."
         },
         "menu": {
           "label": "Menú"
