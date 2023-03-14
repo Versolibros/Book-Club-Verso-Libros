@@ -19,7 +19,7 @@
             "heading": "Reading Lists",
             "preheading": "Featured",
             "menu": "top-reading-lists",
-            "article_1": "",
+            "article_1": "news/5520-must-read-verso-blogs",
             "article_2": "",
             "article_3": "",
             "article_4": "",
@@ -33,14 +33,6 @@
       ],
       "settings": {
         "column_ratio": "40"
-      }
-    },
-    "51aa4cc7-559b-4c00-a9db-79a9d6213eaa": {
-      "type": "block-image",
-      "settings": {
-        "image": "shopify://shop_images/red_day_banner2.jpg",
-        "link_url": "https://versobooks.myshopify.com/blogs/news/verso-books-red-day-sale-2023",
-        "link_text": ""
       }
     },
     "1660679729210ba70e": {
@@ -99,7 +91,6 @@
   },
   "order": [
     "1656512658cc675a40",
-    "51aa4cc7-559b-4c00-a9db-79a9d6213eaa",
     "1660679729210ba70e",
     "3372bfba-2281-4eac-9ae6-f9efde51da27",
     "c5ca9092-8b23-4560-8301-0f8cdbbe3812",
