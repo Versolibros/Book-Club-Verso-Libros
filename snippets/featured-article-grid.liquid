@@ -39,10 +39,10 @@
             width="{{ image_width }}"
             height="{{ image_height }}"
             alt="{{ article.image.alt | escape }}"
-            class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} a-image-background"
+            class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} c-article-thumbnail__image--title-{% if type == 'news' %}hidden{% else %}visible{% endif %} a-image-background"
           >
         {%- else -%}
-          <div class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} a-image-background"></div>
+          <div class="c-article-thumbnail__image c-article-thumbnail__image--{{ aspect_ratio_class_modifier }} c-article-thumbnail__image--title-{% if type == 'news' %}hidden{% else %}visible{% endif %} a-image-background"></div>
         {%- endif -%}
         <h3 class="c-article-thumbnail__title{% if type == 'news' %} sr-only{% endif %}">
           {{ article.metafields.verso_api.display_title.value | default: article.title }}
