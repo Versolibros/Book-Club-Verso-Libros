@@ -59,8 +59,8 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "show_announcement": false,
-          "text": "<p>Get 40% off select titles during the <a href=\"https://versobooks.myshopify.com/blogs/news/verso-books-red-day-sale-2023\" title=\"https://versobooks.myshopify.com/blogs/news/verso-books-red-day-sale-2023\">Verso Red Day Sale</a> until March 1!</p>",
+          "show_announcement": true,
+          "text": "<p>We've moved our online store to Shopify! You will need to activate your account to access your order history and ebook library. To learn more, <a href=\"https://help.versobooks.com/en-US/our-new-website-what-you-need-to-know-193560\" target=\"_blank\" title=\"Verso Books New Website FAQs\">click here</a>. </p>",
           "color_scheme": "secondary"
         }
       }
