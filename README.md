@@ -3,7 +3,7 @@
 [Getting started](#getting-started) |
 [Store authentication](#store-authentication) |
 [Local development](#local-development) |
-[CSS & JS Assets](#css-js-assets) |
+[CSS & JS Assets](#css--js-assets) |
 [Syncing theme code with the storefront](#syncing-theme-code-with-the-storefront) |
 [Developer tools](#developer-tools)
 
