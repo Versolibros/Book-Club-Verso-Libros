@@ -95,7 +95,8 @@
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculado al finalizar la compra.",
       "metadata": {
         "page_count": "{{ count }} páginas"
-      }
+      },
+      "pod_notice": "Please allow an additional 10–12 days for this book to ship."
     }
   },
   "templates": {
@@ -176,12 +177,7 @@
     },
     "footer": {
       "site_nav": "Enlaces de sitios adicionales",
-      "social_nav": "Enlaces para redes sociales",
-      "newsletter": {
-        "label": "Suscríbase al boletín",
-        "email_label": "Dirección de correo electrónico",
-        "submit": "Suscribirse"
-      }
+      "social_nav": "Enlaces para redes sociales"
     },
     "main-article": {
       "tags_label": "Archivado"
@@ -215,6 +211,7 @@
     "location_submit_warning": "Se enviará tras la selección",
     "country": {
       "ca": "Canada",
+      "gb": "United Kingdom",
       "row": "Rest of World",
       "us": "United States"
     }
@@ -271,6 +268,7 @@
       "guest_title": "Continar como invitado",
       "password": "Contraseña",
       "title": "Iniciar sesión",
+      "description_html": "If you had an account with Verso prior to April 2023 you will need to <a href=\"{{ link }}\" class=\"a-inline-link\">register here to access your account</a>.",
       "sign_in": "Registrarse",
       "submit": "Entregar"
     },
@@ -285,6 +283,7 @@
       "payment_status": "Estado",
       "shipping_address": "Envío",
       "fulfillment_status": "Estado",
+      "fulfilled": "Fulfilled",
       "shipping": "Envío",
       "discount": "Descuento",
       "tax": "Impuesto",
@@ -303,6 +302,7 @@
         "fulfilled_at_html": "Cumplido en {{ date }}",
         "price": "Precio",
         "quantity": "Cantidad",
+        "refunded": "Refunded",
         "download_ebook": "Descargar ebook"
       }
     },
@@ -323,6 +323,7 @@
     },
     "register": {
       "title": "Crear cuenta",
+      "description": "Please re-enter your details using the same email address to ensure access to your previous orders.",
       "first_name": "Nombre",
       "last_name": "Apellido",
       "email": "Email (obligatorio)",
@@ -385,6 +386,9 @@
     "select_filter": "Filtros de temas (navegará al seleccionar))",
     "product_filter": "Filtro de productos",
     "skip_to": "Ir a la lista de libros"
+  },
+  "newsletter_signup": {
+    "dialog_label": "Newsletter signup form"
   },
   "reviews": {
     "reviews_title": "Reseñas",

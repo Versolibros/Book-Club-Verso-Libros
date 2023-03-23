@@ -328,12 +328,18 @@
       "name": "Featured authors",
       "settings": {
         "header__1": {
+          "content": "Header"
+        },
+        "heading": {
+          "label": "Optional header"
+        },
+        "header__2": {
           "content": "Selecciona un menú..."
         },
         "menu": {
           "label": "Menú de autores destacados"
         },
-        "header__2": {
+        "header__3": {
           "content": "...o seleccionar autores individualmente"
         },
         "paragraph": {
@@ -466,12 +472,6 @@
         "header__1": {
           "content": "CTA"
         },
-        "cta_text": {
-          "label": "Texto CTA"
-        },
-        "header__2": {
-          "content": "Lote actual"
-        },
         "show_bundle_options": {
           "label": "Mostrar las opciones actuales del lote"
         },
@@ -538,11 +538,13 @@
           "label": "Mostrar iconos de redes sociales"
         },
         "header__2": {
-          "content": "Texto del marcador de posición de suscripción por correo electrónico",
-          "info": "Introduzca el texto que aparecerá en el formulario de suscripción al boletín de noticias."
+          "content": "Newsletter call-to-action"
         },
-        "signup_placeholder": {
-          "label": "Introducir texto de marcador de posición"
+        "show_signup_cta": {
+          "label": "Show call-to-action"
+        },
+        "signup_cta_text": {
+          "label": "Call-to-action text"
         }
       }
     },
