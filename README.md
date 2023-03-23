@@ -25,7 +25,7 @@ The first time you run one of Shopify CLI's `theme` commands (e.g. `shopify them
 
 | Store | Flag value |
 | --- | --- |
-| Production | verso-libros |
+| Production | versolibros |
 
 The first time you run a `shopify` command, you will also be required to log into your CIC Shopify Partners account. Credentials are in 1Pass. If the CLI shows any authentication errors, you may need the store owner (Zach) to create a staff account for you.
 
