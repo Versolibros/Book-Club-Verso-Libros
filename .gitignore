@@ -1,0 +1,26 @@
+# IDEs
+/.idea
+/*.iml
+/.vscode
+
+# Dependencies
+node_modules
+
+# Miscellaneous
+.DS_Store
+/log
+/api/log
+/api/php-fpm.log
+/ignore
+api/tmp
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Shopify
+# ignore all files inside shopify/assets/ except files with 'static' keyword in their filename
+shopify/assets/*
+!shopify/assets/*static*
