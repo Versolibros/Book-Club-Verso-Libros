@@ -9,6 +9,7 @@
     },
     "1656512658cc675a40": {
       "type": "block-columns",
+      "disabled": true,
       "blocks": {
         "60b2f1ce-c6f6-43b6-897f-a1883e9f550f": {
           "type": "featured_products",
@@ -23,8 +24,9 @@
         },
         "bc0b6214-bd81-4c92-8ae7-f92ee51b3114": {
           "type": "featured_article",
+          "disabled": true,
           "settings": {
-            "article": "news/capitalismo-patriarcado-y-la-lucha-de-las-mujeres-una-entrevista-con-christine-delphy"
+            "article": "news\/capitalismo-patriarcado-y-la-lucha-de-las-mujeres-una-entrevista-con-christine-delphy"
           }
         }
       },
@@ -33,7 +35,7 @@
         "bc0b6214-bd81-4c92-8ae7-f92ee51b3114"
       ],
       "settings": {
-        "column_ratio": "60"
+        "column_ratio": "50"
       }
     },
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
@@ -83,7 +85,7 @@
       "type": "block-image",
       "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/hard-cover-books.jpg",
+        "image": "shopify:\/\/shop_images\/hard-cover-books.jpg",
         "link_url": "",
         "link_text": ""
       }
@@ -93,10 +95,10 @@
       "settings": {
         "heading": "Autores destacados",
         "menu": "",
-        "author_1": "authors/alva-gotby",
-        "author_2": "authors/christine-delphy",
-        "author_3": "authors/ekaitz-cancela",
-        "author_4": "authors/barbara-ehrenreich"
+        "author_1": "authors\/alva-gotby",
+        "author_2": "authors\/christine-delphy",
+        "author_3": "authors\/ekaitz-cancela",
+        "author_4": "authors\/barbara-ehrenreich"
       }
     },
     "0029cfa9-8285-4491-8422-828c39475a94": {
