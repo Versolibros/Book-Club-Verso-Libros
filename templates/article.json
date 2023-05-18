@@ -10,9 +10,7 @@
       "type": "block-featured-products",
       "settings": {
         "menu": "",
-        "product_list": [
-          "manifiestocomunista"
-        ]
+        "product_list": "{{ article.metafields.verso_api.related_books.value }}"
       }
     }
   },
