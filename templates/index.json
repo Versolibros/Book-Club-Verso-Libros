@@ -109,6 +109,14 @@
         "article_2": "",
         "article_3": ""
       }
+    },
+    "7f1f1f5a-d92a-461c-8172-a35e5b25460b": {
+      "type": "block-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Sin_titulo-2.jpg",
+        "link_url": "",
+        "link_text": ""
+      }
     }
   },
   "order": [
@@ -120,6 +128,7 @@
     "1656620614b5dbd23d",
     "9150dbaa-6d29-4702-ab92-084de1f493b9",
     "eaea1f05-4023-4274-9721-d04429e4aec2",
-    "0029cfa9-8285-4491-8422-828c39475a94"
+    "0029cfa9-8285-4491-8422-828c39475a94",
+    "7f1f1f5a-d92a-461c-8172-a35e5b25460b"
   ]
 }
