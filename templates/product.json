@@ -12,10 +12,19 @@
       "settings": {
         "heading": "Verso suggests"
       }
+    },
+    "7cdfe5d9-5f32-4373-84e3-3544c083ea8f": {
+      "type": "block-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Sin_titulo-2.jpg",
+        "link_url": "",
+        "link_text": ""
+      }
     }
   },
   "order": [
     "product",
-    "product-recommendations"
+    "product-recommendations",
+    "7cdfe5d9-5f32-4373-84e3-3544c083ea8f"
   ]
 }
