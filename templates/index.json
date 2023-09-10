@@ -1,15 +1,7 @@
 {
   "sections": {
-    "1660679729210ba70e": {
-      "type": "block-columns",
-      "disabled": true,
-      "settings": {
-        "column_ratio": "60"
-      }
-    },
     "1656512658cc675a40": {
       "type": "block-columns",
-      "disabled": true,
       "blocks": {
         "60b2f1ce-c6f6-43b6-897f-a1883e9f550f": {
           "type": "featured_products",
@@ -34,6 +26,7 @@
         "60b2f1ce-c6f6-43b6-897f-a1883e9f550f",
         "bc0b6214-bd81-4c92-8ae7-f92ee51b3114"
       ],
+      "disabled": true,
       "settings": {
         "column_ratio": "50"
       }
@@ -117,10 +110,17 @@
         "link_url": "",
         "link_text": ""
       }
+    },
+    "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
+      "type": "block-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/allendeversoweb.png",
+        "link_url": "",
+        "link_text": ""
+      }
     }
   },
   "order": [
-    "1660679729210ba70e",
     "1656512658cc675a40",
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
     "399dcfbe-3555-4acc-8efd-9a2fa1f10a30",
@@ -129,6 +129,7 @@
     "9150dbaa-6d29-4702-ab92-084de1f493b9",
     "eaea1f05-4023-4274-9721-d04429e4aec2",
     "0029cfa9-8285-4491-8422-828c39475a94",
-    "7f1f1f5a-d92a-461c-8172-a35e5b25460b"
+    "7f1f1f5a-d92a-461c-8172-a35e5b25460b",
+    "22c3e555-96b3-4c0a-84d5-0cda15d21a47"
   ]
 }
