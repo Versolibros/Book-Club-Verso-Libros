@@ -44,12 +44,12 @@
       "settings": {
         "menu": "",
         "product_list": [
-          "conversaciones-con-allende",
           "la-cuestion-judia",
           "la-democracia-contra-el-capitalismo",
           "el-coche-de-buda",
           "comunismosincrecimiento",
-          "la-dialectica-del-sexo"
+          "la-dialectica-del-sexo",
+          "la-alternativa-socialista"
         ]
       }
     },
@@ -96,8 +96,8 @@
       "settings": {
         "heading": "Autores destacados",
         "menu": "",
-        "author_1": "authors\/salvador-allende",
-        "author_2": "authors\/raymond-williams",
+        "author_1": "authors\/michael-a-lebowitz",
+        "author_2": "authors\/enzo-traverso",
         "author_3": "authors\/ellen-meiksins-wood-1",
         "author_4": "authors\/mike-davis"
       }
