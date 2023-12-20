@@ -8,46 +8,29 @@
         "link_text": ""
       }
     },
-    "1656512658cc675a40": {
-      "type": "block-columns",
-      "blocks": {
-        "60b2f1ce-c6f6-43b6-897f-a1883e9f550f": {
-          "type": "featured_products",
-          "settings": {
-            "menu": "",
-            "product_list": [
-              "utopias-digitales",
-              "ellos-lo-llaman-amor",
-              "ni-arriba-ni-abajo"
-            ]
-          }
-        },
-        "bc0b6214-bd81-4c92-8ae7-f92ee51b3114": {
-          "type": "featured_article",
-          "disabled": true,
-          "settings": {
-            "article": "news\/las-redes-sociales-son-una-zona-de-guerra-la-estrategia-de-las-fuerzas-de-defensa-de-israel-para-la-guerra-como-espectaculo-online"
-          }
-        }
-      },
-      "block_order": [
-        "60b2f1ce-c6f6-43b6-897f-a1883e9f550f",
-        "bc0b6214-bd81-4c92-8ae7-f92ee51b3114"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_ratio": "50"
-      }
-    },
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
       "type": "block-featured-products",
       "settings": {
         "menu": "",
         "product_list": [
-          "para-navidad-regala-verso-pack-feminismos",
+          "para-navidad-regala-verso-pack-pueblos-vs-imperios",
           "para-navidad-regala-verso-pack-imaginar-el-fin-del-capitalismo",
           "para-navidad-regala-verso-pack-leyendo-a-marx",
-          "para-navidad-regala-verso-pack-pueblos-vs-imperios"
+          "para-navidad-regala-verso-pack-feminismos"
+        ]
+      }
+    },
+    "518c7028-1d14-4223-9e77-b3ee2cad8356": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "la-democracia-contra-el-capitalismo",
+          "la-cuestion-judia",
+          "la-alternativa-socialista",
+          "el-coche-de-buda",
+          "conversaciones-con-allende",
+          "descolonizando-la-mente-palestina"
         ]
       }
     },
@@ -56,18 +39,6 @@
       "disabled": true,
       "settings": {
         "article": ""
-      }
-    },
-    "1656624957cd663247": {
-      "type": "block-featured-products",
-      "disabled": true,
-      "settings": {
-        "menu": "",
-        "product_list": [
-          "manifiestocomunista",
-          "por-un-feminismo-materialista",
-          "agenda-radical-2023"
-        ]
       }
     },
     "1656620614b5dbd23d": {
@@ -116,18 +87,47 @@
         "link_url": "",
         "link_text": ""
       }
+    },
+    "e61796ff-d51f-4a06-9fb0-fbdc217880fb": {
+      "type": "block-columns",
+      "blocks": {
+        "e4f25f23-be87-4d98-a07e-32d3ef54d7aa": {
+          "type": "featured_products",
+          "settings": {
+            "menu": "",
+            "product_list": [
+              "para-navidad-regala-verso-pack-feminismos",
+              "para-navidad-regala-verso-pack-imaginar-el-fin-del-capitalismo",
+              "para-navidad-regala-verso-pack-leyendo-a-marx"
+            ]
+          }
+        },
+        "c22ee6bc-e88c-4b9d-aa68-9aa399a50de8": {
+          "type": "featured_article",
+          "settings": {
+            "article": "news\/pack-navidades"
+          }
+        }
+      },
+      "block_order": [
+        "e4f25f23-be87-4d98-a07e-32d3ef54d7aa",
+        "c22ee6bc-e88c-4b9d-aa68-9aa399a50de8"
+      ],
+      "settings": {
+        "column_ratio": "60"
+      }
     }
   },
   "order": [
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47",
-    "1656512658cc675a40",
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
+    "518c7028-1d14-4223-9e77-b3ee2cad8356",
     "399dcfbe-3555-4acc-8efd-9a2fa1f10a30",
-    "1656624957cd663247",
     "1656620614b5dbd23d",
     "9150dbaa-6d29-4702-ab92-084de1f493b9",
     "eaea1f05-4023-4274-9721-d04429e4aec2",
     "0029cfa9-8285-4491-8422-828c39475a94",
-    "7f1f1f5a-d92a-461c-8172-a35e5b25460b"
+    "7f1f1f5a-d92a-461c-8172-a35e5b25460b",
+    "e61796ff-d51f-4a06-9fb0-fbdc217880fb"
   ]
 }
