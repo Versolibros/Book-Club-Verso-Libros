@@ -8,20 +8,6 @@
         "link_text": ""
       }
     },
-    "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
-      "type": "block-featured-products",
-      "settings": {
-        "menu": "",
-        "product_list": [
-          "ellos-lo-llaman-amor",
-          "amor-rojo",
-          "comunismosincrecimiento",
-          "utopias-digitales",
-          "por-un-feminismo-materialista",
-          "la-yihad-roja"
-        ]
-      }
-    },
     "518c7028-1d14-4223-9e77-b3ee2cad8356": {
       "type": "block-featured-products",
       "settings": {
@@ -33,6 +19,20 @@
           "el-coche-de-buda",
           "conversaciones-con-allende",
           "descolonizando-la-mente-palestina"
+        ]
+      }
+    },
+    "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "ellos-lo-llaman-amor",
+          "amor-rojo",
+          "comunismosincrecimiento",
+          "utopias-digitales",
+          "por-un-feminismo-materialista",
+          "la-yihad-roja"
         ]
       }
     },
@@ -93,8 +93,8 @@
   },
   "order": [
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47",
-    "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
     "518c7028-1d14-4223-9e77-b3ee2cad8356",
+    "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
     "399dcfbe-3555-4acc-8efd-9a2fa1f10a30",
     "1656620614b5dbd23d",
     "9150dbaa-6d29-4702-ab92-084de1f493b9",
