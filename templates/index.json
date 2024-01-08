@@ -85,38 +85,9 @@
     "7f1f1f5a-d92a-461c-8172-a35e5b25460b": {
       "type": "block-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Sin_titulo-2.jpg",
+        "image": "shopify:\/\/shop_images\/logoministerio.jpg",
         "link_url": "",
         "link_text": ""
-      }
-    },
-    "e61796ff-d51f-4a06-9fb0-fbdc217880fb": {
-      "type": "block-columns",
-      "blocks": {
-        "e4f25f23-be87-4d98-a07e-32d3ef54d7aa": {
-          "type": "featured_products",
-          "settings": {
-            "menu": "",
-            "product_list": [
-              "para-navidad-regala-verso-pack-feminismos",
-              "para-navidad-regala-verso-pack-imaginar-el-fin-del-capitalismo",
-              "para-navidad-regala-verso-pack-leyendo-a-marx"
-            ]
-          }
-        },
-        "c22ee6bc-e88c-4b9d-aa68-9aa399a50de8": {
-          "type": "featured_article",
-          "settings": {
-            "article": "news\/pack-navidades"
-          }
-        }
-      },
-      "block_order": [
-        "e4f25f23-be87-4d98-a07e-32d3ef54d7aa",
-        "c22ee6bc-e88c-4b9d-aa68-9aa399a50de8"
-      ],
-      "settings": {
-        "column_ratio": "60"
       }
     }
   },
@@ -129,7 +100,6 @@
     "9150dbaa-6d29-4702-ab92-084de1f493b9",
     "eaea1f05-4023-4274-9721-d04429e4aec2",
     "0029cfa9-8285-4491-8422-828c39475a94",
-    "7f1f1f5a-d92a-461c-8172-a35e5b25460b",
-    "e61796ff-d51f-4a06-9fb0-fbdc217880fb"
+    "7f1f1f5a-d92a-461c-8172-a35e5b25460b"
   ]
 }
