@@ -13,12 +13,11 @@
       "settings": {
         "menu": "",
         "product_list": [
-          "la-democracia-contra-el-capitalismo",
-          "la-cuestion-judia",
-          "la-alternativa-socialista",
-          "el-coche-de-buda",
-          "conversaciones-con-allende",
-          "descolonizando-la-mente-palestina"
+          "clase-crisis-y-estado",
+          "miseria-de-la-teoria",
+          "marx-en-los-margenes",
+          "pensando-el-sexo",
+          "trumpismos"
         ]
       }
     },
@@ -67,10 +66,10 @@
       "settings": {
         "heading": "Autores destacados",
         "menu": "",
-        "author_1": "authors\/michael-a-lebowitz",
-        "author_2": "authors\/enzo-traverso",
+        "author_1": "authors\/e-p-thompson",
+        "author_2": "authors\/erik-olin-wright",
         "author_3": "authors\/ellen-meiksins-wood-1",
-        "author_4": "authors\/mike-davis"
+        "author_4": "authors\/alva-gotby"
       }
     },
     "0029cfa9-8285-4491-8422-828c39475a94": {
