@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
@@ -13,12 +22,12 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "nosotros-creamos-a-chavez",
           "la-revolucion-de-los-claveles-empezo-en-africa",
           "africa-roja-recuperando-la-politica-negra-revolucionaria",
           "democracia-para-quien-ensayos-de-resistencia",
           "coaccion-muda-una-teoria-marxista-del-poder-economico-del-capital",
-          "el-pueblo-es-quien-mas-ordena",
-          "la-muchacha-del-siglo-pasado"
+          "el-pueblo-es-quien-mas-ordena"
         ]
       }
     },
