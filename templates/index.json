@@ -12,7 +12,7 @@
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
       "type": "block-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Banner-LENIN.jpg",
+        "image": "shopify://shop_images/Banner-LENIN.jpg",
         "link_url": "",
         "link_text": ""
       }
@@ -22,11 +22,11 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "historia-popular-de-la-revolucion-de-los-claveles",
           "el-estado-feroz",
           "rapados",
-          "nosotros-creamos-a-chavez",
+          "el-postmodernismo-o-la-logica-cultural-del-capitalismo-tardio",
           "la-revolucion-de-los-claveles-empezo-en-africa",
-          "historia-popular-de-la-revolucion-de-los-claveles",
           "africa-roja-recuperando-la-politica-negra-revolucionaria"
         ]
       }
@@ -66,7 +66,7 @@
       "type": "block-image",
       "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/hard-cover-books.jpg",
+        "image": "shopify://shop_images/hard-cover-books.jpg",
         "link_url": "",
         "link_text": ""
       }
@@ -76,10 +76,10 @@
       "settings": {
         "heading": "Autores destacados",
         "menu": "",
-        "author_1": "authors\/e-p-thompson",
-        "author_2": "authors\/andrea-long-chu",
-        "author_3": "authors\/kevin-b-anderson",
-        "author_4": "authors\/gayle-s-rubin"
+        "author_1": "authors/e-p-thompson",
+        "author_2": "authors/andrea-long-chu",
+        "author_3": "authors/kevin-b-anderson",
+        "author_4": "authors/gayle-s-rubin"
       }
     },
     "0029cfa9-8285-4491-8422-828c39475a94": {
@@ -94,7 +94,7 @@
     "7f1f1f5a-d92a-461c-8172-a35e5b25460b": {
       "type": "block-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/logoministerio.jpg",
+        "image": "shopify://shop_images/logoministerio.jpg",
         "link_url": "",
         "link_text": ""
       }
