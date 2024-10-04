@@ -22,12 +22,12 @@
       "settings": {
         "menu": "",
         "product_list": [
-          "historia-popular-de-la-revolucion-de-los-claveles",
           "el-estado-feroz",
           "rapados",
+          "movimientos-antisistemicos",
+          "historia-popular-de-la-revolucion-de-los-claveles",
           "el-postmodernismo-o-la-logica-cultural-del-capitalismo-tardio",
-          "la-revolucion-de-los-claveles-empezo-en-africa",
-          "africa-roja-recuperando-la-politica-negra-revolucionaria"
+          "obreros-y-capital"
         ]
       }
     },
@@ -37,11 +37,10 @@
         "menu": "",
         "product_list": [
           "descolonizando-la-mente-palestina",
-          "obreros-y-capital",
           "la-cuestion-judia",
-          "el-pueblo-es-quien-mas-ordena",
           "coaccion-muda-una-teoria-marxista-del-poder-economico-del-capital",
-          "amor-rojo"
+          "amor-rojo",
+          "ellos-lo-llaman-amor"
         ]
       }
     },
