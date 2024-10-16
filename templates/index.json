@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
@@ -22,12 +22,12 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "vivir-sin-instituciones-policia-trabajo-dinero",
           "matematicas-revolucionarias",
           "el-estado-feroz",
           "rapados",
           "historia-popular-de-la-revolucion-de-los-claveles",
-          "el-postmodernismo-o-la-logica-cultural-del-capitalismo-tardio",
-          "obreros-y-capital"
+          "el-postmodernismo-o-la-logica-cultural-del-capitalismo-tardio"
         ]
       }
     },
@@ -38,10 +38,10 @@
         "product_list": [
           "movimientos-antisistemicos",
           "descolonizando-la-mente-palestina",
-          "la-cuestion-judia",
           "coaccion-muda-una-teoria-marxista-del-poder-economico-del-capital",
           "amor-rojo",
-          "ellos-lo-llaman-amor"
+          "ellos-lo-llaman-amor",
+          "obreros-y-capital"
         ]
       }
     },
