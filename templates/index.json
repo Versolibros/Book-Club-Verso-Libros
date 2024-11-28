@@ -22,12 +22,12 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "no-hay-atajos",
+          "transformar-no-es-cancelar",
+          "discurso-sobre-el-colonialismo",
           "vivir-sin-instituciones-policia-trabajo-dinero",
-          "matematicas-revolucionarias",
           "el-estado-feroz",
-          "rapados",
-          "historia-popular-de-la-revolucion-de-los-claveles",
-          "el-postmodernismo-o-la-logica-cultural-del-capitalismo-tardio"
+          "rapados"
         ]
       }
     },
@@ -36,12 +36,12 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "matematicas-revolucionarias",
+          "chile-1973-2023-contrarrevolucion-y-resistencia",
+          "toussaint-loverture",
           "movimientos-antisistemicos",
           "descolonizando-la-mente-palestina",
-          "coaccion-muda-una-teoria-marxista-del-poder-economico-del-capital",
-          "amor-rojo",
-          "ellos-lo-llaman-amor",
-          "obreros-y-capital"
+          "historia-popular-de-la-revolucion-de-los-claveles"
         ]
       }
     },
