@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "book-club",
   "sections": {
@@ -16,25 +25,59 @@
     },
     "subscriptions": {
       "type": "book-club-subscriptions",
-      "settings": {
-      }
+      "settings": {}
+    },
+    "block_rich_text_3VJx9n": {
+      "type": "block-rich-text",
+      "blocks": {
+        "heading_ERdTMR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lectora",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "text_k3RyEb": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "t-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ERdTMR",
+        "text_k3RyEb"
+      ],
+      "settings": {}
     },
     "products": {
       "type": "book-club-products",
+      "settings": {}
+    },
+    "block_featured_products_Xf9NjX": {
+      "type": "block-featured-products",
       "settings": {
+        "menu": "",
+        "product_list": [
+          "camarada",
+          "chile-1973-2023-contrarrevolucion-y-resistencia"
+        ]
       }
     },
     "footer": {
       "type": "book-club-footer",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
     "header",
     "featured_subscription",
     "subscriptions",
+    "block_rich_text_3VJx9n",
     "products",
+    "block_featured_products_Xf9NjX",
     "footer"
   ]
 }
