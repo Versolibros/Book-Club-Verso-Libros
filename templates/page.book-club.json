@@ -27,44 +27,9 @@
       "type": "book-club-subscriptions",
       "settings": {}
     },
-    "block_rich_text_3VJx9n": {
-      "type": "block-rich-text",
-      "blocks": {
-        "heading_ERdTMR": {
-          "type": "heading",
-          "settings": {
-            "heading": "Lectora",
-            "heading_tag": "h2",
-            "heading_style": "t-h2"
-          }
-        },
-        "text_k3RyEb": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "t-base"
-          }
-        }
-      },
-      "block_order": [
-        "heading_ERdTMR",
-        "text_k3RyEb"
-      ],
-      "settings": {}
-    },
     "products": {
       "type": "book-club-products",
       "settings": {}
-    },
-    "block_featured_products_Xf9NjX": {
-      "type": "block-featured-products",
-      "settings": {
-        "menu": "",
-        "product_list": [
-          "camarada",
-          "chile-1973-2023-contrarrevolucion-y-resistencia"
-        ]
-      }
     },
     "footer": {
       "type": "book-club-footer",
@@ -75,9 +40,7 @@
     "header",
     "featured_subscription",
     "subscriptions",
-    "block_rich_text_3VJx9n",
     "products",
-    "block_featured_products_Xf9NjX",
     "footer"
   ]
 }
