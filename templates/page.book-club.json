@@ -27,27 +27,6 @@
       "type": "book-club-subscriptions",
       "settings": {}
     },
-    "block_columns_be8n4t": {
-      "type": "block-columns",
-      "blocks": {
-        "featured_collections_K6f6mk": {
-          "type": "featured_collections",
-          "settings": {
-            "collection_heading": "",
-            "collection_menu": "",
-            "collection_list": [
-              "camarada-coleccion"
-            ]
-          }
-        }
-      },
-      "block_order": [
-        "featured_collections_K6f6mk"
-      ],
-      "settings": {
-        "column_ratio": "40"
-      }
-    },
     "products": {
       "type": "book-club-products",
       "settings": {}
@@ -61,7 +40,6 @@
     "header",
     "featured_subscription",
     "subscriptions",
-    "block_columns_be8n4t",
     "products",
     "footer"
   ]
