@@ -27,6 +27,41 @@
       "type": "book-club-subscriptions",
       "settings": {}
     },
+    "block_rich_text_4j36DC": {
+      "type": "block-rich-text",
+      "blocks": {
+        "heading_8RT6R7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Camarada",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "text_78azhG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>camarada verso</p>",
+            "text_style": "t-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8RT6R7",
+        "text_78azhG"
+      ],
+      "settings": {}
+    },
+    "block_featured_products_KtEw3f": {
+      "type": "block-featured-products",
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "clase-crisis-y-estado",
+          "conversaciones-con-allende"
+        ]
+      }
+    },
     "products": {
       "type": "book-club-products",
       "settings": {}
@@ -40,6 +75,8 @@
     "header",
     "featured_subscription",
     "subscriptions",
+    "block_rich_text_4j36DC",
+    "block_featured_products_KtEw3f",
     "products",
     "footer"
   ]
