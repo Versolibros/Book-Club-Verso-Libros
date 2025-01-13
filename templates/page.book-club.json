@@ -62,8 +62,7 @@
       "type": "block-featured-products",
       "custom_css": [
         ".a-bg-default {background-color: #775496; color: white;}",
-        "h2 {color: white;}",
-        "div {border-color:white;}"
+        "h2 {color: white; border-color: white;}"
       ],
       "settings": {
         "menu": "",
