@@ -51,15 +51,17 @@
         "text_78azhG"
       ],
       "custom_css": [
-        "h2 {font-size: 45px; color:white;}",
-        "p{color:white;}",
-        ".a-bg-default {background-color:#775496;}"
+        "h2 {font-size: 45px; color: white;}",
+        "p {color: white;}",
+        ".a-bg-default {background-color: #775496;}"
       ],
       "settings": {}
     },
     "block_featured_products_KtEw3f": {
       "type": "block-featured-products",
-      "custom_css": [],
+      "custom_css": [
+        ".a-bg-default {background-color: #775496; color:white;}"
+      ],
       "settings": {
         "menu": "",
         "product_list": [
