@@ -60,7 +60,8 @@
     "block_featured_products_KtEw3f": {
       "type": "block-featured-products",
       "custom_css": [
-        ".a-bg-default {background-color: #775496; color:white;}"
+        ".a-bg-default {background-color: #775496; color: white;}",
+        "h2{color:white;}"
       ],
       "settings": {
         "menu": "",
