@@ -51,7 +51,9 @@
         "text_78azhG"
       ],
       "custom_css": [
-        "h2 {font-size: 45px;}"
+        "h2 {font-size: 45px; color:white;}",
+        "p{color:white;}",
+        ".a-bg-default {background-color:#775496;}"
       ],
       "settings": {}
     },
