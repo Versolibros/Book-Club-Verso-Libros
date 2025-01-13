@@ -53,7 +53,8 @@
       "custom_css": [
         "h2 {font-size: 45px; color: white;}",
         "p {color: white;}",
-        ".a-bg-default {background-color: #775496;}"
+        ".a-bg-default {background-color: #775496;}",
+        ".l-container.l-container--max {padding-bottom: 25px;}"
       ],
       "settings": {}
     },
@@ -61,7 +62,8 @@
       "type": "block-featured-products",
       "custom_css": [
         ".a-bg-default {background-color: #775496; color: white;}",
-        "h2{color:white;}"
+        "h2 {color: white;}",
+        "div {border-color:white;}"
       ],
       "settings": {
         "menu": "",
