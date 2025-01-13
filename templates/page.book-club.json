@@ -50,10 +50,14 @@
         "heading_8RT6R7",
         "text_78azhG"
       ],
+      "custom_css": [
+        "h2 {font-size: 45px;}"
+      ],
       "settings": {}
     },
     "block_featured_products_KtEw3f": {
       "type": "block-featured-products",
+      "custom_css": [],
       "settings": {
         "menu": "",
         "product_list": [
