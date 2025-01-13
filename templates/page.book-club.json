@@ -53,7 +53,7 @@
       "custom_css": [
         "h2 {font-size: 45px; color: white;}",
         "p {color: white;}",
-        ".a-bg-default {background-color: #775496;}",
+        ".a-bg-default {background-color: #f1854b;}",
         ".l-container.l-container--max {padding-bottom: 25px;}"
       ],
       "settings": {}
@@ -61,7 +61,7 @@
     "block_featured_products_KtEw3f": {
       "type": "block-featured-products",
       "custom_css": [
-        ".a-bg-default {background-color: #775496; color: white;}",
+        ".a-bg-default {background-color: #f1854b; color: white;}",
         "h2 {color: white; border-color: white;}"
       ],
       "settings": {
