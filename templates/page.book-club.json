@@ -99,7 +99,7 @@
         "h2 {font-size: 45px; color: white;}",
         "p {color: white;}",
         ".a-bg-default {background-color: #f1854b;}",
-        ".l-container.l-container--max {padding-bottom: 25px;}"
+        ".l-container.l-container--max {padding-bottom: 25px; padding-top: 70px;}"
       ],
       "settings": {}
     },
