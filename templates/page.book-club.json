@@ -27,6 +27,31 @@
       "type": "book-club-subscriptions",
       "settings": {}
     },
+    "block_rich_text_LEimhJ": {
+      "type": "block-rich-text",
+      "blocks": {
+        "heading_Ka8V4w": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lectora",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "text_XV3crY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>lectora verso</p>",
+            "text_style": "t-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Ka8V4w",
+        "text_XV3crY"
+      ],
+      "settings": {}
+    },
     "block_rich_text_4j36DC": {
       "type": "block-rich-text",
       "blocks": {
@@ -85,6 +110,7 @@
     "header",
     "featured_subscription",
     "subscriptions",
+    "block_rich_text_LEimhJ",
     "block_rich_text_4j36DC",
     "block_featured_products_KtEw3f",
     "products",
