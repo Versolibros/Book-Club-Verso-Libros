@@ -50,7 +50,27 @@
         "heading_Ka8V4w",
         "text_XV3crY"
       ],
+      "custom_css": [
+        "h2 {font-size: 45px; color: white;}",
+        "p {color: white;}",
+        ".a-bg-default {background-color: #775496;}",
+        ".l-container.l-container--max {padding-bottom: 25px;}"
+      ],
       "settings": {}
+    },
+    "block_featured_products_pe7t38": {
+      "type": "block-featured-products",
+      "custom_css": [
+        ".a-bg-default {background-color: #775496; color: white;}",
+        "h2 {color: white; border-color: white;}"
+      ],
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "clase-crisis-y-estado",
+          "conversaciones-con-allende"
+        ]
+      }
     },
     "block_rich_text_4j36DC": {
       "type": "block-rich-text",
@@ -111,6 +131,7 @@
     "featured_subscription",
     "subscriptions",
     "block_rich_text_LEimhJ",
+    "block_featured_products_pe7t38",
     "block_rich_text_4j36DC",
     "block_featured_products_KtEw3f",
     "products",
