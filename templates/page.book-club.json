@@ -72,6 +72,51 @@
         ]
       }
     },
+    "block_rich_text_MNwpeM": {
+      "type": "block-rich-text",
+      "blocks": {
+        "heading_xFDhXB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscriptora",
+            "heading_tag": "h2",
+            "heading_style": "t-h2"
+          }
+        },
+        "text_9UEyjq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Subscriptora  verso</p>",
+            "text_style": "t-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xFDhXB",
+        "text_9UEyjq"
+      ],
+      "custom_css": [
+        "h2 {font-size: 45px; color: white;}",
+        "p {color: white;}",
+        ".a-bg-default {background-color: #4bb3c3;}",
+        ".l-container.l-container--max {padding-bottom: 25px; padding-top: 70px;}"
+      ],
+      "settings": {}
+    },
+    "block_featured_products_BJwT8C": {
+      "type": "block-featured-products",
+      "custom_css": [
+        ".a-bg-default {background-color: #4bb3c3; color: white;}",
+        "h2 {color: white; border-color: white;}"
+      ],
+      "settings": {
+        "menu": "",
+        "product_list": [
+          "clase-crisis-y-estado",
+          "conversaciones-con-allende"
+        ]
+      }
+    },
     "block_rich_text_4j36DC": {
       "type": "block-rich-text",
       "blocks": {
@@ -132,6 +177,8 @@
     "subscriptions",
     "block_rich_text_LEimhJ",
     "block_featured_products_pe7t38",
+    "block_rich_text_MNwpeM",
+    "block_featured_products_BJwT8C",
     "block_rich_text_4j36DC",
     "block_featured_products_KtEw3f",
     "products",
