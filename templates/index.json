@@ -22,12 +22,12 @@
       "settings": {
         "menu": "",
         "product_list": [
+          "la-clase-importa",
           "enemigos-del-imperio",
           "moros-contra-franco",
           "no-hay-atajos",
           "transformar-no-es-cancelar",
-          "discurso-sobre-el-colonialismo",
-          "el-estado-feroz"
+          "discurso-sobre-el-colonialismo"
         ]
       }
     },
@@ -36,12 +36,12 @@
       "settings": {
         "menu": "",
         "product_list": [
-          "rapados",
-          "matematicas-revolucionarias",
           "chile-1973-2023-contrarrevolucion-y-resistencia",
+          "rapados",
+          "el-estado-feroz",
+          "matematicas-revolucionarias",
           "toussaint-loverture",
-          "movimientos-antisistemicos",
-          "historia-popular-de-la-revolucion-de-los-claveles"
+          "movimientos-antisistemicos"
         ]
       }
     },
