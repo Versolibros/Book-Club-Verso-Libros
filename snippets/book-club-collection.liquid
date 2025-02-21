@@ -37,6 +37,30 @@
         {% endfor %}
       </ul>
 
+      {% assign verso_metafields = shop.metafields.verso_api %}
+      <h1>Debug</h1>
+      <ul>
+        {% if verso_metafields %}
+          {% for key in verso_metafields %}
+            <li>Key: {{ key }} - Value: {{ verso_metafields[key].value | json }}</li>
+          {% endfor %}
+        {% else %}
+          <li>No hay metafields definidos en verso_api.</li>
+        {% endif %}
+      </ul>
+      {% for product in collections.all.products %}
+  <h3>{{ product.title }}</h3>
+  <ul>
+    {% if product.metafields.verso_api %}
+      {% for key in product.metafields.verso_api %}
+        <li>Key: {{ key }} - Value: {{ product.metafields.verso_api[key].value | json }}</li>
+      {% endfor %}
+    {% else %}
+      <li>No hay metafields en verso_api para este producto.</li>
+    {% endif %}
+  </ul>
+{% endfor %}
+
     
 <b>current collection:</b>
 {%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
