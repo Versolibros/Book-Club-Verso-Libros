@@ -12,3 +12,12 @@ UnusedAssign:
 # False positives since we put theme code in a subdirectory
 MissingTemplate:
   enabled: false
+# False positives that can lead to deleted file. The VBC product picker snippet is only
+# used by the ReCharge theme, for example.
+UnusedSnippet:
+  enabled: false
+# False positive where general.pagination.count_html entry works in theme but the theme checker doesn't like it
+# Unable to disable that rule inline in JSON, so have to ignore the file
+ValidJSON:
+  ignore:
+    - locales/en.default.json
