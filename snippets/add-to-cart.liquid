@@ -1,188 +1,57 @@
 {% liquid
-  assign product = variant.product
-  assign compare_at_price = variant.compare_at_price
-  assign price = variant.price
-
-  assign customer_is_vbc_subscriber = false
-  if customer.tags contains 'Active Subscriber'
-    assign customer_is_vbc_subscriber = true
-  endif
-
-  assign is_in_catalog_collection = false
-  for collection in product.collections
-    if collection.handle == 'catalog'
-      assign is_in_catalog_collection = true
-      break
-    endif
-  endfor
-
-  assign site_wide_discount_percentage = settings.site_wide_discount
-  if site_wide_discount_percentage > 0 and is_in_catalog_collection
-    assign site_wide_discount_decimal = site_wide_discount_percentage | times: 0.01
-    assign price_adjustment = 1 | minus: site_wide_discount_decimal
-    assign price = price | times: price_adjustment | ceil
-  endif
-
-  assign customer_currency_code = localization.country.currency.iso_code
-  assign market_is_us_or_ca = false
-  if customer_currency_code == 'USD' or customer_currency_code == 'CAD'
-    assign market_is_us_or_ca = true
-  endif
-
-  assign selling_plan = null
-  assign is_preorder = false
-
-  comment
-    Figure out which selling plan is available for this customer’s market.
-    The only way to do that is to loop through each option in each selling
-    plan and check the option’s value. If we can’t find one, then we can fall
-    back to seeing if there’s a generic selling_plan option ("preorder").
-  endcomment
-  if variant.selling_plan_allocations
-    for allocation in variant.selling_plan_allocations
-      assign plan = allocation.selling_plan
-
-      for option in plan.options
-        if market_is_us_or_ca
-          if option.value == "prh-preorder"
-            assign selling_plan = plan
-            break
-          endif
-        else
-          if option.value == "marston-preorder"
-            assign selling_plan = plan
-            break
-          endif
-        endif
-
-        if selling_plan == nil and option.value == "verso-preorder" or option.value == "preorder"
-          assign selling_plan = plan
-          break
-        endif
-      endfor
-    endfor
-
-    if selling_plan
-      assign is_preorder = true
-    endif
-  endif
-
+  assign is_subscription = is_subscription | default: false
   assign is_available = variant.available
 
-  assign is_available_in_market = false
-  assign markets = null | sort
-
-  if variant.metafields.verso_api.for_sale_usd.value
-    assign iso_code = 'USD' | sort
-    assign markets = markets | concat: iso_code
-  endif
-  if variant.metafields.verso_api.for_sale_cad.value and variant.metafields.verso_api.prh_pod.value != true
-    assign iso_code = 'CAD' | sort
-    assign markets = markets | concat: iso_code
-  endif
-  if variant.metafields.verso_api.for_sale_gbp.value
-    assign iso_code = 'GBP' | sort
-    assign markets = markets | concat: iso_code
-  endif
-  if markets contains customer_currency_code or product.type != 'Books'
-    assign is_available_in_market = true
-  endif
-
-  assign is_in_stock_in_market = true
-  if market_is_us_or_ca and variant.metafields.verso_api.out_of_stock_usd_and_cad.value
-    assign is_in_stock_in_market = false
-  elsif customer_currency_code == 'GBP' and variant.metafields.verso_api.out_of_stock_gbp.value
-    assign is_in_stock_in_market = false
-  endif
-
   assign is_future_publication = false
-
-  assign publication_date = variant.metafields.verso_api.publication_date.value | default: product.metafields.verso_api.publication_date.value
-  if market_is_us_or_ca and variant.metafields.verso_api.prh_publication_date
-    assign publication_date = variant.metafields.verso_api.prh_publication_date.value
-  elsif variant.metafields.verso_api.marston_publication_date
-    assign publication_date = variant.metafields.verso_api.marston_publication_date.value
-  endif
-
-  assign publication_date_timestamp = publication_date | date: '%s' | times: 1
+  assign publication_date_timestamp = variant.metafields.verso_api.publication_date.value | date: '%s' | times: 1
   assign now_timestamp = 'now' | date: '%s' | times: 1
   if publication_date_timestamp > now_timestamp
     assign is_future_publication = true
   endif
 
-  if is_future_publication or is_available_in_market == false or is_in_stock_in_market == false
+  if is_future_publication
     assign is_available = false
-  endif
-
-  if is_preorder and is_available_in_market
-    assign is_available = true
   endif
 -%}
 
-{%- if is_available -%}
-  <add-to-cart
-    data-variant-id="{{ variant.id }}"
-    {% if selling_plan %}
-      data-selling-plan-id="{{ selling_plan.id }}"
-    {% endif %}
-    {% if customer_is_vbc_subscriber %}
-      data-discount-code="VBC"
-    {% endif %}
+<add-to-cart
+  data-variant-id="{{ variant.id }}"
+  {% if is_subscription %}
+    data-selling-plan-group-id="{{ product.selling_plan_groups[0].id }}"
+    data-selling-plan-id="{{ product.selling_plan_groups[0].selling_plans[0].id }}"
+  {% endif %}
+>
+  {% render 'loading-overlay' %}
+  <a
+    id="{{ variant.id }}-add-button"
+    href="{{ routes.cart_add_url }}/{{ variant.id }}"
+    name="add"
+    data-controls="cart-drawer"
+    {% if is_available == false %}aria-disabled="true"{% endif %}
+    class="c-button {% if index == 1 %}c-button--filled c-button--large{% elsif button_size %}c-button--{{ button_size }}{% else %}c-button--small{% endif %}{% if is_available == false %} c-button--sold-out{% endif %} {{ button_classname }}"
   >
-    {% render 'loading-overlay' %}
-    <a
-      id="{{ variant.id }}-add-button"
-      href="{{ routes.cart_add_url }}/{{ variant.id }}"
-      name="add"
-      data-controls="cart-drawer"
-      class="c-button {% if index == 1 %}c-button--filled c-button--large{% elsif button_size %}c-button--{{ button_size }}{% else %}c-button--small{% endif %} {{ button_classname }}"
-    >
-      <span>
-        {%- liquid
+    <span>
+      {%- liquid
+        if is_available
           if title
             echo 'products.product.add_title_to_cart' | t: title: title
-          elsif selling_plan
-            echo 'products.product.add_selling_plan_to_cart' | t
           else
             echo 'products.product.add_to_cart' | t
           endif
-        -%}
-      </span>
-      {%- if show_price -%}
-        {%- if compare_at_price and price != compare_at_price -%}
-          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-          <s class="text-neutral-50">
-            {{ compare_at_price | money }}
-          </s>
-        {%- endif -%}
-        <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
-        <span class="text-neutral-40">
-          {{ price | money }}
-        </span>
-      {%- endif -%}
-    </a>
-    <div role="alert" data-id="add-to-cart-errors" class="text-accent text-sm" hidden>
-      <span data-id="add-to-cart-error-text"></span>
-    </div>
-  </add-to-cart>
-{%- else -%}
-  <p class="{% if is_future_publication %}t-uppercase{% elsif is_available_in_market == false or is_in_stock_in_market == false %}t-metadata italic{% else %}t-uppercase{% endif %}">
-    {%- liquid
-      if is_future_publication
-        echo 'products.product.forthcoming' | t
-      elsif is_available_in_market == false
-        echo 'products.product.unavailable_in_market' | t
-      elsif is_in_stock_in_market == false
-        echo 'products.product.out_of_stock_in_market' | t
-      else
-        echo 'products.product.sold_out' | t
-      endif
-    -%}
-  </p>
-{%- endif -%}
-{%- if is_preorder and is_available_in_market -%}
-  {%-liquid
-    assign localized_date = publication_date | date: format: 'day_month_year'
-  -%}
-  <p class="t-metadata italic" style="line-height:1.5;">{{ 'products.product.preorder_description' | t: date: localized_date }}</p>
-{%- endif -%}
+        else
+          if is_future_publication
+            echo 'products.product.forthcoming' | t
+          else
+            echo 'products.product.sold_out' | t
+          endif
+        endif
+      -%}
+    </span>
+    {%- if show_price and variant.available == true -%}
+      <span class="text-neutral-45">{{ variant.price | money }}</span>
+    {%- endif -%}
+  </a>
+  <div role="alert" data-id="add-to-cart-errors" class="text-accent text-sm" hidden>
+    <span data-id="add-to-cart-error-text"></span>
+  </div>
+</add-to-cart>
