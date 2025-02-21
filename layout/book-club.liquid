@@ -14,6 +14,9 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
+    {% # theme-check-disable MissingAsset %}
+    <link rel="manifest" href="{{ 'site.static.webmanifest' | asset_url }}" />
+    {% # theme-check-enable UnusedAssign %}
 
     <title>
       {{ page_title }}

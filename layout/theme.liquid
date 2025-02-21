@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}" data-behavior="ObserveFontFace">
-  <head>
+  <head>{% render 'pagefly-head' %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,12 +14,42 @@
     <link rel="alternate icon" href="{{ 'favicon.static.ico' | asset_url }}" sizes="32x32" />
     <link rel="icon" href="{{ 'favicon.static.svg' | asset_url }}" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.static.png' | asset_url }}" />
+    {% # theme-check-disable MissingAsset %}
     <link rel="manifest" href="{{ 'site.static.webmanifest' | asset_url }}" />
+    {% # theme-check-enable MissingAsset %}
 
+    {%-liquid
+      assign title = page_title
+
+      comment
+        Product page
+      endcomment
+      if request.page_type == 'product'
+        assign title = product.title
+        assign subtitle = product.metafields.verso_api.subtitle.value
+        if subtitle
+          assign title = title | append: ': ' | append: subtitle
+        endif
+      comment
+        Collection page
+      endcomment
+      elsif request.page_type == 'collection'
+        assign title = collection.title
+        assign suffix = 'glossary.book_count.other' | t | capitalize
+        assign title = title | append: ' ' | append: suffix
+      comment
+        Author page
+      endcomment
+      elsif request.page_type == 'article' and template.suffix == 'author'
+        if article.metafields.verso_api.display_title.value != blank
+          assign title = article.metafields.verso_api.display_title.value
+        endif
+      endif
+    -%}
     <title>
-      {{ page_title }}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {{- title -}}
+      {%- if current_page != 1 %} &verbar; Page {{ current_page }}{% endif -%}
+      {%- unless request.page_type == 'index' %} &verbar; {{ 'general.shop_name' | t }}{% endunless -%}
     </title>
 
     {% if page_description %}
