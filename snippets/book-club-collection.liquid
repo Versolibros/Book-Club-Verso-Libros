@@ -1,6 +1,7 @@
 {%-liquid
   assign tier = tier | default: "reader"
   assign tier = "reader"
+  assign namespace = "verso_api"
 
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
@@ -29,18 +30,13 @@
 {% comment %}
   Verificar la cantidad de metafields para cada namespace.
 {% endcomment %}
-<ul>
-  {% for namespace in shop.metafields %}
-    <li>
-      <strong>Namespace:</strong> {{ namespace }}
+      <h1>Verso API</h1>
       <ul>
         {% for key in shop.metafields[namespace] %}
           <li>Key: {{ key }}</li>
         {% endfor %}
       </ul>
-    </li>
-  {% endfor %}
-</ul>
+
     
 <b>current collection:</b>
 {%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
