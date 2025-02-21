@@ -1,0 +1,25 @@
+{%- if paginate and back_to_link -%}
+  {%- liquid
+    assign first = paginate.current_offset | plus: 1
+    assign last = paginate.current_offset | plus: paginate.page_size
+    if paginate.items < last
+      assign last = paginate.items
+    endif
+  -%}
+  <p class="c-pagination-count">
+    <span>
+      {{- 'general.pagination.count_html' | t: first: first, last: last, count: paginate.items }}
+    </span>
+    <br>
+    <a
+      href="{{ back_to_link }}{{ anchor }}"
+      data-ref="pagination-back-to-link"
+      class="a-inline-link-secondary"
+      {%- if paginate.current_page == 1 -%}
+        hidden
+      {%- endif -%}
+    >
+      {{- 'general.pagination.back_to_beginning' | t -}}
+    </a>
+  </p>
+{%- endif -%}
