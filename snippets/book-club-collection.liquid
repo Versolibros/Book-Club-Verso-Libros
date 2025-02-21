@@ -17,8 +17,10 @@
 -%}
 
 <h1>Esto debe de salir</h1>
+<h2>{{ current_key }}</h2>
 <b>tier: </b>{{ tier }}<b><br/>
-<b>current collection:</b>{%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%} o no!
+<b>current collection:</b>
+{%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
 
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
