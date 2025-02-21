@@ -16,20 +16,31 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
-<h1>Esto debe de salir</h1>
-<h2>{{ current_key }}</h2>
-<b>tier: </b>{{ tier }}<b><br/>
-    <ul>
-      {%- for namespace in shop.metafields -%}
-        {%- for key in shop.metafields[namespace] -%}
-          <li>
-            <strong>Namespace:</strong> {{ namespace }} <br>
-            <strong>Key:</strong> {{ key }} <br>
-            <strong>Value:</strong> {{ shop.metafields[namespace][key].value | json }}
-          </li>
-        {%- endfor -%}
-      {%- endfor -%}
-    </ul>
+<h1>Aquí deben de salir las listas</h1>
+{% comment %}
+  Verificar los namespaces de los metafields.
+{% endcomment %}
+<ul>
+  {% for namespace in shop.metafields %}
+    <li>Namespace: {{ namespace }}</li>
+  {% endfor %}
+</ul>
+
+{% comment %}
+  Verificar la cantidad de metafields para cada namespace.
+{% endcomment %}
+<ul>
+  {% for namespace in shop.metafields %}
+    <li>
+      <strong>Namespace:</strong> {{ namespace }}
+      <ul>
+        {% for key in shop.metafields[namespace] %}
+          <li>Key: {{ key }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
     
 <b>current collection:</b>
 {%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
