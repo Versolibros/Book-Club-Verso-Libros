@@ -19,10 +19,12 @@
     class="c-search-dialog__dialog a-bg-default {% if theme == 'drawer' %}l-drawer{% else %}c-search-dialog__dialog--disclosure{% endif %}">
     {%- liquid
       assign input_id = 'predictive-search-input'
+      assign results_id = 'predictive-search-results'
       if theme == 'drawer'
         assign input_id = 'drawer-predictive-search-input'
+        assign results_id = 'drawer-predictive-search-results'
       endif
-      render 'predictive-search', input_id: input_id, theme: theme
+      render 'predictive-search', input_id: input_id, results_id: results_id, theme: theme
     -%}
   </div>
 </div>

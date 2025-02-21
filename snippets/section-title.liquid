@@ -1,3 +1,9 @@
 <{{ tag | default: "h2" }} class="c-section-title c-section-title--{{ size | default: "small" }} c-section-title--{{ color | default: "default" }}" {{ attributes }}>
-  {{- title -}}
+  <{{ title_tag | default: "span" }}>{{- title -}}</{{ title_tag | default: "span" }}>
+  {%- if link_url != blank and link_text != blank -%}
+    <a href="{{ link_url }}" class="c-browse-all-link">
+      <span>{{ link_text }}</span>
+      {% render 'icon-arrow' %}
+    </a>
+  {%- endif -%}
 </{{ tag | default: "h2" }}>

@@ -1,0 +1,23 @@
+<div
+  role="dialog"
+  aria-modal="true"
+  id="{{ id }}"
+  aria-label="{{ 'customer.login_page.title' | t }}"
+  class="c-default-overlay l-overlay a-bg-neutral40-semi-opaque"
+>
+  <div data-ref="trapContainer" class="c-default-overlay__inner c-default-overlay__inner--market-redirect a-bg-default">
+    <h2 class="leading-[1.2] text-accent pie-[55px]">{{ 'localization.redirect_dialog.heading_html' | t }}</h2>
+    <div class="mbs-4">{{ 'localization.redirect_dialog.body_html' | t }}</div>
+    <div class="c-form__section basis-auto mbs-small">
+      <button data-ref="consent" class="c-button c-button--medium c-button--filled">{{ 'localization.redirect_dialog.consent' | t }}</button>
+      <button data-ref="reject" class="a-inline-link-secondary text-[0.875rem]">{{ 'localization.redirect_dialog.reject' | t }}</button>
+    </div>
+    <button
+      data-ref="close"
+      class="c-default-overlay__close-button c-header-icon-button c-header-icon-button--close"
+    >
+      {% render 'icon-menu' %}
+      <span class="sr-only">{{ "image_overlay.close" | t }}</span>
+    </button>
+  </div>
+</div>

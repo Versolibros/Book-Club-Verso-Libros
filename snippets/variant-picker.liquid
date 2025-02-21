@@ -1,5 +1,4 @@
 {%- liquid
-  assign product_type = product_type | default: "book"
   assign is_subscription = is_subscription | default: false
   assign customer_iso_code = localization.country.currency.iso_code
   comment
@@ -7,23 +6,67 @@
   endcomment
   assign has_ebook_in_market = false
   for variant in product.variants
-    if variant.title == "ebook (US)" and customer_iso_code == "USD" or customer_iso_code == "CAD"
+    if variant.title == 'ebook (US)' and customer_iso_code == 'USD' or customer_iso_code == 'CAD'
       assign has_ebook_in_market = true
       break
-    elsif variant.title == "ebook (UK)" and customer_iso_code == "GBP"
+    elsif variant.title == 'ebook (UK)' and customer_iso_code == 'GBP'
       assign has_ebook_in_market = true
       break
     endif
   endfor
+  comment
+    Test currency of customer's market against the available markets for the variant
+  endcomment
+  assign available_variants = null | sort
+  for variant in product.variants
+    comment
+      Build array of available markets for each variant
+    endcomment
+    assign markets = null | sort
+    if variant.metafields.verso_api.for_sale_usd.value
+      assign iso_code = 'USD' | sort
+      assign markets = markets | concat: iso_code
+    endif
+    if variant.metafields.verso_api.for_sale_cad.value
+      assign iso_code = 'CAD' | sort
+      assign markets = markets | concat: iso_code
+    endif
+    if variant.metafields.verso_api.for_sale_gbp.value
+      assign iso_code = 'GBP' | sort
+      assign markets = markets | concat: iso_code
+    endif
+    comment
+      Check if variant is an ebook (if not, we'll ignore filtering for market)
+    endcomment
+    assign is_ebook = false
+    if variant.title == 'ebook (US)' or variant.title == 'ebook (UK)'
+      assign is_ebook = true
+    endif
+    comment
+      build array of available variants based on customer's market and type of product & variant
+    endcomment
+    if markets contains customer_iso_code or product.type != 'Books' or is_ebook == false
+      assign variant_as_array = variant | sort
+      assign available_variants = available_variants | concat: variant_as_array
+    endif
+  endfor
 -%}
-{%- if product.variants.size > 0 -%}
+{%- if available_variants.size > 0 -%}
   <ul class="c-variant-picker">
-    {%- for variant in product.variants -%}
+    {%- for variant in available_variants -%}
+      {% assign show_variant_subtitle = true %}
       {%- if has_ebook_in_market == false -%}
-        {% assign physical_variant_subtitle = null %}
+        {% assign show_variant_subtitle = false %}
       {%- endif -%}
       <li>
-        {% render 'variant-card', variant: variant, index: forloop.index, is_subscription: is_subscription, physical_variant_subtitle: physical_variant_subtitle, ebook_variant_description: ebook_variant_description, product_type: product_type %}
+        {% render 'variant-card',
+          variant: variant,
+          index: forloop.index,
+          is_subscription: is_subscription,
+          show_variant_subtitle: show_variant_subtitle,
+          ebook_variant_description: ebook_variant_description,
+          is_available_in_market: has_ebook_in_market
+        %}
       </li>
     {%- endfor -%}
   </ul>

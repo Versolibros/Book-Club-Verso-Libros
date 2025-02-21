@@ -1,0 +1,11 @@
+{%- liquid
+  assign subtitle = subtitle | default: settings.physical_variant_subtitle
+
+  assign title_array = variant.title | handleize | replace: '-', '_' | split: '_'
+  for word in title_array
+    if word == 'paperback' or word == 'hardback'
+      echo subtitle
+      break
+    endif
+  endfor
+-%}

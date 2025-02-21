@@ -1,7 +1,5 @@
 {%- liquid
-  assign product_type = product_type | default: "book"
-
-  if product_type != "book"
+  if variant.product.type != "Books"
     echo variant.title
     break
   endif
@@ -19,7 +17,9 @@
   endfor
 
   if key
+    # theme-check-disable VariableName
     assign l10n_key = 'products.product.variant_title.' | append: key
+    # theme-check-disable VariableName
     assign title = l10n_key | t
 
     if rest

@@ -7,6 +7,22 @@
     endif
     assign compare_at_price = product.variants[0].compare_at_price
     assign price = product.variants[0].price
+
+    assign is_in_catalog_collection = false
+    for collection in product.collections
+      if collection.handle == 'catalog'
+        assign is_in_catalog_collection = true
+        break
+      endif
+    endfor
+
+    assign site_wide_discount_percentage = settings.site_wide_discount
+    if site_wide_discount_percentage > 0 and is_in_catalog_collection
+      assign site_wide_discount_decimal = site_wide_discount_percentage | times: 0.01
+      assign price_adjustment = 1 | minus: site_wide_discount_decimal
+      assign price = price | times: price_adjustment
+    endif
+
     assign is_ebook = false
     if line_item != blank and line_item.variant.title contains 'ebook'
       assign is_ebook = true
@@ -58,34 +74,36 @@
       </header>
     </a>
     {% comment %}If should show discount badge or byline{% endcomment %}
-    {%- if product.metafields.verso_api.authors.value != blank or compare_at_price or line_item != blank -%}
-      <footer class="c-product-card__details">
-        {% render 'byline',
-          contributions: product.metafields.verso_api.contributions.value,
-          linked: true,
-          classname: 'c-product-card__byline',
-          hide_secondary_contributions: 'true'
-        %}
-        {%- if line_item != blank -%}
-          {%- liquid
-            assign refunded_quantity = line_item.refunded_quantity
-            assign purchased_quantity = line_item.quantity | minus: refunded_quantity
-          -%}
-          {%- if purchased_quantity > 0 %}
-            {% render 'ebook-download-link', order: order, line_item: line_item %}
+    {%- if hide_byline != true %}
+      {%- if product.metafields.verso_api.authors.value != blank or compare_at_price or line_item != blank -%}
+        <footer class="c-product-card__details">
+          {% render 'byline',
+            contributions: product.metafields.verso_api.contributions.value,
+            linked: true,
+            classname: 'c-product-card__byline',
+            hide_secondary_contributions: 'true'
+          %}
+          {%- if line_item != blank -%}
+            {%- liquid
+              assign refunded_quantity = line_item.refunded_quantity
+              assign purchased_quantity = line_item.quantity | minus: refunded_quantity
+            -%}
+            {%- if purchased_quantity > 0 %}
+              {% render 'ebook-download-link', order: order, line_item: line_item %}
+            {%- endif -%}
+            {%- if refunded_quantity > 0 %}
+              <p class="font-sans text-xsm">
+                <em>{{ 'customer.order.line_item.refunded' | t }}</em>
+              </p>
+            {%- endif -%}
           {%- endif -%}
-          {%- if refunded_quantity > 0 %}
-            <p class="font-sans text-xsm">
-              <em>{{ 'customer.order.line_item.refunded' | t }}</em>
-            </p>
+          {%- if compare_at_price and line_item == blank and compare_at_price != price and hide_discounts != true -%}
+            <div>
+              {% render 'discount-badge', price: price, compare_at_price: compare_at_price %}
+            </div>
           {%- endif -%}
-        {%- endif -%}
-        {%- if compare_at_price and line_item == blank and compare_at_price != price -%}
-          <div>
-            {% render 'discount-badge', price: price, compare_at_price: compare_at_price %}
-          </div>
-        {%- endif -%}
-      </footer>
+        </footer>
+      {%- endif -%}
     {%- endif -%}
   </article>
 {%- endif -%}

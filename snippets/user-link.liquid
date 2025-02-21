@@ -5,7 +5,7 @@
 {%- else -%}
 <div
   data-behavior="OpenDialog"
-  data-props='{"disableOnPage":"{{ routes.account_login_url }}","clickOutsideDeactivates":true}'
+  data-props='{"disableOnPage":"{{ routes.account_login_url }}","clickOutsideDeactivates":false,"clickOnBackdropDeactivates":true}'
 >
 {%- endif %}
 
@@ -36,13 +36,13 @@
     aria-label="{{ 'customer.login_page.title' | t }}"
     id="log-in-modal"
     data-ref="dialog"
-    class="c-login-overlay l-overlay a-bg-accent-dark-semi-opaque"
+    class="c-default-overlay l-overlay a-bg-accent-dark-semi-opaque"
   >
-    <div data-ref="trapContainer" class="c-login-overlay__inner a-bg-default">
+    <div data-ref="trapContainer" class="c-default-overlay__inner a-bg-default">
       {% render 'log-in' %}
       <button
         data-ref="close"
-        class="c-login-overlay__close-button c-header-icon-button c-header-icon-button--close"
+        class="c-default-overlay__close-button c-header-icon-button c-header-icon-button--close"
       >
         {% render 'icon-menu' %}
         <span class="sr-only">{{ "image_overlay.close" | t }}</span>

@@ -16,7 +16,7 @@
       {%- endfor -%}
     </ol>
   </nav>
-  {% assign sorted_articles = blog.articles | sort: 'title' %}
+  {% assign sorted_articles = blog.articles | sort: 'handle' %}
   <ol class="c-author-tagged-list">
     {% for article in sorted_articles %}
       {% assign title = article.metafields.verso_api.display_title.value | default: article.title %}

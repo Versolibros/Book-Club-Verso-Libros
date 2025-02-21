@@ -11,6 +11,7 @@
   assign description = settings[description_key]
   assign monthly_product = settings[monthly_product_key]
   assign annual_product = settings[annual_product_key]
+  assign monthly_discount_code = settings.book_club_monthly_subscription_discount_code
 -%}
 
 {%- if title != blank -%}
@@ -33,6 +34,7 @@
               data-variant-id="{{ monthly_variant.id }}"
               data-selling-plan-group-id="{{ monthly_product.selling_plan_groups[0].id }}"
               data-selling-plan-id="{{ monthly_product.selling_plan_groups[0].selling_plans[0].id }}"
+              {%- if monthly_discount_code != blank -%}data-discount-code="{{ monthly_discount_code }}"{%- endif -%}
             >
               {% render 'loading-overlay' %}
               <a

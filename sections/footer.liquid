@@ -1,5 +1,4 @@
 <footer class="c-footer">
-  {% comment %} {% render 'localization-form' %} {% endcomment %}
   <section class="c-footer__inner">
     <div class="c-footer__start">
       {%- if section.settings.menu != blank -%}
@@ -56,7 +55,7 @@
     {%- if section.settings.show_signup_cta -%}
       <div
         data-behavior="OpenDialog"
-        data-props='{"clickOutsideDeactivates":true}'
+        data-props='{"clickOutsideDeactivates":true,"clickOnBackdropDeactivates":true}'
         class="c-footer__end"
       >
         <button data-ref="open" class="c-button c-button--filled c-button--medium gap-2">
@@ -69,13 +68,13 @@
           aria-label="{{ 'newsletter_signup.dialog_label' | t }}"
           id="newsletter-signup-modal"
           data-ref="dialog"
-          class="c-login-overlay l-overlay a-bg-accent-dark-semi-opaque"
+          class="c-default-overlay l-overlay a-bg-accent-dark-semi-opaque"
         >
-          <div data-ref="trapContainer" class="c-login-overlay__inner c-login-overlay__inner--wider a-bg-default">
+          <div data-ref="trapContainer" class="c-default-overlay__inner c-default-overlay__inner--wider a-bg-default">
             <div class="klaviyo-form-SaE75B"></div>
             <button
               data-ref="close"
-              class="c-login-overlay__close-button c-header-icon-button c-header-icon-button--close"
+              class="c-default-overlay__close-button c-header-icon-button c-header-icon-button--close"
             >
               {% render 'icon-menu' %}
               <span class="sr-only">{{ 'image_overlay.close' | t }}</span>

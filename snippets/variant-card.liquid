@@ -1,18 +1,129 @@
 {%- liquid
+  assign product = variant.product
   assign compare_at_price = variant.compare_at_price
   assign price = variant.price
+
+  assign is_in_catalog_collection = false
+  for collection in product.collections
+    if collection.handle == 'catalog'
+      assign is_in_catalog_collection = true
+      break
+    endif
+  endfor
+
+  assign site_wide_discount_percentage = settings.site_wide_discount
+  if site_wide_discount_percentage > 0 and is_in_catalog_collection
+    assign site_wide_discount_decimal = site_wide_discount_percentage | times: 0.01
+    assign price_adjustment = 1 | minus: site_wide_discount_decimal
+    assign price = price | times: price_adjustment | ceil
+  endif
+
   assign page_count = variant.metafields.verso_api.page_count.value
-  assign publication_date = variant.metafields.verso_api.publication_date.value | default: product.metafields.verso_api.publication_date.value
 
   assign sku = variant.sku
   assign is_subscription = is_subscription | default: false
 
+  assign customer_currency_code = localization.country.currency.iso_code
+  assign market_is_us_or_ca = false
+  if customer_currency_code == 'USD' or customer_currency_code == 'CAD'
+    assign market_is_us_or_ca = true
+  endif
+
+  assign selling_plan = null
+  assign is_preorder = false
+
+  comment
+    Figure out which selling plan is available for this customer’s market.
+    The only way to do that is to loop through each option in each selling
+    plan and check the option’s value. If we can’t find one, then we can fall
+    back to seeing if there’s a generic selling_plan option ("preorder").
+  endcomment
+  if variant.selling_plan_allocations
+    for allocation in variant.selling_plan_allocations
+      assign plan = allocation.selling_plan
+      for option in plan.options
+        if market_is_us_or_ca
+          if option.value == "prh-preorder"
+            assign selling_plan = plan
+            break
+          endif
+        else
+          if option.value == "marston-preorder"
+            assign selling_plan = plan
+            break
+          endif
+        endif
+
+        if selling_plan == nil and option.value == "verso-preorder"
+          assign selling_plan = plan
+          break
+        endif
+      endfor
+    endfor
+
+    if selling_plan
+      assign is_preorder = true
+    endif
+  endif
+
   assign is_available = variant.available
+
+  assign is_available_in_market = false
+  assign markets = null | sort
+  if variant.metafields.verso_api.for_sale_usd.value
+    assign iso_code = 'USD' | sort
+    assign markets = markets | concat: iso_code
+  endif
+  if variant.metafields.verso_api.for_sale_cad.value and variant.metafields.verso_api.prh_pod.value != true
+    assign iso_code = 'CAD' | sort
+    assign markets = markets | concat: iso_code
+  endif
+  if variant.metafields.verso_api.for_sale_gbp.value
+    assign iso_code = 'GBP' | sort
+    assign markets = markets | concat: iso_code
+  endif
+  if markets contains customer_currency_code or product.type != 'Books'
+    assign is_available_in_market = true
+  endif
+
+  assign is_in_stock_in_market = true
+  if market_is_us_or_ca and variant.metafields.verso_api.out_of_stock_usd_and_cad.value
+    assign is_in_stock_in_market = false
+  elsif customer_currency_code == 'GBP' and variant.metafields.verso_api.out_of_stock_gbp.value
+    assign is_in_stock_in_market = false
+  endif
+
+  assign is_future_publication = false
+
+  assign publication_date = variant.metafields.verso_api.publication_date.value | default: product.metafields.verso_api.publication_date.value
+  if market_is_us_or_ca and variant.metafields.verso_api.prh_publication_date
+    assign publication_date = variant.metafields.verso_api.prh_publication_date.value
+  elsif variant.metafields.verso_api.marston_publication_date
+    assign publication_date = variant.metafields.verso_api.marston_publication_date.value
+  endif
+
   assign publication_date_timestamp = publication_date | date: '%s' | times: 1
   assign now_timestamp = 'now' | date: '%s' | times: 1
   if publication_date_timestamp > now_timestamp
+    assign is_future_publication = true
+  endif
+
+  if is_future_publication or is_available_in_market == false or is_in_stock_in_market == false
     assign is_available = false
   endif
+
+  if is_preorder and is_available_in_market
+    assign is_available = true
+  endif
+
+  assign is_physical_product = false
+  assign title_array = variant.title | handleize | replace: '-', '_' | split: '_'
+  for word in title_array
+    if word == 'paperback' or word == 'hardback'
+      assign is_physical_product = true
+      break
+    endif
+  endfor
 -%}
 
 <article class="c-variant-card c-variant-card--order-{{ index }}{% if is_available == false %} c-variant-card--unavailable{% endif %}">
@@ -21,45 +132,30 @@
       {% unless is_subscription %}
         <div class="c-variant-card__title-block">
           <h2 class="c-variant-card__title">
-            {% render 'variant-title', variant: variant, product_type: product_type %}
+            {% render 'variant-title', variant: variant %}
           </h2>
-          {%- liquid
-            assign subtitle = null
-            assign title_array = variant.title | handleize | replace: '-', '_' | split: '_'
-            for word in title_array
-              if word == 'paperback' or word == 'hardback'
-                assign subtitle = physical_variant_subtitle
-                break
-              endif
-            endfor
-          -%}
-          {%- if subtitle != blank -%}
-            <p>{{ physical_variant_subtitle }}</p>
+          {%- if is_physical_product and show_variant_subtitle -%}
+            <p>{% render 'variant-subtitle', variant: variant %}</p>
           {%- endif -%}
         </div>
       {% endunless %}
-      <p class="c-variant-card__price-block">
-        {%- if compare_at_price and price != compare_at_price -%}
-          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-          <s class="c-variant-card__compare-at-price">
-            {%- if settings.currency_code_enabled -%}
-              {{ compare_at_price | money_with_currency }}
-            {%- else -%}
+      {%- if is_available -%}
+        <div class="c-variant-card__price-block">
+          {%- if compare_at_price and price != compare_at_price -%}
+            <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+            <s class="c-variant-card__compare-at-price">
               {{ compare_at_price | money }}
-            {%- endif -%}
-          </s>
-        {%- endif -%}
-        <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
-        <span>
-          {%- if settings.currency_code_enabled -%}
-            {{ price | money_with_currency }}
-          {%- else -%}
-            {{ price | money }}
+            </s>
           {%- endif -%}
-        </span>
-      </p>
+          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+          <span>
+            {{ price | money }}
+          </span>
+          {% render 'variant-currency-form', variant: variant %}
+        </div>
+      {%- endif -%}
       {% unless is_subscription %}
-        <p class="c-variant-card__metadata">
+        <p class="t-metadata">
           {%- liquid
             if ebook_variant_description != blank and variant.title == 'ebook_us' or variant.title == 'ebook_uk'
               echo ebook_variant_description
@@ -72,7 +168,11 @@
                 endif
               endif
               if publication_date != blank
-                echo publication_date | date: format: 'month_year'
+                assign format = 'month_year'
+                if is_future_publication
+                  assign format = 'day_month_year'
+                endif
+                echo publication_date | date: format: format
                 if sku != blank
                   echo separator
                 endif
@@ -84,13 +184,22 @@
           -%}
         </p>
       {% endunless %}
-      {%- if variant.metafields.verso_api.prh_pod.value -%}
-        <p class="c-variant-card__metadata italic">{{ 'products.product.pod_notice' | t }}</p>
+      {%- if variant.metafields.verso_api.prh_pod.value and customer_currency_code != 'GBP' -%}
+        <p class="t-metadata italic">{{ 'products.product.pod_notice' | t }}</p>
+      {%- endif -%}
+      {%- if is_available and is_physical_product and customer_currency_code == 'GBP' -%}
+        <p class="t-metadata italic">{{ 'products.product.marston_notice_html' | t: learn_more_link: "https://help.versobooks.com/en-US/united-kingdom-186397" }}</p>
       {%- endif -%}
     </header>
-    {% render 'add-to-cart', variant: variant, product: product, index: index, is_subscription: is_subscription %}
+    {% comment %}
+      Add-to-cart snippet doesn't currently support subscriptions, so disabling for now.
+      Subscriptions use the subscription product template anyway, so it should be fine, but just in case.
+    {% endcomment %}
+    {% unless is_subscription %}
+      {% render 'add-to-cart', variant: variant, index: index %}
+    {% endunless %}
   </div>
-  {%- if compare_at_price -%}
+  {%- if compare_at_price and is_available -%}
     {% render 'discount-badge',
       price: price,
       compare_at_price: compare_at_price,

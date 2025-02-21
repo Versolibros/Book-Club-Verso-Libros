@@ -1,5 +1,6 @@
 {% assign nested = nested | default: false %}
 <ul
+  data-ref="paginated-list"
   class="c-product-grid c-product-grid--{% if nested == true %}nested{% else %}block{% endif %}"
   {%- if is_scroll_target -%}
     id="product-list"
