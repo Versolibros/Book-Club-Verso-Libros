@@ -1,33 +1,45 @@
-{%-liquid
+{%- liquid
   assign region_menu = region_menu | sort
   assign merged_menu = menu | concat: region_menu
-  assign default_collection = collections['catalog']
+  assign default_collection = collections.catalog
   assign filters = null | sort
   for item in merged_menu
-    assign this_collection = collections[item.handle]
-    comment
-      Remove non-collections, empty collections, and the default collection from menu
-    endcomment
-    if this_collection and this_collection.handle != default_collection.handle and this_collection.all_products_count > 0
-      assign this_collection = this_collection | sort
-      assign filters = filters | concat: this_collection
+    if item.type == 'collection_link'
+      assign this_collection = item.object
+      comment
+        Remove non-collections, empty collections, and the default collection from menu
+      endcomment
+      if this_collection.handle != default_collection.handle and this_collection.all_products_count > 0
+        assign this_collection = this_collection | sort
+        assign filters = filters | concat: this_collection
+      endif
     endif
   endfor
-
-  assign anchor_id =
 -%}
 
 <nav class="c-catalogue-filter" aria-label="{{ 'collection_filters.product_filter' | t }}">
   <a href="#product-list" class="c-catalogue-filter__skip-to-link">{{ 'collection_filters.skip_to' | t }}</a>
   <ul class="c-catalogue-filter__flex-list">
     <li>
-      <a href="{{ default_collection.url }}{{ anchor }}" class="c-catalogue-filter__filter-tag" {% if handle == 'catalog' %}aria-current="page"{% endif %}>
+      <a
+        href="{{ default_collection.url }}{{ anchor }}"
+        class="c-catalogue-filter__filter-tag"
+        {% if handle == 'catalog' %}
+          aria-current="page"
+        {% endif %}
+      >
         {{ 'collection_filters.all_subjects' | t }}
       </a>
     </li>
     {%- for filter in filters -%}
       <li>
-        <a href="{{ filter.url }}{{ anchor }}" class="c-catalogue-filter__filter-tag {% if filter.metafields.verso_api.is_regional_collection.value == true %}c-catalogue-filter__filter-tag--is-region{% endif %}" {% if filter.url == collection.url %}aria-current="page"{% endif %}>
+        <a
+          href="{{ filter.url }}{{ anchor }}"
+          class="c-catalogue-filter__filter-tag {% if filter.metafields.verso_api.is_regional_collection.value == true %}c-catalogue-filter__filter-tag--is-region{% endif %}"
+          {% if filter.url == collection.url %}
+            aria-current="page"
+          {% endif %}
+        >
           {{ filter.title }}
         </a>
       </li>
@@ -35,14 +47,20 @@
   </ul>
 
   <page-select class="c-page-select">
-    {% render 'icon-select' classname: 'c-page-select__select-icon' %}
+    {% render 'icon-select', classname: 'c-page-select__select-icon' %}
     <label class="sr-only" for="catalog-filter-select">{{ 'collection_filters.select_filter' | t }}</label>
     <select class="c-page-select__select" id="catalog-filter-select">
       <option value="{{ default_collection.url }}{{ anchor }}">{{ 'collection_filters.all_subjects' | t }}</option>
       {%- for filter in filters -%}
-        <option value="{{ filter.url }}{{ anchor }}" {% if filter.url == collection.url %} selected {% endif %}>{{ filter.title }}</option>
+        <option
+          value="{{ filter.url }}{{ anchor }}"
+          {% if filter.url == collection.url %}
+            selected
+          {% endif %}
+        >
+          {{ filter.title }}
+        </option>
       {%- endfor -%}
     </select>
   </page-select>
 </nav>
-
