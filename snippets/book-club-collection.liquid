@@ -1,5 +1,6 @@
 {%-liquid
   assign tier = tier | default: "reader"
+  assign tier = "reader"
 
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
@@ -14,6 +15,10 @@
 
   assign show_subscription_card = show_subscription_card | default: false
 -%}
+
+<h1>Esto debe de salir</h1>
+{{ tier }}
+{%- if current_collection != blank -%}current collection blank{%- endif -%} o no!
 
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
