@@ -4,8 +4,10 @@
     {%- if image -%}
       <div class="c-product-detail__start">
         <img
-          srcset="{{ image | image_url: width: 584 }} 2x,
-            {{ image | image_url: width: 287 }} 1x"
+          srcset="
+            {{ image | image_url: width: 584 }} 2x,
+            {{ image | image_url: width: 287 }} 1x
+          "
           src="{{ image | image_url: width: 287 }}"
           alt="{{ image.alt | escape }}"
           loading="lazy"
@@ -21,7 +23,7 @@
           <span>{{ product.title | escape }}</span>
         </h1>
       </header>
-      {% render 'variant-picker', product: product, product_type: "basic" %}
+      {% render 'variant-picker', product: product %}
       {%- if product.description != blank -%}
         <div class="t-rte">
           <p>{{ product.description }}</p>

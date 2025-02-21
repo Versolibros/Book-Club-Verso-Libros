@@ -1,14 +1,55 @@
-<footer class="c-cart-footer {% if classname %}{{ classname }}{% endif %} {% if context %}c-cart-footer--in-{{ context }}{% endif %} {% if cart == empty %}is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+{%-liquid
+  assign subtotal = cart.items_subtotal_price
 
+  assign total_cart_discount = 0
+  for cart_discount in cart.cart_level_discount_applications
+    assign total_cart_discount = total_cart_discounts | plus: cart_discount.total_allocated_amount
+  endfor
+-%}
+
+<footer
+  class="c-cart-footer {% if classname %}{{ classname }}{% endif %} {% if context %}c-cart-footer--in-{{ context }}{% endif %} {% if cart == empty %}is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
   <p class="sr-only" id="cart-live-region-text" aria-live="polite" role="status"></p>
 
+  <h2 class="sr-only">{{ 'sections.cart.total_costs' | t }}</h2>
+
   <div class="c-cart-footer__inner">
-    <div class="c-cart-footer__price-block js-footer-contents">
-      <h2 class="c-cart-footer__price-label">{{ 'sections.cart.subtotal' | t }}</h2>
-      <p class="c-cart-footer__price">{{ cart.total_price | money_with_currency }}</p>
-      {%- if cart == empty -%}
-        <p class="c-cart-footer__empty-price">{{ cart.currency.symbol }}—</p>
+    <div class="c-cart-footer__price-group js-footer-contents">
+      {%- if cart != empty and total_cart_discount > 0 -%}
+        <div class="c-cart-footer__price-block">
+          <h3 class="c-cart-footer__price-label">{{ 'sections.cart.subtotal' | t }}</h3>
+          <p class="c-cart-footer__price">{{ subtotal | money }}</p>
+        </div>
+        <div class="c-cart-footer__price-block">
+          <h3 class="c-cart-footer__price-label">{{ 'sections.cart.discounts' | t }}</h3>
+          <p class="c-cart-footer__price">–{{ total_cart_discount | money }}</p>
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <ul
+              aria-label="{{ 'customer.order.discount' | t }}"
+              class="c-cart-footer__discount-group"
+            >
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <li
+                  class="c-cart-footer__discount-block"
+                >
+                <span>{{ discount.title }}</span>
+                <span>-{{ discount.total_allocated_amount | money }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
       {%- endif -%}
+      <div class="c-cart-footer__price-block c-cart-footer__price-block--large">
+        <h3 class="c-cart-footer__price-label">{{ 'sections.cart.total' | t }}</h3>
+        <p class="c-cart-footer__price">{{ cart.total_price | money_with_currency }}</p>
+        {%- if cart == empty -%}
+          <p class="c-cart-footer__empty-price">{{ cart.currency.symbol }}—</p>
+        {%- endif -%}
+      </div>
       <small class="c-cart-footer__small">
         {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
           {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
@@ -21,19 +62,6 @@
         {%- endif -%}
       </small>
     </div>
-
-    {%- if cart.cart_level_discount_applications.size > 0 -%}
-      <div>
-        <ul aria-label="{{ 'customer.order.discount' | t }}">
-          {%- for discount in cart.cart_level_discount_applications -%}
-            <li>
-              {{ discount.title }}
-              (-{{ discount.total_allocated_amount | money }})
-            </li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    {%- endif -%}
 
     <div class="c-cart-footer__checkout">
       <noscript>

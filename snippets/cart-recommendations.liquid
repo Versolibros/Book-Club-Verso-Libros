@@ -1,0 +1,44 @@
+{%- liquid
+  assign heading = settings.cart_recommendations_collection_heading
+  assign collection = settings.cart_recommendations_collection
+
+  assign cart_product_handles = null | sort
+  for item in cart.items
+    assign arrayable_product_handle = item.product.handle | sort
+    assign cart_product_handles = cart_product_handles | concat: arrayable_product_handle
+  endfor
+
+  assign products = null | sort
+  if collection != blank
+    for product in collection.products
+      comment
+        exclude recommendation if product is in cart
+      endcomment
+      if cart_product_handles contains product.handle
+        continue
+      endif
+
+      assign arrayable_product = product | sort
+      assign products = products | concat: arrayable_product
+    endfor
+  endif
+-%}
+
+<section id="cart-recommendations" data-id="{{ section.id }}" class="c-cart-recommendations c-cart-recommendations--{{ context }} a-bg-neutral-95">
+  <cart-recommendations>
+    {%- if products.size > 0 -%}
+      <div class="l-container l-container--wide l-container--padding-block-end-small-medium">
+        {%- if heading -%}
+          <h2 class="c-section-title c-section-title--medium c-section-title--accent c-section-title--unbordered">{{ heading }}</h2>
+        {%- endif -%}
+        <ul class="c-cart-recommendations__products">
+          {%- for product in products -%}
+            <li>
+              {% render 'cart-recommendation-product', product: product %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </cart-recommendations>
+</section>

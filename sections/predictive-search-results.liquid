@@ -11,10 +11,10 @@
     assign page_count = predictive_search.resources.pages.size
     assign product_and_collection_count = product_count | plus: collection_count
     assign product_and_collection_and_article_count = product_and_collection_count | plus: article_count
-    assign product_and_collection_and_article__page_count = product_and_collection_and_article_count | plus: page_count
+    assign product_and_collection_and_article_page_count = product_and_collection_and_article_count | plus: page_count
   -%}
   <h2 id="predictive-search-heading" class="sr-only">{{ 'predictive_search.results' | t }}</h2>
-  {%- if product_and_collection_and_article__page_count > 0 -%}
+  {%- if product_and_collection_and_article_page_count > 0 -%}
     <ul
       id="predictive-search-results-list"
       role="group"
@@ -54,7 +54,7 @@
   <span class="sr-only" data-predictive-search-live-region-count-value>
     {{
       'predictive_search.results_with_count_and_terms'
-      | t: count: product_and_collection_and_article__page_count, terms: predictive_search.terms, limit: limit
+      | t: count: product_and_collection_and_article_page_count, terms: predictive_search.terms, limit: limit
     }}
   </span>
 {%- endif -%}

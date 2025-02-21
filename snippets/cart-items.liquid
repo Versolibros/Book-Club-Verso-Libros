@@ -2,7 +2,7 @@
   id="cart-snippet"
   class="{% if classname %}{{ classname }}{% endif %} {% if cart == empty %}is-empty{% endif %}"
 >
-  <h1 class="sr-only">{{ 'sections.cart.title' | t }}</h1>
+  <h2 class="sr-only">{{ 'sections.cart.title' | t }}</h2>
 
   <div class="c-cart__empty-content">
     <h2 class="c-cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
@@ -86,15 +86,19 @@
                     <div class="c-cart-item__price-block">
                       {% render 'loading-overlay' %}
                       <div class="c-cart-item__price-inner">
-                        {%- if item.original_line_price != item.final_line_price -%}
+                        {%- liquid
+                          assign final_line_price = item.final_line_price
+                          assign compare_at_line_price = item.variant.compare_at_price | times: item.quantity
+                        -%}
+                        {%- if compare_at_line_price > final_line_price -%}
                           <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
                           <s class="c-variant-card__compare-at-price">
-                            {{ item.original_line_price | money }}
+                            {{ compare_at_line_price | money }}
                           </s>
                         {%- endif -%}
                         <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
                         <span>
-                          {{ item.final_line_price | money }}
+                          {{ final_line_price | money }}
                         </span>
                       </div>
                     </div>
@@ -106,8 +110,14 @@
                         <span aria-hidden="true">{{ 'products.product.quantity.remove' | t }}</span>
                       </button>
                     </remove-item>
-                    <div class="text-accent" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
-                      <small class="c-cart-item__error-text"></small>
+                    <div id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
+                      <p class="c-cart-item__error-text">
+                        {%-liquid
+                          if item.quantity > 1 and item.variant.title contains 'ebook'
+                            echo 'products.product.quantity.multiple_ebooks_warning' | t
+                          endif
+                        -%}
+                      </p>
                     </div>
                   </div>
                 </article>

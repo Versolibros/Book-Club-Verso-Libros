@@ -1,0 +1,33 @@
+{%-liquid
+  assign progress_bar_id = "cart-progress-bar"
+  assign progress_text_id = "cart-progress-text"
+
+  assign cart_total = cart.total_price
+
+  for item in cart.items
+    if item.product.type == "Subscription"
+      assign cart_total = cart_total | minus: item.final_line_price
+    endif
+  endfor
+-%}
+
+<free-shipping-progress
+  data-cart-total="{{ cart_total }}"
+  data-market="{{ localization.country.iso_code }}"
+  class="c-free-shipping-progress no-js-hidden">
+  <div class="c-free-shipping-progress__inner">
+    <label for="{{ progress_bar_id }}" class="sr-only">{{ 'sections.cart.free_shipping_progress.bar_label' | t }}</label>
+    <progress id="{{ progress_bar_id }}" value="0" max="100" aria-describedby="{{ progress_text_id }}"></progress>
+    <div
+      id="{{ progress_text_id }}"
+      data-progress-text
+      aria-live="polite"
+      aria-atomic="true"
+      class="c-free-shipping-progress__text">
+    </div>
+    <a href="{{ collections.catalog.url }}" class="c-browse-all-link">
+      <span>Browse</span>
+      {% render 'icon-arrow' %}
+    </a>
+  </div>
+</free-shipping-progress>

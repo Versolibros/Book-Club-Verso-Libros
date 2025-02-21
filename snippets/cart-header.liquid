@@ -1,0 +1,18 @@
+<header id="main-cart-header" data-id="{{ section.id }}" class="c-cart-header c-cart-header--{{ context }}">
+  {%- if context == 'drawer' -%}
+    <h1 id="{{ label_id }}" class="c-cart-header__heading c-cart-header__heading--drawer">{{ 'sections.cart.title' | t }}</h1>
+  {%- else -%}
+    <h1 class="c-cart-header__heading c-cart-header__heading--page t-h2">{{ 'sections.cart.title' | t }}</h1>
+  {%- endif -%}
+  {%- if context == 'drawer' -%}
+    <button
+      data-ref="toggle"
+      data-controls="{{ id }}"
+      class="c-cart-header__close-button c-header-icon-button c-header-icon-button--close"
+    >
+      {% render 'icon-menu' %}
+      <span class="sr-only">{{ 'sections.header.mobile_dialog' | t }}</span>
+    </button>
+  {%- endif -%}
+  {% render 'free-shipping-progress', context: context %}
+</header>

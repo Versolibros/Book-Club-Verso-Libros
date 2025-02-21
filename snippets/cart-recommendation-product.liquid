@@ -1,0 +1,93 @@
+{%- if product != empty -%}
+  {%- liquid
+    assign title = product.title
+    assign subtitle = product.metafields.verso_api.subtitle.value
+    if subtitle
+      assign title = title | append: ': ' | append: subtitle
+    endif
+
+    assign customer_iso_code = localization.country.currency.iso_code
+    assign has_ebook_in_market = false
+    comment
+      Test whether variant is an ebook and in customer's market; if so, physical variants should show "+ free book" subtitle
+    endcomment
+    for variant in product.variants
+      if variant.title == 'ebook (US)' and customer_iso_code == 'USD' or customer_iso_code == 'CAD'
+        assign has_ebook_in_market = true
+        break
+      elsif variant.title == 'ebook (UK)' and customer_iso_code == 'GBP'
+        assign has_ebook_in_market = true
+        break
+      endif
+    endfor
+
+    assign variant = product.variants[0]
+
+    assign compare_at_price = variant.compare_at_price
+    assign price = variant.price
+
+    assign is_in_catalog_collection = false
+    for collection in product.collections
+      if collection.handle == 'catalog'
+        assign is_in_catalog_collection = true
+        break
+      endif
+    endfor
+
+    assign site_wide_discount_percentage = settings.site_wide_discount
+    if site_wide_discount_percentage > 0 and is_in_catalog_collection
+      assign site_wide_discount_decimal = site_wide_discount_percentage | times: 0.01
+      assign price_adjustment = 1 | minus: site_wide_discount_decimal
+      assign price = price | times: price_adjustment
+    endif
+  -%}
+  <article class="c-cart-recommendation-product">
+    <a href="{{ product.url }}" tabindex="-1" aria-hidden="true" class="c-cart-recommendation-product__cover-link">
+      {%- liquid
+        assign image = product.images[0]
+      -%}
+      {%- if image -%}
+        <img
+          srcset="{{ image | image_url: width: 120 }} 2x, {{ image | image_url: width: 60 }} 1x"
+          src="{{ image | image_url: width: 60 }}"
+          alt=""
+          loading="lazy"
+          width="{{ image.aspect_ratio | times: 90 | round }}"
+          height="90"
+          class="c-cart-recommendation-product__cover"
+        >
+      {%- else -%}
+        <img
+          src="{{ 'product-image-placeholder.static.svg' | asset_url }}"
+          alt=""
+          loading="lazy"
+          width="57"
+          height="90"
+          class="c-cart-recommendation-product__cover"
+        >
+      {%- endif -%}
+    </a>
+    <div class="c-cart-recommendation-product__text-content">
+      <h3 class="c-cart-recommendation-product__title">
+        <a href="{{ product.url }}">{{ title | escape_once }}</a>
+      </h3>
+      <div class="c-cart-recommendation-product__metadata">
+        {%- if compare_at_price and line_item == blank and compare_at_price != price -%}
+          {% render 'discount-badge', price: price, compare_at_price: compare_at_price %}
+        {%- endif -%}
+        <span>{{ price | money }}</span>
+        {%- if product.type == 'Books' -%}
+          <span class="text-neutral-40">
+            {% render 'variant-title', variant: variant %}
+            {%- if has_ebook_in_market -%}
+              {% render 'variant-subtitle', variant: variant %}
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+      </div>
+      <footer class="c-cart-recommendation-product__footer">
+        {% render 'add-to-cart', variant: variant, button_size: 'x-small' %}
+      </footer>
+    </div>
+  </article>
+{%- endif -%}

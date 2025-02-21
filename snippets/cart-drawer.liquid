@@ -1,3 +1,5 @@
+{% assign label_id = "cart-heading" %}
+
 <div
   data-ref="dialog"
   role="dialog"
@@ -6,14 +8,8 @@
   id="{{ id }}"
   class="c-cart c-cart--drawer{% if cart == empty %} is-empty{% endif %} a-bg-default l-drawer"
 >
-  <button
-    data-ref="toggle"
-    data-controls="{{ id }}"
-    class="c-cart__close-button c-header-icon-button c-header-icon-button--close"
-  >
-    {% render 'icon-menu' %}
-    <span class="sr-only">{{ 'sections.header.mobile_dialog' | t }}</span>
-  </button>
+  {% render 'cart-header', context: 'drawer', label_id: label_id %}
   {% render 'cart-items', context: 'drawer' %}
+  {% render 'cart-recommendations', context: 'drawer' %}
   {% render 'cart-footer', context: 'drawer' %}
 </div>

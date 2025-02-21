@@ -1,5 +1,8 @@
-{% assign subtitle = product.metafields.verso_api.subtitle.value %}
-{% assign reviews = product.metafields.verso_api.reviews.value %}
+{%- liquid
+  assign subtitle = product.metafields.verso_api.subtitle.value
+  assign short_description = product.metafields.verso_api.short_description.value
+  assign reviews = product.metafields.verso_api.reviews.value
+-%}
 
 <div class="l-container l-container--wide">
   <div class="c-product-detail">
@@ -62,16 +65,20 @@
           classname: "c-product-detail__byline"
         %}
       </header>
-      {% render 'variant-picker', product: product, physical_variant_subtitle: section.settings.physical_variant_subtitle, ebook_variant_description: section.settings.ebook_variant_description %}
-      {%- if product.description != blank -%}
+      {% render 'variant-picker', product: product, ebook_variant_description: section.settings.ebook_variant_description %}
+      {%- if product.metafields.verso_api.description_override != blank -%}
+        {{ product.metafields.verso_api.description_override | metafield_tag }}
+      {%- elsif product.description != blank -%}
         <div class="t-rte">
+          {%- if short_description -%}
+            <p><b>{{ short_description }}</b></p>
+          {%- endif -%}
           <p>{{ product.description }}</p>
         </div>
       {%- endif -%}
       {%- if reviews.size > 0 -%}
         {% render 'product-reviews' reviews: reviews %}
       {%- endif -%}
-
     </div>
   </div>
 
@@ -88,12 +95,6 @@
   "tag": "section",
   "class": "a-bg-default",
   "settings": [
-    {
-      "type": "text",
-      "id": "physical_variant_subtitle",
-      "label": "t:sections.main-product.settings.physical_variant_subtitle.label",
-      "info": "t:sections.main-product.settings.physical_variant_subtitle.info"
-    },
     {
       "type": "text",
       "id": "ebook_variant_description",
