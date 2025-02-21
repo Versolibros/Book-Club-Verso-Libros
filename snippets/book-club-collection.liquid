@@ -19,6 +19,18 @@
 <h1>Esto debe de salir</h1>
 <h2>{{ current_key }}</h2>
 <b>tier: </b>{{ tier }}<b><br/>
+    <ul>
+      {%- for namespace in shop.metafields -%}
+        {%- for key in shop.metafields[namespace] -%}
+          <li>
+            <strong>Namespace:</strong> {{ namespace }} <br>
+            <strong>Key:</strong> {{ key }} <br>
+            <strong>Value:</strong> {{ shop.metafields[namespace][key].value | json }}
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    </ul>
+    
 <b>current collection:</b>
 {%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
 
