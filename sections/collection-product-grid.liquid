@@ -1,39 +1,67 @@
 {%- paginate collection.products by section.settings.products_per_page -%}
-  <div id="pagination-target" class="a-bg-default">
-    <div class="l-container l-container--max">
-      {%- liquid
-        assign show_menu = section.settings.show_menu
-        assign menu = section.settings.menu
-        assign region_menu = section.settings.region_menu
-        if menu == blank and region_menu == blank
-          assign show_menu = false
-        endif
-
-        if show_menu == true
-          render 'section-title', title: collection.title, size: 'large', color: 'accent'
-          render 'catalogue-filter', region_menu: region_menu.links, menu: menu.links, anchor: '#pagination-target'
-        endif
-      -%}
-      {%- if show_menu != true -%}
-        <div class="a-section-border-top">
-      {%- endif -%}
-      {%- if collection.products.size == 0 -%}
-        <div class="c-empty-collection">
-          <p>{{ 'sections.collection-product-grid.empty_html' | t: link: collections["catalog"].url }}</p>
-        </div>
-      {%- else -%}
-        {% render 'product-grid', products: collection.products, is_scroll_target: true %}
-      {%- endif -%}
-      {%- if show_menu != true -%}
-        </div>
-      {%- endif -%}
+  <load-more
+    data-section-id="{{ section.id }}"
+    data-item-count="{{ paginate.items }}"
+    data-page-size="{{ paginate.page_size }}"
+  >
+    <div id="pagination-target" class="a-bg-default">
+      <div class="l-container l-container--max">
+        {%- liquid
+          assign show_menu = section.settings.show_menu
+          assign menu = section.settings.menu
+          assign region_menu = section.settings.region_menu
+          if menu == blank and region_menu == blank
+            assign show_menu = false
+          endif
+        -%}
+        {%- if show_menu == true -%}
+          <div class="c-section-title c-section-title--large c-section-title--accent">
+            <h2>{{ collection.title }}</h2>
+          </div>
+          {% render 'catalogue-filter',
+            region_menu: region_menu.links,
+            menu: menu.links,
+            anchor: '#pagination-target'
+          %}
+          {%- if collection.products.size > 0 -%}
+            {% render 'pagination-count', paginate: paginate, back_to_link: collection.url, anchor: '#pagination-target' %}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_menu != true -%}
+          <div class="a-section-border-top">
+          {%- if collection.products.size > 0 -%}
+            {% render 'pagination-count', paginate: paginate, back_to_link: collection.url %}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if collection.products.size == 0 -%}
+          <div class="c-empty-collection">
+            <p>{{ 'sections.collection-product-grid.empty_html' | t: link: collections.catalog.url }}</p>
+          </div>
+        {%- else -%}
+          {% render 'product-grid', products: collection.products, is_scroll_target: true %}
+        {%- endif -%}
+        {%- if show_menu != true -%}
+          </div>
+        {%- endif -%}
+      </div>
     </div>
-  </div>
-  {%- if paginate.pages > 1 -%}
-    {% render 'pagination', paginate: paginate, anchor: '#pagination-target' %}
-  {%- endif -%}
+    {%- if paginate.pages > 1 -%}
+      {% render 'pagination', paginate: paginate, anchor: '#pagination-target' %}
+    {%- endif -%}
+    <div data-ref="load-button-wrapper" class="a-bg-default" hidden>
+      <div class="c-load-more l-container l-container--narrow">
+        {% render 'loading-overlay' %}
+        <button data-ref="load-button" class="c-button c-button--filled c-button--large">
+          {%- if collection.handle == 'catalog' -%}
+            {{ 'general.pagination.load_more' | t }}
+          {%- else -%}
+            {{ 'general.pagination.load_more_subject' | t: collection: collection.title }}
+          {%- endif -%}
+        </button>
+      </div>
+    </div>
+  </load-more>
 {%- endpaginate -%}
-
 
 {% schema %}
 {
