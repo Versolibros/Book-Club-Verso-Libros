@@ -36,45 +36,36 @@
     </section>
 {%- endif -%}
 
-
-{%- liquid
-    comment
-    Build array of up to three items from all news articles that reference this author article
-    using the prescribed tag format (e.g. if author handle == 'debray-regis', then
-    look for tag 'author-debray-regis').
-    endcomment
-    assign author_handle = article.handle | replace: 'authors/', ''
-    assign author_tag = author_handle | prepend: 'author-'
-    assign related_articles = null | sort
-    paginate blogs['news'].articles by 500
-        for article in blogs['news'].articles
-            comment
-            End loop once we have three related articles
-            endcomment
-            if related_articles.size == 3
-                break
-            endif
-            for tag in article.tags
-                if tag == author_tag
-                    assign article_as_array = article | sort
-                    assign related_articles = related_articles | concat: article_as_array
-                    break
-                endif
-            endfor
-        endfor
-    endpaginate
--%}
-
-{%- if related_articles.size > 0 -%}
+{%- if article.metafields.verso_api.secondary_contributor_books.value != blank -%}
     <section class="a-bg-default">
         <div class="l-container l-container--max">
             {%- liquid
-                assign section_title = 'sections.main-author-article.related_articles' | t
-                render 'featured-article-grid', title: section_title, articles: related_articles, type: 'news', aspect_ratio: 1.5, columns: 3
+                assign section_title = 'sections.main-author-article.contributed_books' | t
+                render 'section-title', title: section_title
+                render 'product-grid', products: article.metafields.verso_api.secondary_contributor_books.value
             -%}
         </div>
     </section>
 {%- endif -%}
+
+
+{%- liquid
+    assign author_handle = article.handle | replace: 'authors/', ''
+    assign author_tag = author_handle | prepend: 'author-'
+    assign title = 'sections.main-author-article.related_articles' | t
+-%}
+
+<related-articles data-blog="news" data-tag="{{ author_tag }}" class="a-bg-default" inert>
+    <div class="l-container l-container--max">
+        {%- render 'section-title', title: title -%}
+        <ul data-ref="list" class="l-grid l-grid--3"></ul>
+    </div>
+    <div data-ref="view-all" class="c-load-more l-container l-container--narrow" hidden>
+        <a class="c-button c-button--filled c-button--large">
+        {{ 'sections.main-author-article.view_all_related_posts' | t }}
+        </a>
+    </div>
+</related-articles>
 
 {% schema %}
 {

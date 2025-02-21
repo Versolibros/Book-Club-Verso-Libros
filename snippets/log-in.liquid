@@ -18,7 +18,7 @@
   }
 {%- endstyle -%}
 
-<h1 id="recover" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.recover_password.title' | t }}</h1>
+<h2 id="recover" tabindex="-1" class="text-accent a-no-outline">{{ 'customer.recover_password.title' | t }}</h2>
 <div>
   <p class="mbs-4 text-sm">{{ 'customer.login_page.description_html' | t: link: routes.account_register_url }}</p>
   {%- form 'recover_customer_password', class: 'c-form mbs-small' -%}
@@ -53,14 +53,14 @@
       <button class="c-button c-button--medium c-button--filled">
         {{ 'customer.login_page.submit' | t }}
       </button>
-      <a href="#login" class="a-inline-link-secondary text-sm">
+      <a href="#login" class="a-inline-link-secondary text-[0.875rem]">
         {{ 'customer.login_page.cancel' | t }}
       </a>
     </div>
   {%- endform -%}
 </div>
 
-<h1 id="login" tabindex="-1" class="text-h2 text-accent a-no-outline">{{ 'customer.login_page.title' | t }}</h1>
+<h2 id="login" tabindex="-1" class="text-accent a-no-outline">{{ 'customer.login_page.title' | t }}</h2>
 <p class="mbs-4 text-sm">{{ 'customer.login_page.description_html' | t: link: routes.account_register_url }}</p>
 <div class="mbs-small">
   {%- if recover_success == true -%}
@@ -107,7 +107,7 @@
       <button class="c-button c-button--medium c-button--filled">
         {{ 'customer.login_page.sign_in' | t }}
       </button>
-      <a href="#recover" class="a-inline-link-secondary text-sm">
+      <a href="#recover" class="a-inline-link-secondary text-[0.875rem]">
         {{ 'customer.login_page.forgot_password' | t }}
       </a>
     </div>
