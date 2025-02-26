@@ -17,8 +17,60 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
+<code>
+  Codigo: {{ shop.metafields.hola }}
+</code>
 
+<h1>Aquí deben de salir las listas</h1>
+{% comment %}
+  Verificar los namespaces de los metafields.
+{% endcomment %}
+<ul>
+  {% for namespace in shop.metafields %}
+    <li>Namespace: {{ namespace }}</li>
+  {% endfor %}
+</ul>
 
+{% comment %}
+  Verificar la cantidad de metafields para cada namespace.
+{% endcomment %}
+      <h1>Verso API</h1>
+      <ul>
+        {% for key in shop.metafields[namespace] %}
+          <li>Key: {{ key }}</li>
+        {% endfor %}
+      </ul>
+
+      {% assign verso_metafields = shop.metafields.verso_api %}
+      <h1>Debug</h1>
+      <ul>
+        {% if verso_metafields %}
+          {% for key in verso_metafields %}
+            <li>Key: {{ key }} - Value: {{ verso_metafields[key].value | json }}</li>
+          {% endfor %}
+        {% else %}
+          <li>No hay metafields definidos en verso_api.</li>
+        {% endif %}
+      </ul>
+      {% for product in collections.all.products %}
+  <h3>{{ product.title }}</h3>
+  <ul>
+    {% if product.metafields.verso_api %}
+      {% for key in product.metafields.verso_api %}
+        <li>Key: {{ key }} - Value: {{ product.metafields.verso_api[key].value | json }}</li>
+      {% endfor %}
+    {% else %}
+      <li>No hay metafields en verso_api para este producto.</li>
+    {% endif %}
+  </ul>
+{% endfor %}
+
+    
+<b>current collection:</b> 
+{%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
+
+<!-- el problema está aquí -->
+{%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
       <header class="c-book-club-collection__header">
@@ -46,3 +98,4 @@
       </div>
     </div>
   </section>
+{%- endif -%}
