@@ -18,11 +18,11 @@
 -%}
 
 <code>
-  2Rodrigo: {{ shop.metaobjects["hola"].values }} 
-  2Rodrigo: {{ shop.metaobjects.hola.values }} 
+  32Rodrigo: {{ shop.metaobjects["hola"].values }} 
+  32Rodrigo: {{ shop.metaobjects.hola.values }} 
 
   {% for v in shop.metaobjects.hola.values %}
-  {{ v }}
+  {{ v.name }}
   {% endfor %}
 
 </code>
