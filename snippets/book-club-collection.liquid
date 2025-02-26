@@ -18,7 +18,11 @@
 -%}
 
 <code>
-  Codigo: {{ shop.metaobjects["hola"] }} 
+  Codigo: {{ shop.metaobjects["hola"].value }} 
+  Codigo: {{ shop.metaobjects.hola.value }} 
+  Codigo: {{ shop.metaobjects.hola.hola.value }} 
+  Codigo: {{ shop.metaobjects.hola.hola }} 
+  
 </code>
 
 <h1>Aquí deben de salir las listas</h1>
