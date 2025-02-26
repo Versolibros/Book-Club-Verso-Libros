@@ -20,8 +20,10 @@
 <code>
   Rodigo: {{ shop.metaobjects["hola"].values }} 
   Rodigo: {{ shop.metaobjects.hola.values }} 
-  Rodigo: {{ shop.metaobjects.hola.hola.values }} 
-  Rodigo: {{ shop.metaobjects.hola }} 
+
+  {% for v in shop.metaobjects.hola.values %}
+  {{ v }}
+  {% endfor %}
 
 </code>
 
