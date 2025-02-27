@@ -21,44 +21,45 @@ bbbbb
 
   assign current_month_num = 'now' | date: '%m'
 
-  {% case current_month_num %}
-    {% when '01' %}
-      {% assign current_month_name = 'Enero' %}
-      {% assign next_month_name = 'Febrero' %}
-    {% when '02' %}
-      {% assign current_month_name = 'Febrero' %}
-      {% assign next_month_name = 'Marzo' %}
-    {% when '03' %}
-      {% assign current_month_name = 'Marzo' %}
-      {% assign next_month_name = 'Abril' %}
-    {% when '04' %}
-      {% assign current_month_name = 'Abril' %}
-      {% assign next_month_name = 'Mayo' %}
-    {% when '05' %}
-      {% assign current_month_name = 'Mayo' %}
-      {% assign next_month_name = 'Junio' %}
-    {% when '06' %}
-      {% assign current_month_name = 'Junio' %}
-      {% assign next_month_name = 'Julio' %}
-    {% when '07' %}
-      {% assign current_month_name = 'Julio' %}
-      {% assign next_month_name = 'Agosto' %}
-    {% when '08' %}
-      {% assign current_month_name = 'Agosto' %}
-      {% assign next_month_name = 'Septiembre' %}
-    {% when '09' %}
-      {% assign current_month_name = 'Septiembre' %}
-      {% assign next_month_name = 'Octubre' %}
-    {% when '10' %}
-      {% assign current_month_name = 'Octubre' %}
-      {% assign next_month_name = 'Noviembre' %}
-    {% when '11' %}
-      {% assign current_month_name = 'Noviembre' %}
-      {% assign next_month_name = 'Diciembre' %}
-    {% when '12' %}
-      {% assign current_month_name = 'Diciembre' %}
-      {% assign next_month_name = 'Enero' %}
-  {% endcase %}
+  case current_month_num
+    when '01'
+      assign current_month_name = 'Enero'
+      assign next_month_name = 'Febrero'
+    when '02'
+      assign current_month_name = 'Febrero'
+      assign next_month_name = 'Marzo'
+    when '03'
+      assign current_month_name = 'Marzo'
+      assign next_month_name = 'Abril'
+    when '04'
+      assign current_month_name = 'Abril'
+      assign next_month_name = 'Mayo'
+    when '05'
+      assign current_month_name = 'Mayo'
+      assign next_month_name = 'Junio'
+    when '06'
+      assign current_month_name = 'Junio'
+      assign next_month_name = 'Julio'
+    when '07'
+      assign current_month_name = 'Julio'
+      assign next_month_name = 'Agosto'
+    when '08'
+      assign current_month_name = 'Agosto'
+      assign next_month_name = 'Septiembre'
+    when '09'
+      assign current_month_name = 'Septiembre'
+      assign next_month_name = 'Octubre'
+    when '10'
+      assign current_month_name = 'Octubre'
+      assign next_month_name = 'Noviembre'
+    when '11'
+      assign current_month_name = 'Noviembre'
+      assign next_month_name = 'Diciembre'
+    when '12'
+      assign current_month_name = 'Diciembre'
+      assign next_month_name = 'Enero'
+  endcase
+
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 aaaa
