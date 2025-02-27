@@ -21,17 +21,6 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
-<ul>
-  <li>{{  shop.metaobjects.bookclub }}</li>
-  <li>{{ current_key }}</li>
-  <li>{{ shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection }}</li>
-  <li>{{ shop.metaobjects.verso_api[current_key].bookclub_collection }}</li>
-  <li>{{ current_collection }}</li>
-  <li>bookclub: {{ shop.metaobjects.bookclub }}</li>
-  <li>bc with ck: {{ shop.metaobjects.bookclub[current_key].collection}}</li>
-</ul>
-
-
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
