@@ -19,6 +19,7 @@
   Crear seis colecciones: (next + current collections) * (reader camarada yelotro)
  -->
 
+ {% if tier == "reader" %}
 <div>
   <ul>
     <li>reader</li>
@@ -40,10 +41,11 @@
     <li>Titulo current: sections.book-club-products.title_[tier]_next_html</li>
     <li>Show subscription card: {{ show_subscription_card }}</li>
 
-    <li><b>?</b>{{ shop.metaobjects.bookclub_collection["book-club-current-reader-collection-handle"].value }}</li>
-    <li><b>?</b>{{ shop.metaobjects.bookclub_collection["book-club-next-reader-collection-handle"].value }}</li>
+    <li><b>??</b>{{ shop.metaobjects.bookclub_collection }}</li>
+    <li><b>??</b>{{ shop.metaobjects.bookclub_collection["book-club-next-reader-collection-handle"].value }}</li>
   </ul>
 </div>
+{% endif %}
 
 <!-- el problema está aquí -->
 {%- if current_collection != blank -%}
