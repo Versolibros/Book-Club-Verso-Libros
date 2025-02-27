@@ -4,12 +4,14 @@
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
 
-  
-  // These are the originals collections definition, as we did not achieve to get shop.metafields
-  //  we decided to work with shop.metaobjects instead. With the aim of do not create or change a
-  //  verso_api structure we also created the bookclub metaobject for storing bookclub collections.
-  // assign current_collection = collections[shop.metafields.verso_api[current_key].value]
-  // assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+   {% comment %}
+    These are the originals collections definition, as we did not achieve to get shop.metafields
+    we decided to work with shop.metaobjects instead. With the aim of do not create or change a
+    verso_api structure we also created the bookclub metaobject for storing bookclub collections.
+    
+    assign current_collection = collections[shop.metafields.verso_api[current_key].value]
+    assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+  {% endcomment %}
   
   assign current_collection = collections[shop.metaobjects.bookclub[curret_key].collection]
   assign next_collection = collections[shop.metaobjects.bookclub[next_key].collection]
