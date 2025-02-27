@@ -41,8 +41,10 @@
     <li>Titulo current: sections.book-club-products.title_[tier]_next_html</li>
     <li>Show subscription card: {{ show_subscription_card }}</li>
 
-    <li><b>!!</b>{{ shop.metaobjects.verso_api.bookclub_collection }}</li>
-    <li><b>!</b>{{ shop.metaobjects.verso_api["bookclub_collection"] }}</li>
+    <li><b>aa</b>{{ shop.metaobjects.verso_api }}</li>
+    <li><b>aa</b>{{ shop.metaobjects.verso_api.bookclub_collection }}</li>
+    <li><b>aa</b>{{ shop.metaobjects.verso_api.bookclub_collection.values }}</li>
+    <li><b>aa</b>{{ shop.metaobjects.verso_api.bookclub_collection.values["book-club-current-reader-collection-handle"] }}</li>
   </ul>
 </div>
 {% endif %}
