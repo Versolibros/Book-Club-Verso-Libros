@@ -10,7 +10,7 @@
   # assign current_collection = collections[shop.metafields.verso_api[current_key].value]
   # assign next_collection = collections[shop.metafields.verso_api[next_key].value]
 
-  assign current_collection = collections[shop.metaobjects.bookclub[curret_key].collection]
+  assign current_collection = collections[shop.metaobjects.bookclub[current_key].collection]
   assign next_collection = collections[shop.metaobjects.bookclub[next_key].collection]
 
   assign title_locale_key = 'sections.book-club-products.title_' | append: tier
@@ -26,6 +26,9 @@
   <li>{{ current_key }}</li>
   <li>{{ shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection }}</li>
   <li>{{ shop.metaobjects.verso_api[current_key].bookclub_collection }}</li>
+  <li>{{ current_collection }}</li>
+  <li>bookclub: {{ shop.metaobjects.bookclub }}</li>
+  <li>bc with ck: {{ shop.metaobjects.bookclub[current_key].collection}}</li>
 </ul>
 
 
