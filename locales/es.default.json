@@ -15,7 +15,11 @@
       "next": "Siguiente",
       "next_screen_reader": "Siguiente página",
       "previous": "Previa",
-      "previous_screen_reader": "Página previa"
+      "previous_screen_reader": "Página previa",
+      "count_html": {
+        "one": "Showing <span data-ref='pagination-count-total'>{{ count }}</span> result:",
+        "other": "Showing <span data-ref='pagination-count-first'>{{ first }}</span>–<span data-ref='pagination-count-last'>{{ last }}</span> of <span data-ref='pagination-count-total'>{{ count }}</span> results:"
+      },
     },
     "search": {
       "search": "Buscar",
