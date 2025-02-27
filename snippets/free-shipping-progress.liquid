@@ -18,13 +18,6 @@
   <div class="c-free-shipping-progress__inner">
     <label for="{{ progress_bar_id }}" class="sr-only">{{ 'sections.cart.free_shipping_progress.bar_label' | t }}</label>
     <progress id="{{ progress_bar_id }}" value="0" max="100" aria-describedby="{{ progress_text_id }}"></progress>
-    <div
-      id="{{ progress_text_id }}"
-      data-progress-text
-      aria-live="polite"
-      aria-atomic="true"
-      class="c-free-shipping-progress__text">
-    </div>
     <a href="{{ collections.catalog.url }}" class="c-browse-all-link">
       <span>Browse</span>
       {% render 'icon-arrow' %}
