@@ -159,7 +159,8 @@
       "taxes_included_but_shipping_at_checkout": "Impuestos incluidos y gastos de envío calculados en el momento de la compra",
       "taxes_included_and_shipping_policy_html": "Impuestos incluidos. <a href=\"{{ link }}\">Shipping</a> calculado al pagar.",
       "taxes_and_shipping_at_checkout": "Los impuestos y gastos de envío se calcularán al pagar",
-      "update": "Actualización"
+      "update": "Actualización",
+      "total": "Total"
     },
     "collection-product-grid": {
       "empty_html": "No podemos encontrar nada que se ajuste a este filtro. Por qué <a href=\"{{ link }}\">ojea el catálogo completo</a> en su lugar?"
