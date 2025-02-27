@@ -60,6 +60,7 @@
 
   assign show_subscription_card = show_subscription_card | default: false
 -%}
+
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
