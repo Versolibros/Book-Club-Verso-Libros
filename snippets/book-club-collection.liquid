@@ -1,7 +1,5 @@
 {%-liquid
   assign tier = tier | default: "reader"
-  assign tier = "reader"
-  assign namespace = "verso_api"
 
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
@@ -17,63 +15,29 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
-<code>
-  32Rodrigo: {{ shop.metaobjects["hola"].values }} 
-  32Rodrigo: {{ shop.metaobjects.hola.values }} 
+<!-- 
+  Crear seis colecciones: (next + current collections) * (reader camarada yelotro)
+ -->
 
-  {% for v in shop.metaobjects.hola.values %}
-  {{ v.name }}
-  {% endfor %}
-
-</code>
-
-<h1>Aquí deben de salir las listas</h1>
-{% comment %}
-  Verificar los namespaces de los metafields.
-{% endcomment %}
-<ul>
-  {% for namespace in shop.metafields %}
-    <li>Namespace: {{ namespace }}</li>
-  {% endfor %}
-</ul>
-
-{% comment %}
-  Verificar la cantidad de metafields para cada namespace.
-{% endcomment %}
-      <h1>Verso API</h1>
-      <ul>
-        {% for key in shop.metafields[namespace] %}
-          <li>Key: {{ key }}</li>
-        {% endfor %}
-      </ul>
-
-      {% assign verso_metafields = shop.metafields.verso_api %}
-      <h1>Debug</h1>
-      <ul>
-        {% if verso_metafields %}
-          {% for key in verso_metafields %}
-            <li>Key: {{ key }} - Value: {{ verso_metafields[key].value | json }}</li>
-          {% endfor %}
-        {% else %}
-          <li>No hay metafields definidos en verso_api.</li>
-        {% endif %}
-      </ul>
-      {% for product in collections.all.products %}
-  <h3>{{ product.title }}</h3>
+<div>
   <ul>
-    {% if product.metafields.verso_api %}
-      {% for key in product.metafields.verso_api %}
-        <li>Key: {{ key }} - Value: {{ product.metafields.verso_api[key].value | json }}</li>
-      {% endfor %}
-    {% else %}
-      <li>No hay metafields en verso_api para este producto.</li>
-    {% endif %}
-  </ul>
-{% endfor %}
-
+    <li>reader</li>
+    <li>comrade</li>
+    <li>partisan</li>
+    <li><b>Current tier:</b> {{ tier }}</li>
+    <li>current_collection_key (current_key): book-club-current-[tier]-collection-handle</li>
+    <li>next_collection_key (next_key): book-club-next-[tier]-collection-handle</li>
     
-<b>current collection:</b> 
-{%- if current_collection != blank -%} tiene cosas {%- else -%} esta vacia{%- endif -%}
+    <li>current_collection_key = shop.metafields.verso_api[current_key].value  --> shop.metaobjects[current_key].value </li>
+    <li>next_collection_key = shop.metafields.verso_api[current_key].value  --> shop.metaobjects[current_key].value </li>
+    
+    <li>collections[  current_collection_key | next_collection_key  ]</li>
+
+    <li>Titulo current: sections.book-club-products.title_[tier]_current</li>
+    <li>Titulo current: sections.book-club-products.title_[tier]_next_html</li>
+    <li>Show subscription card: {{ show_subscription_card }}</li>
+  </ul>
+</div>
 
 <!-- el problema está aquí -->
 {%- if current_collection != blank -%}
