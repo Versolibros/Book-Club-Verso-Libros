@@ -22,33 +22,9 @@
   Crear seis colecciones: (next + current collections) * (reader camarada yelotro)
  -->
 
- {% if tier == "creader" %}
-<div>
-  <ul>
-    <li>reader</li>
-    <li>comrade</li>
-    <li>partisan</li>
-    <li><b>Current tier:</b> {{ tier }}</li>
-    <li>current_collection_key (current_key): book-club-current-[tier]-collection-handle</li>
-    <li>next_collection_key (next_key): book-club-next-[tier]-collection-handle</li>
-    
-    <li>current_collection_key = shop.metafields.verso_api[current_key].value  --> shop.metaobjects[current_key].value </li>
-    <li>next_collection_key = shop.metafields.verso_api[next_key].value  --> shop.metaobjects[next_key].value </li>
-    
-    <li>shop.metaobjects.bookclub_collection[ current_key ].value</li>
+{{ tier }}
+{{ current_key }}
 
-
-    <li>collections[  current_collection_key | next_collection_key  ]</li>
-
-    <li>Titulo current: sections.book-club-products.title_[tier]_current</li>
-    <li>Titulo current: sections.book-club-products.title_[tier]_next_html</li>
-    <li>Show subscription card: {{ show_subscription_card }}</li>
-
-    <li><b>aa</b>{{ shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection }}</li>
-
-  </ul>
-</div>
-{% endif %}
 
 <!-- el problema está aquí -->
 {%- if current_collection != blank -%}
