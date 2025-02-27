@@ -20,12 +20,12 @@
 
   assign show_subscription_card = show_subscription_card | default: false
 -%}
-
+1
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
       <header class="c-book-club-collection__header">
-        <h3 class="c-book-club-collection__title">{{ current_title_locale_key | t: month: current_month }}</h3>
+        <h3 class="c-book-club-collection__title">{{ current_title_locale_key | t }}</h3>
         {%- if current_collection.description != blank -%}
           <p>{{ current_collection.description }}</p>
         {%- endif -%}
