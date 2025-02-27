@@ -17,9 +17,12 @@
       "previous": "Previa",
       "previous_screen_reader": "Página previa",
       "count_html": {
-        "one": "Showing <span data-ref='pagination-count-total'>{{ count }}</span> result:",
+        "one": "M <span data-ref='pagination-count-total'>{{ count }}</span> result:",
         "other": "Showing <span data-ref='pagination-count-first'>{{ first }}</span>–<span data-ref='pagination-count-last'>{{ last }}</span> of <span data-ref='pagination-count-total'>{{ count }}</span> results:"
       },
+      "back_to_beginning": "Back to beginning",
+      "load_more": "More books",
+      "load_more_subject": "More {{ collection }} books"
     },
     "search": {
       "search": "Buscar",
