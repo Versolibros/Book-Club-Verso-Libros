@@ -4,9 +4,15 @@
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
 
-  assign current_collection = collections[shop.metafields.verso_api[current_key].value]
-  assign current_collection = collections[shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection]
-  assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+  
+  // These are the originals collections definition, as we did not achieve to get shop.metafields
+  //  we decided to work with shop.metaobjects instead. With the aim of do not create or change a
+  //  verso_api structure we also created the bookclub metaobject for storing bookclub collections.
+  // assign current_collection = collections[shop.metafields.verso_api[current_key].value]
+  // assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+  
+  assign current_collection = collections[shop.metaobjects.bookclub[curret_key].collection]
+  assign next_collection = collections[shop.metaobjects.bookclub[next_key].collection]
 
   assign title_locale_key = 'sections.book-club-products.title_' | append: tier
   assign current_title_locale_key = title_locale_key | append: '_current'
@@ -16,39 +22,6 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
-<!-- 
-  Crear seis colecciones: (next + current collections) * (reader camarada yelotro)
- -->
-
- {% if tier == "creader" %}
-<div>
-  <ul>
-    <li>reader</li>
-    <li>comrade</li>
-    <li>partisan</li>
-    <li><b>Current tier:</b> {{ tier }}</li>
-    <li>current_collection_key (current_key): book-club-current-[tier]-collection-handle</li>
-    <li>next_collection_key (next_key): book-club-next-[tier]-collection-handle</li>
-    
-    <li>current_collection_key = shop.metafields.verso_api[current_key].value  --> shop.metaobjects[current_key].value </li>
-    <li>next_collection_key = shop.metafields.verso_api[next_key].value  --> shop.metaobjects[next_key].value </li>
-    
-    <li>shop.metaobjects.bookclub_collection[ current_key ].value</li>
-
-
-    <li>collections[  current_collection_key | next_collection_key  ]</li>
-
-    <li>Titulo current: sections.book-club-products.title_[tier]_current</li>
-    <li>Titulo current: sections.book-club-products.title_[tier]_next_html</li>
-    <li>Show subscription card: {{ show_subscription_card }}</li>
-
-    <li><b>aa</b>{{ shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection }}</li>
-
-  </ul>
-</div>
-{% endif %}
-
-<!-- el problema está aquí -->
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
