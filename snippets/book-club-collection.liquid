@@ -3,9 +3,9 @@
 
   assign current_key = "book-club-current-" | append: tier | append: "-collection-handle"
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
-
-  assign current_collection = collections[shop.metaobjects.bookclub["book-club-current-reader-collection-handle"].collection]
-  assign next_collection = collections[shop.metafields.verso_api[next_key].value]
+  
+  assign current_collection = collections[shop.metaobjects.bookclub[curret_key].collection]
+  assign next_collection = collections[shop.metaobjects.bookclub[next_key].collection]
 
   assign title_locale_key = 'sections.book-club-products.title_' | append: tier
   assign current_title_locale_key = title_locale_key | append: '_current'
@@ -15,8 +15,8 @@
   assign show_subscription_card = show_subscription_card | default: false
 -%}
 
-{{ tier }}
-{{ current_key }}
+--{{ tier }}
+--{{ current_key }}
 
 
 <!-- el problema está aquí -->
