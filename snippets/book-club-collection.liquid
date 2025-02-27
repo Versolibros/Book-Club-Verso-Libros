@@ -17,11 +17,11 @@
   assign current_title_locale_key = title_locale_key | append: '_current'
   assign next_title_locale_key = title_locale_key | append: '_next_html'
   assign current_month = 'today' | date: '%B'
-  assign next_month = 'today' | date: '%m'
+  assign next_month = 'today' | date: '%m' | plus: 1
 
   assign show_subscription_card = show_subscription_card | default: false
 -%}
-456
+4454545454
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
