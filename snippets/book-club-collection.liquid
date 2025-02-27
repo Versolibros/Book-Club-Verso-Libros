@@ -5,6 +5,7 @@
   assign next_key = "book-club-next-" | append: tier | append: "-collection-handle"
 
   assign current_collection = collections[shop.metafields.verso_api[current_key].value]
+  assign current_collection = collections[shop.metaobjects.verso_api["book-club-current-reader-collection-handle"].bookclub_collection]
   assign next_collection = collections[shop.metafields.verso_api[next_key].value]
 
   assign title_locale_key = 'sections.book-club-products.title_' | append: tier
@@ -19,7 +20,7 @@
   Crear seis colecciones: (next + current collections) * (reader camarada yelotro)
  -->
 
- {% if tier == "reader" %}
+ {% if tier == "creader" %}
 <div>
   <ul>
     <li>reader</li>
