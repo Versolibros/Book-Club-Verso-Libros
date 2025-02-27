@@ -17,16 +17,17 @@
   assign current_title_locale_key = title_locale_key | append: '_current'
   assign next_title_locale_key = title_locale_key | append: '_next_html'
   assign current_month = 'today' | date: '%B'
+  assign next_month = 'today' | date: '%m' | plus: 1 | date: '%B'
 
   assign show_subscription_card = show_subscription_card | default: false
 -%}
-33333
+5555
 {%- if current_collection != blank -%}
   <section class="a-bg-book-club-tier-{{ tier }}">
     <div class="c-book-club-collection l-container l-container--max">
       <header class="c-book-club-collection__header">
         <h1>{{ t }}</h1>
-        <h3 class="c-book-club-collection__title">{{ current_title_locale_key | t: month: current_month | date: "%B" }}</h3>
+        <h3 class="c-book-club-collection__title">{{ current_title_locale_key | t: month: current_month }}</h3>
         {%- if current_collection.description != blank -%}
           <p>{{ current_collection.description }}</p>
         {%- endif -%}
@@ -39,7 +40,7 @@
         {%- if next_collection != blank -%}
           <details class="c-book-club-collection__disclosure">
             <summary class="c-book-club-collection__disclosure-toggle">
-              <h3>{{ next_title_locale_key | t }}</h3>
+              <h3>{{ next_title_locale_key | next_month }}</h3>
               {% render 'icon-caret', classname: 'c-book-club-collection__disclosure-toggle-icon' %}
             </summary>
             <div class="c-book-club-collection__disclosure-body">
