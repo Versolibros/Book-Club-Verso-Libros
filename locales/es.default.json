@@ -147,9 +147,9 @@
     },
     "book-club-products": {
       "header": "Productos actuales y futuros",
-      "title_reader_current": "{{ month }} ebooks",
+      "title_reader_current": "{{ month }} nuestra selección",
       "title_partisan_current": "{{ month }} opciones de libro",
-      "title_comrade_current": "{{ month }} ¡Camarada! selección",
+      "title_comrade_current": "{{ month }} nuestra selección",
       "title_reader_next_html": "{{ month }} ebooks",
       "title_partisan_next_html": "{{ month }} opciones de libros",
       "title_comrade_next_html": "{{ month }} ¡Camarada! selección"
