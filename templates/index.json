@@ -14,8 +14,8 @@
       "name": "t:sections.block-image.presets.name",
       "settings": {
         "image": "shopify://shop_images/bookclub.png",
-        "link_url": "",
-        "link_text": "https://versolibros.com/pages/book-club"
+        "link_url": "shopify://pages/book-club",
+        "link_text": ""
       }
     },
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
