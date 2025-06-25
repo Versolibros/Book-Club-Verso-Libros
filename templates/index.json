@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "block_image_RyHLfa": {
+      "type": "block-image",
+      "name": "t:sections.block-image.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/bookclub.png",
+        "link_url": "",
+        "link_text": "https://versolibros.com/pages/book-club"
+      }
+    },
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
       "type": "block-image",
       "settings": {
@@ -107,6 +116,7 @@
     }
   },
   "order": [
+    "block_image_RyHLfa",
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47",
     "518c7028-1d14-4223-9e77-b3ee2cad8356",
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2",
