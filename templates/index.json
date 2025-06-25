@@ -13,7 +13,7 @@
       "type": "block-image",
       "settings": {
         "image": "shopify://shop_images/carrusel-12.png",
-        "link_url": "",
+        "link_url": "https://versolibros.com/pages/book-club",
         "link_text": "Verso Book Club"
       }
     },
