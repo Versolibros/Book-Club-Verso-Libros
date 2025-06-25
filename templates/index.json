@@ -12,14 +12,17 @@
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
       "type": "block-image",
       "settings": {
-        "image": "shopify://shop_images/Banner-Palestina.jpg",
+        "image": "shopify://shop_images/carrusel-12.png",
         "link_url": "",
-        "link_text": ""
+        "link_text": "https://versolibros.com/pages/book-club"
       }
     },
     "518c7028-1d14-4223-9e77-b3ee2cad8356": {
       "type": "block-featured-products",
       "settings": {
+        "heading": "Featured Books",
+        "browse_url": "",
+        "browse_text": "Browse all",
         "menu": "",
         "product_list": [
           "la-clase-importa",
@@ -34,6 +37,9 @@
     "57103be7-9c23-4cac-bc25-1b6b2a850fc2": {
       "type": "block-featured-products",
       "settings": {
+        "heading": "Featured Books",
+        "browse_url": "",
+        "browse_text": "Browse all",
         "menu": "",
         "product_list": [
           "chile-1973-2023-contrarrevolucion-y-resistencia",
