@@ -30,9 +30,18 @@
     "products": {
       "type": "book-club-products",
       "custom_css": [
-        "li {border:none;}"
+        "li {border: none;}"
       ],
       "settings": {}
+    },
+    "block_image_metW3E": {
+      "type": "block-image",
+      "name": "t:sections.block-image.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/banner_logos.png",
+        "link_url": "",
+        "link_text": ""
+      }
     },
     "footer": {
       "type": "book-club-footer",
@@ -44,6 +53,7 @@
     "featured_subscription",
     "subscriptions",
     "products",
-    "footer"
+    "footer",
+    "block_image_metW3E"
   ]
 }
