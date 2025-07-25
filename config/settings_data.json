@@ -12,7 +12,7 @@
     "social_facebook_link": "https://www.facebook.com/VersoLibros/",
     "social_twitter_link": "https://twitter.com/versolibros",
     "social_instagram_link": "https://www.instagram.com/versolibros/",
-    "logo": "shopify://shop_images/manifestlogo.jpg",
+    "logo": "shopify://shop_images/verso_logo_d6259da7-1e9d-4cf3-b5e9-0b65600e5941.jpg",
     "currency_code_enabled": true,
     "book_club_reader_title": "Lectora",
     "book_club_reader_description": "<ul><li><strong>Lectora digital de Verso</strong></li><li><strong>8€/mes</strong></li><li><strong>Recibe en tu correo una selección mensual de nuestros libros en formato ebook. (20-30 libros/año)</strong></li><li><strong>Participa de la comunidad</strong></li></ul>",
@@ -36,8 +36,8 @@
     "book_club_page_instruction_3_text": "Tus selecciones se enviaran a lo largo del mes",
     "book_club_page_footer_heading": "Preguntas frecuentes",
     "book_club_page_footer_text": "<p>¿Tienes dudas o preguntas? Puedes enviarnos un correo electrónico a <a href=\"mailto:comunidad@versolibros.com\" title=\"mailto:comunidad@versolibros.com\">comunidad@versolibros.com</a> ¡Escuchamos sugerencias y comentarios!</p>",
-    "book_club_suggested_products_heading": "All Book Club subscribers get 50% off every purchase!",
-    "book_club_suggested_products_description": "If you’re interested in this month’s theme, here are a few suggestions:",
+    "book_club_suggested_products_heading": "",
+    "book_club_suggested_products_description": "",
     "book_club_suggested_products_list": [
       "amor-rojo",
       "chile-1973-2023-contrarrevolucion-y-resistencia",
@@ -46,6 +46,8 @@
       "cubaesperanzaposible",
       "descolonizando-la-mente-palestina"
     ],
+    "order_email_na": "",
+    "order_email_eu": "",
     "checkout_logo_image": "shopify://shop_images/logo-square_e9500a1e-c18d-4476-ac18-aff9db1d6512.png",
     "checkout_accent_color": "#e22120",
     "checkout_button_color": "#e22120",
