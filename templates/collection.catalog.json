@@ -37,9 +37,9 @@
     "product-grid": {
       "type": "collection-product-grid",
       "settings": {
-        "show_menu": true,
-        "menu": "secondary-navigation",
-        "region_menu": "autores-destacados",
+        "show_menu": false,
+        "menu": "primary-navigation",
+        "region_menu": "",
         "products_per_page": 6
       }
     }
