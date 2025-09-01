@@ -37,7 +37,7 @@
     "product-grid": {
       "type": "collection-product-grid",
       "settings": {
-        "show_menu": true,
+        "show_menu": false,
         "menu": "subject-collections",
         "region_menu": "",
         "products_per_page": 6
