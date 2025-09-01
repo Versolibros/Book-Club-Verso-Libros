@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1659104295b3869a2c": {
@@ -14,7 +23,7 @@
         "165910429535f14a5b-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Verso Libros es una editorial independiente de libro radical para el mundo hispanohablante.<br\/><\/p>",
+            "text": "<p>Verso Libros es una editorial independiente de libro radical para el mundo hispanohablante.<br/></p>",
             "text_style": "t-base"
           }
         }
@@ -23,14 +32,13 @@
         "165910429535f14a5b-0",
         "165910429535f14a5b-1"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-grid": {
       "type": "collection-product-grid",
       "settings": {
         "show_menu": true,
-        "menu": "subject-collections",
+        "menu": "primary-navigation",
         "region_menu": "",
         "products_per_page": 6
       }
