@@ -21,7 +21,6 @@
     "22c3e555-96b3-4c0a-84d5-0cda15d21a47": {
       "type": "block-image",
       "settings": {
-        "image": "shopify://shop_images/carrusel-12.png",
         "link_url": "https://versolibros.com/pages/book-club",
         "link_text": "Verso Book Club"
       }
@@ -39,7 +38,7 @@
           "incendios-una-critica-ecosocial-del-capitalismo-inflamable",
           "mujeres-con-conciencia-en-un-mundo-de-hombres",
           "tiempos-de-espera",
-          "el-capitalismo-y-el-mar"
+          "sexo-hetero"
         ]
       }
     },
@@ -52,11 +51,11 @@
         "menu": "",
         "product_list": [
           "rapados",
-          "el-estado-feroz",
           "camarada-ensayo-sobre-la-pertenencia-politica",
           "matematicas-revolucionarias",
           "marxismo-e-interseccionalidad",
-          "gays-malos"
+          "gays-malos",
+          "por-un-republicanismo-socialista"
         ]
       }
     },
