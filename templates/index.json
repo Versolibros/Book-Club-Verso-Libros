@@ -33,12 +33,12 @@
         "browse_text": "Browse all",
         "menu": "",
         "product_list": [
-          "la-clase-importa",
-          "discurso-sobre-el-colonialismo",
-          "incendios-una-critica-ecosocial-del-capitalismo-inflamable",
-          "mujeres-con-conciencia-en-un-mundo-de-hombres",
-          "tiempos-de-espera",
-          "sexo-hetero"
+          "pack-palestina",
+          "pack-atado-y-bien-atado-1",
+          "pack-feminismos",
+          "pack-capitalismos",
+          "pack-debates-militantes",
+          "pack-politicas-de-la-sexualidad"
         ]
       }
     },
@@ -50,12 +50,12 @@
         "browse_text": "Browse all",
         "menu": "",
         "product_list": [
-          "rapados",
-          "camarada-ensayo-sobre-la-pertenencia-politica",
-          "matematicas-revolucionarias",
-          "marxismo-e-interseccionalidad",
-          "gays-malos",
-          "por-un-republicanismo-socialista"
+          "una-breve-historia-de-la-transmisoginia",
+          "tras-black-lives-matter",
+          "la-destruccion-de-palestina-es-la-destruccion-de-la-tierra",
+          "los-santiago-boys",
+          "sexo-hetero",
+          "ahora-el-pueblo"
         ]
       }
     },
@@ -90,9 +90,9 @@
       "settings": {
         "heading": "Autores destacados",
         "menu": "",
-        "author_1": "authors/fredric-jameson",
-        "author_2": "authors/andrea-long-chu",
-        "author_3": "authors/mario-tronti",
+        "author_1": "authors/jean-luc-melenchon",
+        "author_2": "authors/bell-hooks",
+        "author_3": "authors/andreas-malm",
         "author_4": "authors/angela-davis"
       }
     },
