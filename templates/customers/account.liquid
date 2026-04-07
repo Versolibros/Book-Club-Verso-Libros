@@ -1,7 +1,7 @@
 
 <!-- Begin ReCharge code -->
 <p id="rc_link_container">
-    <a href="/tools/recurring/login">Manage Subscriptions</a>
+    <a href="/tools/recurring/login">{{ 'customer.account.manage_subscriptions' | t }}</a>
 </p>
 <!-- End ReCharge code -->
 <section class="a-bg-default">
@@ -20,7 +20,7 @@
                   <header class="c-customer-order__header">
                     <h3 class="c-customer-order__title">{{ order.created_at | time_tag: format: 'date' }}</h3>
                     <a href="{{ order.customer_url }}" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}" class="c-customer-order__details-link">
-                      View details
+                      {{ 'customer.orders.view_details' | t }}
                     </a>
                   </header>
                   {%-liquid
